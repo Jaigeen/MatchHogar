@@ -1,0 +1,232 @@
+/* -------------------------------------------------------------
+   MatchHogar – Hoja de estilos principal
+   ------------------------------------------------------------- */
+
+:root {
+  --cream: #fff8f0;
+  --navy: #002e5e;
+  --navy-dark: #001a37;
+  --orange: #e76f26;
+  --text: #2f363f;
+  --radius: 10px;
+}
+
+/* ------------------ RESET BÁSICO ------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+/* ------------------ NAV ------------------ */
+header {
+  background: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 6%);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--navy);
+}
+
+.nav-brand svg {
+  width: 38px;
+  height: 38px;
+}
+
+.stroke-navy {
+  stroke: var(--navy);
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stroke-orange {
+  stroke: var(--orange);
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--orange);
+}
+
+/* ------------------ HERO ------------------ */
+.hero {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 6rem 1rem 4rem;
+  background: url("assets/hero-bg.svg") center/cover no-repeat;
+}
+
+.hero-icon {
+  width: 96px;
+  margin: 0 auto 1rem;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  color: var(--navy);
+}
+
+h1 span {
+  color: var(--orange);
+}
+
+.tagline {
+  font-size: 1.125rem;
+  margin: 0.75rem 0 2rem;
+  max-width: 600px;
+  color: var(--navy);
+}
+
+/* ------------------ BOTONES ------------------ */
+.cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--orange);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: #fff;
+}
+
+/* ------------------ SECCIONES GENÉRICAS ------------------ */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+p + p {
+  margin-top: 1rem;
+}
+
+/* ------------------ FORMULARIOS ------------------ */
+form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font: inherit;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ------------------ FOOTER ------------------ */
+footer {
+  background: var(--cream);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.875rem;
+  border-top: 1px solid rgb(0 0 0 / 8%);
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 1rem;
+  }
+  .hero {
+    padding: 4rem 1rem 3rem;
+  }
+}
