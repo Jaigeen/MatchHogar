@@ -1,262 +1,500 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MatchHogar | Conectamos personas y viviendas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --primary:#0057b3;
-      --primary-dark:#003d80;
-      --text:#333333;
-      --bg:#ffffff;
-      --bg-light:#f5f5f7;
-      --radius:8px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MatchHogar | Conectamos personas</title>
 
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{
-      font-family:"Inter",sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.6;
-    }
+    <!-- Tipografía Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    header{
-      position:sticky;
-      top:0;
-      background:var(--bg);
-      box-shadow:0 2px 4px rgba(0,0,0,.08);
-      z-index:100;
-    }
-
-    nav{
-      max-width:1100px;
-      margin:auto;
-      padding:1rem 2rem;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    nav .logo{
-      font-weight:700;
-      font-size:1.25rem;
-      color:var(--primary);
-    }
-
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:1rem;
-    }
-
-    nav a{
-      text-decoration:none;
-      color:var(--text);
-      font-weight:600;
-    }
-
-    nav a:hover,nav a:focus{
-      color:var(--primary);
-    }
-
-    main section{
-      padding:4rem 1rem;
-      max-width:1100px;
-      margin:auto;
-    }
-
-    .hero{
-      background:url('assets/hero.jpg') center/cover no-repeat;
-      color:#fff;
-      text-align:center;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      min-height:60vh;
-      border-radius:var(--radius);
-    }
-
-    h1,h2{
-      margin-bottom:1rem;
-    }
-
-    form{
-      display:grid;
-      gap:1rem;
-      margin-top:2rem;
-    }
-
-    label{
-      display:flex;
-      flex-direction:column;
-      font-weight:600;
-    }
-
-    input,select,textarea{
-      padding:.75rem;
-      border:1px solid #ccc;
-      border-radius:var(--radius);
-    }
-
-    .checkbox-group{
-      display:flex;
-      align-items:center;
-      gap:.5rem;
-    }
-
-    .button-primary{
-      background:var(--primary);
-      color:#fff;
-      border:none;
-      padding:1rem 2rem;
-      border-radius:var(--radius);
-      cursor:pointer;
-      transition:background .3s;
-    }
-
-    .button-primary:hover{
-      background:var(--primary-dark);
-    }
-
-    footer{
-      background:var(--bg-light);
-      padding:2rem 1rem;
-      text-align:center;
-      font-size:.875rem;
-      margin-top:4rem;
-    }
-
-    @media(max-width:600px){
-      nav ul{
-        flex-direction:column;
+    <!-- Estilos base (prototipo) -->
+    <style>
+      /* ------------------------------------------------------------------ */
+      /*  PALETA DE COLORES (inspirada en los mock-ups que nos pasó el cliente)
+          Cream       #FFF8F0
+          Navy        #002E5E
+          Orange      #E76F26
+          Accent Sky  #5EA6BA (opcional para textos secundarios)           */
+      /* ------------------------------------------------------------------ */
+      :root {
+        --cream: #fff8f0;
+        --navy: #002e5e;
+        --navy-dark: #001a37;
+        --orange: #e76f26;
+        --text: #2f363f;
+        --radius: 10px;
       }
-    }
-  </style>
-</head>
-<body>
-<header>
-  <nav>
-    <div class="logo">MatchHogar</div>
-    <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#quienes-somos">Quiénes somos</a></li>
-      <li><a href="#que-ofrecemos">Qué ofrecemos</a></li>
-      <li><a href="#registro">Registro</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main>
-  <!-- Inicio -->
-  <section id="inicio" class="hero">
-    <h1>Conecta con tu próximo hogar o inversión</h1>
-    <p>Encuentra personas con intereses y necesidades compatibles.</p>
-    <a href="#registro" class="button-primary" style="align-self:center;margin-top:2rem;">Empieza ahora</a>
-  </section>
+      /* Reset mínimo */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-  <!-- Quiénes somos -->
-  <section id="quienes-somos">
-    <h2>Quiénes somos</h2>
-    <p>MatchHogar es una plataforma que conecta personas con objetivos comunes relacionados con vivienda, fincas, negocios, trasteros o inversiones compartidas.</p>
-  </section>
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--cream);
+        color: var(--text);
+      }
 
-  <!-- Qué ofrecemos -->
-  <section id="que-ofrecemos">
-    <h2>Qué ofrecemos</h2>
-    <p>Facilitamos el “match” perfecto mediante formularios inteligentes y un algoritmo de coincidencia que evalúa tus preferencias, situación personal y objetivos económicos.</p>
-  </section>
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-  <!-- Registro -->
-  <section id="registro">
-    <h2>Registro</h2>
+      /* ------------------ Navegación ------------------ */
+      header {
+        background: var(--cream);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 6%);
+      }
 
-    <!-- Usuario Básico -->
-    <h3 id="registro-basico">Usuario Básico (gratuito)</h3>
-    <form action="#" method="post">
-      <label>Nombre completo*<input type="text" name="nombre" required></label>
-      <label>Edad*<input type="number" name="edad" min="18" required></label>
-      <label>Sexo*<select name="sexo" required><option value="">Selecciona</option><option>Hombre</option><option>Mujer</option><option>Prefiero no decirlo</option></select></label>
-      <label>Género<select name="genero"><option value="">Selecciona</option><option>Cisgénero</option><option>Transgénero</option><option>No binario</option><option>Otro</option></select></label>
-      <label>Email*<input type="email" name="email" required></label>
-      <label>Teléfono de contacto*<input type="tel" name="telefono" required></label>
-      <label>Foto de perfil<input type="file" name="foto"></label>
+      nav {
+        max-width: 1200px;
+        margin: auto;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-      <label>Estado civil*<select name="estado_civil" required><option value="">Selecciona</option><option>Soltero/a</option><option>Casado/a</option><option>Divorciado/a</option><option>Viudo/a</option></select></label>
-      <label>¿Tienes hijos?*<input type="text" name="hijos" placeholder="Número y edades" required></label>
-      <label>¿Tienes mascotas?*<input type="text" name="mascotas" placeholder="Tipo de mascota" required></label>
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-      <label>Tipo de operación deseada*<select name="operacion" required><option>Alquiler</option><option>Compra</option><option>Inversión</option></select></label>
-      <label>Condiciones del match*<textarea name="condiciones" rows="3" required></textarea></label>
-      <label>Zona geográfica de interés*<input type="text" name="zona" required></label>
-      <label>Rango económico*<input type="text" name="rango" required></label>
-      <label>Frecuencia y preferencia de contacto<select name="frecuencia"><option>Email</option><option>Teléfono</option><option>WhatsApp</option></select></label>
+      .nav-brand svg {
+        width: 40px;
+        height: 40px;
+      }
 
-      <div class="checkbox-group">
-        <input type="checkbox" id="privacidad-basico" required>
-        <label for="privacidad-basico">Acepto la <a href="#politica">política de privacidad</a> y <a href="#condiciones">condiciones de uso</a>*</label>
+      .nav-brand span {
+        font-weight: 700;
+        font-size: 1.35rem;
+        color: var(--navy);
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus {
+        color: var(--orange);
+      }
+
+      /* ------------------ Hero ------------------ */
+      .hero {
+        display: grid;
+        place-content: center;
+        text-align: center;
+        padding: 6rem 1rem 4rem;
+        background: url("assets/hero-bg.svg") center/cover no-repeat;
+      }
+
+      .hero-icon {
+        width: 96px;
+        margin: 0 auto 1rem;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 6vw, 3.5rem);
+        font-weight: 700;
+        color: var(--navy);
+      }
+
+      h1 span {
+        color: var(--orange);
+      }
+
+      .tagline {
+        font-size: 1.125rem;
+        margin: 0.75rem 0 2rem;
+        max-width: 600px;
+        color: var(--navy);
+      }
+
+      .cta-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 0.9rem 1.8rem;
+        border-radius: var(--radius);
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.3s;
+        border: 2px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--orange);
+        color: #fff;
+        border-color: var(--orange);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--orange);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--navy);
+        border-color: var(--navy);
+      }
+
+      .btn-outline:hover {
+        background: var(--navy);
+        color: #fff;
+      }
+
+      /* ------------------ Secciones genéricas ------------------ */
+      section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 4rem 1rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+        color: var(--navy);
+        margin-bottom: 1rem;
+      }
+
+      p + p {
+        margin-top: 1rem;
+      }
+
+      /* ------------------ Footer ------------------ */
+      footer {
+        background: var(--cream);
+        text-align: center;
+        padding: 2rem 1rem;
+        font-size: 0.875rem;
+        border-top: 1px solid rgb(0 0 0 / 8%);
+      }
+
+      /* ------------------ Responsive ------------------ */
+      @media (max-width: 768px) {
+        .nav-links {
+          gap: 1rem;
+        }
+        .hero {
+          padding: 4rem 1rem 3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================= -->
+    <!--             ENCABEZADO Y MENÚ PRINCIPAL                       -->
+    <!-- ============================================================= -->
+    <header>
+      <nav>
+        <div class="nav-brand">
+          <!-- Icono casa + corazón (inline SVG) -->
+          <svg
+            class="logo-svg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 64 64"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M2 33L32 6l30 27"
+              style="stroke: var(--navy)"
+            />
+            <path
+              d="M10 30v28h14V44h16v14h14V30"
+              style="stroke: var(--orange)"
+            />
+            <path
+              d="M40 28c0 7-8 11-8 11s-8-4-8-11a8 8 0 0116 0z"
+              style="stroke: var(--orange)"
+            />
+          </svg>
+          <span>MatchHogar</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#quienes-somos">Quiénes somos</a></li>
+          <li><a href="#que-ofrecemos">Qué ofrecemos</a></li>
+          <li><a href="#registro">Registro</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============================================================= -->
+    <!--                          HERO / INICIO                       -->
+    <!-- ============================================================= -->
+    <section id="inicio" class="hero">
+      <img
+        src="assets/icon-hero.svg"
+        alt="Icono MatchHogar manos y corazón"
+        class="hero-icon"
+      />
+      <h1>
+        Match<span>Hogar</span>
+      </h1>
+      <p class="tagline">
+        Conectamos personas con sus mismos intereses y necesidades en vivienda e
+        inversión.
+      </p>
+      <div class="cta-group">
+        <a href="#registro" class="btn btn-primary">¡Quiero registrarme!</a>
+        <a href="#quienes-somos" class="btn btn-outline">Más información</a>
       </div>
-      <div class="checkbox-group">
-        <input type="checkbox" id="comunicaciones-basico">
-        <label for="comunicaciones-basico">Autorizo a recibir comunicaciones electrónicas</label>
-      </div>
-      <button class="button-primary" type="submit">Enviar registro gratuito</button>
-    </form>
+    </section>
 
-    <hr style="margin:4rem 0;">
+    <!-- ============================================================= -->
+    <!--                       QUIÉNES SOMOS                           -->
+    <!-- ============================================================= -->
+    <section id="quienes-somos">
+      <h2>Quiénes somos</h2>
+      <p>
+        MatchHogar es una plataforma que conecta personas con objetivos comunes
+        relacionados con vivienda, fincas, negocios, trasteros o inversiones
+        compartidas.
+      </p>
+      <p>
+        Nuestro algoritmo analiza tus preferencias, situación personal y
+        posibilidades económicas para encontrar la coincidencia ideal.
+      </p>
+    </section>
 
-    <!-- Usuario Premium -->
-    <h3 id="registro-premium">Usuario Premium – 4,99 €/mes</h3>
-    <form action="#" method="post">
-      <!-- TODO: Reutilizar campos del formulario básico + adicionales -->
-      <p>Este formulario incluye los mismos campos del registro básico más preguntas adicionales para afinar las coincidencias.</p>
-      <label>Preferencias de convivencia<textarea name="convivencia" rows="3"></textarea></label>
-      <label>Expectativa de duración de la operación<select name="duracion"><option>Corto plazo</option><option>Largo plazo</option></select></label>
+    <!-- ============================================================= -->
+    <!--                       QUÉ OFRECEMOS                           -->
+    <!-- ============================================================= -->
+    <section id="que-ofrecemos">
+      <h2>Qué ofrecemos</h2>
+      <p>
+        &bull; Formularios inteligentes para usuarios básicos y premium.
+        <br />
+        &bull; Registro de colaboradores (agencias, bancos, asesores...).
+        <br />
+        &bull; Herramientas de filtrado para encontrar a tu compañero o
+        inversión perfecta.
+      </p>
+    </section>
 
-      <h4>Suscripción</h4>
-      <label>Nombre en tarjeta*<input type="text" name="nombre_tarjeta" required></label>
-      <label>Correo de confirmación*<input type="email" name="correo_confirm" required></label>
-      <p>Métodos de pago: <strong>Stripe</strong> o <strong>PayPal</strong></p>
+    <!-- ============================================================= -->
+    <!--                         REGISTRO                              -->
+    <!-- ============================================================= -->
+    <section id="registro">
+      <h2>Registro</h2>
+      <!--  ==================== Usuario Básico ==================== -->
+      <h3 id="registro-basico">Usuario Básico (gratuito)</h3>
+      <form action="#" method="post">
+        <!-- Datos personales -->
+        <label>Nombre completo* <input type="text" name="nombre" required /></label>
+        <label>Edad* <input type="number" name="edad" min="18" required /></label>
+        <label
+          >Sexo*
+          <select name="sexo" required>
+            <option value="">Selecciona</option>
+            <option>Hombre</option>
+            <option>Mujer</option>
+            <option>Prefiero no decirlo</option>
+          </select></label
+        >
+        <label
+          >Género
+          <select name="genero">
+            <option value="">Selecciona</option>
+            <option>Cisgénero</option>
+            <option>Transgénero</option>
+            <option>No binario</option>
+            <option>Otro</option>
+          </select></label
+        >
+        <label>Email* <input type="email" name="email" required /></label>
+        <label>Teléfono* <input type="tel" name="telefono" required /></label>
+        <label>Foto de perfil <input type="file" name="foto" /></label>
 
-      <div class="checkbox-group">
-        <input type="checkbox" id="condiciones-premium" required>
-        <label for="condiciones-premium">Acepto condiciones de uso y suscripción*</label>
-      </div>
-      <button class="button-primary" type="submit">Confirmar registro y pagar 4,99 €</button>
-    </form>
+        <!-- Situación personal -->
+        <label
+          >Estado civil*
+          <select name="estado_civil" required>
+            <option value="">Selecciona</option>
+            <option>Soltero/a</option>
+            <option>Casado/a</option>
+            <option>Divorciado/a</option>
+            <option>Viudo/a</option>
+          </select></label
+        >
+        <label>
+          ¿Tienes hijos?* <input type="text" name="hijos" placeholder="Número y edades" required />
+        </label>
+        <label>
+          ¿Tienes mascotas?* <input type="text" name="mascotas" placeholder="Tipo de mascota" required />
+        </label>
 
-    <hr style="margin:4rem 0;">
+        <!-- Preferencias -->
+        <label>
+          Tipo de operación deseada*
+          <select name="operacion" required>
+            <option>Alquiler</option>
+            <option>Compra</option>
+            <option>Inversión</option>
+          </select></label
+        >
+        <label>
+          Condiciones del match* <textarea name="condiciones" rows="3" required></textarea>
+        </label>
+        <label>
+          Zona geográfica de interés* <input type="text" name="zona" required />
+        </label>
+        <label>
+          Rango económico* <input type="text" name="rango" required />
+        </label>
+        <label>
+          Frecuencia y preferencia de contacto
+          <select name="frecuencia">
+            <option>Email</option>
+            <option>Teléfono</option>
+            <option>WhatsApp</option>
+          </select></label
+        >
 
-    <!-- Colaborador -->
-    <h3 id="registro-colaborador">Registro de Colaborador – 49,90 €</h3>
-    <form action="#" method="post">
-      <label>Nombre de empresa o profesional*<input type="text" name="empresa" required></label>
-      <label>CIF/NIF*<input type="text" name="cif" required></label>
-      <label>Persona de contacto*<input type="text" name="persona_contacto" required></label>
-      <label>Teléfono*<input type="tel" name="telefono_colaborador" required></label>
-      <label>Email*<input type="email" name="email_colaborador" required></label>
-      <label>Dirección<input type="text" name="direccion"></label>
-      <label>Web o redes sociales<input type="url" name="web"></label>
+        <!-- Legal -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="privacidad-basico" required />
+          <label for="privacidad-basico"
+            >Acepto la <a href="#politica">política de privacidad</a> y
+            <a href="#condiciones">condiciones de uso</a>*</label
+          >
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="comunicaciones-basico" />
+          <label for="comunicaciones-basico"
+            >Autorizo a recibir comunicaciones electrónicas</label
+          >
+        </div>
+        <button class="btn btn-primary" type="submit">Registro gratuito</button>
+      </form>
 
-      <label>Tipo de colaborador<select name="tipo_colaborador"><option>Inmobiliaria</option><option>Banco</option><option>Asesor</option><option>Otro</option></select></label>
-      <label>Tipos de publicaciones<select name="publicaciones" multiple><option>Viviendas</option><option>Locales</option><option>Fincas</option><option>Trasteros</option></select></label>
+      <hr style="margin: 4rem 0" />
 
-      <p>Pago por alta: 49,90 € (Stripe, PayPal o transferencia)</p>
-      <div class="checkbox-group">
-        <input type="checkbox" id="condiciones-colaborador" required>
-        <label for="condiciones-colaborador">Acepto condiciones de colaboración*</label>
-      </div>
-      <button class="button-primary" type="submit">Confirmar registro y pagar 49,90 €</button>
-    </form>
+      <!--  ==================== Usuario Premium ==================== -->
+      <h3 id="registro-premium">Usuario Premium – 4,99 €/mes</h3>
+      <form action="#" method="post">
+        <p>
+          Este formulario incluye todos los campos del registro básico más
+          algunos adicionales para afinar tu coincidencia.
+        </p>
+        <label>
+          Preferencias de convivencia
+          <textarea name="convivencia" rows="3"></textarea>
+        </label>
+        <label>
+          Duración prevista de la operación
+          <select name="duracion">
+            <option>Corto plazo</option>
+            <option>Largo plazo</option>
+          </select></label
+        >
 
-  </section>
-</main>
+        <h4>Datos de pago</h4>
+        <label>
+          Nombre en tarjeta* <input type="text" name="nombre_tarjeta" required />
+        </label>
+        <label>
+          Correo de confirmación*<input type="email" name="correo_confirm" required />
+        </label>
+        <p>Métodos de pago admitidos: Stripe o PayPal</p>
+        <div class="checkbox-group">
+          <input type="checkbox" id="condiciones-premium" required />
+          <label for="condiciones-premium"
+            >Acepto condiciones de uso y suscripción*</label
+          >
+        </div>
+        <button class="btn btn-primary" type="submit">
+          Confirmar y pagar 4,99 €
+        </button>
+      </form>
 
-<footer>
-  <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
-  <p><a href="#politica">Política de privacidad</a> | <a href="#condiciones">Términos y condiciones de uso</a> | <a href="#cookies">Política de cookies</a></p>
-</footer>
-</body>
+      <hr style="margin: 4rem 0" />
+
+      <!--  ==================== Colaboradores ==================== -->
+      <h3 id="registro-colaborador">Colaboradores – 49,90 €</h3>
+      <form action="#" method="post">
+        <label
+          >Nombre de empresa o profesional*<input type="text" name="empresa" required />
+        </label>
+        <label>CIF/NIF*<input type="text" name="cif" required /></label>
+        <label
+          >Persona de contacto*<input type="text" name="contacto" required />
+        </label>
+        <label>Teléfono*<input type="tel" name="tel_colab" required /></label>
+        <label>Email*<input type="email" name="email_colab" required /></label>
+        <label>Dirección<input type="text" name="direccion" /></label>
+        <label>Web o redes sociales<input type="url" name="web" /></label>
+
+        <label>
+          Tipo de colaborador
+          <select name="tipo_colab">
+            <option>Inmobiliaria</option>
+            <option>Banco</option>
+            <option>Asesor</option>
+            <option>Otro</option>
+          </select></label
+        >
+        <label>
+          Tipos de publicaciones
+          <select name="publicaciones" multiple>
+            <option>Viviendas</option>
+            <option>Locales</option>
+            <option>Fincas</option>
+            <option>Trasteros</option>
+          </select></label
+        >
+        <p>Pago por alta: 49,90 € (Stripe, PayPal o transferencia)</p>
+        <div class="checkbox-group">
+          <input type="checkbox" id="condiciones-colab" required />
+          <label for="condiciones-colab"
+            >Acepto condiciones de colaboración*</label
+          >
+        </div>
+        <button class="btn btn-primary" type="submit">
+          Confirmar y pagar 49,90 €
+        </button>
+      </form>
+    </section>
+
+    <!-- ============================================================= -->
+    <!--                             FOOTER                            -->
+    <!-- ============================================================= -->
+    <footer>
+      <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
+      <p>
+        <a href="#politica">Política de privacidad</a> | <a href="#condiciones"
+          >Términos y condiciones</a
+        > | <a href="#cookies">Política de cookies</a>
+      </p>
+    </footer>
+  </body>
 </html>
