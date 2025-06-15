@@ -25,46 +25,282 @@
           <li><a aria-current="page" href="registro.html">Registro</a></li>
         </ul>
       </nav>
-    </header>
+    </header>    <!-- MAIN CONTENT -->
+    <main class="container registro-section">
+      <h1>Regístrate en MatchHogar</h1>
+      
+      <div class="planes-container">
+        <!-- Plan Básico -->
+        <div class="plan-card">
+          <h2>Usuario Básico</h2>
+          <p class="plan-price">Gratis</p>
+          <ul class="plan-features">
+            <li>Acceso a búsquedas básicas</li>
+            <li>Perfil personal</li>
+            <li>Conexiones limitadas</li>
+          </ul>
+          <button type="button" class="btn btn-primary" onclick="mostrarFormulario('basico')">Registrarse Gratis</button>
+        </div>
 
-    <!-- CONTENIDO -->
-    <main>
-      <section id="registro">
-        <h2>Regístrate</h2>
-        <p>
-          Elige la opción que más se adapte a tus necesidades e inicia tu
-          búsqueda hoy mismo.
-        </p>
+        <!-- Plan Premium -->
+        <div class="plan-card featured">
+          <div class="plan-badge">Recomendado</div>
+          <h2>Usuario Premium</h2>
+          <p class="plan-price">4,99 €<span>/mes</span></p>
+          <ul class="plan-features">
+            <li>Todas las funciones básicas</li>
+            <li>Búsquedas avanzadas</li>
+            <li>Conexiones ilimitadas</li>
+            <li>Prioridad en matches</li>
+          </ul>
+          <button type="button" class="btn btn-primary" onclick="mostrarFormulario('premium')">Suscribirse</button>
+        </div>
 
-        <!-- TABLA DE CONTENIDO INTERNO -->
-        <nav class="cta-group" style="margin-bottom: 2rem">
-          <a href="#registro-basico" class="btn btn-outline">Usuario Básico</a>
-          <a href="#registro-premium" class="btn btn-outline">Usuario Premium</a>
-          <a href="#registro-colaborador" class="btn btn-outline">Colaborador</a>
-        </nav>
+        <!-- Plan Colaborador -->
+        <div class="plan-card">
+          <h2>Colaborador</h2>
+          <p class="plan-price">49,90 €<span>/alta</span></p>
+          <ul class="plan-features">
+            <li>Portal profesional</li>
+            <li>Gestión de propiedades</li>
+            <li>Publicación de anuncios</li>
+            <li>Dashboard especializado</li>
+          </ul>
+          <button type="button" class="btn btn-primary" onclick="mostrarFormulario('colaborador')">Registrarse como Colaborador</button>
+        </div>
+      </div>
 
-        <!-- Usuario Básico -->
-        <h3 id="registro-basico">Usuario Básico (gratuito)</h3>
-        <form action="#" method="post">
-          <!-- ... (campos tal cual en la maqueta) ... -->
+      <!-- Formularios (inicialmente ocultos) -->
+      <div id="formulario-basico" class="formulario-registro hidden">
+        <h2>Registro de Usuario Básico</h2>
+        <form id="form-basico" class="registro-form">
+          <div class="form-section">
+            <h3>Datos Personales</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="edad">Edad *</label>
+                <input type="number" id="edad" name="edad" required min="18">
+              </div>
+              <div class="form-group">
+                <label for="sexo">Sexo *</label>
+                <select id="sexo" name="sexo" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="hombre">Hombre</option>
+                  <option value="mujer">Mujer</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="genero">Género</label>
+                <input type="text" id="genero" name="genero">
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono de contacto *</label>
+                <input type="tel" id="telefono" name="telefono" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="foto">Foto de perfil</label>
+              <input type="file" id="foto" name="foto" accept="image/*">
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Situación Personal</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="estado-civil">Estado civil *</label>
+                <select id="estado-civil" name="estado-civil" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="soltero">Soltero/a</option>
+                  <option value="casado">Casado/a</option>
+                  <option value="divorciado">Divorciado/a</option>
+                  <option value="viudo">Viudo/a</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="hijos">¿Tienes hijos? *</label>
+                <input type="text" id="hijos" name="hijos" placeholder="Número y edades" required>
+              </div>
+              <div class="form-group">
+                <label for="mascotas">¿Tienes mascotas? *</label>
+                <input type="text" id="mascotas" name="mascotas" placeholder="Tipo de mascota" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Preferencias de Vivienda</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="operacion">Tipo de operación *</label>
+                <select id="operacion" name="operacion" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="alquiler">Alquiler</option>
+                  <option value="compra">Compra</option>
+                  <option value="inversion">Inversión</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="zona">Zona geográfica de interés *</label>
+                <input type="text" id="zona" name="zona" required>
+              </div>
+              <div class="form-group">
+                <label for="rango-economico">Rango económico *</label>
+                <input type="text" id="rango-economico" name="rango-economico" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="condiciones">Condiciones del "match" *</label>
+              <textarea id="condiciones" name="condiciones" rows="3" required 
+                placeholder="Describe el perfil de las personas con las que te gustaría compartir"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="preferencia-contacto">Frecuencia y preferencia de contacto</label>
+              <textarea id="preferencia-contacto" name="preferencia-contacto" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="form-section legal-section">
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required>
+              <label for="acepto-privacidad">
+                Acepto la <a href="#politica">política de privacidad</a> y 
+                <a href="#condiciones">condiciones de uso</a> *
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-comunicaciones" name="acepto-comunicaciones">
+              <label for="acepto-comunicaciones">
+                Autorizo recibir comunicaciones electrónicas
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Completar Registro</button>
+            <button type="button" class="btn btn-outline" onclick="ocultarFormularios()">Cancelar</button>
+          </div>
         </form>
+      </div>
 
-        <hr style="margin: 4rem 0" />
+      <!-- Formulario Premium (similar al básico + campos adicionales) -->
+      <div id="formulario-premium" class="formulario-registro hidden">
+        <!-- Se genera dinámicamente con JavaScript -->
+      </div>
 
-        <!-- Usuario Premium -->
-        <h3 id="registro-premium">Usuario Premium – 4,99 €/mes</h3>
-        <form action="#" method="post">
-          <!-- ... (campos tal cual en la maqueta) ... -->
+      <!-- Formulario Colaborador -->
+      <div id="formulario-colaborador" class="formulario-registro hidden">
+        <h2>Registro de Colaborador</h2>
+        <form id="form-colaborador" class="registro-form">
+          <div class="form-section">
+            <h3>Datos de la Empresa</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nombre-empresa">Nombre de empresa o profesional *</label>
+                <input type="text" id="nombre-empresa" name="nombre-empresa" required>
+              </div>
+              <div class="form-group">
+                <label for="cif">CIF/NIF *</label>
+                <input type="text" id="cif" name="cif" required>
+              </div>
+              <div class="form-group">
+                <label for="contacto">Persona de contacto *</label>
+                <input type="text" id="contacto" name="contacto" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono-empresa">Teléfono *</label>
+                <input type="tel" id="telefono-empresa" name="telefono-empresa" required>
+              </div>
+              <div class="form-group">
+                <label for="email-empresa">Email *</label>
+                <input type="email" id="email-empresa" name="email-empresa" required>
+              </div>
+              <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion">
+              </div>
+              <div class="form-group">
+                <label for="web">Web o redes sociales</label>
+                <input type="url" id="web" name="web" placeholder="https://">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Información Profesional</h3>
+            <div class="form-group">
+              <label for="tipo-colaborador">Tipo de colaborador *</label>
+              <select id="tipo-colaborador" name="tipo-colaborador" required>
+                <option value="">Seleccionar...</option>
+                <option value="inmobiliaria">Inmobiliaria</option>
+                <option value="banco">Banco</option>
+                <option value="asesor">Asesor</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-group checkbox-group">
+              <label>Tipos de publicaciones *</label>
+              <div class="checkbox-grid">
+                <div>
+                  <input type="checkbox" id="pub-viviendas" name="publicaciones[]" value="viviendas">
+                  <label for="pub-viviendas">Viviendas</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pub-locales" name="publicaciones[]" value="locales">
+                  <label for="pub-locales">Locales</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pub-fincas" name="publicaciones[]" value="fincas">
+                  <label for="pub-fincas">Fincas</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pub-trasteros" name="publicaciones[]" value="trasteros">
+                  <label for="pub-trasteros">Trasteros</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Pago y Condiciones</h3>
+            <p class="precio-colaborador">Pago por alta: 49,90 €</p>
+            <div class="form-group">
+              <label>Método de pago *</label>
+              <div class="payment-methods">
+                <button type="button" class="payment-method" data-method="stripe">
+                  <img src="assets/stripe.svg" alt="Stripe">
+                </button>
+                <button type="button" class="payment-method" data-method="paypal">
+                  <img src="assets/paypal.svg" alt="PayPal">
+                </button>
+                <button type="button" class="payment-method" data-method="transferencia">
+                  <span>Transferencia bancaria</span>
+                </button>
+              </div>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-colaboracion" name="acepto-colaboracion" required>
+              <label for="acepto-colaboracion">
+                Acepto las condiciones de colaboración *
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Confirmar registro y realizar pago</button>
+            <button type="button" class="btn btn-outline" onclick="ocultarFormularios()">Cancelar</button>
+          </div>
         </form>
-
-        <hr style="margin: 4rem 0" />
-
-        <!-- Colaborador -->
-        <h3 id="registro-colaborador">Colaboradores – 49,90 €</h3>
-        <form action="#" method="post">
-          <!-- ... (campos tal cual en la maqueta) ... -->
-        </form>
-      </section>
+      </div>
     </main>
 
     <!-- FOOTER -->
@@ -76,5 +312,115 @@
         <a href="#cookies">Política de cookies</a>
       </p>
     </footer>
+
+    <script>
+      function mostrarFormulario(tipo) {
+        // Ocultar todos los formularios
+        document.querySelectorAll('.formulario-registro').forEach(form => {
+          form.classList.add('hidden');
+        });
+        
+        // Mostrar el formulario seleccionado
+        const formulario = document.getElementById(`formulario-${tipo}`);
+        if (formulario) {
+          formulario.classList.remove('hidden');
+          formulario.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Si es premium, clonar el formulario básico y añadir campos adicionales
+        if (tipo === 'premium') {
+          const formPremium = document.getElementById('formulario-premium');
+          formPremium.innerHTML = document.getElementById('formulario-basico').innerHTML;
+          
+          // Cambiar título y añadir campos adicionales
+          formPremium.querySelector('h2').textContent = 'Registro de Usuario Premium';
+          
+          // Añadir sección de pago antes del botón de submit
+          const formActions = formPremium.querySelector('.form-actions');
+          const pagoSection = document.createElement('div');
+          pagoSection.className = 'form-section';
+          pagoSection.innerHTML = `
+            <h3>Información de Pago</h3>
+            <p class="precio-premium">Suscripción mensual: 4,99 €/mes</p>
+            <div class="form-group">
+              <label>Método de pago *</label>
+              <div class="payment-methods">
+                <button type="button" class="payment-method" data-method="stripe">
+                  <img src="assets/stripe.svg" alt="Stripe">
+                </button>
+                <button type="button" class="payment-method" data-method="paypal">
+                  <img src="assets/paypal.svg" alt="PayPal">
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nombre-tarjeta">Nombre en tarjeta *</label>
+              <input type="text" id="nombre-tarjeta" name="nombre-tarjeta" required>
+            </div>
+            <div class="form-group">
+              <label for="email-confirmacion">Correo de confirmación *</label>
+              <input type="email" id="email-confirmacion" name="email-confirmacion" required>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-suscripcion" name="acepto-suscripcion" required>
+              <label for="acepto-suscripcion">
+                Acepto las condiciones de uso y suscripción *
+              </label>
+            </div>
+          `;
+          formActions.parentNode.insertBefore(pagoSection, formActions);
+          
+          // Actualizar el texto del botón
+          formPremium.querySelector('button[type="submit"]').textContent = 'Confirmar registro y realizar pago';
+        }
+      }
+
+      function ocultarFormularios() {
+        document.querySelectorAll('.formulario-registro').forEach(form => {
+          form.classList.add('hidden');
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Manejar selección de métodos de pago
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.payment-method')) {
+          const button = e.target.closest('.payment-method');
+          const methods = button.parentElement.querySelectorAll('.payment-method');
+          methods.forEach(m => m.classList.remove('active'));
+          button.classList.add('active');
+        }
+      });
+
+      // Validar formularios antes de enviar
+      document.querySelectorAll('.registro-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Validar campos requeridos
+          const requiredFields = form.querySelectorAll('[required]');
+          let isValid = true;
+          
+          requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+              field.classList.add('error');
+              isValid = false;
+            } else {
+              field.classList.remove('error');
+            }
+          });
+
+          if (!isValid) {
+            alert('Por favor, completa todos los campos obligatorios.');
+            return;
+          }
+
+          // Aquí iría la lógica de envío del formulario
+          // Por ahora solo mostraremos un mensaje de éxito
+          alert('Registro completado con éxito. Recibirás un email de confirmación.');
+          ocultarFormularios();
+        });
+      });
+    </script>
   </body>
 </html>
