@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MatchHogar | Registro Colaborador</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ======================= HEADER & NAV ======================= -->
+    <header>
+      <nav class="container">
+        <div class="nav-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M2 33L32 6l30 27" class="stroke-navy" />
+            <path d="M10 30v28h14V44h16v14h14V30" class="stroke-orange" />
+            <path d="M40 28c0 7-8 11-8 11s-8-4-8-11a8 8 0 0116 0z" class="stroke-orange" />
+          </svg>
+          <span>MatchHogar</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+          <li><a href="registro.html" aria-current="page">Registro</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============================ MAIN =========================== -->
+    <main class="container registro-section">
+      <div class="registro-header">
+        <h1>Registro de Colaborador</h1>
+        <p class="registro-description">
+          Únete a nuestra red de profesionales y expande tu negocio
+        </p>
+        <div class="premium-badge">
+          <span class="precio">49,90 €</span>
+          <span class="periodo">/alta</span>
+        </div>
+      </div>
+
+      <div class="formulario-registro">
+        <form id="form-colaborador" class="registro-form">
+          <div class="form-section">
+            <h3>Datos de la Empresa</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nombre-empresa">Nombre de empresa o profesional *</label>
+                <input type="text" id="nombre-empresa" name="nombre-empresa" required>
+              </div>
+              <div class="form-group">
+                <label for="cif">CIF/NIF *</label>
+                <input type="text" id="cif" name="cif" required>
+              </div>
+              <div class="form-group">
+                <label for="contacto">Persona de contacto *</label>
+                <input type="text" id="contacto" name="contacto" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono-empresa">Teléfono *</label>
+                <input type="tel" id="telefono-empresa" name="telefono-empresa" required>
+              </div>
+              <div class="form-group">
+                <label for="email-empresa">Email *</label>
+                <input type="email" id="email-empresa" name="email-empresa" required>
+              </div>
+              <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion">
+              </div>
+              <div class="form-group">
+                <label for="web">Web o redes sociales</label>
+                <input type="url" id="web" name="web" placeholder="https://">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Información Profesional</h3>
+            <div class="form-group">
+              <label for="tipo-colaborador">Tipo de colaborador *</label>
+              <select id="tipo-colaborador" name="tipo-colaborador" required>
+                <option value="">Seleccionar...</option>
+                <option value="inmobiliaria">Inmobiliaria</option>
+                <option value="banco">Banco</option>
+                <option value="asesor">Asesor</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-group checkbox-group">
+              <label>Tipos de publicaciones *</label>
+              <div class="checkbox-grid">
+                <div>
+                  <input type="checkbox" id="pub-viviendas" name="publicaciones[]" value="viviendas">
+                  <label for="pub-viviendas">Viviendas</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pub-locales" name="publicaciones[]" value="locales">
+                  <label for="pub-locales">Locales</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pub-fincas" name="publicaciones[]" value="fincas">
+                  <label for="pub-fincas">Fincas</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pub-trasteros" name="publicaciones[]" value="trasteros">
+                  <label for="pub-trasteros">Trasteros</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Pago y Condiciones</h3>
+            <p class="precio-colaborador">Pago por alta: 49,90 €</p>
+            <div class="form-group">
+              <label>Método de pago *</label>
+              <div class="payment-methods">
+                <button type="button" class="payment-method" data-method="stripe">
+                  <img src="assets/stripe.svg" alt="Stripe">
+                </button>
+                <button type="button" class="payment-method" data-method="paypal">
+                  <img src="assets/paypal.svg" alt="PayPal">
+                </button>
+                <button type="button" class="payment-method" data-method="transferencia">
+                  <span>Transferencia bancaria</span>
+                </button>
+              </div>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-colaboracion" name="acepto-colaboracion" required>
+              <label for="acepto-colaboracion">
+                Acepto las condiciones de colaboración *
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required>
+              <label for="acepto-privacidad">
+                Acepto la <a href="#politica">política de privacidad</a> y 
+                <a href="#condiciones">condiciones de uso</a> *
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Confirmar registro y realizar pago</button>
+            <a href="registro.html" class="btn btn-outline">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- =========================== FOOTER ========================== -->
+    <footer>
+      <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
+      <p>
+        <a href="#politica">Política de privacidad</a> |
+        <a href="#condiciones">Términos y condiciones</a> |
+        <a href="#cookies">Política de cookies</a>
+      </p>
+    </footer>
+
+    <script>
+      // Manejar selección de métodos de pago
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.payment-method')) {
+          const button = e.target.closest('.payment-method');
+          const methods = button.parentElement.querySelectorAll('.payment-method');
+          methods.forEach(m => m.classList.remove('active'));
+          button.classList.add('active');
+        }
+      });
+
+      // Validar formulario antes de enviar
+      document.getElementById('form-colaborador').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validar campos requeridos
+        const requiredFields = this.querySelectorAll('[required]');
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            field.classList.add('error');
+            isValid = false;
+          } else {
+            field.classList.remove('error');
+          }
+        });
+
+        // Validar método de pago seleccionado
+        if (!document.querySelector('.payment-method.active')) {
+          alert('Por favor, selecciona un método de pago.');
+          return;
+        }
+
+        // Validar al menos una publicación seleccionada
+        const publicaciones = document.querySelectorAll('input[name="publicaciones[]"]:checked');
+        if (publicaciones.length === 0) {
+          alert('Por favor, selecciona al menos un tipo de publicación.');
+          return;
+        }
+
+        if (!isValid) {
+          alert('Por favor, completa todos los campos obligatorios.');
+          return;
+        }
+
+        // Aquí iría la lógica de pago y envío del formulario
+        alert('Registro completado con éxito. Recibirás un email de confirmación.');
+        window.location.href = 'index.html';
+      });
+    </script>
+  </body>
+</html>

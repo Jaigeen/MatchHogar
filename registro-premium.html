@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MatchHogar | Registro Usuario Premium</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ======================= HEADER & NAV ======================= -->
+    <header>
+      <nav class="container">
+        <div class="nav-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M2 33L32 6l30 27" class="stroke-navy" />
+            <path d="M10 30v28h14V44h16v14h14V30" class="stroke-orange" />
+            <path d="M40 28c0 7-8 11-8 11s-8-4-8-11a8 8 0 0116 0z" class="stroke-orange" />
+          </svg>
+          <span>MatchHogar</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+          <li><a href="registro.html" aria-current="page">Registro</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============================ MAIN =========================== -->
+    <main class="container registro-section">
+      <div class="registro-header">
+        <h1>Registro de Usuario Premium</h1>
+        <p class="registro-description">
+          Accede a todas las funcionalidades y obtén prioridad en las coincidencias
+        </p>
+        <div class="premium-badge">
+          <span class="precio">4,99 €</span>
+          <span class="periodo">/mes</span>
+        </div>
+      </div>
+
+      <div class="formulario-registro">
+        <form id="form-premium" class="registro-form">
+          <!-- Secciones del formulario básico -->
+          <div class="form-section">
+            <h3>Datos Personales</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="edad">Edad *</label>
+                <input type="number" id="edad" name="edad" required min="18">
+              </div>
+              <div class="form-group">
+                <label for="sexo">Sexo *</label>
+                <select id="sexo" name="sexo" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="hombre">Hombre</option>
+                  <option value="mujer">Mujer</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="genero">Género</label>
+                <input type="text" id="genero" name="genero">
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono de contacto *</label>
+                <input type="tel" id="telefono" name="telefono" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="foto">Foto de perfil</label>
+              <input type="file" id="foto" name="foto" accept="image/*">
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Situación Personal</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="estado-civil">Estado civil *</label>
+                <select id="estado-civil" name="estado-civil" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="soltero">Soltero/a</option>
+                  <option value="casado">Casado/a</option>
+                  <option value="divorciado">Divorciado/a</option>
+                  <option value="viudo">Viudo/a</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="hijos">¿Tienes hijos? *</label>
+                <input type="text" id="hijos" name="hijos" placeholder="Número y edades" required>
+              </div>
+              <div class="form-group">
+                <label for="mascotas">¿Tienes mascotas? *</label>
+                <input type="text" id="mascotas" name="mascotas" placeholder="Tipo de mascota" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Preferencias de Vivienda</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="operacion">Tipo de operación *</label>
+                <select id="operacion" name="operacion" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="alquiler">Alquiler</option>
+                  <option value="compra">Compra</option>
+                  <option value="inversion">Inversión</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="zona">Zona geográfica de interés *</label>
+                <input type="text" id="zona" name="zona" required>
+              </div>
+              <div class="form-group">
+                <label for="rango-economico">Rango económico *</label>
+                <input type="text" id="rango-economico" name="rango-economico" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="condiciones">Condiciones del "match" *</label>
+              <textarea id="condiciones" name="condiciones" rows="3" required 
+                placeholder="Describe el perfil de las personas con las que te gustaría compartir"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="preferencia-contacto">Frecuencia y preferencia de contacto</label>
+              <textarea id="preferencia-contacto" name="preferencia-contacto" rows="2"></textarea>
+            </div>
+          </div>
+
+          <!-- Sección adicional para Premium -->
+          <div class="form-section">
+            <h3>Información de Pago</h3>
+            <p class="precio-premium">Suscripción mensual: 4,99 €/mes</p>
+            <div class="form-group">
+              <label>Método de pago *</label>
+              <div class="payment-methods">
+                <button type="button" class="payment-method" data-method="stripe">
+                  <img src="assets/stripe.svg" alt="Stripe">
+                </button>
+                <button type="button" class="payment-method" data-method="paypal">
+                  <img src="assets/paypal.svg" alt="PayPal">
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nombre-tarjeta">Nombre en tarjeta *</label>
+              <input type="text" id="nombre-tarjeta" name="nombre-tarjeta" required>
+            </div>
+            <div class="form-group">
+              <label for="email-confirmacion">Correo de confirmación *</label>
+              <input type="email" id="email-confirmacion" name="email-confirmacion" required>
+            </div>
+          </div>
+
+          <div class="form-section legal-section">
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required>
+              <label for="acepto-privacidad">
+                Acepto la <a href="#politica">política de privacidad</a> y 
+                <a href="#condiciones">condiciones de uso</a> *
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-suscripcion" name="acepto-suscripcion" required>
+              <label for="acepto-suscripcion">
+                Acepto las condiciones de la suscripción Premium *
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-comunicaciones" name="acepto-comunicaciones">
+              <label for="acepto-comunicaciones">
+                Autorizo recibir comunicaciones electrónicas
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Confirmar registro y realizar pago</button>
+            <a href="registro.html" class="btn btn-outline">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- =========================== FOOTER ========================== -->
+    <footer>
+      <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
+      <p>
+        <a href="#politica">Política de privacidad</a> |
+        <a href="#condiciones">Términos y condiciones</a> |
+        <a href="#cookies">Política de cookies</a>
+      </p>
+    </footer>
+
+    <script>
+      // Manejar selección de métodos de pago
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.payment-method')) {
+          const button = e.target.closest('.payment-method');
+          const methods = button.parentElement.querySelectorAll('.payment-method');
+          methods.forEach(m => m.classList.remove('active'));
+          button.classList.add('active');
+        }
+      });
+
+      // Validar formulario antes de enviar
+      document.getElementById('form-premium').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validar campos requeridos
+        const requiredFields = this.querySelectorAll('[required]');
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            field.classList.add('error');
+            isValid = false;
+          } else {
+            field.classList.remove('error');
+          }
+        });
+
+        // Validar método de pago seleccionado
+        if (!document.querySelector('.payment-method.active')) {
+          alert('Por favor, selecciona un método de pago.');
+          return;
+        }
+
+        if (!isValid) {
+          alert('Por favor, completa todos los campos obligatorios.');
+          return;
+        }
+
+        // Aquí iría la lógica de pago y envío del formulario
+        alert('Registro completado con éxito. Recibirás un email de confirmación.');
+        window.location.href = 'index.html';
+      });
+    </script>
+  </body>
+</html>

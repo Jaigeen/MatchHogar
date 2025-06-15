@@ -61,8 +61,8 @@ nav {
 }
 
 .nav-brand svg {
-  width: 38px;
-  height: 38px;
+  width: 32px; /* Reducido de 38px */
+  height: 32px;
 }
 
 .stroke-navy {
@@ -107,7 +107,7 @@ nav {
 }
 
 .hero-icon {
-  width: 96px;
+  width: 72px;
   margin: 0 auto 1rem;
 }
 
@@ -509,9 +509,9 @@ footer {
 }
 
 .value-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 1.5rem;
+  width: 48px; /* Reducido de 64px */
+  height: 48px;
+  margin: 0 auto 1.5rem; /* Reducido de 1.5rem */
   color: var(--orange);
 }
 
@@ -563,9 +563,9 @@ footer {
 }
 
 .service-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 1.5rem;
+  width: 40px; /* Reducido de 48px */
+  height: 40px;
+  margin-bottom: 1.5rem; /* Reducido de 1.5rem */
   color: var(--orange);
 }
 
@@ -611,8 +611,8 @@ footer {
 }
 
 .feature-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem; /* Reducido de 2.5rem */
+  margin-bottom: 1rem; /* Reducido de 1rem */
 }
 
 .feature-item h3 {
@@ -661,8 +661,8 @@ footer {
 }
 
 .testimonial-author img {
-  width: 48px;
-  height: 48px;
+  width: 40px; /* Reducido de 48px */
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -775,6 +775,138 @@ footer {
   font-weight: 600;
 }
 
+/* ------------------ REGISTRO SECCIONES ------------------ */
+.registro-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.registro-header h1 {
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.registro-description {
+  font-size: 1.2rem;
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+
+.premium-badge {
+  display: inline-flex;
+  align-items: baseline;
+  background: var(--orange);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  margin-top: 1rem;
+}
+
+.premium-badge .precio {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.premium-badge .periodo {
+  font-size: 0.9rem;
+  margin-left: 0.25rem;
+}
+
+.beneficios-section {
+  padding: 4rem 0;
+  background: var(--cream);
+}
+
+.beneficios-section h2 {
+  text-align: center;
+  color: var(--navy);
+  margin-bottom: 3rem;
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.beneficio-item {
+  text-align: center;
+  padding: 2rem;
+}
+
+.beneficio-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.beneficio-item h3 {
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.faq-section {
+  padding: 4rem 0;
+}
+
+.faq-section h2 {
+  text-align: center;
+  color: var(--navy);
+  margin-bottom: 3rem;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.faq-item {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item h3 {
+  color: var(--navy);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.faq-item p {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Ajustes de tamaños de iconos */
+.nav-brand svg {
+  width: 32px;
+  height: 32px;
+}
+
+.service-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1.5rem;
+}
+
+.value-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1.5rem;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-author img {
+  width: 40px;
+  height: 40px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .form-actions {
@@ -814,6 +946,14 @@ footer {
   .pricing-card {
     max-width: 400px;
     margin: 0 auto;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .beneficio-icon {
+    font-size: 1.75rem;
   }
 }
 
