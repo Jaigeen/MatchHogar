@@ -166,31 +166,62 @@ h1 span {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: white;
   padding: 80px 0;
   text-align: center;
   position: relative;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('public/MatchHogar.jpg') center center no-repeat;
-  background-size: contain;
-  opacity: 0.1;
-  pointer-events: none;
-}
-
 .hero .container {
   position: relative;
   z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* CTA Sections con fondo */
+.hero h1 {
+  color: white;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.hero .tagline {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 32px;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.hero p {
+  color: white;
+  text-align: center;
+}
+
+/* Hero específicos */
+.services-hero,
+.about-hero,
+.register-hero {
+  background: linear-gradient(rgba(0, 46, 94, 0.9), rgba(0, 46, 94, 0.9)), url('public/MatchHogar.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.services-hero h1,
+.about-hero h1,
+.register-hero h1 {
+  color: white;
+}
+
+.services-hero .tagline,
+.about-hero .tagline,
+.register-hero .tagline {
+  color: white;
+}
+
+/* ------------------ CTA Sections con fondo */
 .cta-section {
   background: linear-gradient(rgba(0, 46, 94, 0.95), rgba(0, 46, 94, 0.95)), url('public/MatchHogar.jpg');
   background-size: cover;
