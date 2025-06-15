@@ -1196,3 +1196,174 @@ h1 span {
   font-size: 0.8rem;
   margin: 0;
 }
+
+/* ------------------ REGISTRATION SECTION ------------------ */
+.registration-section {
+  padding: 80px 0;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+}
+
+.registration-section .section-title {
+  text-align: center;
+  color: var(--navy);
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.registration-section .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+
+.registration-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem;
+}
+
+@media (max-width: 992px) {
+  .registration-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+.registration-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-card.featured {
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  border: 2px solid var(--orange);
+  transform: translateY(-10px);
+}
+
+.registration-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--orange);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.registration-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(231, 111, 38, 0.1), rgba(0, 46, 94, 0.1));
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.registration-icon svg {
+  width: 35px;
+  height: 35px;
+  stroke: var(--navy);
+  stroke-width: 1.5;
+  transition: stroke 0.3s ease;
+}
+
+.registration-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.registration-card.featured:hover {
+  transform: translateY(-15px);
+}
+
+.registration-card:hover .registration-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, rgba(231, 111, 38, 0.2), rgba(0, 46, 94, 0.2));
+}
+
+.registration-card:hover .registration-icon svg {
+  stroke: var(--orange);
+}
+
+.registration-card h3 {
+  color: var(--navy);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.registration-card p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.registration-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  text-align: center;
+}
+
+.registration-features li {
+  color: var(--text);
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.registration-price {
+  margin-bottom: 2rem;
+  margin-top: auto;
+}
+
+.registration-price .amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.registration-price .period {
+  font-size: 1rem;
+  color: #666;
+}
+
+.registration-card .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+.registration-card .btn-primary {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: white;
+}
+
+.registration-card .btn-outline {
+  border: 2px solid var(--navy);
+  color: var(--navy);
+}
+
+.registration-card .btn-outline:hover {
+  background: var(--navy);
+  color: white;
+}
