@@ -1465,3 +1465,70 @@ footer {
     padding: 4rem 1rem 3rem;
   }
 }
+
+/* ------------------ COMPACT HERO ------------------ */
+.compact-hero {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: white;
+}
+
+.compact-hero .hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.compact-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.hero-details {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-item svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--orange);
+  stroke-width: 2;
+}
+
+.detail-item span {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.compact-hero .tagline {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .compact-hero {
+    padding: 2rem 0;
+  }
+
+  .hero-details {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .compact-hero h1 {
+    font-size: 1.75rem;
+  }
+}
