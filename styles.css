@@ -1198,12 +1198,13 @@ h1 span {
 }
 
 /* ------------------ REGISTRATION SECTION ------------------ */
-.registration-section {
+/* ------------------ PLANS SECTION ------------------ */
+.plans-section {
   padding: 80px 0;
   background: linear-gradient(to bottom, #ffffff, #f8f9fa);
 }
 
-.registration-section .section-title {
+.plans-section .section-title {
   text-align: center;
   color: var(--navy);
   font-size: 2.5rem;
@@ -1211,7 +1212,7 @@ h1 span {
   position: relative;
 }
 
-.registration-section .section-title::after {
+.plans-section .section-title::after {
   content: '';
   position: absolute;
   bottom: -12px;
@@ -1223,147 +1224,183 @@ h1 span {
   border-radius: 2px;
 }
 
-.registration-grid {
+.plans-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 @media (max-width: 992px) {
-  .registration-grid {
+  .plans-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }
 
-.registration-card {
+.plan-card {
   background: white;
-  padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-.registration-card.featured {
-  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+.plan-card.featured {
   border: 2px solid var(--orange);
   transform: translateY(-10px);
 }
 
-.registration-badge {
+.plan-badge {
   position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 1rem;
+  right: -2rem;
   background: var(--orange);
   color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 20px;
+  padding: 0.5rem 2rem;
   font-size: 0.9rem;
-  font-weight: 500;
+  transform: rotate(45deg);
+  transform-origin: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.registration-icon {
-  width: 70px;
-  height: 70px;
+.plan-header {
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(231, 111, 38, 0.1), rgba(0, 46, 94, 0.1));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.plan-icon {
+  width: 60px;
+  height: 60px;
   margin: 0 auto 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(231, 111, 38, 0.1), rgba(0, 46, 94, 0.1));
+  background: white;
   border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
-.registration-icon svg {
-  width: 35px;
-  height: 35px;
+.plan-icon svg {
+  width: 30px;
+  height: 30px;
   stroke: var(--navy);
   stroke-width: 1.5;
   transition: stroke 0.3s ease;
 }
 
-.registration-card:hover {
+.plan-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
-.registration-card.featured:hover {
+.plan-card.featured:hover {
   transform: translateY(-15px);
 }
 
-.registration-card:hover .registration-icon {
+.plan-card:hover .plan-icon {
   transform: scale(1.1);
-  background: linear-gradient(135deg, rgba(231, 111, 38, 0.2), rgba(0, 46, 94, 0.2));
 }
 
-.registration-card:hover .registration-icon svg {
+.plan-card:hover .plan-icon svg {
   stroke: var(--orange);
 }
 
-.registration-card h3 {
+.plan-header h3 {
   color: var(--navy);
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
-.registration-card p {
+.plan-price {
+  margin-bottom: 1rem;
+}
+
+.plan-price .amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.plan-price .period {
+  font-size: 1rem;
+  color: #666;
+}
+
+.plan-content {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-content p {
   color: #666;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-}
-
-.registration-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
   text-align: center;
 }
 
-.registration-features li {
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
   color: var(--text);
-  padding: 0.5rem 0;
   font-size: 1rem;
 }
 
-.registration-price {
-  margin-bottom: 2rem;
-  margin-top: auto;
+.plan-features li svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--orange);
+  stroke-width: 2;
+  flex-shrink: 0;
 }
 
-.registration-price .amount {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--navy);
-}
-
-.registration-price .period {
-  font-size: 1rem;
-  color: #666;
-}
-
-.registration-card .btn {
+.plan-card .btn {
   width: 100%;
   margin-top: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-.registration-card .btn-primary {
+.plan-card .btn-primary {
   background: var(--orange);
-  border-color: var(--orange);
+  border: none;
   color: white;
 }
 
-.registration-card .btn-outline {
+.plan-card .btn-primary:hover {
+  background: #d65a1c;
+  transform: translateY(-2px);
+}
+
+.plan-card .btn-outline {
   border: 2px solid var(--navy);
   color: var(--navy);
+  background: transparent;
 }
 
-.registration-card .btn-outline:hover {
+.plan-card .btn-outline:hover {
   background: var(--navy);
   color: white;
+  transform: translateY(-2px);
 }
