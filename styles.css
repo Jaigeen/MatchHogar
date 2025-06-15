@@ -1168,16 +1168,22 @@ footer {
 }
 
 .card-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 6px;
 }
 
 .card-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   stroke: var(--orange);
-  stroke-width: 2;
+  stroke-width: 2.5;
 }
 
 .cta-cards h3 {
@@ -1203,8 +1209,8 @@ footer {
 .cta-cards li::before {
   content: "✓";
   color: var(--orange);
-  margin-right: 0.5rem;
-  font-size: 0.9rem;
+  margin-right: 0.4rem;
+  font-size: 0.85rem;
 }
 
 .cta-counter {
@@ -1241,9 +1247,10 @@ footer {
 }
 
 .cta-actions .btn-primary svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   stroke: currentColor;
+  stroke-width: 2.5;
   transition: transform 0.3s ease;
 }
 
