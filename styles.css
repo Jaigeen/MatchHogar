@@ -139,88 +139,151 @@ h1 span {
   color: var(--navy);
 }
 
-/* ------------------ BOTONES ------------------ */
-.cta-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+/* ------------------ HERO SECTION ------------------ */
+.hero {
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--cream) 0%, #fff 100%);
+  margin-bottom: 40px;
 }
 
-.btn {
-  padding: 0.9rem 1.8rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s;
-  border: 2px solid transparent;
-}
-
-.btn-primary {
-  background: var(--orange);
-  color: #fff;
-  border-color: var(--orange);
-}
-
-.btn-primary:hover {
-  background: transparent;
-  color: var(--orange);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--navy);
-  border-color: var(--navy);
-}
-
-.btn-outline:hover {
-  background: var(--navy);
-  color: #fff;
-}
-
-/* ------------------ SECCIONES GENÉRICAS ------------------ */
-section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 4rem 1rem;
-}
-
-h2 {
-  font-size: 2rem;
-  color: var(--navy);
-  margin-bottom: 1rem;
-}
-
-p + p {
-  margin-top: 1rem;
-}
-
-/* ------------------ FORMULARIOS ------------------ */
-form {
+.hero-content {
   display: grid;
-  gap: 1rem;
-  margin-top: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
+.hero-text {
+  max-width: 600px;
 }
 
-input,
-select,
-textarea {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
+.hero-text h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  color: var(--navy);
+}
+
+.hero-text .tagline {
+  font-size: 1.25rem;
+  margin-bottom: 32px;
+  color: var(--text);
+}
+
+.hero-image {
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
   border-radius: var(--radius);
-  font: inherit;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-.checkbox-group {
+/* ------------------ FEATURES SECTION ------------------ */
+.section-padding {
+  padding: 80px 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--navy);
+  margin-bottom: 48px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card i {
+  font-size: 2.5rem;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+
+/* ------------------ HOW IT WORKS ------------------ */
+.bg-light {
+  background-color: #f8f9fa;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.step-card {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius);
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: var(--orange);
+  color: white;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  font-weight: bold;
+  margin: 0 auto 20px;
+}
+
+/* ------------------ CTA SECTION ------------------ */
+.cta-section {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: white;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 24px;
+}
+
+.cta-content p {
+  font-size: 1.25rem;
+  margin-bottom: 32px;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
 /* ------------------ FOOTER ------------------ */
@@ -230,6 +293,83 @@ footer {
   padding: 2rem 1rem;
   font-size: 0.875rem;
   border-top: 1px solid rgb(0 0 0 / 8%);
+}
+
+.footer {
+  background: var(--navy-dark);
+  color: white;
+  padding: 80px 0 40px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.footer-brand {
+  max-width: 300px;
+}
+
+.footer-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.footer-links h4,
+.footer-social h4 {
+  margin-bottom: 24px;
+  color: var(--orange);
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a:hover {
+  color: var(--orange);
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.social-links a:hover {
+  background: var(--orange);
+}
+
+.footer-bottom {
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-legal a:hover {
+  color: var(--orange);
 }
 
 /* ------------------ REGISTRO ------------------ */
@@ -1065,12 +1205,6 @@ footer {
   color: var(--orange);
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
-}
-
-.stat-card p {
-  color: var(--navy);
-  font-weight: 600;
-  margin: 0;
 }
 
 /* ------------------ CTA SECTION ------------------ */
