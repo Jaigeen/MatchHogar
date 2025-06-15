@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MatchHogar | Inicio</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
     <!-- ======================= HEADER & NAV ======================= -->
     <header>
       <nav class="container">
         <div class="nav-brand">
-          <!-- Logo SVG → idéntico en todas las páginas -->
           <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
           <span>MatchHogar</span>
         </div>
@@ -24,36 +24,132 @@
       </nav>
     </header>
 
-    <!-- ============================ HERO =========================== -->
+    <!-- ============================ MAIN =========================== -->
     <main>
+      <!-- Hero Section -->
       <section class="hero" id="inicio">
-        <img
-          src="assets/icon-hero.svg"
-          alt="Icono MatchHogar manos y corazón"
-          class="hero-icon"
-        />
-        <h1>
-          Match<span>Hogar</span>
-        </h1>
-        <p class="tagline">
-          Conectamos personas con sus mismos intereses y necesidades en vivienda
-          e inversión.
-        </p>
-        <div class="cta-group">
-          <a href="registro.html" class="btn btn-primary">¡Quiero registrarme!</a>
-          <a href="quienes-somos.html" class="btn btn-outline">Más información</a>
+        <div class="container hero-content">
+          <div class="hero-text">
+            <h1>Encuentra tu hogar ideal compartido</h1>
+            <p class="tagline">
+              Conectamos personas con intereses comunes en vivienda, fincas, negocios y más. 
+              Tu futuro espacio está a un match de distancia.
+            </p>
+            <div class="cta-group">
+              <a href="registro.html" class="btn btn-primary">¡Comienza ahora!</a>
+              <a href="que-ofrecemos.html" class="btn btn-outline">Descubre más</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="public/MatchHogar.jpg" alt="MatchHogar Concepto" class="feature-image">
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features section-padding">
+        <div class="container">
+          <h2 class="section-title">¿Por qué elegir MatchHogar?</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <i class="fas fa-home"></i>
+              <h3>Viviendas Compartidas</h3>
+              <p>Encuentra el espacio perfecto y comparte gastos con personas afines a ti.</p>
+            </div>
+            <div class="feature-card">
+              <i class="fas fa-handshake"></i>
+              <h3>Inversiones Seguras</h3>
+              <p>Conecta con inversores y propietarios verificados para proyectos inmobiliarios.</p>
+            </div>
+            <div class="feature-card">
+              <i class="fas fa-users"></i>
+              <h3>Comunidad Activa</h3>
+              <p>Únete a una comunidad de personas que comparten tus mismos objetivos.</p>
+            </div>
+            <div class="feature-card">
+              <i class="fas fa-shield-alt"></i>
+              <h3>Máxima Seguridad</h3>
+              <p>Verificación de usuarios y propiedades para tu tranquilidad.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it Works Section -->
+      <section class="how-it-works section-padding bg-light">
+        <div class="container">
+          <h2 class="section-title">¿Cómo funciona?</h2>
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <h3>Regístrate</h3>
+              <p>Crea tu perfil gratuito y cuéntanos qué buscas.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <h3>Encuentra matches</h3>
+              <p>Conecta con personas que comparten tus intereses.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <h3>Contacta</h3>
+              <p>Comunícate de forma segura a través de nuestra plataforma.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section section-padding">
+        <div class="container">
+          <div class="cta-content">
+            <h2>¿Listo para encontrar tu match perfecto?</h2>
+            <p>Únete a miles de personas que ya han encontrado su espacio ideal</p>
+            <div class="cta-buttons">
+              <a href="registro.html" class="btn btn-primary">Registrarme ahora</a>
+              <a href="quienes-somos.html" class="btn btn-outline">Conocer más</a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
     <!-- =========================== FOOTER ========================== -->
-    <footer>
-      <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
-      <p>
-        <a href="#politica">Política de privacidad</a> |
-        <a href="#condiciones">Términos y condiciones</a> |
-        <a href="#cookies">Política de cookies</a>
-      </p>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="footer-logo">
+            <p>Conectando personas, creando hogares</p>
+          </div>
+          <div class="footer-links">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="quienes-somos.html">Quiénes somos</a></li>
+              <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+              <li><a href="registro.html">Registro</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <h4>Síguenos</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
+          <div class="footer-legal">
+            <a href="#politica">Política de privacidad</a>
+            <a href="#condiciones">Términos y condiciones</a>
+            <a href="#cookies">Política de cookies</a>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
