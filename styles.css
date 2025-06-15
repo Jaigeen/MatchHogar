@@ -54,6 +54,17 @@ nav {
 .nav-brand {
   display: flex;
   align-items: center;
+}
+
+.nav-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
   font-weight: 700;
   font-size: 1.35rem;
