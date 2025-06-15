@@ -448,9 +448,10 @@ footer {
 }
 
 .about-hero h1,
-.services-hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.services-hero h1,
+.about-hero .tagline,
+.services-hero .tagline {
+  color: white;
 }
 
 .about-section {
