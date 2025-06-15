@@ -1154,13 +1154,13 @@ h1 span {
 
 .testimonial-content {
   position: relative;
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-content p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
   padding-left: 1rem;
@@ -1173,11 +1173,11 @@ h1 span {
 }
 
 .testimonial-author img {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--orange);
+  border: 2px solid var(--orange);
 }
 
 .testimonial-author div {
@@ -1186,12 +1186,13 @@ h1 span {
 
 .testimonial-author h4 {
   color: var(--navy);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   margin: 0;
+  font-weight: 600;
 }
 
 .testimonial-author p {
   color: var(--orange);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin: 0;
 }
