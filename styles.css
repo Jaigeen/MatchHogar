@@ -510,10 +510,15 @@ footer {
 }
 
 .value-icon {
-  width: 48px; /* Reducido de 64px */
-  height: 48px;
-  margin: 0 auto 1.5rem; /* Reducido de 1.5rem */
-  color: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 0.75rem;
+  background: rgba(231, 111, 38, 0.1);
+  border-radius: 6px;
+  padding: 5px;
 }
 
 .value-card h3 {
@@ -1547,31 +1552,31 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  margin-bottom: 1rem;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 0.75rem;
   background: rgba(231, 111, 38, 0.1);
-  border-radius: 8px;
-  padding: 6px;
+  border-radius: 6px;
+  padding: 5px;
 }
 
 .history-icon svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   stroke: var(--orange);
   stroke-width: 2.5;
 }
 
 .history-card h3 {
   color: var(--navy);
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .history-card p {
   color: var(--text);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.4;
   margin: 0;
 }
 
