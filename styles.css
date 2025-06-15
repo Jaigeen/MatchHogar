@@ -1127,6 +1127,142 @@ footer {
   margin-top: 2rem;
 }
 
+/* ------------------ OFFERS CTA SECTION ------------------ */
+.offers-cta {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.offers-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('assets/pattern.svg') center/cover;
+  opacity: 0.05;
+}
+
+.cta-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.quick-start-card,
+.guarantee-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.quick-start-card:hover,
+.guarantee-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.5rem;
+}
+
+.card-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--orange);
+  stroke-width: 2;
+}
+
+.cta-cards h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.cta-cards ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cta-cards li {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.cta-cards li::before {
+  content: "✓";
+  color: var(--orange);
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.cta-counter {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.counter-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.counter-text {
+  font-size: 1.1rem;
+  color: white;
+  margin-left: 0.5rem;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.cta-actions .btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background: var(--orange);
+}
+
+.cta-actions .btn-primary svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.cta-actions .btn-primary:hover svg {
+  transform: translateX(5px);
+}
+
+.cta-actions .btn-outline {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+.cta-actions .btn-outline:hover {
+  background: white;
+  color: var(--navy);
+}
+
 @media (max-width: 768px) {
   .form-actions {
     flex-direction: column;
@@ -1228,6 +1364,28 @@ footer {
 
   .cta-actions .btn {
     width: 100%;
+  }
+
+  .cta-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+  }
+
+  .cta-actions .btn {
+    width: 100%;
+  }
+
+  .counter-number,
+  .counter-text {
+    display: block;
+  }
+
+  .counter-text {
+    margin-top: 0.5rem;
+    margin-left: 0;
   }
 }
 
