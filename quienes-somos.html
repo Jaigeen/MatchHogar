@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MatchHogar | Quiénes somos</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
     <!-- NAV -->
@@ -22,148 +23,183 @@
           <li><a href="registro.html">Registro</a></li>
         </ul>
       </nav>
-    </header>    <!-- ============================ MAIN =========================== -->
+    </header>
+
+    <!-- ============================ MAIN =========================== -->
     <main>
-      <section class="compact-hero about-hero">
+      <!-- Hero Section Mejorado -->
+      <section class="about-hero parallax-section">
         <div class="container">
-          <div class="hero-content">
-            <h1>Quiénes Somos</h1>
-            <p class="tagline">Una plataforma que conecta personas con intereses comunes en vivienda</p>
+          <div class="hero-content text-center">
+            <h1 class="animated-title">Revolucionando la forma de compartir hogares</h1>
+            <p class="hero-subtitle">Conectamos sueños, construimos hogares, creamos comunidades</p>
           </div>
         </div>
       </section>
 
-      <section class="history-section">
+      <!-- Misión y Visión -->
+      <section class="mission-vision-section">
         <div class="container">
-          <div class="history-grid">
-            <div class="history-card">
-              <div class="history-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                  <path d="M2 17l10 5 10-5"/>
-                  <path d="M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-              <h3>Nuestra Misión</h3>
-              <p>Transformar la forma en que las personas encuentran y comparten espacios habitacionales, creando conexiones significativas.</p>
+          <div class="mission-vision-grid">
+            <div class="mission-card">
+              <i class="fas fa-compass"></i>
+              <h2>Nuestra Misión</h2>
+              <p>Transformar la manera en que las personas encuentran y comparten espacios habitacionales, creando conexiones significativas y duraderas que van más allá de simples acuerdos de vivienda.</p>
             </div>
-
-            <div class="history-card">
-              <div class="history-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 16l4-4-4-4"/>
-                  <path d="M8 12h8"/>
-                </svg>
-              </div>
-              <h3>Trayectoria</h3>
-              <p>Desde 2024 hemos conectado más de 1,000 personas con su hogar ideal y compañeros de vida compatibles.</p>
+            <div class="vision-card">
+              <i class="fas fa-eye"></i>
+              <h2>Nuestra Visión</h2>
+              <p>Ser la plataforma líder en conexiones habitacionales, donde cada match sea el inicio de una historia de éxito y cada espacio compartido se convierta en un verdadero hogar.</p>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="history-card">
-              <div class="history-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"></svg>
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                  <path d="M3.29 7L12 12l8.71-5"/>
-                  <path d="M12 22V12"/>
-                </svg>
-              </div>
-              <h3>Innovación</h3>
-              <p>Combinamos tecnología avanzada con un toque humano para ofrecer las mejores coincidencias en vivienda compartida.</p>
+      <!-- Valores -->
+      <section class="values-section">
+        <div class="container">
+          <h2 class="section-title">Nuestros Valores</h2>
+          <div class="values-grid">
+            <div class="value-card">
+              <i class="fas fa-heart"></i>
+              <h3>Confianza</h3>
+              <p>Construimos relaciones basadas en la transparencia y la honestidad.</p>
             </div>
-
-            <div class="history-card">
-              <div class="history-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"></svg>
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-              </div>
+            <div class="value-card">
+              <i class="fas fa-users"></i>
               <h3>Comunidad</h3>
-              <p>Construimos una comunidad vibrante donde la confianza y el respeto son fundamentales.</p>
+              <p>Fomentamos conexiones significativas y el sentido de pertenencia.</p>
+            </div>
+            <div class="value-card">
+              <i class="fas fa-shield-alt"></i>
+              <h3>Seguridad</h3>
+              <p>Priorizamos la protección y tranquilidad de nuestros usuarios.</p>
+            </div>
+            <div class="value-card">
+              <i class="fas fa-lightbulb"></i>
+              <h3>Innovación</h3>
+              <p>Mejoramos constantemente para ofrecer la mejor experiencia.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="stats-section">
+      <!-- Historia Timeline -->
+      <section class="timeline-section">
+        <div class="container">
+          <h2 class="section-title">Nuestra Historia</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>2024</h3>
+                <p>Nacimiento de MatchHogar con una visión innovadora.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>2024 Q2</h3>
+                <p>Alcanzamos nuestros primeros 1,000 matches exitosos.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>2024 Q4</h3>
+                <p>Expandimos nuestros servicios a toda España.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>2025</h3>
+                <p>Innovando con nuevas características y mejoras.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Estadísticas Animadas -->
+      <section class="stats-section parallax-section">
         <div class="container">
           <div class="stats-grid">
             <div class="stat-card">
-              <h3>25k+</h3>
+              <i class="fas fa-users"></i>
+              <h3 class="counter">25k+</h3>
               <p>Usuarios Activos</p>
             </div>
             <div class="stat-card">
-              <h3>10k+</h3>
+              <i class="fas fa-home"></i>
+              <h3 class="counter">10k+</h3>
               <p>Matches Exitosos</p>
             </div>
             <div class="stat-card">
-              <h3>1k+</h3>
-              <p>Colaboradores</p>
+              <i class="fas fa-city"></i>
+              <h3 class="counter">50+</h3>
+              <p>Ciudades</p>
             </div>
             <div class="stat-card">
-              <h3>4.8/5</h3>
+              <i class="fas fa-star"></i>
+              <h3 class="counter">98%</h3>
               <p>Satisfacción</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="cta-section">
+      <!-- CTA Section -->
+      <section class="about-cta-section">
         <div class="container">
-          <div class="cta-content">
-            <h2>¿Listo para encontrar tu match perfecto?</h2>
-            <div class="cta-cards">
-              <div class="quick-start-card">
-                <div class="card-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M23 6l-9.5 9.5-5-5L1 18" />
-                    <path d="M17 6h6v6" />
-                  </svg>
-                </div>
-                <h3>Comienza Gratis</h3>
-                <ul>
-                  <li>Sin compromisos</li>
-                  <li>Acceso inmediato</li>
-                  <li>Soporte incluido</li>
-                </ul>
-              </div>
-              <div class="guarantee-card">
-                <div class="card-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                </div>
-                <h3>¿Buscas más beneficios?</h3>
-                <ul>
-                  <li>Perfil destacado</li>
-                  <li>Filtros avanzados</li>
-                  <li>Chat ilimitado</li>
-                </ul>
-              </div>
-            </div>
-            <div class="cta-actions">
-              <a href="registro-basico.html" class="btn btn-primary">
-                <span>Registro Gratuito</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </a>
-              <a href="registro-premium.html" class="btn btn-outline">Explorar Premium</a>
+          <div class="cta-content text-center">
+            <h2>¿Listo para ser parte de nuestra historia?</h2>
+            <p>Únete a nuestra comunidad y encuentra tu hogar ideal</p>
+            <div class="cta-buttons">
+              <a href="registro.html" class="btn btn-primary">Comenzar ahora</a>
+              <a href="que-ofrecemos.html" class="btn btn-outline">Conocer más</a>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- =========================== FOOTER ========================== -->
-    <footer>
-      <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
-      <p>
-        <a href="#politica">Política de privacidad</a> |
-        <a href="#condiciones">Términos y condiciones</a> |
-        <a href="#cookies">Política de cookies</a>
-      </p>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="footer-logo">
+            <p>Conectando personas, creando hogares</p>
+          </div>
+          <div class="footer-links">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="quienes-somos.html">Quiénes somos</a></li>
+              <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+              <li><a href="registro.html">Registro</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <h4>Síguenos</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
+          <div class="footer-legal">
+            <a href="#politica">Política de privacidad</a>
+            <a href="#condiciones">Términos y condiciones</a>
+            <a href="#cookies">Política de cookies</a>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
