@@ -1468,28 +1468,34 @@ footer {
 
 /* ------------------ COMPACT HERO ------------------ */
 .compact-hero {
-  padding: 3rem 0;
+  padding: 2rem 0;
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
   color: white;
 }
 
 .compact-hero .hero-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .compact-hero h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
   color: white;
+}
+
+.compact-hero .tagline {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
 }
 
 .hero-details {
   display: flex;
+  justify-content: center;
   gap: 2rem;
-  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .detail-item {
@@ -1499,36 +1505,84 @@ footer {
 }
 
 .detail-item svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   stroke: var(--orange);
-  stroke-width: 2;
+  stroke-width: 2.5;
 }
 
 .detail-item span {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.9);
 }
 
-.compact-hero .tagline {
+/* Historia Section */
+.history-section {
+  padding: 3rem 0;
+  background: var(--cream);
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.history-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.history-card:hover {
+  transform: translateY(-5px);
+}
+
+.history-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 1rem;
+  background: rgba(231, 111, 38, 0.1);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.history-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--orange);
+  stroke-width: 2.5;
+}
+
+.history-card h3 {
+  color: var(--navy);
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 600px;
-  margin: 0;
+  margin-bottom: 0.75rem;
+}
+
+.history-card p {
+  color: var(--text);
+  font-size: 0.95rem;
   line-height: 1.5;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
-  .compact-hero {
-    padding: 2rem 0;
-  }
-
   .hero-details {
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
   }
 
-  .compact-hero h1 {
-    font-size: 1.75rem;
+  .history-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
