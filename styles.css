@@ -564,10 +564,23 @@ footer {
 }
 
 .service-icon {
-  width: 40px; /* Reducido de 48px */
-  height: 40px;
-  margin-bottom: 1.5rem; /* Reducido de 1.5rem */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 1rem;
   color: var(--orange);
+  background: rgba(231, 111, 38, 0.1);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.service-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.5;
 }
 
 .service-card h3 {
@@ -586,6 +599,7 @@ footer {
   margin-bottom: 0.5rem;
   padding-left: 1.5rem;
   position: relative;
+  font-size: 0.95rem;
 }
 
 .service-features li::before {
@@ -593,6 +607,8 @@ footer {
   color: var(--orange);
   position: absolute;
   left: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .features-section {
@@ -612,8 +628,16 @@ footer {
 }
 
 .feature-icon {
-  font-size: 2rem; /* Reducido de 2.5rem */
-  margin-bottom: 1rem; /* Reducido de 1rem */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--orange);
+  background: rgba(231, 111, 38, 0.1);
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
 }
 
 .feature-item h3 {
@@ -766,6 +790,7 @@ footer {
   margin-bottom: 0.75rem;
   padding-left: 1.5rem;
   position: relative;
+  font-size: 0.95rem;
 }
 
 .pricing-features li::before {
@@ -773,6 +798,7 @@ footer {
   color: var(--orange);
   position: absolute;
   left: 0;
+  font-size: 0.85rem;
   font-weight: 600;
 }
 
