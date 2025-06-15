@@ -870,3 +870,166 @@ h1 span {
     grid-template-columns: 1fr;
   }
 }
+
+/* ------------------ PRICING SECTION ------------------ */
+.pricing-section {
+  padding: 80px 0;
+  background: var(--cream);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.pricing-card.featured {
+  border: 2px solid var(--orange);
+  transform: scale(1.05);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  background: var(--orange);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.pricing-header {
+  margin-bottom: 30px;
+}
+
+.pricing-header h3 {
+  color: var(--navy);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 2.5rem;
+  color: var(--orange);
+  font-weight: bold;
+}
+
+.price span {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: normal;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+.pricing-features li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.pricing-features li:last-child {
+  border-bottom: none;
+}
+
+/* Benefits Section */
+.benefits-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.benefits-section h2 {
+  text-align: center;
+  color: var(--navy);
+  margin-bottom: 50px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  text-align: center;
+  padding: 30px;
+}
+
+.benefit-card i {
+  font-size: 2.5rem;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+  color: var(--navy);
+  margin-bottom: 15px;
+}
+
+/* Register Hero */
+.register-hero {
+  background: linear-gradient(rgba(0, 46, 94, 0.9), rgba(0, 46, 94, 0.9)), url('public/MatchHogar.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .pricing-card {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .pricing-card.featured {
+    transform: scale(1);
+  }
+
+  .pricing-card.featured:hover {
+    transform: translateY(-10px);
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
