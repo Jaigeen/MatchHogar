@@ -28,108 +28,156 @@
       <div class="registro-header">
         <h1>Registro de Colaborador</h1>
         <p class="registro-description">
-          Únete a nuestra red de profesionales y expande tu negocio
+          Únete a nuestra red de colaboradores y ayuda a crear matches perfectos
         </p>
-        <div class="premium-badge">
-          <span class="precio">49,90 €</span>
-          <span class="periodo">/alta</span>
-        </div>
       </div>
 
       <div class="formulario-registro">
         <form id="form-colaborador" class="registro-form">
+          <!-- Datos Personales -->
           <div class="form-section">
-            <h3>Datos de la Empresa</h3>
+            <h3>Datos Personales</h3>
             <div class="form-grid">
               <div class="form-group">
-                <label for="nombre-empresa">Nombre de empresa o profesional *</label>
-                <input type="text" id="nombre-empresa" name="nombre-empresa" required>
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" required>
               </div>
               <div class="form-group">
-                <label for="cif">CIF/NIF *</label>
-                <input type="text" id="cif" name="cif" required>
+                <label for="dni">DNI/NIE *</label>
+                <input type="text" id="dni" name="dni" required 
+                  pattern="[0-9]{8}[A-Z]|[A-Z][0-9]{7}[A-Z]">
               </div>
               <div class="form-group">
-                <label for="contacto">Persona de contacto *</label>
-                <input type="text" id="contacto" name="contacto" required>
+                <label for="email">Email profesional *</label>
+                <input type="email" id="email" name="email" required>
               </div>
               <div class="form-group">
-                <label for="telefono-empresa">Teléfono *</label>
-                <input type="tel" id="telefono-empresa" name="telefono-empresa" required>
+                <label for="telefono">Teléfono de contacto *</label>
+                <input type="tel" id="telefono" name="telefono" required>
               </div>
-              <div class="form-group">
-                <label for="email-empresa">Email *</label>
-                <input type="email" id="email-empresa" name="email-empresa" required>
-              </div>
-              <div class="form-group">
-                <label for="direccion">Dirección</label>
-                <input type="text" id="direccion" name="direccion">
-              </div>
-              <div class="form-group">
-                <label for="web">Web o redes sociales</label>
-                <input type="url" id="web" name="web" placeholder="https://">
-              </div>
+            </div>
+            <div class="form-group">
+              <label for="foto">Foto de perfil *</label>
+              <input type="file" id="foto" name="foto" accept="image/*" required>
+              <small class="form-help">Tu foto ayudará a generar confianza con los usuarios</small>
             </div>
           </div>
 
+          <!-- Información Profesional -->
           <div class="form-section">
             <h3>Información Profesional</h3>
-            <div class="form-group">
-              <label for="tipo-colaborador">Tipo de colaborador *</label>
-              <select id="tipo-colaborador" name="tipo-colaborador" required>
-                <option value="">Seleccionar...</option>
-                <option value="inmobiliaria">Inmobiliaria</option>
-                <option value="banco">Banco</option>
-                <option value="asesor">Asesor</option>
-                <option value="otro">Otro</option>
-              </select>
-            </div>
-            <div class="form-group checkbox-group">
-              <label>Tipos de publicaciones *</label>
-              <div class="checkbox-grid">
-                <div>
-                  <input type="checkbox" id="pub-viviendas" name="publicaciones[]" value="viviendas">
-                  <label for="pub-viviendas">Viviendas</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="pub-locales" name="publicaciones[]" value="locales">
-                  <label for="pub-locales">Locales</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="pub-fincas" name="publicaciones[]" value="fincas">
-                  <label for="pub-fincas">Fincas</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="pub-trasteros" name="publicaciones[]" value="trasteros">
-                  <label for="pub-trasteros">Trasteros</label>
-                </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="tipo-colaborador">Tipo de colaborador *</label>
+                <select id="tipo-colaborador" name="tipo-colaborador" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="agente">Agente inmobiliario</option>
+                  <option value="propietario">Propietario</option>
+                  <option value="administrador">Administrador de fincas</option>
+                  <option value="empresa">Empresa inmobiliaria</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="experiencia">Años de experiencia *</label>
+                <input type="number" id="experiencia" name="experiencia" required min="0">
+              </div>
+              <div class="form-group">
+                <label for="empresa">Empresa (si aplica)</label>
+                <input type="text" id="empresa" name="empresa">
+              </div>
+              <div class="form-group">
+                <label for="licencia">Número de licencia profesional</label>
+                <input type="text" id="licencia" name="licencia">
+                <small class="form-help">Si eres agente inmobiliario colegiado</small>
               </div>
             </div>
           </div>
 
+          <!-- Propiedades y Servicios -->
           <div class="form-section">
-            <h3>Pago y Condiciones</h3>
-            <p class="precio-colaborador">Pago por alta: 49,90 €</p>
-            <div class="form-group">
-              <label>Método de pago *</label>
-              <div class="payment-methods">
-                <button type="button" class="payment-method" data-method="stripe">
-                  <img src="assets/stripe.svg" alt="Stripe">
-                </button>
-                <button type="button" class="payment-method" data-method="paypal">
-                  <img src="assets/paypal.svg" alt="PayPal">
-                </button>
-                <button type="button" class="payment-method" data-method="transferencia">
-                  <span>Transferencia bancaria</span>
-                </button>
+            <h3>Propiedades y Servicios</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="zonas">Zonas de operación *</label>
+                <input type="text" id="zonas" name="zonas" required
+                  placeholder="Ej: Barcelona centro, L'Eixample...">
+              </div>
+              <div class="form-group">
+                <label for="tipo-propiedad">Tipos de propiedades *</label>
+                <select id="tipo-propiedad" name="tipo-propiedad" required multiple>
+                  <option value="piso">Pisos</option>
+                  <option value="casa">Casas</option>
+                  <option value="local">Locales comerciales</option>
+                  <option value="oficina">Oficinas</option>
+                  <option value="terreno">Terrenos</option>
+                </select>
+                <small class="form-help">Mantén presionado Ctrl para seleccionar varios</small>
               </div>
             </div>
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="acepto-colaboracion" name="acepto-colaboracion" required>
-              <label for="acepto-colaboracion">
-                Acepto las condiciones de colaboración *
-              </label>
+            <div class="form-group">
+              <label for="servicios">Servicios ofrecidos *</label>
+              <div class="checkbox-grid">
+                <div class="checkbox-group">
+                  <input type="checkbox" id="servicio-alquiler" name="servicios[]" value="alquiler">
+                  <label for="servicio-alquiler">Alquiler</label>
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="servicio-venta" name="servicios[]" value="venta">
+                  <label for="servicio-venta">Venta</label>
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="servicio-tasacion" name="servicios[]" value="tasacion">
+                  <label for="servicio-tasacion">Tasación</label>
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="servicio-gestion" name="servicios[]" value="gestion">
+                  <label for="servicio-gestion">Gestión de propiedades</label>
+                </div>
+              </div>
             </div>
+            <div class="form-group">
+              <label for="descripcion">Descripción profesional *</label>
+              <textarea id="descripcion" name="descripcion" rows="3" required
+                placeholder="Describe tu experiencia y especialización..."></textarea>
+            </div>
+          </div>
+
+          <!-- Verificación y Documentación -->
+          <div class="form-section">
+            <h3>Verificación y Documentación</h3>
+            <div class="form-group">
+              <label for="doc-identidad">Documento de identidad *</label>
+              <input type="file" id="doc-identidad" name="doc-identidad" required
+                accept=".pdf,.jpg,.png">
+              <small class="form-help">DNI o NIE por ambas caras</small>
+            </div>
+            <div class="form-group">
+              <label for="doc-profesional">Acreditación profesional</label>
+              <input type="file" id="doc-profesional" name="doc-profesional"
+                accept=".pdf,.jpg,.png">
+              <small class="form-help">Licencia, título o certificación relevante</small>
+            </div>
+            <div class="form-group">
+              <label for="doc-fiscal">Documentación fiscal *</label>
+              <input type="file" id="doc-fiscal" name="doc-fiscal" required
+                accept=".pdf">
+              <small class="form-help">CIF o alta como autónomo</small>
+            </div>
+          </div>
+
+          <!-- Referencias -->
+          <div class="form-section">
+            <h3>Referencias Profesionales</h3>
+            <div class="form-group">
+              <label for="referencias">Referencias verificables</label>
+              <textarea id="referencias" name="referencias" rows="3"
+                placeholder="Nombre de la referencia, empresa, cargo y datos de contacto..."></textarea>
+              <small class="form-help">Opcional, pero recomendado para aumentar la confianza</small>
+            </div>
+          </div>
+
+          <!-- Sección Legal -->
+          <div class="form-section legal-section">
             <div class="form-group checkbox-group">
               <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required>
               <label for="acepto-privacidad">
@@ -137,10 +185,22 @@
                 <a href="#condiciones">condiciones de uso</a> *
               </label>
             </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-colaboracion" name="acepto-colaboracion" required>
+              <label for="acepto-colaboracion">
+                Acepto las condiciones de colaboración y la comisión establecida *
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-verificacion" name="acepto-verificacion" required>
+              <label for="acepto-verificacion">
+                Autorizo la verificación de mis datos y documentación *
+              </label>
+            </div>
           </div>
 
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Confirmar registro y realizar pago</button>
+            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
             <a href="registro.html" class="btn btn-outline">Cancelar</a>
           </div>
         </form>
@@ -158,21 +218,9 @@
     </footer>
 
     <script>
-      // Manejar selección de métodos de pago
-      document.addEventListener('click', function(e) {
-        if (e.target.closest('.payment-method')) {
-          const button = e.target.closest('.payment-method');
-          const methods = button.parentElement.querySelectorAll('.payment-method');
-          methods.forEach(m => m.classList.remove('active'));
-          button.classList.add('active');
-        }
-      });
-
-      // Validar formulario antes de enviar
       document.getElementById('form-colaborador').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Validar campos requeridos
         const requiredFields = this.querySelectorAll('[required]');
         let isValid = true;
         
@@ -185,16 +233,10 @@
           }
         });
 
-        // Validar método de pago seleccionado
-        if (!document.querySelector('.payment-method.active')) {
-          alert('Por favor, selecciona un método de pago.');
-          return;
-        }
-
-        // Validar al menos una publicación seleccionada
-        const publicaciones = document.querySelectorAll('input[name="publicaciones[]"]:checked');
-        if (publicaciones.length === 0) {
-          alert('Por favor, selecciona al menos un tipo de publicación.');
+        // Validar que al menos un servicio está seleccionado
+        const servicios = document.querySelectorAll('input[name="servicios[]"]:checked');
+        if (servicios.length === 0) {
+          alert('Debes seleccionar al menos un servicio ofrecido.');
           return;
         }
 
@@ -203,8 +245,7 @@
           return;
         }
 
-        // Aquí iría la lógica de pago y envío del formulario
-        alert('Registro completado con éxito. Recibirás un email de confirmación.');
+        alert('Solicitud enviada correctamente. Revisaremos tu documentación y te contactaremos pronto.');
         window.location.href = 'index.html';
       });
     </script>

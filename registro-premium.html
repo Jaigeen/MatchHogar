@@ -28,17 +28,13 @@
       <div class="registro-header">
         <h1>Registro de Usuario Premium</h1>
         <p class="registro-description">
-          Accede a todas las funcionalidades y obtén prioridad en las coincidencias
+          Accede a beneficios exclusivos y encuentra tu match perfecto más rápido
         </p>
-        <div class="premium-badge">
-          <span class="precio">4,99 €</span>
-          <span class="periodo">/mes</span>
-        </div>
       </div>
 
       <div class="formulario-registro">
         <form id="form-premium" class="registro-form">
-          <!-- Secciones del formulario básico -->
+          <!-- Datos Personales -->
           <div class="form-section">
             <h3>Datos Personales</h3>
             <div class="form-grid">
@@ -73,13 +69,15 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="foto">Foto de perfil</label>
-              <input type="file" id="foto" name="foto" accept="image/*">
+              <label for="foto">Foto de perfil *</label>
+              <input type="file" id="foto" name="foto" accept="image/*" required>
+              <small class="form-help">Como usuario Premium, tu perfil necesita una foto verificada</small>
             </div>
           </div>
 
+          <!-- Situación Personal y Profesional -->
           <div class="form-section">
-            <h3>Situación Personal</h3>
+            <h3>Situación Personal y Profesional</h3>
             <div class="form-grid">
               <div class="form-group">
                 <label for="estado-civil">Estado civil *</label>
@@ -89,6 +87,20 @@
                   <option value="casado">Casado/a</option>
                   <option value="divorciado">Divorciado/a</option>
                   <option value="viudo">Viudo/a</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ocupacion">Ocupación *</label>
+                <input type="text" id="ocupacion" name="ocupacion" required>
+              </div>
+              <div class="form-group">
+                <label for="ingresos">Nivel de ingresos mensual *</label>
+                <select id="ingresos" name="ingresos" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="1000-2000">1.000€ - 2.000€</option>
+                  <option value="2000-3000">2.000€ - 3.000€</option>
+                  <option value="3000-4000">3.000€ - 4.000€</option>
+                  <option value="4000+">Más de 4.000€</option>
                 </select>
               </div>
               <div class="form-group">
@@ -102,8 +114,9 @@
             </div>
           </div>
 
+          <!-- Preferencias Premium -->
           <div class="form-section">
-            <h3>Preferencias de Vivienda</h3>
+            <h3>Preferencias Premium</h3>
             <div class="form-grid">
               <div class="form-group">
                 <label for="operacion">Tipo de operación *</label>
@@ -115,50 +128,57 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="zona">Zona geográfica de interés *</label>
-                <input type="text" id="zona" name="zona" required>
+                <label for="zona">Zonas de interés *</label>
+                <input type="text" id="zona" name="zona" required 
+                  placeholder="Puedes especificar múltiples zonas">
               </div>
               <div class="form-group">
-                <label for="rango-economico">Rango económico *</label>
-                <input type="text" id="rango-economico" name="rango-economico" required>
+                <label for="presupuesto-min">Presupuesto mínimo *</label>
+                <input type="number" id="presupuesto-min" name="presupuesto-min" required>
+              </div>
+              <div class="form-group">
+                <label for="presupuesto-max">Presupuesto máximo *</label>
+                <input type="number" id="presupuesto-max" name="presupuesto-max" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="condiciones">Condiciones del "match" *</label>
-              <textarea id="condiciones" name="condiciones" rows="3" required 
-                placeholder="Describe el perfil de las personas con las que te gustaría compartir"></textarea>
+              <label for="amenities">Amenidades deseadas</label>
+              <textarea id="amenities" name="amenities" rows="2" 
+                placeholder="Ej: piscina, gimnasio, terraza, parking..."></textarea>
             </div>
             <div class="form-group">
-              <label for="preferencia-contacto">Frecuencia y preferencia de contacto</label>
-              <textarea id="preferencia-contacto" name="preferencia-contacto" rows="2"></textarea>
+              <label for="condiciones">Condiciones específicas del "match" *</label>
+              <textarea id="condiciones" name="condiciones" rows="3" required 
+                placeholder="Describe detalladamente el perfil de las personas con las que te gustaría compartir"></textarea>
             </div>
           </div>
 
-          <!-- Sección adicional para Premium -->
+          <!-- Información de Pago -->
           <div class="form-section">
             <h3>Información de Pago</h3>
-            <p class="precio-premium">Suscripción mensual: 4,99 €/mes</p>
-            <div class="form-group">
-              <label>Método de pago *</label>
-              <div class="payment-methods">
-                <button type="button" class="payment-method" data-method="stripe">
-                  <img src="assets/stripe.svg" alt="Stripe">
-                </button>
-                <button type="button" class="payment-method" data-method="paypal">
-                  <img src="assets/paypal.svg" alt="PayPal">
-                </button>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="titular">Nombre en la tarjeta *</label>
+                <input type="text" id="titular" name="titular" required>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="nombre-tarjeta">Nombre en tarjeta *</label>
-              <input type="text" id="nombre-tarjeta" name="nombre-tarjeta" required>
-            </div>
-            <div class="form-group">
-              <label for="email-confirmacion">Correo de confirmación *</label>
-              <input type="email" id="email-confirmacion" name="email-confirmacion" required>
+              <div class="form-group">
+                <label for="tarjeta">Número de tarjeta *</label>
+                <input type="text" id="tarjeta" name="tarjeta" required 
+                  pattern="\d{16}" placeholder="1234 5678 9012 3456">
+              </div>
+              <div class="form-group">
+                <label for="caducidad">Fecha de caducidad *</label>
+                <input type="month" id="caducidad" name="caducidad" required>
+              </div>
+              <div class="form-group">
+                <label for="cvv">CVV *</label>
+                <input type="text" id="cvv" name="cvv" required 
+                  pattern="\d{3,4}" maxlength="4">
+              </div>
             </div>
           </div>
 
+          <!-- Sección Legal -->
           <div class="form-section legal-section">
             <div class="form-group checkbox-group">
               <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required>
@@ -170,19 +190,19 @@
             <div class="form-group checkbox-group">
               <input type="checkbox" id="acepto-suscripcion" name="acepto-suscripcion" required>
               <label for="acepto-suscripcion">
-                Acepto las condiciones de la suscripción Premium *
+                Acepto el cargo mensual de 4,99€ y las condiciones de suscripción *
               </label>
             </div>
             <div class="form-group checkbox-group">
               <input type="checkbox" id="acepto-comunicaciones" name="acepto-comunicaciones">
               <label for="acepto-comunicaciones">
-                Autorizo recibir comunicaciones electrónicas
+                Deseo recibir notificaciones prioritarias de matches premium
               </label>
             </div>
           </div>
 
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Confirmar registro y realizar pago</button>
+            <button type="submit" class="btn btn-primary">Completar Registro Premium</button>
             <a href="registro.html" class="btn btn-outline">Cancelar</a>
           </div>
         </form>
@@ -200,21 +220,9 @@
     </footer>
 
     <script>
-      // Manejar selección de métodos de pago
-      document.addEventListener('click', function(e) {
-        if (e.target.closest('.payment-method')) {
-          const button = e.target.closest('.payment-method');
-          const methods = button.parentElement.querySelectorAll('.payment-method');
-          methods.forEach(m => m.classList.remove('active'));
-          button.classList.add('active');
-        }
-      });
-
-      // Validar formulario antes de enviar
       document.getElementById('form-premium').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Validar campos requeridos
         const requiredFields = this.querySelectorAll('[required]');
         let isValid = true;
         
@@ -227,19 +235,12 @@
           }
         });
 
-        // Validar método de pago seleccionado
-        if (!document.querySelector('.payment-method.active')) {
-          alert('Por favor, selecciona un método de pago.');
-          return;
-        }
-
         if (!isValid) {
           alert('Por favor, completa todos los campos obligatorios.');
           return;
         }
 
-        // Aquí iría la lógica de pago y envío del formulario
-        alert('Registro completado con éxito. Recibirás un email de confirmación.');
+        alert('Registro premium completado. Recibirás un email de confirmación.');
         window.location.href = 'index.html';
       });
     </script>

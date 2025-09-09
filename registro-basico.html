@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Registro gratuito en MatchHogar - Encuentra tu compañero de piso ideal" />
     <title>MatchHogar | Registro Usuario Básico</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -28,8 +29,16 @@
       <div class="registro-header">
         <h1>Registro de Usuario Básico</h1>
         <p class="registro-description">
-          Crea tu cuenta gratuita y comienza a buscar tu match perfecto
+          Crea tu cuenta gratuita y comienza a buscar tu compañero de piso ideal. 
+          Sin costes, sin complicaciones.
         </p>
+        <div class="registro-benefits">
+          <ul>
+            <li>✓ Acceso a listados básicos</li>
+            <li>✓ Contacto con otros usuarios</li>
+            <li>✓ Perfil personalizable</li>
+          </ul>
+        </div>
       </div>
 
       <div class="formulario-registro">
@@ -39,11 +48,13 @@
             <div class="form-grid">
               <div class="form-group">
                 <label for="nombre">Nombre completo *</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input type="text" id="nombre" name="nombre" required
+                  placeholder="Tu nombre y apellidos">
               </div>
               <div class="form-group">
                 <label for="edad">Edad *</label>
-                <input type="number" id="edad" name="edad" required min="18">
+                <input type="number" id="edad" name="edad" required min="18" max="99"
+                  placeholder="Debes ser mayor de edad">
               </div>
               <div class="form-group">
                 <label for="sexo">Sexo *</label>
@@ -55,21 +66,28 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="genero">Género</label>
-                <input type="text" id="genero" name="genero">
+                <label for="genero">Identidad de género</label>
+                <input type="text" id="genero" name="genero" 
+                  placeholder="Opcional - Como te identificas">
               </div>
               <div class="form-group">
                 <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required
+                  placeholder="tu@email.com">
+                <small class="form-help">Usaremos este email para notificarte de matches</small>
               </div>
               <div class="form-group">
                 <label for="telefono">Teléfono de contacto *</label>
-                <input type="tel" id="telefono" name="telefono" required>
+                <input type="tel" id="telefono" name="telefono" required
+                  placeholder="Ej: 612345678"
+                  pattern="[0-9]{9}">
+                <small class="form-help">Solo números, sin espacios ni guiones</small>
               </div>
             </div>
             <div class="form-group">
               <label for="foto">Foto de perfil</label>
               <input type="file" id="foto" name="foto" accept="image/*">
+              <small class="form-help">Una foto ayuda a generar confianza con otros usuarios</small>
             </div>
           </div>
 
@@ -164,30 +182,67 @@
     </footer>
 
     <script>
+      const form = document.getElementById('form-basico');
+      
+      // Función para validar un campo específico
+      function validateField(field) {
+        if (field.required && !field.value.trim()) {
+          field.classList.add('error');
+          return false;
+        }
+        
+        if (field.type === 'tel' && field.value) {
+          const isValidPhone = /^[0-9]{9}$/.test(field.value);
+          if (!isValidPhone) {
+            field.classList.add('error');
+            return false;
+          }
+        }
+        
+        if (field.type === 'email' && field.value) {
+          const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+          if (!isValidEmail) {
+            field.classList.add('error');
+            return false;
+          }
+        }
+        
+        if (field.id === 'edad') {
+          const age = parseInt(field.value);
+          if (age < 18 || age > 99) {
+            field.classList.add('error');
+            return false;
+          }
+        }
+        
+        field.classList.remove('error');
+        return true;
+      }
+
+      // Validar campos mientras el usuario escribe
+      form.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('input', () => validateField(field));
+        field.addEventListener('blur', () => validateField(field));
+      });
+
       // Validar formulario antes de enviar
-      document.getElementById('form-basico').addEventListener('submit', function(e) {
+      form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Validar campos requeridos
-        const requiredFields = this.querySelectorAll('[required]');
         let isValid = true;
-        
-        requiredFields.forEach(field => {
-          if (!field.value.trim()) {
-            field.classList.add('error');
+        this.querySelectorAll('input, select, textarea').forEach(field => {
+          if (!validateField(field)) {
             isValid = false;
-          } else {
-            field.classList.remove('error');
           }
         });
 
         if (!isValid) {
-          alert('Por favor, completa todos los campos obligatorios.');
+          alert('Por favor, revisa los campos marcados en rojo.');
           return;
         }
 
         // Aquí iría la lógica de envío del formulario
-        alert('Registro completado con éxito. Recibirás un email de confirmación.');
+        alert('¡Registro completado con éxito! Te hemos enviado un email de confirmación.');
         window.location.href = 'index.html';
       });
     </script>
