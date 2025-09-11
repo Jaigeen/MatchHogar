@@ -6,6 +6,7 @@
     <meta name="description" content="Registro gratuito en MatchHogar - Encuentra tu compañero de piso ideal" />
     <title>MatchHogar | Registro Usuario Básico</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
   <body>
     <!-- ======================= HEADER & NAV ======================= -->
@@ -42,8 +43,55 @@
       </div>
 
       <div class="formulario-registro">
+        <!-- Barra de progreso -->
+        <div class="wizard-progress">
+          <div class="progress-bar">
+            <div class="progress-indicator" style="width: 25%"></div>
+          </div>
+          <div class="steps">
+            <div class="step active" data-step="1">
+              <div class="step-icon">
+                <i class="fas fa-user"></i>
+              </div>
+              <span>Datos Personales</span>
+            </div>
+            <div class="step" data-step="2">
+              <div class="step-icon">
+                <i class="fas fa-home"></i>
+              </div>
+              <span>Situación Personal</span>
+            </div>
+            <div class="step" data-step="3">
+              <div class="step-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <span>Preferencias</span>
+            </div>
+            <div class="step" data-step="4">
+              <div class="step-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <span>Finalizar</span>
+            </div>
+          </div>
+        </div>
+          <div class="step-indicator" data-step="2">
+            2
+            <span class="step-label">Información Contacto</span>
+          </div>
+          <div class="step-indicator" data-step="3">
+            3
+            <span class="step-label">Preferencias</span>
+          </div>
+          <div class="step-indicator" data-step="4">
+            4
+            <span class="step-label">Finalizar</span>
+          </div>
+        </div>
+
         <form id="form-basico" class="registro-form">
-          <div class="form-section">
+          <!-- Paso 1: Datos Personales -->
+          <div class="form-section active" data-step="1">
             <h3>Datos Personales</h3>
             <div class="form-grid">
               <div class="form-group">

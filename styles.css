@@ -48,6 +48,107 @@ nav {
   justify-content: space-between;
 }
 
+/* ------------------ WIZARD FORM ------------------ */
+.wizard-progress {
+  margin-bottom: 2rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.progress-indicator {
+  position: absolute;
+  height: 100%;
+  background-color: var(--orange);
+  border-radius: var(--radius);
+  transition: width 0.3s ease;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step.completed {
+  opacity: 1;
+}
+
+.step-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.step.active .step-icon {
+  border-color: var(--orange);
+  background-color: var(--orange);
+  color: white;
+}
+
+.step.completed .step-icon {
+  background-color: var(--orange);
+  border-color: var(--orange);
+  color: white;
+}
+
+.form-section {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.form-section.active {
+  display: block;
+}
+
+.form-section-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form-section-header h3 {
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.form-section-header p {
+  color: var(--text);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .nav-brand {
   display: flex;
   align-items: center;
@@ -1825,6 +1926,70 @@ h1 span {
   position: relative;
 }
 
+/* Wizard Progress Bar */
+.wizard-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.wizard-progress::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #e0e0e0;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.step-indicator {
+  position: relative;
+  z-index: 2;
+  background: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--text);
+  border: 3px solid #e0e0e0;
+  transition: all 0.4s ease;
+}
+
+.step-indicator.active {
+  border-color: var(--orange);
+  color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(231, 111, 38, 0.2);
+}
+
+.step-indicator.completed {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: white;
+}
+
+.step-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--text);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
 .registro-header h1 {
   color: var(--navy);
   font-size: 2.5rem;
@@ -1844,16 +2009,139 @@ h1 span {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 2rem;
+  position: relative;
+  min-height: 500px;
 }
 
 .form-section {
-  margin-bottom: 2.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #eee;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 2rem;
+  transition: all 0.4s ease-in-out;
+  transform: translateX(50px);
 }
 
-.form-section:last-of-type {
-  border-bottom: none;
+.form-section.active {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  transform: translateX(0);
+}
+
+.form-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.form-progress::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e0e0e0;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.progress-step {
+  position: relative;
+  z-index: 2;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--text);
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.progress-step.completed {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: white;
+}
+
+.progress-step.active {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.progress-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.form-navigation .btn {
+  min-width: 120px;
+}
+
+.btn-prev {
+  background: transparent;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+}
+
+.btn-prev:hover {
+  background: var(--navy);
+  color: white;
+}
+
+.form-section {
+  animation: fadeOut 0.3s ease-out;
+}
+
+.form-section.active {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
 }
 
 .form-section h3 {
