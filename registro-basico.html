@@ -2,7 +2,9 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+         </div>
+
+        <form id="form-basico" class="registro-form">meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Registro gratuito en MatchHogar - Encuentra tu compañero de piso ideal" />
     <title>MatchHogar | Registro Usuario Básico</title>
     <link rel="stylesheet" href="styles.css" />
@@ -79,7 +81,7 @@
 
         <form id="form-basico" class="registro-form">
           <!-- Paso 1: Datos Personales -->
-          <div class="form-section active" data-step="1">
+          <div class="form-section" data-step="1">
             <h3>Datos Personales</h3>
             <div class="form-grid">
               <div class="form-group">
@@ -218,147 +220,172 @@
     </footer>
 
     <script>
-      const form = document.getElementById('form-basico');
-      let currentStep = 1;
-      const totalSteps = 4;
-      
-      // Función para validar un campo específico
-      function validateField(field) {
-        if (field.required && !field.value.trim()) {
-          field.classList.add('error');
-          return false;
-        }
-        
-        if (field.type === 'tel' && field.value) {
-          const isValidPhone = /^[0-9]{9}$/.test(field.value);
-          if (!isValidPhone) {
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('form-basico');
+        const progressBar = document.querySelector('.progress-indicator');
+        const steps = document.querySelectorAll('.step');
+        let currentStep = 1;
+        const totalSteps = steps.length;
+
+        // Función para validar un campo específico
+        function validateField(field) {
+          field.classList.remove('error');
+          
+          if (field.required && !field.value.trim()) {
             field.classList.add('error');
             return false;
           }
-        }
-        
-        if (field.type === 'email' && field.value) {
-          const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
-          if (!isValidEmail) {
-            field.classList.add('error');
-            return false;
-          }
-        }
-        
-        if (field.id === 'edad') {
-          const age = parseInt(field.value);
-          if (age < 18 || age > 99) {
-            field.classList.add('error');
-            return false;
-          }
-        }
-        
-        field.classList.remove('error');
-        return true;
-      }
-
-      // Función para validar el paso actual
-      function validateStep(step) {
-        const currentSection = form.querySelector(`.form-section[data-step="${step}"]`);
-        let isValid = true;
-        
-        currentSection.querySelectorAll('input, select, textarea').forEach(field => {
-          if (!validateField(field)) {
-            isValid = false;
-          }
-        });
-        
-        return isValid;
-      }
-
-      // Función para actualizar la barra de progreso
-      function updateProgress() {
-        const progress = (currentStep - 1) / (totalSteps - 1) * 100;
-        document.querySelector('.progress-indicator').style.width = `${progress}%`;
-        
-        // Actualizar indicadores de paso
-        document.querySelectorAll('.step').forEach(step => {
-          const stepNum = parseInt(step.dataset.step);
-          if (stepNum < currentStep) {
-            step.classList.add('completed');
-            step.classList.remove('active');
-          } else if (stepNum === currentStep) {
-            step.classList.add('active');
-            step.classList.remove('completed');
-          } else {
-            step.classList.remove('active', 'completed');
-          }
-        });
-      }
-
-      // Función para mostrar el paso actual
-      function showStep(step) {
-        document.querySelectorAll('.form-section').forEach(section => {
-          section.style.display = section.dataset.step == step ? 'block' : 'none';
-        });
-        updateProgress();
-      }
-
-      // Agregar botones de navegación a cada sección
-      document.querySelectorAll('.form-section').forEach((section, index) => {
-        if (index < document.querySelectorAll('.form-section').length - 1) {
-          const nextButton = document.createElement('button');
-          nextButton.type = 'button';
-          nextButton.className = 'btn btn-primary';
-          nextButton.textContent = 'Siguiente';
-          nextButton.onclick = () => {
-            if (validateStep(currentStep)) {
-              currentStep++;
-              showStep(currentStep);
-            } else {
-              alert('Por favor, completa todos los campos obligatorios correctamente.');
+          
+          if (field.type === 'tel' && field.value) {
+            const isValidPhone = /^[0-9]{9}$/.test(field.value);
+            if (!isValidPhone) {
+              field.classList.add('error');
+              return false;
             }
-          };
-          section.appendChild(nextButton);
-        }
-
-        if (index > 0) {
-          const prevButton = document.createElement('button');
-          prevButton.type = 'button';
-          prevButton.className = 'btn btn-outline';
-          prevButton.textContent = 'Anterior';
-          prevButton.onclick = () => {
-            currentStep--;
-            showStep(currentStep);
-          };
-          section.appendChild(prevButton);
-        }
-      });
-
-      // Validar campos mientras el usuario escribe
-      form.querySelectorAll('input, select, textarea').forEach(field => {
-        field.addEventListener('input', () => validateField(field));
-        field.addEventListener('blur', () => validateField(field));
-      });
-
-      // Validar formulario antes de enviar
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        let isValid = true;
-        this.querySelectorAll('input, select, textarea').forEach(field => {
-          if (!validateField(field)) {
-            isValid = false;
           }
+          
+          if (field.type === 'email' && field.value) {
+            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+            if (!isValidEmail) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          
+          if (field.id === 'edad') {
+            const age = parseInt(field.value);
+            if (isNaN(age) || age < 18 || age > 99) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          
+          return true;
+        }
+
+        // Función para validar una sección completa
+        function validateSection(sectionNumber) {
+          const section = form.querySelector(`.form-section[data-step="${sectionNumber}"]`);
+          if (!section) return true;
+
+          let isValid = true;
+          const fields = section.querySelectorAll('input:not([type="button"]), select, textarea');
+          
+          fields.forEach(field => {
+            if (!validateField(field)) {
+              isValid = false;
+              field.classList.add('error');
+            }
+          });
+
+          return isValid;
+        }
+
+        // Función para actualizar la barra de progreso y los pasos
+        function updateProgress() {
+          // Actualizar la barra de progreso
+          const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+          progressBar.style.width = `${progress}%`;
+
+          // Actualizar los estados de los pasos
+          steps.forEach((step, index) => {
+            const stepNumber = index + 1;
+            step.classList.remove('active', 'completed');
+            
+            if (stepNumber === currentStep) {
+              step.classList.add('active');
+            } else if (stepNumber < currentStep) {
+              step.classList.add('completed');
+            }
+          });
+        }
+
+        // Función para cambiar entre secciones
+        function goToStep(step) {
+          const sections = form.querySelectorAll('.form-section');
+          sections.forEach(section => {
+            section.style.display = 'none';
+            section.classList.remove('active');
+          });
+
+          const targetSection = form.querySelector(`.form-section[data-step="${step}"]`);
+          if (targetSection) {
+            targetSection.style.display = 'block';
+            setTimeout(() => targetSection.classList.add('active'), 10);
+          }
+
+          currentStep = step;
+          updateProgress();
+        }
+
+        // Agregar botones de navegación
+        const sections = form.querySelectorAll('.form-section');
+        sections.forEach((section, index) => {
+          const buttonContainer = document.createElement('div');
+          buttonContainer.className = 'form-navigation';
+
+          if (index > 0) {
+            const prevButton = document.createElement('button');
+            prevButton.type = 'button';
+            prevButton.className = 'btn btn-outline';
+            prevButton.textContent = 'Anterior';
+            prevButton.onclick = () => {
+              goToStep(currentStep - 1);
+            };
+            buttonContainer.appendChild(prevButton);
+          }
+
+          if (index < sections.length - 1) {
+            const nextButton = document.createElement('button');
+            nextButton.type = 'button';
+            nextButton.className = 'btn btn-primary';
+            nextButton.textContent = 'Siguiente';
+            nextButton.onclick = () => {
+              if (validateSection(currentStep)) {
+                goToStep(currentStep + 1);
+              } else {
+                alert('Por favor, completa todos los campos obligatorios correctamente.');
+              }
+            };
+            buttonContainer.appendChild(nextButton);
+          }
+
+          section.appendChild(buttonContainer);
         });
 
-        if (!isValid) {
-          alert('Por favor, revisa los campos marcados en rojo.');
-          return;
-        }
+        // Validar campos en tiempo real
+        form.querySelectorAll('input:not([type="button"]), select, textarea').forEach(field => {
+          field.addEventListener('input', () => validateField(field));
+          field.addEventListener('blur', () => validateField(field));
+        });
 
-        // Aquí iría la lógica de envío del formulario
-        alert('¡Registro completado con éxito! Te hemos enviado un email de confirmación.');
-        window.location.href = 'index.html';
+        // Manejar el envío del formulario
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          let isValid = true;
+          for (let i = 1; i <= totalSteps; i++) {
+            if (!validateSection(i)) {
+              isValid = false;
+              goToStep(i);
+              break;
+            }
+          }
+
+          if (!isValid) {
+            alert('Por favor, revisa los campos marcados en rojo.');
+            return;
+          }
+
+          // Simular envío exitoso
+          alert('¡Registro completado con éxito! Te hemos enviado un email de confirmación.');
+          window.location.href = 'index.html';
+        });
+
+        // Inicializar el formulario
+        goToStep(1);
       });
-
-      // Inicializar el formulario
-      showStep(currentStep);
+    </script>
     </script>
   </body>
 </html>
