@@ -75,18 +75,6 @@
             </div>
           </div>
         </div>
-          <div class="step-indicator" data-step="2">
-            2
-            <span class="step-label">Información Contacto</span>
-          </div>
-          <div class="step-indicator" data-step="3">
-            3
-            <span class="step-label">Preferencias</span>
-          </div>
-          <div class="step-indicator" data-step="4">
-            4
-            <span class="step-label">Finalizar</span>
-          </div>
         </div>
 
         <form id="form-basico" class="registro-form">
@@ -231,6 +219,8 @@
 
     <script>
       const form = document.getElementById('form-basico');
+      let currentStep = 1;
+      const totalSteps = 4;
       
       // Función para validar un campo específico
       function validateField(field) {
@@ -267,6 +257,79 @@
         return true;
       }
 
+      // Función para validar el paso actual
+      function validateStep(step) {
+        const currentSection = form.querySelector(`.form-section[data-step="${step}"]`);
+        let isValid = true;
+        
+        currentSection.querySelectorAll('input, select, textarea').forEach(field => {
+          if (!validateField(field)) {
+            isValid = false;
+          }
+        });
+        
+        return isValid;
+      }
+
+      // Función para actualizar la barra de progreso
+      function updateProgress() {
+        const progress = (currentStep - 1) / (totalSteps - 1) * 100;
+        document.querySelector('.progress-indicator').style.width = `${progress}%`;
+        
+        // Actualizar indicadores de paso
+        document.querySelectorAll('.step').forEach(step => {
+          const stepNum = parseInt(step.dataset.step);
+          if (stepNum < currentStep) {
+            step.classList.add('completed');
+            step.classList.remove('active');
+          } else if (stepNum === currentStep) {
+            step.classList.add('active');
+            step.classList.remove('completed');
+          } else {
+            step.classList.remove('active', 'completed');
+          }
+        });
+      }
+
+      // Función para mostrar el paso actual
+      function showStep(step) {
+        document.querySelectorAll('.form-section').forEach(section => {
+          section.style.display = section.dataset.step == step ? 'block' : 'none';
+        });
+        updateProgress();
+      }
+
+      // Agregar botones de navegación a cada sección
+      document.querySelectorAll('.form-section').forEach((section, index) => {
+        if (index < document.querySelectorAll('.form-section').length - 1) {
+          const nextButton = document.createElement('button');
+          nextButton.type = 'button';
+          nextButton.className = 'btn btn-primary';
+          nextButton.textContent = 'Siguiente';
+          nextButton.onclick = () => {
+            if (validateStep(currentStep)) {
+              currentStep++;
+              showStep(currentStep);
+            } else {
+              alert('Por favor, completa todos los campos obligatorios correctamente.');
+            }
+          };
+          section.appendChild(nextButton);
+        }
+
+        if (index > 0) {
+          const prevButton = document.createElement('button');
+          prevButton.type = 'button';
+          prevButton.className = 'btn btn-outline';
+          prevButton.textContent = 'Anterior';
+          prevButton.onclick = () => {
+            currentStep--;
+            showStep(currentStep);
+          };
+          section.appendChild(prevButton);
+        }
+      });
+
       // Validar campos mientras el usuario escribe
       form.querySelectorAll('input, select, textarea').forEach(field => {
         field.addEventListener('input', () => validateField(field));
@@ -293,6 +356,9 @@
         alert('¡Registro completado con éxito! Te hemos enviado un email de confirmación.');
         window.location.href = 'index.html';
       });
+
+      // Inicializar el formulario
+      showStep(currentStep);
     </script>
   </body>
 </html>
