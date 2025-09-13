@@ -118,6 +118,19 @@
       .publicaciones-list-grid { grid-template-columns: 1fr !important; gap: 18px; }
       .publicacion-demo-img { height: 140px; }
     }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animated-fadeup {
+      margin-top: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1.2s 0.2s ease-out forwards;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -142,8 +155,8 @@
     <!-- Hero visual -->
     <section class="publicaciones-hero">
       <div class="container">
-        <h1>Publicaciones actuales</h1>
-        <p class="tagline">Descubre los últimos anuncios y oportunidades en MatchHogar</p>
+        <h1 style="color:#fff;">Publicaciones actuales</h1>
+        <p class="tagline animated-fadeup">Descubre los últimos anuncios y oportunidades en MatchHogar</p>
       </div>
     </section>
     <!-- Listado de publicaciones demo -->
@@ -174,7 +187,7 @@
           </div>
           <!-- Publicación 3 -->
           <div class="publicacion-demo-card">
-            <img src="https://images.unsplash.com/photo-1519974719765-e6559eac2575?auto=format&fit=crop&w=600&q=80" alt="Trastero en alquiler" class="publicacion-demo-img">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Trastero en alquiler" class="publicacion-demo-img">
             <div class="publicacion-demo-content">
               <div class="publicacion-demo-title">Trastero seguro en zona norte</div>
               <div class="publicacion-demo-meta"><i class="fas fa-warehouse"></i> Trastero | Alquiler</div>
