@@ -244,7 +244,7 @@
           <h2 class="section-title">Nuestro equipo</h2>
           <div class="team-grid">
             <div class="team-card">
-              <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Juan Cisneros">
+              <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Juan Cisneros">
               <div class="name">Juan Cisneros</div>
               <div class="role">Desarrollador de la página web y atención al usuario</div>
               <div class="desc">Apasionado por la tecnología y la experiencia de usuario, siempre dispuesto a ayudarte.</div>
@@ -339,5 +339,28 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Navbar hamburguesa para móvil
+      document.addEventListener('DOMContentLoaded', function() {
+        const nav = document.querySelector('nav');
+        if (!nav) return;
+        if (!document.querySelector('.nav-toggle')) {
+          const btn = document.createElement('button');
+          btn.className = 'nav-toggle';
+          btn.setAttribute('aria-label', 'Abrir menú');
+          btn.innerHTML = '<i class="fas fa-bars"></i>';
+          nav.insertBefore(btn, nav.querySelector('.nav-links'));
+          btn.addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('mobile-active');
+          });
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.remove('mobile-active');
+          });
+        });
+      });
+    </script>
   </body>
 </html>

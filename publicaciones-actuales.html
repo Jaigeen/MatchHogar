@@ -140,6 +140,30 @@
       text-align: center;
     }
   </style>
+  <script>
+    // Navbar hamburguesa para móvil
+    document.addEventListener('DOMContentLoaded', function() {
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+      // Crea botón hamburguesa si no existe
+      if (!document.querySelector('.nav-toggle')) {
+        const btn = document.createElement('button');
+        btn.className = 'nav-toggle';
+        btn.setAttribute('aria-label', 'Abrir menú');
+        btn.innerHTML = '<i class="fas fa-bars"></i>';
+        nav.insertBefore(btn, nav.querySelector('.nav-links'));
+        btn.addEventListener('click', function() {
+          document.querySelector('.nav-links').classList.toggle('mobile-active');
+        });
+      }
+      // Cierra menú al hacer click en un enlace (opcional)
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function() {
+          document.querySelector('.nav-links').classList.remove('mobile-active');
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   <!-- NAV -->
@@ -335,3 +359,4 @@
   </footer>
 </body>
 </html>
+``` 
