@@ -13,7 +13,7 @@
         background-position: center;
         position: relative;
         color: #fff;
-        padding: 32px 0 24px 0;
+        padding: 18px 0 10px 0; /* Mucho más compacto */
         text-align: center;
         overflow: hidden;
       }
@@ -31,7 +31,7 @@
         margin: 0 auto;
       }
       .about-hero h1 {
-        font-size: 2.7em;
+        font-size: 2.2em;
         font-weight: 900;
         margin-bottom: 10px;
         line-height: 1.1;
@@ -44,12 +44,21 @@
         margin-bottom: 0;
         margin-top: 8px;
         font-weight: 400;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 1.2s 0.2s ease-out forwards;
       }
       .about-hero .tagline {
         font-size: 1.25em;
         margin-bottom: 32px;
         color: #fffde7;
         text-shadow: 0 2px 12px #0006;
+      }
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       .about-section {
         background: #f7f9fb;
@@ -148,8 +157,8 @@
       .about-cta-section .cta-buttons { display: flex; gap: 18px; justify-content: center; }
       .about-cta-section .btn { font-size: 1.1em; }
       @media (max-width: 700px) {
-        .about-hero { padding: 18px 0 10px 0; }
-        .about-hero h1 { font-size: 1.5em; }
+        .about-hero { padding: 10px 0 4px 0; }
+        .about-hero h1 { font-size: 1.2em; }
         .about-hero .about-mini { font-size: 1em; }
         .about-features-grid, .team-grid, .impact-grid { grid-template-columns: 1fr !important; flex-direction: column; gap: 18px; }
       }
@@ -183,42 +192,40 @@
         </div>
       </section>
 
-      <!-- Valores/Misión/Historia visual -->
-      <section class="about-section">
+      <!-- Features Section Mejorada -->
+      <section class="features section-padding bg-light">
         <div class="container">
-          <div class="about-features-grid">
-            <div class="about-feature-card">
-              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Misión">
-              <h3>Nuestra Misión</h3>
-              <p>Transformar la forma en que las personas encuentran y comparten espacios habitacionales.</p>
-              <ul>
-                <li>Conexiones significativas</li>
-                <li>Espacios seguros</li>
-                <li>Comunidad vibrante</li>
-                <li>Experiencias compartidas</li>
-              </ul>
+          <h2 class="section-title">¿Por qué elegir MatchHogar?</h2>
+          <div class="features-grid">
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png" alt="Viviendas" class="feature-icon">
+              <h3>Viviendas Compartidas</h3>
+              <p>Encuentra el espacio perfecto y comparte gastos con personas afines a ti.</p>
             </div>
-            <div class="about-feature-card">
-              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Historia">
-              <h3>Nuestra Historia</h3>
-              <p>Desde 2024 hemos conectado más de 1,000 personas con sus hogares ideales.</p>
-              <ul>
-                <li>Fundación en 2024</li>
-                <li>+1000 matches exitosos</li>
-                <li>Presencia nacional</li>
-                <li>Crecimiento constante</li>
-              </ul>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Inversiones" class="feature-icon">
+              <h3>Inversiones Seguras</h3>
+              <p>Conecta con inversores y propietarios verificados para proyectos inmobiliarios.</p>
             </div>
-            <div class="about-feature-card">
-              <img src="https://cdn-icons-png.flaticon.com/512/726/726476.png" alt="Innovación">
-              <h3>Innovación</h3>
-              <p>Combinamos tecnología avanzada con un toque humano para las mejores coincidencias.</p>
-              <ul>
-                <li>Algoritmos inteligentes</li>
-                <li>Verificación avanzada</li>
-                <li>Plataforma segura</li>
-                <li>Mejora continua</li>
-              </ul>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Comunidad" class="feature-icon">
+              <h3>Comunidad Activa</h3>
+              <p>Únete a una comunidad de personas que comparten tus mismos objetivos.</p>
+            </div>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Seguridad" class="feature-icon">
+              <h3>Máxima Seguridad</h3>
+              <p>Verificación de usuarios y propiedades para tu tranquilidad.</p>
+            </div>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Encuentra matches" class="feature-icon">
+              <h3>Encuentra matches</h3>
+              <p>Explora perfiles compatibles y conecta con personas que comparten tus intereses y necesidades.</p>
+            </div>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/726/726476.png" alt="Contacta" class="feature-icon">
+              <h3>Contacta</h3>
+              <p>Comunícate de forma segura a través de nuestra plataforma y da el siguiente paso hacia tu nuevo hogar.</p>
             </div>
           </div>
         </div>
