@@ -132,6 +132,19 @@
         .services-hero h1 { font-size: 1.5em; }
         .services-grid, .features-grid, .benefits-grid { grid-template-columns: 1fr !important; gap: 18px; }
       }
+      .ofrecemos-flow { display: flex; align-items: center; gap: 40px; margin: 0 0 0 0; padding: 0 0 0 0; }
+      .ofrecemos-flow:nth-child(even) { flex-direction: row-reverse; }
+      .ofrecemos-flow-img img { width: 320px; max-width: 40vw; border-radius: 18px; box-shadow: 0 4px 24px #002e5e22; }
+      .ofrecemos-flow-content { flex: 1; min-width: 220px; }
+      .ofrecemos-flow-content h2 { font-size: 1.5em; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+      .ofrecemos-flow-content p { font-size: 1.08em; color: #222; }
+      .ofrecemos-beneficios-flow { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin-top: 12px; }
+      .beneficio-item { background: rgba(255,255,255,0.12); border-radius: 16px; padding: 18px 32px; font-size: 1.15em; font-weight: 600; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 12px #002e5e22; }
+      .beneficio-item i { font-size: 1.5em; color: #fff; }
+      @media (max-width: 900px) {
+        .ofrecemos-flow { flex-direction: column !important; gap: 18px; }
+        .ofrecemos-flow-img img { max-width: 90vw; width: 100%; }
+      }
     </style>
   </head>
   <body>
@@ -153,55 +166,53 @@
     </header>    <!-- ============================ MAIN =========================== -->
     <main>
       <!-- Hero visual -->
-      <section class="hero services-hero">
+      <section class="hero services-hero" style="padding-bottom: 0;">
         <div class="container">
           <h1>Todo lo que necesitas para compartir hogar</h1>
         </div>
       </section>
 
-      <!-- Servicios visuales simplificados -->
-      <section class="services-section">
+      <!-- Sección visual conectada -->
+      <section class="ofrecemos-flow-section" style="background:#f7f9fb; padding:0 0 56px 0;">
         <div class="container">
-          <div class="services-grid">
-            <div class="service-card">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Compartir vivienda">
-              <h3><i class="fas fa-home" style="color:#e76f26"></i> Compartir vivienda</h3>
-              <p>Encuentra compañeros y espacios afines a ti.</p>
+          <div class="ofrecemos-flow">
+            <div class="ofrecemos-flow-img">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Compartir vivienda">
             </div>
-            <div class="service-card">
-              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Invertir juntos">
-              <h3><i class="fas fa-hand-holding-usd" style="color:#e76f26"></i> Invertir juntos</h3>
-              <p>Invierte en inmuebles de forma colaborativa y segura.</p>
+            <div class="ofrecemos-flow-content">
+              <h2><i class="fas fa-home" style="color:#e76f26"></i> Compartir vivienda</h2>
+              <p>Encuentra compañeros y espacios afines a ti, con filtros inteligentes y contacto directo.</p>
             </div>
-            <div class="service-card">
-              <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Comunidad segura">
-              <h3><i class="fas fa-users" style="color:#e76f26"></i> Comunidad segura</h3>
-              <p>Verificación, soporte y ambiente de confianza.</p>
+          </div>
+          <div class="ofrecemos-flow">
+            <div class="ofrecemos-flow-content">
+              <h2><i class="fas fa-hand-holding-usd" style="color:#e76f26"></i> Invertir juntos</h2>
+              <p>Invierte en inmuebles de forma colaborativa y segura, accede a oportunidades reales y asesoramiento.</p>
+            </div>
+            <div class="ofrecemos-flow-img">
+              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Invertir juntos">
+            </div>
+          </div>
+          <div class="ofrecemos-flow">
+            <div class="ofrecemos-flow-img">
+              <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Comunidad segura">
+            </div>
+            <div class="ofrecemos-flow-content">
+              <h2><i class="fas fa-users" style="color:#e76f26"></i> Comunidad segura</h2>
+              <p>Verificación, soporte y ambiente de confianza. Valoraciones reales y soporte humano.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Beneficios visuales rápidos -->
-      <section class="features-section">
+      <!-- Beneficios visuales conectados -->
+      <section class="ofrecemos-beneficios-section" style="background:linear-gradient(90deg,#e76f26 0%,#002e5e 100%);color:#fff;padding:40px 0 32px 0;">
         <div class="container">
-          <div class="features-grid">
-            <div class="feature-item">
-              <i class="fas fa-bolt" style="font-size:2.2em;color:#e76f26"></i>
-              <h3>Rápido y fácil</h3>
-            </div>
-            <div class="feature-item">
-              <i class="fas fa-shield-alt" style="font-size:2.2em;color:#e76f26"></i>
-              <h3>Seguro</h3>
-            </div>
-            <div class="feature-item">
-              <i class="fas fa-comments" style="font-size:2.2em;color:#e76f26"></i>
-              <h3>Contacto directo</h3>
-            </div>
-            <div class="feature-item">
-              <i class="fas fa-star" style="font-size:2.2em;color:#e76f26"></i>
-              <h3>Valoraciones reales</h3>
-            </div>
+          <div class="ofrecemos-beneficios-flow">
+            <div class="beneficio-item"><i class="fas fa-bolt"></i> Rápido y fácil</div>
+            <div class="beneficio-item"><i class="fas fa-shield-alt"></i> Seguro</div>
+            <div class="beneficio-item"><i class="fas fa-comments"></i> Contacto directo</div>
+            <div class="beneficio-item"><i class="fas fa-star"></i> Valoraciones reales</div>
           </div>
         </div>
       </section>
