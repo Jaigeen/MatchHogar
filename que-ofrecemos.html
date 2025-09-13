@@ -145,6 +145,11 @@
         .ofrecemos-flow { flex-direction: column !important; gap: 18px; }
         .ofrecemos-flow-img img { max-width: 90vw; width: 100%; }
       }
+      .ofrecemos-beneficios-section {
+        background:linear-gradient(90deg,#e76f26 0%,#002e5e 100%);
+        color:#fff;
+        padding:40px 0 8px 0; /* Reducido el padding-bottom de 32px a 8px */
+      }
     </style>
   </head>
   <body>
@@ -206,7 +211,7 @@
       </section>
 
       <!-- Beneficios visuales conectados -->
-      <section class="ofrecemos-beneficios-section" style="background:linear-gradient(90deg,#e76f26 0%,#002e5e 100%);color:#fff;padding:40px 0 32px 0;">
+      <section class="ofrecemos-beneficios-section" style="background:linear-gradient(90deg,#e76f26 0%,#002e5e 100%);color:#fff;padding:40px 0 8px 0;">
         <div class="container">
           <div class="ofrecemos-beneficios-flow">
             <div class="beneficio-item"><i class="fas fa-bolt"></i> Rápido y fácil</div>
@@ -231,13 +236,41 @@
     </main>
 
     <!-- =========================== FOOTER ========================== -->
-    <footer>
-      <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
-      <p>
-        <a href="#politica">Política de privacidad</a> |
-        <a href="#condiciones">Términos y condiciones</a> |
-        <a href="#cookies">Política de cookies</a>
-      </p>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="footer-logo">
+            <p>Conectando personas, creando hogares</p>
+          </div>
+          <div class="footer-links">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="quienes-somos.html">Quiénes somos</a></li>
+              <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+              <li><a href="registro.html">Registro</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <h4>Síguenos</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
+          <div class="footer-legal">
+            <a href="#politica">Política de privacidad</a>
+            <a href="#condiciones">Términos y condiciones</a>
+            <a href="#cookies">Política de cookies</a>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

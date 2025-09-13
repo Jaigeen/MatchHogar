@@ -13,7 +13,7 @@
         background-position: center;
         position: relative;
         color: #fff;
-        padding: 28px 0 18px 0; /* aún más compacto */
+        padding: 32px 0 24px 0;
         text-align: center;
         overflow: hidden;
       }
@@ -31,11 +31,19 @@
         margin: 0 auto;
       }
       .about-hero h1 {
-        font-size: 1.5em; /* más pequeño */
-        font-weight: 800;
-        margin-bottom: 0;
+        font-size: 2.7em;
+        font-weight: 900;
+        margin-bottom: 10px;
         line-height: 1.1;
         text-shadow: 0 2px 16px #0007;
+      }
+      .about-hero .about-mini {
+        font-size: 1.18em;
+        color: #fffde7;
+        text-shadow: 0 2px 12px #0006;
+        margin-bottom: 0;
+        margin-top: 8px;
+        font-weight: 400;
       }
       .about-hero .tagline {
         font-size: 1.25em;
@@ -140,8 +148,9 @@
       .about-cta-section .cta-buttons { display: flex; gap: 18px; justify-content: center; }
       .about-cta-section .btn { font-size: 1.1em; }
       @media (max-width: 700px) {
-        .about-hero { padding: 16px 0 8px 0; }
-        .about-hero h1 { font-size: 1.1em; }
+        .about-hero { padding: 18px 0 10px 0; }
+        .about-hero h1 { font-size: 1.5em; }
+        .about-hero .about-mini { font-size: 1em; }
         .about-features-grid, .team-grid, .impact-grid { grid-template-columns: 1fr !important; flex-direction: column; gap: 18px; }
       }
     </style>
@@ -170,6 +179,7 @@
       <section class="hero about-hero">
         <div class="container">
           <h1>Revolucionando la forma de compartir hogares</h1>
+          <div class="about-mini">Creamos conexiones reales para que encuentres tu espacio ideal y una comunidad en la que confiar.</div>
         </div>
       </section>
 
