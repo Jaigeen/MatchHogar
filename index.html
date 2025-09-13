@@ -14,56 +14,57 @@
         padding: 64px 0 32px 0;
         position: relative;
         overflow: hidden;
+        background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+      .hero-visual::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(120deg, #002e5ecc 60%, #e76f26cc 100%);
+        /* Degradado oscuro con opacidad */
+        z-index: 1;
       }
       .hero-visual .container {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        gap: 40px;
+        justify-content: center;
+        gap: 32px;
+        position: relative;
+        z-index: 2;
+        min-height: 420px;
+        text-align: center;
       }
       .hero-visual .hero-text {
-        flex: 1 1 350px;
+        flex: unset;
         z-index: 2;
+        max-width: 700px;
       }
+      .hero-visual .hero-image { display: none; }
       .hero-visual h1 {
         font-size: 2.7em;
         font-weight: 800;
         margin-bottom: 18px;
         line-height: 1.1;
+        text-shadow: 0 2px 16px #0007;
       }
       .hero-visual .tagline {
         font-size: 1.25em;
         margin-bottom: 32px;
         color: #fffde7;
+        text-shadow: 0 2px 12px #0006;
       }
       .hero-visual .cta-group {
         display: flex;
         gap: 18px;
         margin-bottom: 24px;
-      }
-      .hero-visual .hero-image {
-        flex: 1 1 350px;
-        text-align: right;
-      }
-      .hero-visual .hero-image img {
-        max-width: 420px;
-        width: 100%;
-        border-radius: 24px;
-        box-shadow: 0 8px 32px #0003;
-        border: 4px solid #fff;
-      }
-      .hero-visual .hero-bg-illus {
-        position: absolute;
-        right: 0; bottom: 0; top: 0;
-        width: 60vw; max-width: 700px;
-        opacity: 0.18;
-        z-index: 1;
-        pointer-events: none;
+        justify-content: center;
       }
       @media (max-width: 900px) {
-        .hero-visual .container { flex-direction: column; gap: 24px; }
-        .hero-visual .hero-image { text-align: center; }
+        .hero-visual .container { min-height: 320px; }
+        .hero-visual h1 { font-size: 2em; }
       }
       /* Features visual */
       .features-grid {
@@ -198,9 +199,6 @@
               <a href="que-ofrecemos.html" class="btn btn-outline btn-lg">Descubre más</a>
             </div>
           </div>
-          <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Hogar moderno" class="feature-image hero-stock">
-          </div>
         </div>
       </section>
 
@@ -234,33 +232,24 @@
       </section>
 
       <!-- How it Works Section Mejorada -->
-      <section class="how-it-works section-padding">
+      <section class="how-it-works section-padding bg-light">
         <div class="container">
           <h2 class="section-title">¿Cómo funciona?</h2>
-          <div class="steps-visual-grid">
-            <div class="step-card visual">
-              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Registro" class="step-img">
-              <div>
-                <div class="step-number">1</div>
-                <h3>Regístrate</h3>
-                <p>Crea tu perfil gratuito y cuéntanos qué buscas.</p>
-              </div>
+          <div class="features-grid">
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Registro" class="feature-icon">
+              <h3>Regístrate</h3>
+              <p>Crea tu perfil gratuito y cuéntanos qué buscas. El primer paso para encontrar tu hogar ideal.</p>
             </div>
-            <div class="step-card visual">
-              <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Matches" class="step-img">
-              <div>
-                <div class="step-number">2</div>
-                <h3>Encuentra matches</h3>
-                <p>Conecta con personas que comparten tus intereses.</p>
-              </div>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Encuentra matches" class="feature-icon">
+              <h3>Encuentra matches</h3>
+              <p>Explora perfiles compatibles y conecta con personas que comparten tus intereses y necesidades.</p>
             </div>
-            <div class="step-card visual">
-              <img src="https://images.unsplash.com/photo-1515168833906-d2a3b82b302b?auto=format&fit=crop&w=400&q=80" alt="Contacta" class="step-img">
-              <div>
-                <div class="step-number">3</div>
-                <h3>Contacta</h3>
-                <p>Comunícate de forma segura a través de nuestra plataforma.</p>
-              </div>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/726/726476.png" alt="Contacta" class="feature-icon">
+              <h3>Contacta</h3>
+              <p>Comunícate de forma segura a través de nuestra plataforma y da el siguiente paso hacia tu nuevo hogar.</p>
             </div>
           </div>
         </div>
