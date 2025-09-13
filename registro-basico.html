@@ -124,12 +124,13 @@
             </div>
             <div class="form-group">
               <label for="foto">Foto de perfil</label>
-              <input type="file" id="foto" name="foto" accept="image/*">
+              <input type="file" id="foto" name="foto" accept="image/*" onchange="previewFoto(event)">
+              <img id="foto-preview" src="#" alt="Vista previa" style="display:none;max-width:100px;margin-top:10px;border-radius:50%">
               <small class="form-help">Una foto ayuda a generar confianza con otros usuarios</small>
             </div>
           </div>
 
-          <div class="form-section">
+          <div class="form-section" data-step="2">
             <h3>Situación Personal</h3>
             <div class="form-grid">
               <div class="form-group">
@@ -153,7 +154,7 @@
             </div>
           </div>
 
-          <div class="form-section">
+          <div class="form-section" data-step="3">
             <h3>Preferencias de Vivienda</h3>
             <div class="form-grid">
               <div class="form-group">
@@ -384,8 +385,72 @@
 
         // Inicializar el formulario
         goToStep(1);
+
+        // Vista previa de la foto
+        window.previewFoto = function(event) {
+          const input = event.target;
+          const preview = document.getElementById('foto-preview');
+          if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              preview.src = e.target.result;
+              preview.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+          } else {
+            preview.src = '#';
+            preview.style.display = 'none';
+          }
+        };
+
+        // Feedback visual en campos
+        form.querySelectorAll('input:not([type="button"]), select, textarea').forEach(field => {
+          field.addEventListener('focus', () => field.classList.add('focus'));
+          field.addEventListener('blur', () => field.classList.remove('focus'));
+        });
+
+        // Iconos de validación
+        function setValidationIcon(field, valid) {
+          let icon = field.parentNode.querySelector('.valid-icon');
+          if (!icon) {
+            icon = document.createElement('span');
+            icon.className = 'valid-icon';
+            field.parentNode.appendChild(icon);
+          }
+          icon.innerHTML = valid ? '✔️' : (field.value ? '❌' : '');
+          icon.style.color = valid ? 'green' : 'red';
+        }
+
+        // Modifico validateField para iconos
+        const oldValidateField = validateField;
+        validateField = function(field) {
+          const valid = oldValidateField(field);
+          setValidationIcon(field, valid);
+          return valid;
+        };
+
+        // Resumen antes de finalizar
+        const resumenStep = document.createElement('div');
+        resumenStep.className = 'form-section';
+        resumenStep.setAttribute('data-step', totalSteps);
+        resumenStep.innerHTML = '<h3>Resumen de tu registro</h3><div id="resumen-contenido"></div>';
+        form.insertBefore(resumenStep, form.querySelector('.legal-section'));
+        const oldGoToStep = goToStep;
+        goToStep = function(step) {
+          oldGoToStep(step);
+          if (step === totalSteps) {
+            const resumen = document.getElementById('resumen-contenido');
+            let html = '<ul>';
+            form.querySelectorAll('input, select, textarea').forEach(f => {
+              if (f.type !== 'button' && f.type !== 'file' && f.type !== 'checkbox' && f.value) {
+                html += `<li><b>${f.previousElementSibling ? f.previousElementSibling.innerText : f.name}:</b> ${f.value}</li>`;
+              }
+            });
+            html += '</ul>';
+            resumen.innerHTML = html;
+          }
+        };
       });
-    </script>
     </script>
   </body>
 </html>
