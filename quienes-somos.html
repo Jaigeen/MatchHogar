@@ -162,6 +162,14 @@
         .about-hero .about-mini { font-size: 1em; }
         .about-features-grid, .team-grid, .impact-grid { grid-template-columns: 1fr !important; flex-direction: column; gap: 18px; }
       }
+      .about-visual-grid { display: flex; gap: 48px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+      .about-visual-text { flex: 1 1 340px; min-width: 280px; }
+      .about-visual-imgs { flex: 1 1 320px; min-width: 220px; }
+      @media (max-width: 900px) {
+        .about-visual-grid { flex-direction: column; gap: 24px; }
+        .about-visual-imgs { flex-direction: row; gap: 12px; }
+        .about-visual-imgs img { width: 48vw; min-width: 140px; }
+      }
     </style>
   </head>
   <body>
@@ -192,40 +200,27 @@
         </div>
       </section>
 
-      <!-- Features Section Mejorada -->
-      <section class="features section-padding bg-light">
+      <!-- NUEVO APARTADO VISUAL Y PROFESIONAL SOBRE MATCHHOGAR -->
+      <section class="about-visual-section" style="background: #f7f9fb; padding: 56px 0 32px 0;">
         <div class="container">
-          <h2 class="section-title">¿Por qué elegir MatchHogar?</h2>
-          <div class="features-grid">
-            <div class="feature-card visual">
-              <img src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png" alt="Viviendas" class="feature-icon">
-              <h3>Viviendas Compartidas</h3>
-              <p>Encuentra el espacio perfecto y comparte gastos con personas afines a ti.</p>
+          <div class="about-visual-grid">
+            <div class="about-visual-text">
+              <h2 class="about-title" style="font-size:2.2em;font-weight:900;margin-bottom:18px;line-height:1.1;color:#002e5e;">Conectando personas, creando oportunidades</h2>
+              <p class="about-lead" style="font-size:1.25em;color:#333;margin-bottom:24px;max-width:500px;">MatchHogar es la plataforma que une a personas con intereses y necesidades afines para compartir vivienda, invertir juntos, encontrar fincas, negocios, trasteros o cualquier proyecto colaborativo relacionado con el hogar y la comunidad.</p>
+              <ul class="about-benefits-list" style="list-style:none;padding:0;margin:0 0 24px 0;">
+                <li style="display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:1.08em;"><i class="fas fa-users" style="color:#e76f26;font-size:1.4em;"></i> Comunidad activa y diversa</li>
+                <li style="display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:1.08em;"><i class="fas fa-home" style="color:#e76f26;font-size:1.4em;"></i> Soluciones para vivienda, fincas y negocios</li>
+                <li style="display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:1.08em;"><i class="fas fa-hand-holding-usd" style="color:#e76f26;font-size:1.4em;"></i> Inversiones y proyectos compartidos</li>
+                <li style="display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:1.08em;"><i class="fas fa-shield-alt" style="color:#e76f26;font-size:1.4em;"></i> Seguridad, confianza y soporte humano</li>
+              </ul>
+              <div class="about-cta-group" style="margin-top:18px;">
+                <a href="registro.html" class="btn btn-primary btn-lg">Únete a MatchHogar</a>
+                <a href="que-ofrecemos.html" class="btn btn-outline btn-lg">Descubre nuestros servicios</a>
+              </div>
             </div>
-            <div class="feature-card visual">
-              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Inversiones" class="feature-icon">
-              <h3>Inversiones Seguras</h3>
-              <p>Conecta con inversores y propietarios verificados para proyectos inmobiliarios.</p>
-            </div>
-            <div class="feature-card visual">
-              <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Comunidad" class="feature-icon">
-              <h3>Comunidad Activa</h3>
-              <p>Únete a una comunidad de personas que comparten tus mismos objetivos.</p>
-            </div>
-            <div class="feature-card visual">
-              <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Seguridad" class="feature-icon">
-              <h3>Máxima Seguridad</h3>
-              <p>Verificación de usuarios y propiedades para tu tranquilidad.</p>
-            </div>
-            <div class="feature-card visual">
-              <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Encuentra matches" class="feature-icon">
-              <h3>Encuentra matches</h3>
-              <p>Explora perfiles compatibles y conecta con personas que comparten tus intereses y necesidades.</p>
-            </div>
-            <div class="feature-card visual">
-              <img src="https://cdn-icons-png.flaticon.com/512/726/726476.png" alt="Contacta" class="feature-icon">
-              <h3>Contacta</h3>
-              <p>Comunícate de forma segura a través de nuestra plataforma y da el siguiente paso hacia tu nuevo hogar.</p>
+            <div class="about-visual-imgs" style="display:flex;flex-direction:column;gap:18px;align-items:center;">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="Personas compartiendo hogar" style="width:320px;border-radius:18px;box-shadow:0 4px 24px #002e5e22;object-fit:cover;">
+              <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=500&q=80" alt="Inversión y comunidad" style="width:320px;border-radius:18px;box-shadow:0 4px 24px #002e5e22;object-fit:cover;">
             </div>
           </div>
         </div>
