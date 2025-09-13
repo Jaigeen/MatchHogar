@@ -31,20 +31,47 @@
           Accede a beneficios exclusivos y encuentra tu match perfecto más rápido
         </p>
       </div>
-
       <div class="formulario-registro">
+        <!-- Barra de progreso -->
+        <div class="wizard-progress">
+          <div class="progress-bar">
+            <div class="progress-indicator" style="width: 20%"></div>
+          </div>
+          <div class="steps">
+            <div class="step active" data-step="1">
+              <div class="step-icon"><i class="fas fa-user"></i></div>
+              <span>Datos Personales</span>
+            </div>
+            <div class="step" data-step="2">
+              <div class="step-icon"><i class="fas fa-briefcase"></i></div>
+              <span>Situación</span>
+            </div>
+            <div class="step" data-step="3">
+              <div class="step-icon"><i class="fas fa-heart"></i></div>
+              <span>Preferencias</span>
+            </div>
+            <div class="step" data-step="4">
+              <div class="step-icon"><i class="fas fa-credit-card"></i></div>
+              <span>Pago</span>
+            </div>
+            <div class="step" data-step="5">
+              <div class="step-icon"><i class="fas fa-check"></i></div>
+              <span>Finalizar</span>
+            </div>
+          </div>
+        </div>
         <form id="form-premium" class="registro-form">
-          <!-- Datos Personales -->
-          <div class="form-section">
+          <!-- Paso 1: Datos Personales -->
+          <div class="form-section" data-step="1">
             <h3>Datos Personales</h3>
             <div class="form-grid">
               <div class="form-group">
                 <label for="nombre">Nombre completo *</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre y apellidos">
               </div>
               <div class="form-group">
                 <label for="edad">Edad *</label>
-                <input type="number" id="edad" name="edad" required min="18">
+                <input type="number" id="edad" name="edad" required min="18" max="99" placeholder="Debes ser mayor de edad">
               </div>
               <div class="form-group">
                 <label for="sexo">Sexo *</label>
@@ -57,26 +84,26 @@
               </div>
               <div class="form-group">
                 <label for="genero">Género</label>
-                <input type="text" id="genero" name="genero">
+                <input type="text" id="genero" name="genero" placeholder="Opcional - Como te identificas">
               </div>
               <div class="form-group">
                 <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required placeholder="tu@email.com">
               </div>
               <div class="form-group">
                 <label for="telefono">Teléfono de contacto *</label>
-                <input type="tel" id="telefono" name="telefono" required>
+                <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 612345678" pattern="[0-9]{9}">
               </div>
             </div>
             <div class="form-group">
               <label for="foto">Foto de perfil *</label>
-              <input type="file" id="foto" name="foto" accept="image/*" required>
+              <input type="file" id="foto" name="foto" accept="image/*" required onchange="previewFoto(event)">
+              <img id="foto-preview" src="#" alt="Vista previa" style="display:none;max-width:100px;margin-top:10px;border-radius:50%">
               <small class="form-help">Como usuario Premium, tu perfil necesita una foto verificada</small>
             </div>
           </div>
-
-          <!-- Situación Personal y Profesional -->
-          <div class="form-section">
+          <!-- Paso 2: Situación Personal y Profesional -->
+          <div class="form-section" data-step="2" style="display:none">
             <h3>Situación Personal y Profesional</h3>
             <div class="form-grid">
               <div class="form-group">
@@ -113,9 +140,8 @@
               </div>
             </div>
           </div>
-
-          <!-- Preferencias Premium -->
-          <div class="form-section">
+          <!-- Paso 3: Preferencias Premium -->
+          <div class="form-section" data-step="3" style="display:none">
             <h3>Preferencias Premium</h3>
             <div class="form-grid">
               <div class="form-group">
@@ -129,8 +155,7 @@
               </div>
               <div class="form-group">
                 <label for="zona">Zonas de interés *</label>
-                <input type="text" id="zona" name="zona" required 
-                  placeholder="Puedes especificar múltiples zonas">
+                <input type="text" id="zona" name="zona" required placeholder="Puedes especificar múltiples zonas">
               </div>
               <div class="form-group">
                 <label for="presupuesto-min">Presupuesto mínimo *</label>
@@ -143,18 +168,15 @@
             </div>
             <div class="form-group">
               <label for="amenities">Amenidades deseadas</label>
-              <textarea id="amenities" name="amenities" rows="2" 
-                placeholder="Ej: piscina, gimnasio, terraza, parking..."></textarea>
+              <textarea id="amenities" name="amenities" rows="2" placeholder="Ej: piscina, gimnasio, terraza, parking..."></textarea>
             </div>
             <div class="form-group">
               <label for="condiciones">Condiciones específicas del "match" *</label>
-              <textarea id="condiciones" name="condiciones" rows="3" required 
-                placeholder="Describe detalladamente el perfil de las personas con las que te gustaría compartir"></textarea>
+              <textarea id="condiciones" name="condiciones" rows="3" required placeholder="Describe detalladamente el perfil de las personas con las que te gustaría compartir"></textarea>
             </div>
           </div>
-
-          <!-- Información de Pago -->
-          <div class="form-section">
+          <!-- Paso 4: Información de Pago -->
+          <div class="form-section" data-step="4" style="display:none">
             <h3>Información de Pago</h3>
             <div class="form-grid">
               <div class="form-group">
@@ -163,8 +185,7 @@
               </div>
               <div class="form-group">
                 <label for="tarjeta">Número de tarjeta *</label>
-                <input type="text" id="tarjeta" name="tarjeta" required 
-                  pattern="\d{16}" placeholder="1234 5678 9012 3456">
+                <input type="text" id="tarjeta" name="tarjeta" required pattern="\d{16}" placeholder="1234 5678 9012 3456">
               </div>
               <div class="form-group">
                 <label for="caducidad">Fecha de caducidad *</label>
@@ -172,14 +193,12 @@
               </div>
               <div class="form-group">
                 <label for="cvv">CVV *</label>
-                <input type="text" id="cvv" name="cvv" required 
-                  pattern="\d{3,4}" maxlength="4">
+                <input type="text" id="cvv" name="cvv" required pattern="\d{3,4}" maxlength="4">
               </div>
             </div>
           </div>
-
-          <!-- Sección Legal -->
-          <div class="form-section legal-section">
+          <!-- Paso 5: Legal y resumen -->
+          <div class="form-section legal-section" data-step="5" style="display:none">
             <div class="form-group checkbox-group">
               <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required>
               <label for="acepto-privacidad">
@@ -199,8 +218,11 @@
                 Deseo recibir notificaciones prioritarias de matches premium
               </label>
             </div>
+            <div class="form-group">
+              <h3>Resumen de tu registro</h3>
+              <div id="resumen-contenido"></div>
+            </div>
           </div>
-
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Completar Registro Premium</button>
             <a href="registro.html" class="btn btn-outline">Cancelar</a>
@@ -210,38 +232,269 @@
     </main>
 
     <!-- =========================== FOOTER ========================== -->
-    <footer>
-      <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
-      <p>
-        <a href="#politica">Política de privacidad</a> |
-        <a href="#condiciones">Términos y condiciones</a> |
-        <a href="#cookies">Política de cookies</a>
-      </p>
+    <footer class="footer-bonito">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" style="height:40px;border-radius:8px;margin-right:10px;vertical-align:middle;">
+          <span>MatchHogar</span>
+        </div>
+        <div class="footer-links">
+          <a href="#politica">Política de privacidad</a>
+          <span class="footer-sep">|</span>
+          <a href="#condiciones">Términos y condiciones</a>
+          <span class="footer-sep">|</span>
+          <a href="#cookies">Política de cookies</a>
+        </div>
+        <div class="footer-copy">© 2025 MatchHogar. Todos los derechos reservados.</div>
+      </div>
     </footer>
-
+    <style>
+      .footer-bonito {
+        background: var(--navy, #002e5e);
+        color: #fff;
+        padding: 32px 0 16px 0;
+        margin-top: 48px;
+        font-size: 1.05em;
+        box-shadow: 0 -2px 16px #0001;
+      }
+      .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-logo {
+        font-weight: bold;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 8px 0;
+      }
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 500;
+      }
+      .footer-links a:hover {
+        color: var(--orange, #e76f26);
+        text-decoration: underline;
+      }
+      .footer-sep {
+        color: #fff7;
+      }
+      .footer-copy {
+        font-size: 0.95em;
+        color: #fff9;
+        margin-top: 4px;
+      }
+      @media (max-width: 600px) {
+        .footer-content { font-size: 0.95em; }
+        .footer-links { gap: 8px; }
+      }
+    </style>
     <script>
-      document.getElementById('form-premium').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const requiredFields = this.querySelectorAll('[required]');
-        let isValid = true;
-        
-        requiredFields.forEach(field => {
-          if (!field.value.trim()) {
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('form-premium');
+        const progressBar = document.querySelector('.progress-indicator');
+        const steps = document.querySelectorAll('.step');
+        let currentStep = 1;
+        const totalSteps = steps.length;
+        // Validación y feedback visual
+        function validateField(field) {
+          field.classList.remove('error');
+          if (field.required && !field.value.trim()) {
             field.classList.add('error');
-            isValid = false;
-          } else {
-            field.classList.remove('error');
+            return false;
           }
-        });
-
-        if (!isValid) {
-          alert('Por favor, completa todos los campos obligatorios.');
-          return;
+          if (field.type === 'tel' && field.value) {
+            const isValidPhone = /^[0-9]{9}$/.test(field.value);
+            if (!isValidPhone) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          if (field.type === 'email' && field.value) {
+            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+            if (!isValidEmail) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          if (field.id === 'edad') {
+            const age = parseInt(field.value);
+            if (isNaN(age) || age < 18 || age > 99) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          if (field.id === 'tarjeta' && field.value) {
+            const isValidCard = /^\d{16}$/.test(field.value.replace(/\s/g, ''));
+            if (!isValidCard) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          if (field.id === 'cvv' && field.value) {
+            const isValidCVV = /^\d{3,4}$/.test(field.value);
+            if (!isValidCVV) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          return true;
         }
-
-        alert('Registro premium completado. Recibirás un email de confirmación.');
-        window.location.href = 'index.html';
+        function validateSection(sectionNumber) {
+          const section = form.querySelector(`.form-section[data-step="${sectionNumber}"]`);
+          if (!section) return true;
+          let isValid = true;
+          const fields = section.querySelectorAll('input:not([type="button"]), select, textarea');
+          fields.forEach(field => {
+            if (!validateField(field)) {
+              isValid = false;
+              field.classList.add('error');
+            }
+          });
+          return isValid;
+        }
+        function updateProgress() {
+          const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+          progressBar.style.width = `${progress}%`;
+          steps.forEach((step, index) => {
+            const stepNumber = index + 1;
+            step.classList.remove('active', 'completed');
+            if (stepNumber === currentStep) {
+              step.classList.add('active');
+            } else if (stepNumber < currentStep) {
+              step.classList.add('completed');
+            }
+          });
+        }
+        function goToStep(step) {
+          const sections = form.querySelectorAll('.form-section');
+          sections.forEach(section => {
+            section.style.display = 'none';
+            section.classList.remove('active');
+          });
+          const targetSection = form.querySelector(`.form-section[data-step="${step}"]`);
+          if (targetSection) {
+            targetSection.style.display = 'block';
+            setTimeout(() => targetSection.classList.add('active'), 10);
+          }
+          currentStep = step;
+          updateProgress();
+          // Mostrar resumen en el último paso
+          if (step === totalSteps) {
+            const resumen = document.getElementById('resumen-contenido');
+            let html = '<ul>';
+            form.querySelectorAll('input, select, textarea').forEach(f => {
+              if (f.type !== 'button' && f.type !== 'file' && f.type !== 'checkbox' && f.value) {
+                html += `<li><b>${f.previousElementSibling ? f.previousElementSibling.innerText : f.name}:</b> ${f.value}</li>`;
+              }
+            });
+            html += '</ul>';
+            resumen.innerHTML = html;
+          }
+        }
+        // Botones de navegación
+        const sections = form.querySelectorAll('.form-section');
+        sections.forEach((section, index) => {
+          const buttonContainer = document.createElement('div');
+          buttonContainer.className = 'form-navigation';
+          if (index > 0) {
+            const prevButton = document.createElement('button');
+            prevButton.type = 'button';
+            prevButton.className = 'btn btn-outline';
+            prevButton.textContent = 'Anterior';
+            prevButton.onclick = () => { goToStep(currentStep - 1); };
+            buttonContainer.appendChild(prevButton);
+          }
+          if (index < sections.length - 1) {
+            const nextButton = document.createElement('button');
+            nextButton.type = 'button';
+            nextButton.className = 'btn btn-primary';
+            nextButton.textContent = 'Siguiente';
+            nextButton.onclick = () => {
+              if (validateSection(currentStep)) {
+                goToStep(currentStep + 1);
+              } else {
+                alert('Por favor, completa todos los campos obligatorios correctamente.');
+              }
+            };
+            buttonContainer.appendChild(nextButton);
+          }
+          section.appendChild(buttonContainer);
+        });
+        // Validación en tiempo real
+        form.querySelectorAll('input:not([type="button"]), select, textarea').forEach(field => {
+          field.addEventListener('input', () => validateField(field));
+          field.addEventListener('blur', () => validateField(field));
+          field.addEventListener('focus', () => field.classList.add('focus'));
+          field.addEventListener('blur', () => field.classList.remove('focus'));
+        });
+        // Vista previa de la foto
+        window.previewFoto = function(event) {
+          const input = event.target;
+          const preview = document.getElementById('foto-preview');
+          if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              preview.src = e.target.result;
+              preview.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+          } else {
+            preview.src = '#';
+            preview.style.display = 'none';
+          }
+        };
+        // Iconos de validación
+        function setValidationIcon(field, valid) {
+          let icon = field.parentNode.querySelector('.valid-icon');
+          if (!icon) {
+            icon = document.createElement('span');
+            icon.className = 'valid-icon';
+            field.parentNode.appendChild(icon);
+          }
+          icon.innerHTML = valid ? '✔️' : (field.value ? '❌' : '');
+          icon.style.color = valid ? 'green' : 'red';
+        }
+        const oldValidateField = validateField;
+        validateField = function(field) {
+          const valid = oldValidateField(field);
+          setValidationIcon(field, valid);
+          return valid;
+        };
+        // Submit funcional
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          let isValid = true;
+          for (let i = 1; i <= totalSteps; i++) {
+            if (!validateSection(i)) {
+              isValid = false;
+              goToStep(i);
+              break;
+            }
+          }
+          if (!isValid) {
+            alert('Por favor, revisa los campos marcados en rojo.');
+            return;
+          }
+          // Mensaje de éxito
+          const main = document.querySelector('main');
+          main.innerHTML = `<div class='registro-exito' style='text-align:center;padding:60px 20px;'><h2 style='color:var(--navy,#002e5e);margin-bottom:16px;'>¡Registro premium completado con éxito!</h2><p>Te hemos enviado un email de confirmación.<br>Ya puedes disfrutar de los beneficios premium.</p><a href='index.html' class='btn btn-primary' style='margin-top:24px;'>Ir al inicio</a></div>`;
+        });
+        // Inicializar
+        goToStep(1);
       });
     </script>
   </body>
