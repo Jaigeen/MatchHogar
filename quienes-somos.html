@@ -5,6 +5,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MatchHogar | Quiénes somos</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .about-hero {
+        background-image: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        color: #fff;
+        padding: 80px 0 60px 0;
+        text-align: center;
+        overflow: hidden;
+      }
+      .about-hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(120deg, #002e5ecc 60%, #e76f26cc 100%);
+        z-index: 1;
+      }
+      .about-hero .container {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .about-hero h1 {
+        font-size: 2.7em;
+        font-weight: 800;
+        margin-bottom: 18px;
+        line-height: 1.1;
+        text-shadow: 0 2px 16px #0007;
+      }
+      .about-hero .tagline {
+        font-size: 1.25em;
+        margin-bottom: 32px;
+        color: #fffde7;
+        text-shadow: 0 2px 12px #0006;
+      }
+      .about-section {
+        background: #f7f9fb;
+        padding: 56px 0 32px 0;
+      }
+      .about-features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+        margin-top: 32px;
+      }
+      .about-feature-card {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 16px #002e5e11;
+        padding: 32px 20px 24px 20px;
+        text-align: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+        position: relative;
+      }
+      .about-feature-card img {
+        width: 64px; height: 64px; object-fit: contain; margin-bottom: 16px;
+      }
+      .about-feature-card h3 { font-size: 1.2em; margin-bottom: 10px; }
+      .about-feature-card p { color: #444; font-size: 1em; }
+      .about-feature-card ul { list-style: none; padding: 0; margin: 16px 0 0 0; }
+      .about-feature-card li { color: #e76f26; font-weight: 500; margin-bottom: 6px; }
+      .about-feature-card:hover { box-shadow: 0 6px 32px #002e5e22; transform: translateY(-4px) scale(1.03); }
+      .team-section {
+        background: #fff;
+        padding: 56px 0 32px 0;
+      }
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 32px;
+        margin-top: 32px;
+      }
+      .team-card {
+        background: #f7f9fb;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px #002e5e10;
+        padding: 28px 22px 20px 22px;
+        text-align: center;
+        max-width: 320px;
+        min-width: 180px;
+        margin: 0 auto;
+      }
+      .team-card img {
+        width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid #e76f26; }
+      .team-card .name { font-weight: bold; color: #002e5e; margin-bottom: 4px; }
+      .team-card .role { color: #e76f26; font-size: 0.98em; margin-bottom: 10px; }
+      .team-card .desc { color: #444; font-size: 0.98em; }
+      .impact-section {
+        background: #f7f9fb;
+        padding: 56px 0 32px 0;
+        text-align: center;
+      }
+      .impact-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+        margin-top: 32px;
+      }
+      .impact-card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px #002e5e10;
+        padding: 32px 28px 24px 28px;
+        text-align: center;
+        min-width: 180px;
+      }
+      .impact-card img {
+        width: 48px; height: 48px; object-fit: contain; margin-bottom: 12px;
+      }
+      .impact-card .impact-number {
+        font-size: 2.2em;
+        font-weight: 800;
+        color: #e76f26;
+        margin-bottom: 6px;
+      }
+      .impact-card .impact-label {
+        color: #002e5e;
+        font-weight: 600;
+        font-size: 1.1em;
+      }
+      .about-cta-section {
+        background: linear-gradient(90deg, #e76f26 0%, #002e5e 100%);
+        color: #fff;
+        padding: 56px 0 48px 0;
+        text-align: center;
+      }
+      .about-cta-section h2 { font-size: 2em; font-weight: 700; margin-bottom: 12px; }
+      .about-cta-section p { font-size: 1.15em; margin-bottom: 24px; }
+      .about-cta-section .cta-buttons { display: flex; gap: 18px; justify-content: center; }
+      .about-cta-section .btn { font-size: 1.1em; }
+      @media (max-width: 700px) {
+        .about-hero h1 { font-size: 2em; }
+        .about-features-grid, .team-grid, .impact-grid { grid-template-columns: 1fr !important; flex-direction: column; gap: 18px; }
+      }
+    </style>
   </head>
   <body>
     <!-- NAV -->
@@ -26,6 +165,7 @@
 
     <!-- ============================ MAIN =========================== -->
     <main>
+      <!-- Hero visual -->
       <section class="hero about-hero">
         <div class="container">
           <h1>Revolucionando la forma de compartir hogares</h1>
@@ -35,56 +175,37 @@
         </div>
       </section>
 
+      <!-- Valores/Misión/Historia visual -->
       <section class="about-section">
         <div class="container">
-          <div class="about-grid">
-            <div class="about-card">
-              <div class="about-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                  <path d="M2 17l10 5 10-5"/>
-                  <path d="M2 12l10 5 10-5"/>
-                </svg>
-              </div>
+          <div class="about-features-grid">
+            <div class="about-feature-card">
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Misión">
               <h3>Nuestra Misión</h3>
               <p>Transformar la forma en que las personas encuentran y comparten espacios habitacionales.</p>
-              <ul class="about-features">
+              <ul>
                 <li>Conexiones significativas</li>
                 <li>Espacios seguros</li>
                 <li>Comunidad vibrante</li>
                 <li>Experiencias compartidas</li>
               </ul>
             </div>
-
-            <div class="about-card">
-              <div class="about-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 16l4-4-4-4"/>
-                  <path d="M8 12h8"/>
-                </svg>
-              </div>
+            <div class="about-feature-card">
+              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Historia">
               <h3>Nuestra Historia</h3>
               <p>Desde 2024 hemos conectado más de 1,000 personas con sus hogares ideales.</p>
-              <ul class="about-features">
+              <ul>
                 <li>Fundación en 2024</li>
                 <li>+1000 matches exitosos</li>
                 <li>Presencia nacional</li>
                 <li>Crecimiento constante</li>
               </ul>
             </div>
-
-            <div class="about-card">
-              <div class="about-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                  <path d="M3.29 7L12 12l8.71-5"/>
-                  <path d="M12 22V12"/>
-                </svg>
-              </div>
+            <div class="about-feature-card">
+              <img src="https://cdn-icons-png.flaticon.com/512/726/726476.png" alt="Innovación">
               <h3>Innovación</h3>
               <p>Combinamos tecnología avanzada con un toque humano para las mejores coincidencias.</p>
-              <ul class="about-features">
+              <ul>
                 <li>Algoritmos inteligentes</li>
                 <li>Verificación avanzada</li>
                 <li>Plataforma segura</li>
@@ -95,143 +216,76 @@
         </div>
       </section>
 
-      <section class="stats-section">
-        <div class="container">
-          <h2>Nuestro Impacto</h2>
-          <div class="stats-grid">
-            <div class="stat-card">
-              <h3>25k+</h3>
-              <p>Usuarios Activos</p>
-            </div>
-            <div class="stat-card">
-              <h3>10k+</h3>
-              <p>Matches Exitosos</p>
-            </div>
-            <div class="stat-card">
-              <h3>50+</h3>
-              <p>Ciudades</p>
-            </div>
-            <div class="stat-card">
-              <h3>98%</h3>
-              <p>Satisfacción</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <!-- Equipo visual -->
       <section class="team-section">
         <div class="container">
-          <h2>Nuestro Equipo</h2>
-          <p class="section-description">
-            Personas apasionadas trabajando para revolucionar la forma de encontrar hogar
-          </p>
+          <h2 class="section-title">Nuestro equipo</h2>
           <div class="team-grid">
-            <div class="team-member">
-              <div class="member-photo">
-                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ana García">
-                <div class="member-social">
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-              </div>
-              <h3>Ana García</h3>
-              <p class="member-role">CEO & Fundadora</p>
-              <p class="member-quote">"Transformando la manera en que las personas encuentran su hogar ideal"</p>
+            <div class="team-card">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="CEO">
+              <div class="name">Carlos Martínez</div>
+              <div class="role">CEO & Fundador</div>
+              <div class="desc">Apasionado por conectar personas y crear comunidad.</div>
             </div>
-            
-            <div class="team-member">
-              <div class="member-photo">
-                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Carlos Ruiz">
-                <div class="member-social">
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-              </div>
-              <h3>Carlos Ruiz</h3>
-              <p class="member-role">Director de Tecnología</p>
-              <p class="member-quote">"Innovando para crear conexiones más inteligentes"</p>
+            <div class="team-card">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="CTO">
+              <div class="name">Laura Gómez</div>
+              <div class="role">CTO</div>
+              <div class="desc">Tecnología y experiencia de usuario al servicio de la vivienda.</div>
             </div>
-
-            <div class="team-member">
-              <div class="member-photo">
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Laura Martínez">
-                <div class="member-social">
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-              </div>
-              <h3>Laura Martínez</h3>
-              <p class="member-role">Directora de Operaciones</p>
-              <p class="member-quote">"Construyendo comunidades, creando experiencias"</p>
+            <div class="team-card">
+              <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="CMO">
+              <div class="name">Javier Ruiz</div>
+              <div class="role">CMO</div>
+              <div class="desc">Comunicador y constructor de comunidad digital.</div>
+            </div>
+            <div class="team-card">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Atención">
+              <div class="name">Marta Sánchez</div>
+              <div class="role">Atención al usuario</div>
+              <div class="desc">Siempre disponible para ayudarte a encontrar tu hogar ideal.</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="values-section">
+      <!-- Impacto visual -->
+      <section class="impact-section">
         <div class="container">
-          <h2>Nuestros Valores</h2>
-          <div class="values-grid">
-            <div class="value-card">
-              <div class="value-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-              </div>
-              <h3>Comunidad</h3>
-              <p>Creemos en el poder de las conexiones humanas y en crear espacios donde florezcan las relaciones.</p>
+          <h2>Nuestro Impacto</h2>
+          <div class="impact-grid">
+            <div class="impact-card">
+              <img src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png" alt="Matches">
+              <div class="impact-number">+1,000</div>
+              <div class="impact-label">Matches realizados</div>
             </div>
-            
-            <div class="value-card">
-              <div class="value-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <polyline points="22 4 12 14.01 9 11.01"/>
-                </svg>
-              </div>
-              <h3>Confianza</h3>
-              <p>La seguridad y confianza son fundamentales en cada match que creamos.</p>
+            <div class="impact-card">
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Usuarios">
+              <div class="impact-number">+2,500</div>
+              <div class="impact-label">Usuarios activos</div>
             </div>
-
-            <div class="value-card">
-              <div class="value-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                  <line x1="9" y1="9" x2="9.01" y2="9"/>
-                  <line x1="15" y1="9" x2="15.01" y2="9"/>
-                </svg>
-              </div>
-              <h3>Felicidad</h3>
-              <p>Trabajamos para que cada persona encuentre su lugar feliz para llamar hogar.</p>
+            <div class="impact-card">
+              <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Seguridad">
+              <div class="impact-number">100%</div>
+              <div class="impact-label">Verificación y seguridad</div>
             </div>
-
-            <div class="value-card">
-              <div class="value-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-                  <line x1="6" y1="1" x2="6" y2="4"/>
-                  <line x1="10" y1="1" x2="10" y2="4"/>
-                  <line x1="14" y1="1" x2="14" y2="4"/>
-                </svg>
-              </div>
-              <h3>Innovación</h3>
-              <p>Constantemente buscamos nuevas formas de mejorar la experiencia de encontrar hogar.</p>
+            <div class="impact-card">
+              <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Comunidades">
+              <div class="impact-number">+50</div>
+              <div class="impact-label">Comunidades creadas</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="cta-section">
+      <!-- CTA final visual -->
+      <section class="about-cta-section">
         <div class="container">
-          <div class="cta-content">
-            <h2>¿Listo para formar parte de nuestra comunidad?</h2>
-            <p>Únete a miles de personas que ya han encontrado su espacio ideal</p>
-            <div class="cta-buttons">
-              <a href="registro.html" class="btn btn-primary">Registrarme ahora</a>
-              <a href="que-ofrecemos.html" class="btn btn-outline">Ver servicios</a>
-            </div>
+          <h2>¿Quieres formar parte de MatchHogar?</h2>
+          <p>Únete a nuestra comunidad y vive la experiencia de compartir hogar de forma segura y sencilla.</p>
+          <div class="cta-buttons">
+            <a href="registro.html" class="btn btn-primary btn-lg">Únete ahora</a>
+            <a href="index.html" class="btn btn-outline btn-lg">Volver al inicio</a>
           </div>
         </div>
       </section>
