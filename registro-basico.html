@@ -88,8 +88,8 @@
               </div>
               <div class="form-group">
                 <label for="edad">Edad *</label>
-                <input type="number" id="edad" name="edad" required min="18" max="99"
-                  placeholder="Debes ser mayor de edad">
+                <input type="number" id="edad" name="edad" required min="18" max="100"
+                  placeholder="Debes ser mayor de edad (máx. 100)">
               </div>
               <div class="form-group">
                 <label for="sexo">Sexo *</label>
@@ -142,11 +142,40 @@
               </div>
               <div class="form-group">
                 <label for="hijos">¿Tienes hijos? *</label>
-                <input type="text" id="hijos" name="hijos" placeholder="Número y edades" required>
+                <select id="hijos" name="hijos" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="no">No</option>
+                  <option value="si">Sí</option>
+                </select>
+              </div>
+              <div class="form-group" id="hijos-detalle-group" style="display:none">
+                <label for="hijos-cuantos">¿Cuántos hijos?</label>
+                <input type="number" id="hijos-cuantos" name="hijos-cuantos" min="1" max="20" placeholder="Ej: 2">
+              </div>
+              <div class="form-group" id="hijos-edades-group" style="display:none">
+                <label for="hijos-edades">Edades de los hijos</label>
+                <input type="text" id="hijos-edades" name="hijos-edades" placeholder="Ej: 5 y 8 años">
               </div>
               <div class="form-group">
                 <label for="mascotas">¿Tienes mascotas? *</label>
-                <input type="text" id="mascotas" name="mascotas" placeholder="Tipo de mascota" required>
+                <select id="mascotas" name="mascotas" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="no">No</option>
+                  <option value="si">Sí</option>
+                </select>
+              </div>
+              <div class="form-group" id="tipo-mascota-group" style="display:none">
+                <label for="tipo-mascota">Tipo de mascota</label>
+                <select id="tipo-mascota" name="tipo-mascota">
+                  <option value="">Seleccionar...</option>
+                  <option value="perro">Perro</option>
+                  <option value="gato">Gato</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group" id="mascota-otro-group" style="display:none">
+                <label for="mascota-otro">¿Qué tipo?</label>
+                <input type="text" id="mascota-otro" name="mascota-otro" placeholder="Ej: conejo, pájaro...">
               </div>
             </div>
           </div>
@@ -155,17 +184,113 @@
             <h3>Preferencias de Vivienda</h3>
             <div class="form-grid">
               <div class="form-group">
-                <label for="operacion">Tipo de operación *</label>
-                <select id="operacion" name="operacion" required>
-                  <option value="">Seleccionar...</option>
-                  <option value="alquiler">Alquiler</option>
-                  <option value="compra">Compra</option>
-                  <option value="inversion">Inversión</option>
-                </select>
+                <label>Tipo de operación *</label>
+                <div class="chip-group" id="operacion-group">
+                  <label class="chip"><input type="checkbox" name="operacion[]" value="alquiler" required> Alquiler</label>
+                  <label class="chip"><input type="checkbox" name="operacion[]" value="compra"> Compra</label>
+                  <label class="chip"><input type="checkbox" name="operacion[]" value="inversion"> Inversión</label>
+                </div>
+                <small class="form-help">Selecciona una o varias opciones</small>
               </div>
               <div class="form-group">
                 <label for="zona">Zona geográfica de interés *</label>
-                <input type="text" id="zona" name="zona" required>
+                <select id="zona" name="zona" required>
+                  <option value="">Seleccionar ciudad...</option>
+                  <option value="Madrid">Madrid</option>
+                  <option value="Barcelona">Barcelona</option>
+                  <option value="Valencia">Valencia</option>
+                  <option value="Sevilla">Sevilla</option>
+                  <option value="Zaragoza">Zaragoza</option>
+                  <option value="Málaga">Málaga</option>
+                  <option value="Murcia">Murcia</option>
+                  <option value="Palma">Palma</option>
+                  <option value="Las Palmas">Las Palmas</option>
+                  <option value="Bilbao">Bilbao</option>
+                  <option value="Alicante">Alicante</option>
+                  <option value="Córdoba">Córdoba</option>
+                  <option value="Valladolid">Valladolid</option>
+                  <option value="Vigo">Vigo</option>
+                  <option value="Gijón">Gijón</option>
+                  <option value="Hospitalet de Llobregat">Hospitalet de Llobregat</option>
+                  <option value="Vitoria">Vitoria</option>
+                  <option value="A Coruña">A Coruña</option>
+                  <option value="Elche">Elche</option>
+                  <option value="Granada">Granada</option>
+                  <option value="Tarragona">Tarragona</option>
+                  <option value="Oviedo">Oviedo</option>
+                  <option value="Badalona">Badalona</option>
+                  <option value="Cartagena">Cartagena</option>
+                  <option value="Terrassa">Terrassa</option>
+                  <option value="Jerez">Jerez</option>
+                  <option value="Sabadell">Sabadell</option>
+                  <option value="Móstoles">Móstoles</option>
+                  <option value="Santa Cruz de Tenerife">Santa Cruz de Tenerife</option>
+                  <option value="Pamplona">Pamplona</option>
+                  <option value="Almería">Almería</option>
+                  <option value="Alcalá de Henares">Alcalá de Henares</option>
+                  <option value="Fuenlabrada">Fuenlabrada</option>
+                  <option value="Leganés">Leganés</option>
+                  <option value="San Sebastián">San Sebastián</option>
+                  <option value="Getafe">Getafe</option>
+                  <option value="Burgos">Burgos</option>
+                  <option value="Santander">Santander</option>
+                  <option value="Albacete">Albacete</option>
+                  <option value="Castellón">Castellón</option>
+                  <option value="Alcorcón">Alcorcón</option>
+                  <option value="San Cristóbal de La Laguna">San Cristóbal de La Laguna</option>
+                  <option value="Logroño">Logroño</option>
+                  <option value="Badajoz">Badajoz</option>
+                  <option value="Salamanca">Salamanca</option>
+                  <option value="Huelva">Huelva</option>
+                  <option value="Marbella">Marbella</option>
+                  <option value="Lleida">Lleida</option>
+                  <option value="Tarrasa">Tarrasa</option>
+                  <option value="León">León</option>
+                  <option value="Cádiz">Cádiz</option>
+                  <option value="Jaén">Jaén</option>
+                  <option value="Ourense">Ourense</option>
+                  <option value="Algeciras">Algeciras</option>
+                  <option value="Reus">Reus</option>
+                  <option value="Telde">Telde</option>
+                  <option value="Barakaldo">Barakaldo</option>
+                  <option value="Santiago de Compostela">Santiago de Compostela</option>
+                  <option value="Lugo">Lugo</option>
+                  <option value="Cáceres">Cáceres</option>
+                  <option value="Ferrol">Ferrol</option>
+                  <option value="San Fernando">San Fernando</option>
+                  <option value="Torrevieja">Torrevieja</option>
+                  <option value="Parla">Parla</option>
+                  <option value="Mataró">Mataró</option>
+                  <option value="Roquetas de Mar">Roquetas de Mar</option>
+                  <option value="El Ejido">El Ejido</option>
+                  <option value="Ciudad Real">Ciudad Real</option>
+                  <option value="Benidorm">Benidorm</option>
+                  <option value="Rubí">Rubí</option>
+                  <option value="Pontevedra">Pontevedra</option>
+                  <option value="Fuengirola">Fuengirola</option>
+                  <option value="Avilés">Avilés</option>
+                  <option value="Coslada">Coslada</option>
+                  <option value="Valdemoro">Valdemoro</option>
+                  <option value="Girona">Girona</option>
+                  <option value="Cerdanyola del Vallès">Cerdanyola del Vallès</option>
+                  <option value="Puerto de Santa María">Puerto de Santa María</option>
+                  <option value="Toledo">Toledo</option>
+                  <option value="Orihuela">Orihuela</option>
+                  <option value="Majadahonda">Majadahonda</option>
+                  <option value="Alcobendas">Alcobendas</option>
+                  <option value="Mérida">Mérida</option>
+                  <option value="Torremolinos">Torremolinos</option>
+                  <option value="Arrecife">Arrecife</option>
+                  <option value="Elda">Elda</option>
+                  <option value="Sanlúcar de Barrameda">Sanlúcar de Barrameda</option>
+                  <option value="Viladecans">Viladecans</option>
+                  <option value="Manresa">Manresa</option>
+                  <option value="Gandía">Gandía</option>
+                  <option value="Molina de Segura">Molina de Segura</option>
+                  <option value="Torrelavega">Torrelavega</option>
+                  <option value="Ceuta">Ceuta</option>
+                  <option value="Melilla">Melilla</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="rango-economico">Rango económico *</label>
@@ -284,6 +409,47 @@
         .footer-content { font-size: 0.95em; }
         .footer-links { gap: 8px; }
       }
+      .chip-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 6px;
+      }
+      .chip {
+        display: flex;
+        align-items: center;
+        background: #f5f7fa;
+        border: 1.5px solid #cfd8dc;
+        border-radius: 20px;
+        padding: 7px 16px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.2s, border 0.2s;
+        user-select: none;
+      }
+      .chip input[type="checkbox"] {
+        accent-color: var(--navy, #002e5e);
+        margin-right: 7px;
+      }
+      .chip input[type="checkbox"]:checked + span,
+      .chip input[type="checkbox"]:checked ~ span {
+        font-weight: bold;
+        color: var(--orange, #e76f26);
+      }
+      .chip input[type="checkbox"]:checked ~ label {
+        color: var(--orange, #e76f26);
+      }
+      .chip input[type="checkbox"]:checked {
+        outline: 2px solid var(--orange, #e76f26);
+      }
+      .chip:has(input[type="checkbox"]:checked) {
+        background: #ffe5d0;
+        border-color: var(--orange, #e76f26);
+      }
+      @media (max-width: 600px) {
+        .chip-group { gap: 6px; }
+        .chip { font-size: 0.98em; padding: 7px 10px; }
+      }
     </style>
 
     <script>
@@ -321,7 +487,7 @@
           
           if (field.id === 'edad') {
             const age = parseInt(field.value);
-            if (isNaN(age) || age < 18 || age > 99) {
+            if (isNaN(age) || age < 18 || age > 100) {
               field.classList.add('error');
               return false;
             }
@@ -344,6 +510,14 @@
               field.classList.add('error');
             }
           });
+
+          if (sectionNumber === 3) {
+            const checkedOps = form.querySelectorAll('input[name="operacion[]"]:checked');
+            if (checkedOps.length === 0) {
+              isValid = false;
+              alert('Selecciona al menos un tipo de operación.');
+            }
+          }
 
           return isValid;
         }
@@ -516,6 +690,60 @@
             resumen.innerHTML = html;
           }
         };
+
+        // Mostrar campos hijos y mascotas según selección
+        const hijosSelect = document.getElementById('hijos');
+        const hijosDetalleGroup = document.getElementById('hijos-detalle-group');
+        const hijosCuantos = document.getElementById('hijos-cuantos');
+        const hijosEdadesGroup = document.getElementById('hijos-edades-group');
+        const hijosEdades = document.getElementById('hijos-edades');
+
+        hijosSelect.addEventListener('change', function() {
+          if (this.value === 'si') {
+            hijosDetalleGroup.style.display = 'block';
+            hijosCuantos.required = true;
+          } else {
+            hijosDetalleGroup.style.display = 'none';
+            hijosCuantos.required = false;
+            hijosEdadesGroup.style.display = 'none';
+            hijosEdades.required = false;
+          }
+        });
+
+        hijosCuantos.addEventListener('input', function() {
+          if (parseInt(this.value) > 0) {
+            hijosEdadesGroup.style.display = 'block';
+            hijosEdades.required = true;
+          } else {
+            hijosEdadesGroup.style.display = 'none';
+            hijosEdades.required = false;
+          }
+        });
+
+        const mascotasSelect = document.getElementById('mascotas');
+        const tipoMascotaGroup = document.getElementById('tipo-mascota-group');
+        const tipoMascotaSelect = document.getElementById('tipo-mascota');
+        const mascotaOtroGroup = document.getElementById('mascota-otro-group');
+        mascotasSelect.addEventListener('change', function() {
+          if (this.value === 'si') {
+            tipoMascotaGroup.style.display = 'block';
+            tipoMascotaSelect.required = true;
+          } else {
+            tipoMascotaGroup.style.display = 'none';
+            tipoMascotaSelect.required = false;
+            mascotaOtroGroup.style.display = 'none';
+            document.getElementById('mascota-otro').required = false;
+          }
+        });
+        tipoMascotaSelect.addEventListener('change', function() {
+          if (this.value === 'otro') {
+            mascotaOtroGroup.style.display = 'block';
+            document.getElementById('mascota-otro').required = true;
+          } else {
+            mascotaOtroGroup.style.display = 'none';
+            document.getElementById('mascota-otro').required = false;
+          }
+        });
       });
     </script>
   </body>

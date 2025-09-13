@@ -72,7 +72,7 @@
               </div>
               <div class="form-group">
                 <label for="edad">Edad *</label>
-                <input type="number" id="edad" name="edad" required min="18" max="99" placeholder="Debes ser mayor de edad">
+                <input type="number" id="edad" name="edad" required min="18" max="100" placeholder="Debes ser mayor de edad (máx. 100)">
               </div>
               <div class="form-group">
                 <label for="sexo">Sexo *</label>
@@ -118,6 +118,22 @@
                 </select>
               </div>
               <div class="form-group">
+                <label for="hijos">¿Tienes hijos? *</label>
+                <select id="hijos" name="hijos" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="no">No</option>
+                  <option value="si">Sí</option>
+                </select>
+              </div>
+              <div class="form-group" id="hijos-detalle-group" style="display:none">
+                <label for="hijos-cuantos">¿Cuántos hijos?</label>
+                <input type="number" id="hijos-cuantos" name="hijos-cuantos" min="1" max="20" placeholder="Ej: 2">
+              </div>
+              <div class="form-group" id="hijos-edades-group" style="display:none">
+                <label for="hijos-edades">Edades de los hijos</label>
+                <input type="text" id="hijos-edades" name="hijos-edades" placeholder="Ej: 5 y 8 años">
+              </div>
+              <div class="form-group">
                 <label for="ocupacion">Ocupación *</label>
                 <input type="text" id="ocupacion" name="ocupacion" required>
               </div>
@@ -132,12 +148,25 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="hijos">¿Tienes hijos? *</label>
-                <input type="text" id="hijos" name="hijos" placeholder="Número y edades" required>
-              </div>
-              <div class="form-group">
                 <label for="mascotas">¿Tienes mascotas? *</label>
-                <input type="text" id="mascotas" name="mascotas" placeholder="Tipo de mascota" required>
+                <select id="mascotas" name="mascotas" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="no">No</option>
+                  <option value="si">Sí</option>
+                </select>
+              </div>
+              <div class="form-group" id="tipo-mascota-group" style="display:none">
+                <label for="tipo-mascota">Tipo de mascota</label>
+                <select id="tipo-mascota" name="tipo-mascota">
+                  <option value="">Seleccionar...</option>
+                  <option value="perro">Perro</option>
+                  <option value="gato">Gato</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group" id="mascota-otro-group" style="display:none">
+                <label for="mascota-otro">¿Qué tipo?</label>
+                <input type="text" id="mascota-otro" name="mascota-otro" placeholder="Ej: conejo, pájaro...">
               </div>
             </div>
           </div>
@@ -343,7 +372,7 @@
           }
           if (field.id === 'edad') {
             const age = parseInt(field.value);
-            if (isNaN(age) || age < 18 || age > 99) {
+            if (isNaN(age) || age < 18 || age > 100) {
               field.classList.add('error');
               return false;
             }
@@ -485,6 +514,68 @@
           setValidationIcon(field, valid);
           return valid;
         };
+        // Mostrar campos hijos y mascotas según selección
+        const hijosSelect = document.getElementById('hijos');
+        const hijosDetalleGroup = document.getElementById('hijos-detalle-group');
+        const hijosCuantos = document.getElementById('hijos-cuantos');
+        const hijosEdadesGroup = document.getElementById('hijos-edades-group');
+        const hijosEdades = document.getElementById('hijos-edades');
+        hijosSelect.addEventListener('change', function() {
+          if (this.value === 'si') {
+            hijosDetalleGroup.style.display = 'block';
+            hijosCuantos.required = true;
+          } else {
+            hijosDetalleGroup.style.display = 'none';
+            hijosCuantos.required = false;
+            hijosEdadesGroup.style.display = 'none';
+            hijosEdades.required = false;
+          }
+        });
+        hijosCuantos.addEventListener('input', function() {
+          if (parseInt(this.value) > 0) {
+            hijosEdadesGroup.style.display = 'block';
+            hijosEdades.required = true;
+          } else {
+            hijosEdadesGroup.style.display = 'none';
+            hijosEdades.required = false;
+          }
+        });
+        const mascotasSelect = document.getElementById('mascotas');
+        const tipoMascotaGroup = document.getElementById('tipo-mascota-group');
+        const tipoMascotaSelect = document.getElementById('tipo-mascota');
+        const mascotaOtroGroup = document.getElementById('mascota-otro-group');
+        mascotasSelect.addEventListener('change', function() {
+          if (this.value === 'si') {
+            tipoMascotaGroup.style.display = 'block';
+            tipoMascotaSelect.required = true;
+          } else {
+            tipoMascotaGroup.style.display = 'none';
+            tipoMascotaSelect.required = false;
+            mascotaOtroGroup.style.display = 'none';
+            document.getElementById('mascota-otro').required = false;
+          }
+        });
+        tipoMascotaSelect.addEventListener('change', function() {
+          if (this.value === 'otro') {
+            mascotaOtroGroup.style.display = 'block';
+            document.getElementById('mascota-otro').required = true;
+          } else {
+            mascotaOtroGroup.style.display = 'none';
+            document.getElementById('mascota-otro').required = false;
+          }
+        });
+        // Validar presupuesto mínimo < máximo
+        form.addEventListener('submit', function(e) {
+          const min = parseFloat(document.getElementById('presupuesto-min').value);
+          const max = parseFloat(document.getElementById('presupuesto-max').value);
+          if (!isNaN(min) && !isNaN(max) && min >= max) {
+            e.preventDefault();
+            alert('El presupuesto mínimo debe ser menor que el presupuesto máximo.');
+            document.getElementById('presupuesto-min').classList.add('error');
+            document.getElementById('presupuesto-max').classList.add('error');
+            return false;
+          }
+        });
         // Submit funcional
         form.addEventListener('submit', async function(e) {
           e.preventDefault();
