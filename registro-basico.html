@@ -77,7 +77,6 @@
             </div>
           </div>
         </div>
-        </div>
 
         <form id="form-basico" class="registro-form">
           <!-- Paso 1: Datos Personales -->
@@ -172,7 +171,13 @@
               </div>
               <div class="form-group">
                 <label for="rango-economico">Rango económico *</label>
-                <input type="text" id="rango-economico" name="rango-economico" required>
+                <select id="rango-economico" name="rango-economico" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="menos de 1000€">menos de 1000€</option>
+                  <option value="1000€-2000€">1000€-2000€</option>
+                  <option value="2000€-3000€">2000€-3000€</option>
+                  <option value="3000€ o más">3000€ o más</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
