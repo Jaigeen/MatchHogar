@@ -23,19 +23,47 @@
       </nav>
     </header>
 
+    <!-- HERO REGISTRO COLABORADOR -->
+    <section class="hero register-hero">
+      <div class="container" style="text-align:center;">
+        <h1>Registro de Colaborador</h1>
+      </div>
+    </section>
+
     <!-- ============================ MAIN =========================== -->
     <main class="container registro-section">
-      <div class="registro-header">
-        <h1>Registro de Colaborador</h1>
-        <p class="registro-description">
-          Únete a nuestra red de colaboradores y ayuda a crear matches perfectos
-        </p>
-      </div>
-
       <div class="formulario-registro">
+        <!-- Barra de progreso -->
+        <div class="wizard-progress">
+          <div class="progress-bar">
+            <div class="progress-indicator" style="width: 20%"></div>
+          </div>
+          <div class="steps">
+            <div class="step active" data-step="1">
+              <div class="step-icon"><span style="font-size:1.3em;">👤</span></div>
+              <span>Datos Personales</span>
+            </div>
+            <div class="step" data-step="2">
+              <div class="step-icon"><span style="font-size:1.3em;">💼</span></div>
+              <span>Profesional</span>
+            </div>
+            <div class="step" data-step="3">
+              <div class="step-icon"><span style="font-size:1.3em;">🏠</span></div>
+              <span>Propiedades</span>
+            </div>
+            <div class="step" data-step="4">
+              <div class="step-icon"><span style="font-size:1.3em;">📄</span></div>
+              <span>Documentos</span>
+            </div>
+            <div class="step" data-step="5">
+              <div class="step-icon"><span style="font-size:1.3em;">✅</span></div>
+              <span>Finalizar</span>
+            </div>
+          </div>
+        </div>
         <form id="form-colaborador" class="registro-form">
-          <!-- Datos Personales -->
-          <div class="form-section">
+          <!-- Paso 1: Datos Personales -->
+          <div class="form-section" data-step="1">
             <h3>Datos Personales</h3>
             <div class="form-grid">
               <div class="form-group">
@@ -44,8 +72,7 @@
               </div>
               <div class="form-group">
                 <label for="dni">DNI/NIE *</label>
-                <input type="text" id="dni" name="dni" required 
-                  pattern="[0-9]{8}[A-Z]|[A-Z][0-9]{7}[A-Z]">
+                <input type="text" id="dni" name="dni" required pattern="[0-9]{8}[A-Z]|[A-Z][0-9]{7}[A-Z]">
               </div>
               <div class="form-group">
                 <label for="email">Email profesional *</label>
@@ -53,18 +80,18 @@
               </div>
               <div class="form-group">
                 <label for="telefono">Teléfono de contacto *</label>
-                <input type="tel" id="telefono" name="telefono" required>
+                <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9}">
               </div>
             </div>
             <div class="form-group">
               <label for="foto">Foto de perfil *</label>
-              <input type="file" id="foto" name="foto" accept="image/*" required>
+              <input type="file" id="foto" name="foto" accept="image/*" required onchange="previewFoto(event)">
+              <img id="foto-preview" src="#" alt="Vista previa" style="display:none;max-width:100px;margin-top:10px;border-radius:50%">
               <small class="form-help">Tu foto ayudará a generar confianza con los usuarios</small>
             </div>
           </div>
-
-          <!-- Información Profesional -->
-          <div class="form-section">
+          <!-- Paso 2: Información Profesional -->
+          <div class="form-section" data-step="2" style="display:none">
             <h3>Información Profesional</h3>
             <div class="form-grid">
               <div class="form-group">
@@ -92,15 +119,13 @@
               </div>
             </div>
           </div>
-
-          <!-- Propiedades y Servicios -->
-          <div class="form-section">
+          <!-- Paso 3: Propiedades y Servicios -->
+          <div class="form-section" data-step="3" style="display:none">
             <h3>Propiedades y Servicios</h3>
             <div class="form-grid">
               <div class="form-group">
                 <label for="zonas">Zonas de operación *</label>
-                <input type="text" id="zonas" name="zonas" required
-                  placeholder="Ej: Barcelona centro, L'Eixample...">
+                <input type="text" id="zonas" name="zonas" required placeholder="Ej: Barcelona centro, L'Eixample...">
               </div>
               <div class="form-group">
                 <label for="tipo-propiedad">Tipos de propiedades *</label>
@@ -137,47 +162,35 @@
             </div>
             <div class="form-group">
               <label for="descripcion">Descripción profesional *</label>
-              <textarea id="descripcion" name="descripcion" rows="3" required
-                placeholder="Describe tu experiencia y especialización..."></textarea>
+              <textarea id="descripcion" name="descripcion" rows="3" required placeholder="Describe tu experiencia y especialización..."></textarea>
             </div>
           </div>
-
-          <!-- Verificación y Documentación -->
-          <div class="form-section">
+          <!-- Paso 4: Verificación y Documentación -->
+          <div class="form-section" data-step="4" style="display:none">
             <h3>Verificación y Documentación</h3>
             <div class="form-group">
               <label for="doc-identidad">Documento de identidad *</label>
-              <input type="file" id="doc-identidad" name="doc-identidad" required
-                accept=".pdf,.jpg,.png">
+              <input type="file" id="doc-identidad" name="doc-identidad" required accept=".pdf,.jpg,.png">
               <small class="form-help">DNI o NIE por ambas caras</small>
             </div>
             <div class="form-group">
               <label for="doc-profesional">Acreditación profesional</label>
-              <input type="file" id="doc-profesional" name="doc-profesional"
-                accept=".pdf,.jpg,.png">
+              <input type="file" id="doc-profesional" name="doc-profesional" accept=".pdf,.jpg,.png">
               <small class="form-help">Licencia, título o certificación relevante</small>
             </div>
             <div class="form-group">
               <label for="doc-fiscal">Documentación fiscal *</label>
-              <input type="file" id="doc-fiscal" name="doc-fiscal" required
-                accept=".pdf">
+              <input type="file" id="doc-fiscal" name="doc-fiscal" required accept=".pdf">
               <small class="form-help">CIF o alta como autónomo</small>
             </div>
           </div>
-
-          <!-- Referencias -->
-          <div class="form-section">
-            <h3>Referencias Profesionales</h3>
+          <!-- Paso 5: Referencias y Legal -->
+          <div class="form-section legal-section" data-step="5" style="display:none">
             <div class="form-group">
               <label for="referencias">Referencias verificables</label>
-              <textarea id="referencias" name="referencias" rows="3"
-                placeholder="Nombre de la referencia, empresa, cargo y datos de contacto..."></textarea>
+              <textarea id="referencias" name="referencias" rows="3" placeholder="Nombre de la referencia, empresa, cargo y datos de contacto..."></textarea>
               <small class="form-help">Opcional, pero recomendado para aumentar la confianza</small>
             </div>
-          </div>
-
-          <!-- Sección Legal -->
-          <div class="form-section legal-section">
             <div class="form-group checkbox-group">
               <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required>
               <label for="acepto-privacidad">
@@ -197,8 +210,11 @@
                 Autorizo la verificación de mis datos y documentación *
               </label>
             </div>
+            <div class="form-group">
+              <h3>Resumen de tu registro</h3>
+              <div id="resumen-contenido"></div>
+            </div>
           </div>
-
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
             <a href="registro.html" class="btn btn-outline">Cancelar</a>
@@ -208,45 +224,263 @@
     </main>
 
     <!-- =========================== FOOTER ========================== -->
-    <footer>
-      <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
-      <p>
-        <a href="#politica">Política de privacidad</a> |
-        <a href="#condiciones">Términos y condiciones</a> |
-        <a href="#cookies">Política de cookies</a>
-      </p>
+    <footer class="footer-bonito">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" style="height:40px;border-radius:8px;margin-right:10px;vertical-align:middle;">
+          <span>MatchHogar</span>
+        </div>
+        <div class="footer-links">
+          <a href="#politica">Política de privacidad</a>
+          <span class="footer-sep">|</span>
+          <a href="#condiciones">Términos y condiciones</a>
+          <span class="footer-sep">|</span>
+          <a href="#cookies">Política de cookies</a>
+        </div>
+        <div class="footer-copy">© 2025 MatchHogar. Todos los derechos reservados.</div>
+      </div>
     </footer>
-
+    <style>
+      .footer-bonito {
+        background: var(--navy, #002e5e);
+        color: #fff;
+        padding: 32px 0 16px 0;
+        margin-top: 48px;
+        font-size: 1.05em;
+        box-shadow: 0 -2px 16px #0001;
+      }
+      .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-logo {
+        font-weight: bold;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 8px 0;
+      }
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 500;
+      }
+      .footer-links a:hover {
+        color: var(--orange, #e76f26);
+        text-decoration: underline;
+      }
+      .footer-sep {
+        color: #fff7;
+      }
+      .footer-copy {
+        font-size: 0.95em;
+        color: #fff9;
+        margin-top: 4px;
+      }
+      @media (max-width: 600px) {
+        .footer-content { font-size: 0.95em; }
+        .footer-links { gap: 8px; }
+      }
+    </style>
     <script>
-      document.getElementById('form-colaborador').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const requiredFields = this.querySelectorAll('[required]');
-        let isValid = true;
-        
-        requiredFields.forEach(field => {
-          if (!field.value.trim()) {
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('form-colaborador');
+        const progressBar = document.querySelector('.progress-indicator');
+        const steps = document.querySelectorAll('.step');
+        let currentStep = 1;
+        const totalSteps = steps.length;
+        // Validación y feedback visual
+        function validateField(field) {
+          field.classList.remove('error');
+          if (field.required && !field.value.trim()) {
             field.classList.add('error');
-            isValid = false;
-          } else {
-            field.classList.remove('error');
+            return false;
           }
+          if (field.type === 'tel' && field.value) {
+            const isValidPhone = /^[0-9]{9}$/.test(field.value);
+            if (!isValidPhone) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          if (field.type === 'email' && field.value) {
+            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+            if (!isValidEmail) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          if (field.id === 'dni' && field.value) {
+            const isValidDNI = /^[0-9]{8}[A-Z]$|^[A-Z][0-9]{7}[A-Z]$/.test(field.value);
+            if (!isValidDNI) {
+              field.classList.add('error');
+              return false;
+            }
+          }
+          return true;
+        }
+        function validateSection(sectionNumber) {
+          const section = form.querySelector(`.form-section[data-step="${sectionNumber}"]`);
+          if (!section) return true;
+          let isValid = true;
+          const fields = section.querySelectorAll('input:not([type="button"]), select, textarea');
+          fields.forEach(field => {
+            if (!validateField(field)) {
+              isValid = false;
+              field.classList.add('error');
+            }
+          });
+          // Validar servicios en paso 3
+          if (sectionNumber === 3) {
+            const servicios = form.querySelectorAll('input[name="servicios[]"]:checked');
+            if (servicios.length === 0) {
+              isValid = false;
+              alert('Debes seleccionar al menos un servicio ofrecido.');
+            }
+          }
+          return isValid;
+        }
+        function updateProgress() {
+          const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+          progressBar.style.width = `${progress}%`;
+          steps.forEach((step, index) => {
+            const stepNumber = index + 1;
+            step.classList.remove('active', 'completed');
+            if (stepNumber === currentStep) {
+              step.classList.add('active');
+            } else if (stepNumber < currentStep) {
+              step.classList.add('completed');
+            }
+          });
+        }
+        function goToStep(step) {
+          const sections = form.querySelectorAll('.form-section');
+          sections.forEach(section => {
+            section.style.display = 'none';
+            section.classList.remove('active');
+          });
+          const targetSection = form.querySelector(`.form-section[data-step="${step}"]`);
+          if (targetSection) {
+            targetSection.style.display = 'block';
+            setTimeout(() => targetSection.classList.add('active'), 10);
+          }
+          currentStep = step;
+          updateProgress();
+          // Mostrar resumen en el último paso
+          if (step === totalSteps) {
+            const resumen = document.getElementById('resumen-contenido');
+            let html = '<ul>';
+            form.querySelectorAll('input, select, textarea').forEach(f => {
+              if (f.type !== 'button' && f.type !== 'file' && f.type !== 'checkbox' && f.value) {
+                html += `<li><b>${f.previousElementSibling ? f.previousElementSibling.innerText : f.name}:</b> ${f.value}</li>`;
+              }
+            });
+            html += '</ul>';
+            resumen.innerHTML = html;
+          }
+        }
+        // Botones de navegación
+        const sections = form.querySelectorAll('.form-section');
+        sections.forEach((section, index) => {
+          const buttonContainer = document.createElement('div');
+          buttonContainer.className = 'form-navigation';
+          if (index > 0) {
+            const prevButton = document.createElement('button');
+            prevButton.type = 'button';
+            prevButton.className = 'btn btn-outline';
+            prevButton.textContent = 'Anterior';
+            prevButton.onclick = () => { goToStep(currentStep - 1); };
+            buttonContainer.appendChild(prevButton);
+          }
+          if (index < sections.length - 1) {
+            const nextButton = document.createElement('button');
+            nextButton.type = 'button';
+            nextButton.className = 'btn btn-primary';
+            nextButton.textContent = 'Siguiente';
+            nextButton.onclick = () => {
+              if (validateSection(currentStep)) {
+                goToStep(currentStep + 1);
+              } else {
+                alert('Por favor, completa todos los campos obligatorios correctamente.');
+              }
+            };
+            buttonContainer.appendChild(nextButton);
+          }
+          section.appendChild(buttonContainer);
         });
-
-        // Validar que al menos un servicio está seleccionado
-        const servicios = document.querySelectorAll('input[name="servicios[]"]:checked');
-        if (servicios.length === 0) {
-          alert('Debes seleccionar al menos un servicio ofrecido.');
-          return;
+        // Validación en tiempo real
+        form.querySelectorAll('input:not([type="button"]), select, textarea').forEach(field => {
+          field.addEventListener('input', () => validateField(field));
+          field.addEventListener('blur', () => validateField(field));
+          field.addEventListener('focus', () => field.classList.add('focus'));
+          field.addEventListener('blur', () => field.classList.remove('focus'));
+        });
+        // Vista previa de la foto
+        window.previewFoto = function(event) {
+          const input = event.target;
+          const preview = document.getElementById('foto-preview');
+          if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              preview.src = e.target.result;
+              preview.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+          } else {
+            preview.src = '#';
+            preview.style.display = 'none';
+          }
+        };
+        // Iconos de validación
+        function setValidationIcon(field, valid) {
+          let icon = field.parentNode.querySelector('.valid-icon');
+          if (!icon) {
+            icon = document.createElement('span');
+            icon.className = 'valid-icon';
+            field.parentNode.appendChild(icon);
+          }
+          icon.innerHTML = valid ? '✔️' : (field.value ? '❌' : '');
+          icon.style.color = valid ? 'green' : 'red';
         }
-
-        if (!isValid) {
-          alert('Por favor, completa todos los campos obligatorios.');
-          return;
-        }
-
-        alert('Solicitud enviada correctamente. Revisaremos tu documentación y te contactaremos pronto.');
-        window.location.href = 'index.html';
+        const oldValidateField = validateField;
+        validateField = function(field) {
+          const valid = oldValidateField(field);
+          setValidationIcon(field, valid);
+          return valid;
+        };
+        // Submit funcional
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          let isValid = true;
+          for (let i = 1; i <= totalSteps; i++) {
+            if (!validateSection(i)) {
+              isValid = false;
+              goToStep(i);
+              break;
+            }
+          }
+          if (!isValid) {
+            alert('Por favor, revisa los campos marcados en rojo.');
+            return;
+          }
+          // Mensaje de éxito
+          const main = document.querySelector('main');
+          main.innerHTML = `<div class='registro-exito' style='text-align:center;padding:60px 20px;'><h2 style='color:var(--navy,#002e5e);margin-bottom:16px;'>¡Solicitud de colaboración enviada con éxito!</h2><p>Revisaremos tu documentación y te contactaremos pronto.</p><a href='index.html' class='btn btn-primary' style='margin-top:24px;'>Ir al inicio</a></div>`;
+        });
+        // Inicializar
+        goToStep(1);
       });
     </script>
   </body>

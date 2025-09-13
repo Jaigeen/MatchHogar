@@ -185,16 +185,9 @@
                 <input type="text" id="titular" name="titular" required>
               </div>
               <div class="form-group">
-                <label for="tarjeta">Número de tarjeta *</label>
-                <input type="text" id="tarjeta" name="tarjeta" required pattern="\d{16}" placeholder="1234 5678 9012 3456">
-              </div>
-              <div class="form-group">
-                <label for="caducidad">Fecha de caducidad *</label>
-                <input type="month" id="caducidad" name="caducidad" required>
-              </div>
-              <div class="form-group">
-                <label for="cvv">CVV *</label>
-                <input type="text" id="cvv" name="cvv" required pattern="\d{3,4}" maxlength="4">
+                <label>Datos de la tarjeta *</label>
+                <div id="card-element" style="background:#fff;padding:10px;border-radius:6px;border:1px solid #ccc;"></div>
+                <div id="card-errors" role="alert" style="color:red;margin-top:6px;"></div>
               </div>
             </div>
           </div>
@@ -303,6 +296,7 @@
         .footer-links { gap: 8px; }
       }
     </style>
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('form-premium');
@@ -310,6 +304,22 @@
         const steps = document.querySelectorAll('.step');
         let currentStep = 1;
         const totalSteps = steps.length;
+        let stripe, card;
+
+        // Stripe setup (replace with your public key)
+        stripe = Stripe('pk_test_REEMPLAZA_CON_TU_CLAVE_PUBLICA');
+        const elements = stripe.elements();
+        card = elements.create('card', {hidePostalCode: true, style: {base: {fontSize: '16px', color: '#002e5e'}}});
+        card.mount('#card-element');
+        card.on('change', function(event) {
+          const displayError = document.getElementById('card-errors');
+          if (event.error) {
+            displayError.textContent = event.error.message;
+          } else {
+            displayError.textContent = '';
+          }
+        });
+
         // Validación y feedback visual
         function validateField(field) {
           field.classList.remove('error');
@@ -476,7 +486,7 @@
           return valid;
         };
         // Submit funcional
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
           e.preventDefault();
           let isValid = true;
           for (let i = 1; i <= totalSteps; i++) {
@@ -490,9 +500,34 @@
             alert('Por favor, revisa los campos marcados en rojo.');
             return;
           }
-          // Mensaje de éxito
-          const main = document.querySelector('main');
-          main.innerHTML = `<div class='registro-exito' style='text-align:center;padding:60px 20px;'><h2 style='color:var(--navy,#002e5e);margin-bottom:16px;'>¡Registro premium completado con éxito!</h2><p>Te hemos enviado un email de confirmación.<br>Ya puedes disfrutar de los beneficios premium.</p><a href='index.html' class='btn btn-primary' style='margin-top:24px;'>Ir al inicio</a></div>`;
+          // Procesar pago con Stripe
+          const nombreTitular = document.getElementById('titular').value;
+          const {paymentMethod, error} = await stripe.createPaymentMethod({
+            type: 'card',
+            card: card,
+            billing_details: { name: nombreTitular }
+          });
+          if (error) {
+            document.getElementById('card-errors').textContent = error.message;
+            goToStep(4);
+            return;
+          }
+          // Llamar a backend para cobrar
+          try {
+            const resp = await fetch('http://localhost:4242/api/pago-premium', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ paymentMethodId: paymentMethod.id })
+            });
+            const data = await resp.json();
+            if (!data.success) throw new Error(data.error || 'Error en el pago');
+            // Éxito
+            const main = document.querySelector('main');
+            main.innerHTML = `<div class='registro-exito' style='text-align:center;padding:60px 20px;'><h2 style='color:var(--navy,#002e5e);margin-bottom:16px;'>¡Registro premium completado y pago realizado!</h2><p>Te hemos enviado un email de confirmación.<br>Ya puedes disfrutar de los beneficios premium.</p><a href='index.html' class='btn btn-primary' style='margin-top:24px;'>Ir al inicio</a></div>`;
+          } catch (err) {
+            document.getElementById('card-errors').textContent = err.message;
+            goToStep(4);
+          }
         });
         // Inicializar
         goToStep(1);
