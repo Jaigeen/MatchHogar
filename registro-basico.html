@@ -2,9 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-         </div>
-
-        <form id="form-basico" class="registro-form">meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Registro gratuito en MatchHogar - Encuentra tu compañero de piso ideal" />
     <title>MatchHogar | Registro Usuario Básico</title>
     <link rel="stylesheet" href="styles.css" />
@@ -216,14 +214,77 @@
     </main>
 
     <!-- =========================== FOOTER ========================== -->
-    <footer>
-      <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
-      <p>
-        <a href="#politica">Política de privacidad</a> |
-        <a href="#condiciones">Términos y condiciones</a> |
-        <a href="#cookies">Política de cookies</a>
-      </p>
+    <footer class="footer-bonito">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" style="height:40px;border-radius:8px;margin-right:10px;vertical-align:middle;">
+          <span>MatchHogar</span>
+        </div>
+        <div class="footer-links">
+          <a href="#politica">Política de privacidad</a>
+          <span class="footer-sep">|</span>
+          <a href="#condiciones">Términos y condiciones</a>
+          <span class="footer-sep">|</span>
+          <a href="#cookies">Política de cookies</a>
+        </div>
+        <div class="footer-copy">© 2025 MatchHogar. Todos los derechos reservados.</div>
+      </div>
     </footer>
+
+    <style>
+      .footer-bonito {
+        background: var(--navy, #002e5e);
+        color: #fff;
+        padding: 32px 0 16px 0;
+        margin-top: 48px;
+        font-size: 1.05em;
+        box-shadow: 0 -2px 16px #0001;
+      }
+      .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-logo {
+        font-weight: bold;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 8px 0;
+      }
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 500;
+      }
+      .footer-links a:hover {
+        color: var(--orange, #e76f26);
+        text-decoration: underline;
+      }
+      .footer-sep {
+        color: #fff7;
+      }
+      .footer-copy {
+        font-size: 0.95em;
+        color: #fff9;
+        margin-top: 4px;
+      }
+      @media (max-width: 600px) {
+        .footer-content { font-size: 0.95em; }
+        .footer-links { gap: 8px; }
+      }
+    </style>
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -383,9 +444,9 @@
             return;
           }
 
-          // Simular envío exitoso
-          alert('¡Registro completado con éxito! Te hemos enviado un email de confirmación.');
-          window.location.href = 'index.html';
+          // Mostrar mensaje de éxito bonito
+          const main = document.querySelector('main');
+          main.innerHTML = `<div class='registro-exito' style='text-align:center;padding:60px 20px;'><h2 style='color:var(--navy,#002e5e);margin-bottom:16px;'>¡Registro completado con éxito!</h2><p>Te hemos enviado un email de confirmación.<br>Ya puedes empezar a buscar tu compañero de piso ideal.</p><a href='index.html' class='btn btn-primary' style='margin-top:24px;'>Ir al inicio</a></div>`;
         });
 
         // Inicializar el formulario
