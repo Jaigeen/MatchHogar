@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MatchHogar | Publicaciones actuales</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .publicaciones-hero {
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      color: #fff;
+      padding: 64px 0 40px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+    .publicaciones-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(120deg, #002e5ecc 60%, #e76f26cc 100%);
+      z-index: 1;
+    }
+    .publicaciones-hero .container {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .publicaciones-hero h1 {
+      font-size: 2.5em;
+      font-weight: 800;
+      margin-bottom: 18px;
+      line-height: 1.1;
+      text-shadow: 0 2px 16px #0007;
+    }
+    .publicaciones-hero .tagline {
+      font-size: 1.2em;
+      margin-bottom: 0;
+      color: #fffde7;
+      text-shadow: 0 2px 12px #0006;
+    }
+    .publicaciones-list-section {
+      background: #f7f9fb;
+      padding: 56px 0 32px 0;
+    }
+    .publicaciones-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .publicacion-demo-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px #002e5e11;
+      padding: 0 0 24px 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .publicacion-demo-card:hover {
+      box-shadow: 0 6px 32px #002e5e22;
+      transform: translateY(-4px) scale(1.03);
+    }
+    .publicacion-demo-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+    }
+    .publicacion-demo-content {
+      padding: 22px 20px 0 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .publicacion-demo-title {
+      font-size: 1.18em;
+      font-weight: 700;
+      color: #002e5e;
+      margin-bottom: 4px;
+    }
+    .publicacion-demo-meta {
+      font-size: 0.98em;
+      color: #e76f26;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .publicacion-demo-desc {
+      color: #444;
+      font-size: 1em;
+      margin-bottom: 8px;
+    }
+    .publicacion-demo-price {
+      font-weight: 700;
+      color: #e76f26;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+    }
+    .publicacion-demo-cta {
+      margin-top: 10px;
+    }
+    .publicacion-demo-cta .btn {
+      font-size: 1em;
+      padding: 8px 18px;
+    }
+    @media (max-width: 700px) {
+      .publicaciones-list-grid { grid-template-columns: 1fr !important; gap: 18px; }
+      .publicacion-demo-img { height: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header>
+    <nav class="container">
+      <div class="nav-brand">
+        <a href="index.html">
+          <img src="public/MatchHogar.jpg" alt="Logo MatchHogar" class="nav-logo">
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quienes-somos.html">Quiénes somos</a></li>
+        <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+        <li><a href="registro.html">Registro</a></li>
+        <li><a aria-current="page" href="publicaciones-actuales.html">Publicaciones actuales</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <!-- Hero visual -->
+    <section class="publicaciones-hero">
+      <div class="container">
+        <h1>Publicaciones actuales</h1>
+        <p class="tagline">Descubre los últimos anuncios y oportunidades en MatchHogar</p>
+      </div>
+    </section>
+    <!-- Listado de publicaciones demo -->
+    <section class="publicaciones-list-section">
+      <div class="container">
+        <div class="publicaciones-list-grid">
+          <!-- Publicación 1 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80" alt="Piso compartido en el centro" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Piso compartido en el centro de Madrid</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-home"></i> Vivienda | Compartir</div>
+              <div class="publicacion-demo-desc">Habitación luminosa en piso moderno, gastos incluidos, ambiente joven y responsable.</div>
+              <div class="publicacion-demo-price">420 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 2 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Finca para inversión conjunta" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Finca rústica para inversión conjunta</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-seedling"></i> Finca | Inversión</div>
+              <div class="publicacion-demo-desc">Oportunidad de invertir en finca agrícola con otros usuarios. Rentabilidad y gestión transparente.</div>
+              <div class="publicacion-demo-price">Desde 5.000 €</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 3 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1519974719765-e6559eac2575?auto=format&fit=crop&w=600&q=80" alt="Trastero en alquiler" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Trastero seguro en zona norte</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-warehouse"></i> Trastero | Alquiler</div>
+              <div class="publicacion-demo-desc">Espacio de 8m², acceso 24h, vigilancia y seguro incluido. Ideal para mudanzas o almacenaje temporal.</div>
+              <div class="publicacion-demo-price">60 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 4 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Local comercial para compartir" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Local comercial para compartir negocio</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-store"></i> Local | Compartir</div>
+              <div class="publicacion-demo-desc">Comparte gastos y espacio en local céntrico, ideal para emprendedores o actividades colaborativas.</div>
+              <div class="publicacion-demo-price">350 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- =========================== FOOTER ========================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="footer-logo">
+          <p>Conectando personas, creando hogares</p>
+        </div>
+        <div class="footer-links">
+          <h4>Enlaces rápidos</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="quienes-somos.html">Quiénes somos</a></li>
+            <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+            <li><a href="registro.html">Registro</a></li>
+            <li><a aria-current="page" href="publicaciones-actuales.html">Publicaciones actuales</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Síguenos</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MatchHogar. Todos los derechos reservados.</p>
+        <div class="footer-legal">
+          <a href="#politica">Política de privacidad</a>
+          <a href="#condiciones">Términos y condiciones</a>
+          <a href="#cookies">Política de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
