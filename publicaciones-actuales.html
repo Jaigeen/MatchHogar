@@ -7,6 +7,130 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
+    /* Estilos para la sección de búsqueda y filtros */
+    .search-filters-section {
+      background: #fff;
+      padding: 24px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .search-filters-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .search-bar {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+    .search-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus {
+      border-color: #002e5e;
+      outline: none;
+    }
+    .search-button {
+      padding: 0 24px;
+      background: #002e5e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .search-button:hover {
+      background: #003972;
+    }
+    .filters-container {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .filter-select {
+      padding: 8px 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 0.95em;
+      background: white;
+      min-width: 160px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .filter-select:focus {
+      border-color: #002e5e;
+      outline: none;
+    }
+    .clear-filters-button {
+      align-self: flex-start;
+      padding: 8px 16px;
+      background: #e76f26;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95em;
+      transition: background-color 0.2s;
+    }
+    .clear-filters-button:hover {
+      background: #d65e15;
+    }
+    @media (max-width: 768px) {
+      .search-filters-section {
+        padding: 16px 0;
+      }
+      .search-filters-wrapper {
+        padding: 0 16px;
+        gap: 12px;
+      }
+      .search-bar {
+        flex-direction: column;
+      }
+      .search-button {
+        width: 100%;
+        padding: 12px;
+      }
+      .filters-container {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .filter-select {
+        width: 100%;
+        padding: 12px;
+      }
+      .clear-filters-button {
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+      }
+      .publicacion-demo-card {
+        margin: 0 16px;
+      }
+      .publicacion-demo-content {
+        padding: 16px;
+      }
+      .publicacion-demo-title {
+        font-size: 1.1em;
+      }
+      .publicacion-demo-meta,
+      .publicacion-demo-location {
+        font-size: 0.9em;
+      }
+      .publicacion-demo-desc {
+        font-size: 0.95em;
+      }
+      .publicacion-demo-cta .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
     .publicaciones-hero {
       background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
       background-size: cover;
@@ -139,6 +263,28 @@
       animation: fadeUp 1.2s 0.2s ease-out forwards;
       text-align: center;
     }
+    .no-results-message {
+      width: 100%;
+      text-align: center;
+      padding: 32px 16px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    .no-results-message p {
+      color: #666;
+      font-size: 1.1em;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .no-results-message {
+        margin: 16px;
+        padding: 24px 16px;
+      }
+      .no-results-message p {
+        font-size: 1em;
+      }
+    }
   </style>
   <script>
     // Navbar hamburguesa para móvil
@@ -189,6 +335,54 @@
       <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <h1 style="color:#fff; text-align:center;">Publicaciones actuales</h1>
         <p class="tagline animated-fadeup" style="text-align:center;">Descubre los últimos anuncios y oportunidades en MatchHogar</p>
+      </div>
+    </section>
+    <!-- Barra de búsqueda y filtros -->
+    <section class="search-filters-section">
+      <div class="container">
+        <div class="search-filters-wrapper">
+          <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar por palabras clave..." class="search-input">
+            <button class="search-button"><i class="fas fa-search"></i></button>
+          </div>
+          <div class="filters-container">
+            <select id="zoneFilter" class="filter-select">
+              <option value="">Todas las zonas</option>
+              <option value="madrid">Madrid</option>
+              <option value="barcelona">Barcelona</option>
+              <option value="valencia">Valencia</option>
+              <option value="sevilla">Sevilla</option>
+              <option value="zaragoza">Zaragoza</option>
+              <option value="salamanca">Salamanca</option>
+              <option value="toledo">Toledo</option>
+            </select>
+            <select id="typeFilter" class="filter-select">
+              <option value="">Todos los tipos</option>
+              <option value="vivienda">Vivienda</option>
+              <option value="local">Local comercial</option>
+              <option value="oficina">Oficina</option>
+              <option value="trastero">Trastero</option>
+              <option value="garaje">Garaje</option>
+              <option value="finca">Finca</option>
+            </select>
+            <select id="investmentFilter" class="filter-select">
+              <option value="">Tipo de inversión</option>
+              <option value="alquiler">Alquiler</option>
+              <option value="compartir">Compartir</option>
+              <option value="inversion">Inversión</option>
+              <option value="coworking">Coworking</option>
+            </select>
+            <select id="priceFilter" class="filter-select">
+              <option value="">Rango de precio</option>
+              <option value="0-100">0 - 100€/mes</option>
+              <option value="100-300">100 - 300€/mes</option>
+              <option value="300-500">300 - 500€/mes</option>
+              <option value="500-1000">500 - 1000€/mes</option>
+              <option value="1000+">Más de 1000€/mes</option>
+            </select>
+          </div>
+          <button id="clearFilters" class="clear-filters-button">Limpiar filtros</button>
+        </div>
       </div>
     </section>
     <!-- Listado de publicaciones demo -->
@@ -315,6 +509,246 @@
               <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
             </div>
           </div>
+          <!-- Publicación 11 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&w=600&q=80" alt="Inversión compartida solar fotovoltaico" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Inversión compartida en solar fotovoltaico</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-sun"></i> Solar | Inversión</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Murcia</div>
+              <div class="publicacion-demo-desc">Oportunidad de inversión en instalación fotovoltaica. Rentabilidad estimada 8% anual. Participaciones desde 3.000€.</div>
+              <div class="publicacion-demo-price">Desde 3.000 €</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 12 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Local restaurante compartido" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Local restaurante para compartir cocina</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-utensils"></i> Local | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Barcelona</div>
+              <div class="publicacion-demo-desc">Cocina equipada para compartir en restaurante establecido. Ideal para dark kitchen o catering.</div>
+              <div class="publicacion-demo-price">800 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 13 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?auto=format&fit=crop&w=600&q=80" alt="Nave industrial compartida" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Nave industrial para almacenaje compartido</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-warehouse"></i> Nave | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Valencia</div>
+              <div class="publicacion-demo-desc">Espacio logístico compartido, 200m² disponibles. Incluye sistema de gestión de stock y seguridad 24h.</div>
+              <div class="publicacion-demo-price">950 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 14 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&w=600&q=80" alt="Huerto urbano compartido" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Huerto urbano comunitario</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-seedling"></i> Huerto | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Sevilla</div>
+              <div class="publicacion-demo-desc">Parcela en huerto urbano con herramientas y riego automático. Formación y comunidad incluida.</div>
+              <div class="publicacion-demo-price">45 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 15 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Inversión edificio oficinas" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Participación en edificio de oficinas</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-building"></i> Oficinas | Inversión</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Madrid</div>
+              <div class="publicacion-demo-desc">Inversión en edificio de oficinas prime. Rentabilidad estimada 6% anual. Gestión profesional.</div>
+              <div class="publicacion-demo-price">Desde 50.000 €</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 16 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" alt="Casa rural para turismo" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Casa rural para proyecto turístico</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-home"></i> Vivienda | Inversión</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Cuenca</div>
+              <div class="publicacion-demo-desc">Casa rural rehabilitada para proyecto turístico compartido. 5 habitaciones, piscina y huerto.</div>
+              <div class="publicacion-demo-price">Desde 25.000 €</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 17 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=80" alt="Cafetería compartida" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Cafetería para proyecto conjunto</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-coffee"></i> Local | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Granada</div>
+              <div class="publicacion-demo-desc">Cafetería equipada para compartir en diferentes franjas horarias. Zona universitaria.</div>
+              <div class="publicacion-demo-price">600 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 18 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=600&q=80" alt="Dúplex compartido" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Dúplex para compartir con jardín</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-home"></i> Vivienda | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Málaga</div>
+              <div class="publicacion-demo-desc">Amplio dúplex con jardín privado. Ideal para familias o profesionales. Totalmente amueblado.</div>
+              <div class="publicacion-demo-price">750 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 19 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80" alt="Almacén logístico" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Almacén logístico compartido</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-boxes"></i> Almacén | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Zaragoza</div>
+              <div class="publicacion-demo-desc">Espacio logístico con muelles de carga. Sistema de gestión de inventario incluido.</div>
+              <div class="publicacion-demo-price">1.200 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 20 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=600&q=80" alt="Terreno para camping" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Terreno para proyecto camping</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-campground"></i> Terreno | Inversión</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Asturias</div>
+              <div class="publicacion-demo-desc">10.000m² para proyecto de camping ecológico. Licencias en trámite.</div>
+              <div class="publicacion-demo-price">Desde 15.000 €</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 21 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=600&q=80" alt="Edificio residencial" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Participación edificio residencial</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-building"></i> Vivienda | Inversión</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Valencia</div>
+              <div class="publicacion-demo-desc">Inversión en edificio de 12 apartamentos. Rentabilidad 5% anual.</div>
+              <div class="publicacion-demo-price">Desde 30.000 €</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 22 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Cocina fantasma" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Cocina fantasma equipada</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-utensils"></i> Local | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Madrid</div>
+              <div class="publicacion-demo-desc">Cocina profesional para delivery. Equipamiento completo y licencias en regla.</div>
+              <div class="publicacion-demo-price">900 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 23 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80" alt="Coworking rural" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Coworking en entorno rural</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-laptop-house"></i> Oficina | Coworking</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Segovia</div>
+              <div class="publicacion-demo-desc">Espacio de trabajo en casa rural rehabilitada. Internet fibra y alojamiento disponible.</div>
+              <div class="publicacion-demo-price">250 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 24 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1595527673223-386d1ae9af8d?auto=format&fit=crop&w=600&q=80" alt="Parking camiones" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Parking para camiones y furgonetas</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-truck"></i> Parking | Alquiler</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Guadalajara</div>
+              <div class="publicacion-demo-desc">Parcela vallada con vigilancia 24h. Ideal para autónomos del transporte.</div>
+              <div class="publicacion-demo-price">150 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 25 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1534293230397-c067fc201ab8?auto=format&fit=crop&w=600&q=80" alt="Viñedo compartido" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Viñedo para proyecto vinícola</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-wine-bottle"></i> Finca | Inversión</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> La Rioja</div>
+              <div class="publicacion-demo-desc">5 hectáreas de viñedo ecológico. Bodega incluida. Proyecto de enoturismo.</div>
+              <div class="publicacion-demo-price">Desde 40.000 €</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 26 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1577084383843-7e5ba9c11bda?auto=format&fit=crop&w=600&q=80" alt="Estudio artístico" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Estudio artístico compartido</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-palette"></i> Local | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Barcelona</div>
+              <div class="publicacion-demo-desc">Espacio creativo con luz natural. Zona de exposición y taller compartido.</div>
+              <div class="publicacion-demo-price">300 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 27 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1590725175785-de025cc60835?auto=format&fit=crop&w=600&q=80" alt="Invernadero compartido" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Invernadero para cultivo ecológico</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-leaf"></i> Agricultura | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Almería</div>
+              <div class="publicacion-demo-desc">1000m² de invernadero tecnificado. Sistema de riego automatizado.</div>
+              <div class="publicacion-demo-price">400 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 28 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=600&q=80" alt="Sala eventos" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Sala polivalente para eventos</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-glass-cheers"></i> Local | Alquiler</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Madrid</div>
+              <div class="publicacion-demo-desc">200m² diáfanos para eventos. Cocina, sonido y mobiliario incluido.</div>
+              <div class="publicacion-demo-price">80 €/hora</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 29 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Taller mecánico" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Taller mecánico equipado</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-wrench"></i> Local | Compartir</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Bilbao</div>
+              <div class="publicacion-demo-desc">Taller completo con elevador y herramientas. Ideal para mecánicos autónomos.</div>
+              <div class="publicacion-demo-price">700 €/mes</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
+          <!-- Publicación 30 -->
+          <div class="publicacion-demo-card">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Local comercial premium" class="publicacion-demo-img">
+            <div class="publicacion-demo-content">
+              <div class="publicacion-demo-title">Local comercial premium</div>
+              <div class="publicacion-demo-meta"><i class="fas fa-store"></i> Local | Inversión</div>
+              <div class="publicacion-demo-location"><i class="fas fa-map-marker-alt" style="color:#e76f26;"></i> Madrid</div>
+              <div class="publicacion-demo-desc">Local comercial en zona prime. Rentabilidad 7% anual. Inquilino solvente.</div>
+              <div class="publicacion-demo-price">Desde 100.000 €</div>
+              <div class="publicacion-demo-cta"><a href="#" class="btn btn-primary">Ver anuncio</a></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -357,6 +791,101 @@
       </div>
     </div>
   </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Referencias a elementos
+      const searchInput = document.getElementById('searchInput');
+      const zoneFilter = document.getElementById('zoneFilter');
+      const typeFilter = document.getElementById('typeFilter');
+      const investmentFilter = document.getElementById('investmentFilter');
+      const priceFilter = document.getElementById('priceFilter');
+      const clearFiltersBtn = document.getElementById('clearFilters');
+      const publicationCards = document.querySelectorAll('.publicacion-demo-card');
+      
+      // Función para aplicar filtros
+      function applyFilters() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedZone = zoneFilter.value.toLowerCase();
+        const selectedType = typeFilter.value.toLowerCase();
+        const selectedInvestment = investmentFilter.value.toLowerCase();
+        const selectedPrice = priceFilter.value;
+        
+        publicationCards.forEach(card => {
+          const title = card.querySelector('.publicacion-demo-title').textContent.toLowerCase();
+          const location = card.querySelector('.publicacion-demo-location').textContent.toLowerCase();
+          const type = card.querySelector('.publicacion-demo-meta').textContent.toLowerCase();
+          const price = card.querySelector('.publicacion-demo-price').textContent.toLowerCase();
+          const desc = card.querySelector('.publicacion-demo-desc').textContent.toLowerCase();
+          
+          // Comprobar si cumple con todos los filtros
+          let matchesSearch = title.includes(searchTerm) || 
+                            location.includes(searchTerm) || 
+                            desc.includes(searchTerm);
+          
+          let matchesZone = selectedZone === '' || location.includes(selectedZone);
+          
+          let matchesType = selectedType === '' || type.includes(selectedType);
+          
+          let matchesInvestment = selectedInvestment === '' || type.includes(selectedInvestment);
+          
+          let matchesPrice = true;
+          if (selectedPrice !== '') {
+            const priceNum = parseInt(price.match(/\\d+/)[0]);
+            const [min, max] = selectedPrice.split('-').map(n => n === '+' ? Infinity : parseInt(n));
+            matchesPrice = priceNum >= min && (max === Infinity || priceNum <= max);
+          }
+          
+          // Mostrar u ocultar la tarjeta según los filtros
+          if (matchesSearch && matchesZone && matchesType && matchesInvestment && matchesPrice) {
+            card.style.display = '';
+            card.style.opacity = '1';
+          } else {
+            card.style.display = 'none';
+            card.style.opacity = '0';
+          }
+        });
+        
+        // Comprobar si hay resultados visibles
+        const visibleCards = document.querySelectorAll('.publicacion-demo-card[style="display: ; opacity: 1;"]');
+        const noResultsMsg = document.getElementById('noResultsMessage');
+        
+        if (visibleCards.length === 0) {
+          if (!noResultsMsg) {
+            const message = document.createElement('div');
+            message.id = 'noResultsMessage';
+            message.className = 'no-results-message';
+            message.innerHTML = '<p>No se encontraron resultados que coincidan con los filtros seleccionados.</p>';
+            document.querySelector('.publicaciones-list-grid').appendChild(message);
+          }
+        } else if (noResultsMsg) {
+          noResultsMsg.remove();
+        }
+      }
+      
+      // Evento para limpiar filtros
+      clearFiltersBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        zoneFilter.value = '';
+        typeFilter.value = '';
+        investmentFilter.value = '';
+        priceFilter.value = '';
+        applyFilters();
+      });
+      
+      // Eventos para los filtros
+      searchInput.addEventListener('input', applyFilters);
+      zoneFilter.addEventListener('change', applyFilters);
+      typeFilter.addEventListener('change', applyFilters);
+      investmentFilter.addEventListener('change', applyFilters);
+      priceFilter.addEventListener('change', applyFilters);
+      
+      // Añadir animaciones suaves para las tarjetas
+      publicationCards.forEach(card => {
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      });
+    });
+  </script>
 </body>
 </html>
 ``` 
