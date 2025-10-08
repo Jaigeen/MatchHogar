@@ -6,97 +6,203 @@
   <title>MatchHogar | Publicaciones actuales</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Estilos para la sección de búsqueda y filtros */
+    /* Estilos generales y variables */
+    :root {
+      --primary-color: #002e5e;
+      --accent-color: #e76f26;
+      --text-color: #333;
+      --light-gray: #f5f5f5;
+      --border-color: #e0e0e0;
+      --shadow: 0 2px 10px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+
+    /* Sección de búsqueda y filtros */
     .search-filters-section {
-      background: #fff;
-      padding: 24px 0;
-      border-bottom: 1px solid #eee;
+      background: var(--light-gray);
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+
     .search-filters-wrapper {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      padding: 0 1rem;
     }
+
     .search-bar {
       display: flex;
-      gap: 8px;
-      width: 100%;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
+
     .search-input {
       flex: 1;
-      padding: 12px 16px;
-      border: 2px solid #e0e0e0;
+      padding: 1rem;
+      border: 2px solid var(--border-color);
       border-radius: 8px;
-      font-size: 1em;
-      transition: border-color 0.2s;
+      font-size: 1rem;
+      transition: var(--transition);
     }
+
     .search-input:focus {
-      border-color: #002e5e;
-      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow);
     }
+
     .search-button {
-      padding: 0 24px;
-      background: #002e5e;
+      padding: 0 2rem;
+      background: var(--primary-color);
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: var(--transition);
     }
+
     .search-button:hover {
-      background: #003972;
+      background: var(--accent-color);
+      transform: translateY(-2px);
     }
+
     .filters-container {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
     }
+
     .filter-select {
-      padding: 8px 12px;
-      border: 2px solid #e0e0e0;
-      border-radius: 6px;
-      font-size: 0.95em;
+      padding: 0.8rem 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
       background: white;
-      min-width: 160px;
       cursor: pointer;
-      transition: border-color 0.2s;
+      transition: var(--transition);
     }
+
     .filter-select:focus {
-      border-color: #002e5e;
-      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow);
     }
-    .clear-filters-button {
-      align-self: flex-start;
-      padding: 8px 16px;
-      background: #e76f26;
+
+    /* Estilos para las propiedades */
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .property-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .property-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .property-image {
+      position: relative;
+      padding-top: 66.67%;
+      overflow: hidden;
+    }
+
+    .property-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .property-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent-color);
       color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.95em;
-      transition: background-color 0.2s;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
     }
-    .clear-filters-button:hover {
-      background: #d65e15;
+
+    .property-content {
+      padding: 1.5rem;
     }
+
+    .property-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .property-location {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .property-features {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .property-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-top: 1rem;
+    }
+
     @media (max-width: 768px) {
       .search-filters-section {
-        padding: 16px 0;
+        padding: 1rem;
       }
-      .search-filters-wrapper {
-        padding: 0 16px;
-        gap: 12px;
-      }
+
       .search-bar {
         flex-direction: column;
       }
+
       .search-button {
         width: 100%;
-        padding: 12px;
+        padding: 1rem;
       }
+
+      .properties-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
       .filters-container {
         flex-direction: column;
         gap: 8px;
