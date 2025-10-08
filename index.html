@@ -6,173 +6,10 @@
     <title>MatchHogar | Inicio</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-      body { background: #f7f9fb; }
-      .hero-visual {
-        background: linear-gradient(120deg, #002e5e 60%, #e76f26 100%);
-        color: #fff;
-        padding: 64px 0 32px 0;
-        position: relative;
-        overflow: hidden;
-        background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
-        background-size: cover;
-        background-position: center;
-      }
-      .hero-visual::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(120deg, #002e5ecc 60%, #e76f26cc 100%);
-        /* Degradado oscuro con opacidad */
-        z-index: 1;
-      }
-      .hero-visual .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 32px;
-        position: relative;
-        z-index: 2;
-        min-height: 420px;
-        text-align: center;
-      }
-      .hero-visual .hero-text {
-        flex: unset;
-        z-index: 2;
-        max-width: 700px;
-      }
-      .hero-visual .hero-image { display: none; }
-      .hero-visual h1 {
-        font-size: 2.7em;
-        font-weight: 800;
-        margin-bottom: 18px;
-        line-height: 1.1;
-        text-shadow: 0 2px 16px #0007;
-      }
-      .hero-visual .tagline {
-        font-size: 1.25em;
-        margin-bottom: 32px;
-        color: #fffde7;
-        text-shadow: 0 2px 12px #0006;
-        text-align: center;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-visual .cta-group {
-        display: flex;
-        gap: 18px;
-        margin-bottom: 24px;
-        justify-content: center;
-      }
-      @media (max-width: 900px) {
-        .hero-visual .container { min-height: 320px; }
-        .hero-visual h1 { font-size: 2em; }
-      }
-      /* Features visual */
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 32px;
-        margin-top: 32px;
-      }
-      .feature-card {
-        background: #fff;
-        border-radius: 18px;
-        box-shadow: 0 2px 16px #002e5e11;
-        padding: 32px 20px 24px 20px;
-        text-align: center;
-        transition: box-shadow 0.2s, transform 0.2s;
-        position: relative;
-      }
-      .feature-card i, .feature-card img.icon-img {
-        font-size: 2.5em;
-        color: var(--orange, #e76f26);
-        margin-bottom: 16px;
-      }
-      .feature-card img.icon-img {
-        width: 48px; height: 48px; object-fit: contain;
-      }
-      .feature-card h3 { font-size: 1.2em; margin-bottom: 10px; }
-      .feature-card p { color: #444; font-size: 1em; }
-      .feature-card:hover { box-shadow: 0 6px 32px #002e5e22; transform: translateY(-4px) scale(1.03); }
-      /* Steps visual */
-      .steps-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 32px;
-        justify-content: center;
-        margin-top: 32px;
-      }
-      .step-card {
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 2px 12px #002e5e10;
-        padding: 28px 20px 20px 20px;
-        text-align: center;
-        width: 220px;
-        position: relative;
-      }
-      .step-card .step-number {
-        background: var(--orange, #e76f26);
-        color: #fff;
-        font-weight: bold;
-        border-radius: 50%;
-        width: 38px; height: 38px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.3em;
-        margin: 0 auto 12px auto;
-      }
-      .step-card img {
-        width: 60px; height: 60px; object-fit: contain; margin-bottom: 10px;
-      }
-      /* Testimonios */
-      .testimonials-section {
-        background: #fff;
-        padding: 56px 0 48px 0;
-      }
-      .testimonials-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 32px;
-        justify-content: center;
-        margin-top: 24px;
-      }
-      .testimonial-card {
-        background: #f7f9fb;
-        border-radius: 16px;
-        box-shadow: 0 2px 12px #002e5e10;
-        padding: 28px 22px 20px 22px;
-        text-align: center;
-        max-width: 320px;
-        min-width: 220px;
-      }
-      .testimonial-card img {
-        width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid #e76f26; }
-      .testimonial-card .name { font-weight: bold; color: #002e5e; margin-bottom: 4px; }
-      .testimonial-card .role { color: #e76f26; font-size: 0.98em; margin-bottom: 10px; }
-      .testimonial-card .stars { color: #ffc107; margin-bottom: 8px; }
-      /* CTA visual */
-      .cta-section {
-        background: linear-gradient(90deg, #e76f26 0%, #002e5e 100%);
-        color: #fff;
-        padding: 56px 0 48px 0;
-        text-align: center;
-      }
-      .cta-section h2 { font-size: 2em; font-weight: 700; margin-bottom: 12px; }
-      .cta-section p { font-size: 1.15em; margin-bottom: 24px; }
-      .cta-section .cta-buttons { display: flex; gap: 18px; justify-content: center; }
-      .cta-section .btn { font-size: 1.1em; }
-      @media (max-width: 700px) {
-        .hero-visual .container, .features-grid, .steps-grid, .testimonials-grid { flex-direction: column; gap: 18px; }
-        .hero-visual .hero-image img { max-width: 95vw; }
-      }
-    </style>
   </head>
   <body>
     <!-- ======================= HEADER & NAV ======================= -->
-    <header>
+    <header class="transparent">
       <nav class="container">
         <div class="nav-brand">
           <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
@@ -192,18 +29,25 @@
     <main>
       <!-- Hero Section Mejorada -->
       <section class="hero hero-visual" id="inicio">
-        <div class="hero-bg-overlay"></div>
         <div class="container hero-content">
-          <div class="hero-text">
-            <h1>Tu nuevo hogar, tu nueva vida</h1>
-            <p class="tagline">
-              Descubre la forma más fácil, segura y social de compartir vivienda, invertir o encontrar compañeros de piso. ¡Haz match con tu futuro!
-            </p>
-            <div class="cta-group">
-              <a href="registro.html" class="btn btn-primary btn-lg">¡Comienza ahora!</a>
-              <a href="que-ofrecemos.html" class="btn btn-outline btn-lg">Descubre más</a>
-            </div>
+          <div class="hero-left">
+            <h1 class="hero-title">La revolución de la<br> <span class="gold">compraventa</span> de <br>inmuebles</h1>
+            <h3 class="hero-sub">Encuentra, invierte y comparte con confianza</h3>
+            <p class="tagline">Descubre la forma más fácil, segura y social de compartir vivienda, invertir o encontrar compañeros de piso. ¡Haz match con tu futuro!</p>
           </div>
+
+          <aside class="hero-form-box" aria-labelledby="subscribe-title">
+            <div class="subscribe-inner">
+              <small id="subscribe-title" class="subscribe-hint">Suscríbete para recibir notificaciones sobre nuevas propiedades</small>
+              <label class="sr-only">Nombre completo</label>
+              <input type="text" placeholder="NOMBRE COMPLETO *" />
+              <label class="sr-only">Correo electrónico</label>
+              <input type="email" placeholder="CORREO ELECTRÓNICO *" />
+              <label class="sr-only">Teléfono</label>
+              <input type="tel" placeholder="TELÉFONO *" />
+              <button class="btn btn-primary">RECIBIR NOTIFICACIONES</button>
+            </div>
+          </aside>
         </div>
       </section>
 
