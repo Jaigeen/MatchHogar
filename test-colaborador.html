@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Colaborador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #002e5e;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #A0826D;
+            outline: none;
+        }
+        
+        button {
+            background-color: #A0826D;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #8b6f5a;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>🏠 Registro Colaborador - Test</h1>
+        
+        <form id="colaborador-form">
+            <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telefono">Teléfono *</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="dni">DNI/NIE/CIF *</label>
+                <input type="text" id="dni" name="dni" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tipo">Tipo de colaborador *</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="profesional">Profesional/Empresa</option>
+                    <option value="particular">Particular</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="empresa-group" style="display: none;">
+                <label for="empresa">Nombre de la empresa</label>
+                <input type="text" id="empresa" name="empresa">
+            </div>
+            
+            <div class="form-group">
+                <label for="servicios">Servicios que ofreces</label>
+                <textarea id="servicios" name="servicios" rows="3" placeholder="Describe los servicios que ofreces..."></textarea>
+            </div>
+            
+            <button type="submit">Enviar Solicitud</button>
+            
+            <div class="success" id="success-message">
+                ✅ ¡Solicitud enviada correctamente! Te contactaremos pronto.
+            </div>
+        </form>
+    </div>
+
+    <script>
+        console.log('Script cargado');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado');
+            
+            const form = document.getElementById('colaborador-form');
+            const tipoSelect = document.getElementById('tipo');
+            const empresaGroup = document.getElementById('empresa-group');
+            const successMessage = document.getElementById('success-message');
+            
+            console.log('Elementos encontrados:', {
+                form: !!form,
+                tipoSelect: !!tipoSelect,
+                empresaGroup: !!empresaGroup
+            });
+            
+            // Mostrar campo empresa si es profesional
+            tipoSelect.addEventListener('change', function() {
+                console.log('Tipo seleccionado:', this.value);
+                if (this.value === 'profesional') {
+                    empresaGroup.style.display = 'block';
+                } else {
+                    empresaGroup.style.display = 'none';
+                }
+            });
+            
+            // Manejar envío del formulario
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log('Formulario enviado');
+                
+                // Validar campos requeridos
+                const nombre = document.getElementById('nombre').value;
+                const email = document.getElementById('email').value;
+                const telefono = document.getElementById('telefono').value;
+                const dni = document.getElementById('dni').value;
+                const tipo = document.getElementById('tipo').value;
+                
+                if (!nombre || !email || !telefono || !dni || !tipo) {
+                    alert('Por favor, completa todos los campos obligatorios');
+                    return;
+                }
+                
+                // Simular envío exitoso
+                console.log('Datos del formulario:', {
+                    nombre: nombre,
+                    email: email,
+                    telefono: telefono,
+                    dni: dni,
+                    tipo: tipo
+                });
+                
+                successMessage.style.display = 'block';
+                form.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -5,233 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MatchHogar | Quiénes somos</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sections-bg.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-      .about-hero {
-        background-image: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80');
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        color: #fff;
-        padding: 18px 0 10px 0; /* Mucho más compacto */
-        text-align: center;
-        overflow: hidden;
-      }
-      .about-hero::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(120deg, #002e5ecc 60%, #e76f26cc 100%);
-        z-index: 1;
-      }
-      .about-hero .container {
-        position: relative;
-        z-index: 2;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .about-hero h1 {
-        font-size: 2.2em;
-        font-weight: 900;
-        margin-bottom: 10px;
-        line-height: 1.1;
-        text-shadow: 0 2px 16px #0007;
-      }
-      .about-hero .about-mini {
-        font-size: 1.18em;
-        color: #fffde7;
-        text-shadow: 0 2px 12px #0006;
-        margin-bottom: 0;
-        margin-top: 8px;
-        font-weight: 400;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 1.2s 0.2s ease-out forwards;
-      }
-      .about-hero .tagline {
-        font-size: 1.25em;
-        margin-bottom: 32px;
-        color: #fffde7;
-        text-shadow: 0 2px 12px #0006;
-      }
-      @keyframes fadeUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .about-section {
-        background: #f7f9fb;
-        padding: 56px 0 32px 0;
-      }
-      .about-features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 32px;
-        margin-top: 32px;
-      }
-      .about-feature-card {
-        background: #fff;
-        border-radius: 18px;
-        box-shadow: 0 2px 16px #002e5e11;
-        padding: 32px 20px 24px 20px;
-        text-align: center;
-        transition: box-shadow 0.2s, transform 0.2s;
-        position: relative;
-      }
-      .about-feature-card img {
-        width: 64px; height: 64px; object-fit: contain; margin-bottom: 16px;
-      }
-      .about-feature-card h3 { font-size: 1.2em; margin-bottom: 10px; }
-      .about-feature-card p { color: #444; font-size: 1em; }
-      .about-feature-card ul { list-style: none; padding: 0; margin: 16px 0 0 0; }
-      .about-feature-card li { color: #e76f26; font-weight: 500; margin-bottom: 6px; }
-      .about-feature-card:hover { box-shadow: 0 6px 32px #002e5e22; transform: translateY(-4px) scale(1.03); }
-      .team-section {
-        background: #fff;
-        padding: 56px 0 32px 0;
-      }
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 32px;
-        margin-top: 32px;
-      }
-      .team-card {
-        background: #f7f9fb;
-        border-radius: 16px;
-        box-shadow: 0 2px 12px #002e5e10;
-        padding: 28px 22px 20px 22px;
-        text-align: center;
-        max-width: 320px;
-        min-width: 180px;
-        margin: 0 auto;
-      }
-      .team-card img {
-        width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid #e76f26; }
-      .team-card .name { font-weight: bold; color: #002e5e; margin-bottom: 4px; }
-      .team-card .role { color: #e76f26; font-size: 0.98em; margin-bottom: 10px; }
-      .team-card .desc { color: #444; font-size: 0.98em; }
-      .impact-section {
-        background: #f7f9fb;
-        padding: 56px 0 32px 0;
-        text-align: center;
-      }
-      .impact-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 40px;
-        justify-content: center;
-        margin-top: 32px;
-      }
-      .impact-card {
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 2px 12px #002e5e10;
-        padding: 32px 28px 24px 28px;
-        text-align: center;
-        min-width: 180px;
-      }
-      .impact-card img {
-        width: 48px; height: 48px; object-fit: contain; margin-bottom: 12px;
-      }
-      .impact-card .impact-number {
-        font-size: 2.2em;
-        font-weight: 800;
-        color: #e76f26;
-        margin-bottom: 6px;
-      }
-      .impact-card .impact-label {
-        color: #002e5e;
-        font-weight: 600;
-        font-size: 1.1em;
-      }
-      .about-cta-section {
-        background: linear-gradient(90deg, #e76f26 0%, #002e5e 100%);
-        color: #fff;
-        padding: 56px 0 48px 0;
-        text-align: center;
-      }
-      .about-cta-section h2 { font-size: 2em; font-weight: 700; margin-bottom: 12px; }
-      .about-cta-section p { font-size: 1.15em; margin-bottom: 24px; }
-      .about-cta-section .cta-buttons { display: flex; gap: 18px; justify-content: center; }
-      .about-cta-section .btn { font-size: 1.1em; }
-      @media (max-width: 700px) {
-        .about-hero { padding: 10px 0 4px 0; }
-        .about-hero h1 { font-size: 1.2em; }
-        .about-hero .about-mini { font-size: 1em; }
-        .about-features-grid, .team-grid, .impact-grid { grid-template-columns: 1fr !important; flex-direction: column; gap: 18px; }
-      }
-      .about-visual-grid { display: flex; gap: 48px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-      .about-visual-text { flex: 1 1 340px; min-width: 280px; }
-      .about-visual-imgs { flex: 1 1 320px; min-width: 220px; }
-      @media (max-width: 900px) {
-        .about-visual-grid { flex-direction: column; gap: 24px; }
-        .about-visual-imgs { flex-direction: row; gap: 12px; }
-        .about-visual-imgs img { width: 48vw; min-width: 140px; }
-      }
-    </style>
   </head>
-  <body>
+  <body class="quienes-somos">
     <!-- NAV -->
-    <header>
+    <header class="transparent">
       <nav class="container">
         <div class="nav-brand">
-          <a href="index.html">
-            <img src="public/MatchHogar.jpg" alt="Logo MatchHogar" class="nav-logo">
-          </a>
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
+          <span>MatchHogar</span>
         </div>
         <ul class="nav-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a aria-current="page" href="quienes-somos.html">Quiénes somos</a></li>
           <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
           <li><a href="registro.html">Registro</a></li>
-          <li><a href="publicaciones-actuales.html" style="color:#e76f26;font-weight:700;"><i class="fas fa-bullhorn"></i> Publicaciones actuales</a></li>
+          <li><a href="publicaciones-actuales.html" style="color:#C4A484;font-weight:700;"><i class="fas fa-bullhorn"></i> Publicaciones actuales</a></li>
         </ul>
       </nav>
     </header>
 
     <!-- ============================ MAIN =========================== -->
     <main>
-      <!-- Hero visual -->
-      <section class="hero about-hero">
-        <div class="container">
-          <h1>Revolucionando la forma de compartir hogares</h1>
-          <div class="about-mini">Creamos conexiones reales para que encuentres tu espacio ideal y una comunidad en la que confiar.</div>
+      <!-- Hero Section -->
+      <section class="hero hero-visual about-hero" id="quienes-somos">
+        <div class="container hero-content">
+          <div class="hero-left">
+            <h1 class="hero-title">Revolucionando la forma de <br><span class="pastel-yellow">compartir hogares</span></h1>
+            <h3 class="hero-sub">Creamos conexiones reales y auténticas</h3>
+            <p class="tagline">Conectamos personas con valores similares para que encuentres tu espacio ideal y una comunidad en la que confiar. Más que un hogar, creamos vínculos.</p>
+          </div>
         </div>
       </section>
 
       <!-- Apartado visual: Conectando personas, creando oportunidades -->
-      <section class="conectando-section" style="background:linear-gradient(90deg,#e76f26 0%,#002e5e 100%);color:#fff;padding:64px 0 48px 0;">
-        <div class="container" style="max-width:1100px;margin:0 auto;">
-          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:48px;justify-content:space-between;">
-            <div style="flex:1 1 340px;min-width:280px;">
-              <h2 style="font-size:2.2em;font-weight:900;line-height:1.1;margin-bottom:18px;">Conectando personas,<br>creando oportunidades</h2>
-              <ul style="list-style:none;padding:0;margin:0 0 24px 0;">
-                <li style="display:flex;align-items:center;gap:14px;margin-bottom:18px;font-size:1.13em;">
-                  <span style="background:#fff2e0;border-radius:50%;padding:10px;"><i class="fas fa-users" style="color:#e76f26;font-size:1.4em;"></i></span>
-                  Comunidad activa y diversa
-                </li>
-                <li style="display:flex;align-items:center;gap:14px;margin-bottom:18px;font-size:1.13em;">
-                  <span style="background:#e0eaff;border-radius:50%;padding:10px;"><i class="fas fa-handshake" style="color:#002e5e;font-size:1.4em;"></i></span>
-                  Oportunidades de colaboración y networking
-                </li>
-                <li style="display:flex;align-items:center;gap:14px;margin-bottom:18px;font-size:1.13em;">
-                  <span style="background:#e0ffe7;border-radius:50%;padding:10px;"><i class="fas fa-lightbulb" style="color:#2ecc71;font-size:1.4em;"></i></span>
-                  Ideas innovadoras y proyectos compartidos
-                </li>
-                <li style="display:flex;align-items:center;gap:14px;margin-bottom:18px;font-size:1.13em;">
-                  <span style="background:#ffe0e0;border-radius:50%;padding:10px;"><i class="fas fa-heart" style="color:#e76f26;font-size:1.4em;"></i></span>
-                  Apoyo humano y valores sociales
-                </li>
-              </ul>
-              <a href="#equipo" class="btn btn-primary btn-lg" style="font-size:1.1em;">Conoce nuestro equipo</a>
-            </div>
-            <div style="flex:1 1 340px;min-width:260px;display:flex;flex-direction:column;gap:18px;align-items:center;">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="Personas conectando" style="width:320px;border-radius:18px;box-shadow:0 4px 24px #002e5e22;object-fit:cover;">
-              <div style="display:flex;gap:18px;">
-                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=220&q=80" alt="Colaboración" style="width:120px;border-radius:14px;box-shadow:0 2px 12px #e76f2622;object-fit:cover;">
-                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=220&q=80" alt="Oportunidades" style="width:120px;border-radius:14px;box-shadow:0 2px 12px #002e5e22;object-fit:cover;">
+      <section class="features-section conectando-section">
+        <div class="container">
+          <div class="about-visual-grid">
+            <div class="about-visual-text">
+              <h2 class="section-title">Conectando personas,<br>creando oportunidades</h2>
+              <div class="features-grid">
+                <div class="feature-card visual">
+                  <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Comunidad" class="feature-icon">
+                  <h3>Comunidad activa y diversa</h3>
+                  <p>Miles de personas con intereses similares esperando conocerte.</p>
+                </div>
+                <div class="feature-card visual">
+                  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Colaboración" class="feature-icon">
+                  <h3>Oportunidades de colaboración</h3>
+                  <p>Networking real y proyectos compartidos que enriquecen tu experiencia.</p>
+                </div>
+                <div class="feature-card visual">
+                  <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Valores" class="feature-icon">
+                  <h3>Apoyo humano y valores sociales</h3>
+                  <p>Una comunidad basada en la confianza, respeto y crecimiento mutuo.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -239,63 +68,72 @@
       </section>
 
       <!-- Equipo visual -->
-      <section class="team-section">
+      <section class="how-it-works section-padding team-section" id="equipo">
         <div class="container">
           <h2 class="section-title">Nuestro equipo</h2>
-          <div class="team-grid">
-            <div class="team-card">
-              <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Juan Cisneros">
-              <div class="name">Juan Cisneros</div>
-              <div class="role">Desarrollador de la página web y atención al usuario</div>
-              <div class="desc">Apasionado por la tecnología y la experiencia de usuario, siempre dispuesto a ayudarte.</div>
+          <div class="features-grid">
+            <div class="feature-card visual">
+              <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Juan Cisneros" class="feature-icon" style="border-radius: 50%; width: 80px; height: 80px;">
+              <h3>Juan Cisneros</h3>
+              <p><strong>Desarrollador de la página web y atención al usuario</strong></p>
+              <p>Apasionado por la tecnología y la experiencia de usuario, siempre dispuesto a ayudarte.</p>
             </div>
-            <div class="team-card">
-              <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Sara">
-              <div class="name">Sara</div>
-              <div class="role">Directora y coordinadora del proyecto</div>
-              <div class="desc">Liderando MatchHogar con visión, empatía y compromiso social.</div>
+            <div class="feature-card visual">
+              <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Sara" class="feature-icon" style="border-radius: 50%; width: 80px; height: 80px;">
+              <h3>Sara</h3>
+              <p><strong>Directora y coordinadora del proyecto</strong></p>
+              <p>Liderando MatchHogar con visión, empatía y compromiso social.</p>
+            </div>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Equipo Comercial" class="feature-icon" style="border-radius: 50%; width: 80px; height: 80px; background: #D7CCC8; padding: 15px;">
+              <h3>Equipo Comercial</h3>
+              <p><strong>Profesionales en gestiones inmobiliarias e inversiones</strong></p>
+              <p>Se compone de un equipo profesional y experto en gestiones inmobiliarias e inversiones. Cuidamos y protegemos vuestros intereses y os acompañamos hasta el final.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Impacto visual -->
-      <section class="impact-section">
+      <section class="testimonials section-padding bg-light impact-section">
         <div class="container">
-          <h2>Nuestro Impacto</h2>
-          <div class="impact-grid">
-            <div class="impact-card">
-              <img src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png" alt="Matches">
-              <div class="impact-number">+1,000</div>
-              <div class="impact-label">Matches realizados</div>
+          <h2 class="section-title">Nuestro Impacto</h2>
+          <div class="features-grid">
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png" alt="Matches" class="feature-icon">
+              <h3>+1,000</h3>
+              <p>Matches realizados</p>
             </div>
-            <div class="impact-card">
-              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Usuarios">
-              <div class="impact-number">+2,500</div>
-              <div class="impact-label">Usuarios activos</div>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Usuarios" class="feature-icon">
+              <h3>+2,500</h3>
+              <p>Usuarios activos</p>
             </div>
-            <div class="impact-card">
-              <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Seguridad">
-              <div class="impact-number">100%</div>
-              <div class="impact-label">Verificación y seguridad</div>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Seguridad" class="feature-icon">
+              <h3>100%</h3>
+              <p>Verificación y seguridad</p>
             </div>
-            <div class="impact-card">
-              <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Comunidades">
-              <div class="impact-number">+50</div>
-              <div class="impact-label">Comunidades creadas</div>
+            <div class="feature-card visual">
+              <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Comunidades" class="feature-icon">
+              <h3>+50</h3>
+              <p>Comunidades creadas</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- CTA final visual -->
-      <section class="about-cta-section">
+      <section class="cta-section section-padding cta-visual about-cta-section">
+        <div class="cta-bg-overlay"></div>
         <div class="container">
-          <h2>¿Quieres formar parte de MatchHogar?</h2>
-          <p>Únete a nuestra comunidad y vive la experiencia de compartir hogar de forma segura y sencilla.</p>
-          <div class="cta-buttons">
-            <a href="registro.html" class="btn btn-primary btn-lg">Únete ahora</a>
-            <a href="index.html" class="btn btn-outline btn-lg">Volver al inicio</a>
+          <div class="cta-content">
+            <h2>¿Quieres formar parte de MatchHogar?</h2>
+            <p>Únete a nuestra comunidad y vive la experiencia de compartir hogar de forma segura y sencilla.</p>
+            <div class="cta-buttons">
+              <a href="registro.html" class="btn btn-primary btn-lg">Únete ahora</a>
+              <a href="index.html" class="btn btn-outline btn-lg">Volver al inicio</a>
+            </div>
           </div>
         </div>
       </section>

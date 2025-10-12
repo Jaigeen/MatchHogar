@@ -6,11 +6,12 @@
     <meta name="description" content="Registro gratuito en MatchHogar - Encuentra tu compañero de piso ideal" />
     <title>MatchHogar | Registro Usuario Básico</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sections-bg.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
-  <body>
+  <body class="registro-page">
     <!-- ======================= HEADER & NAV ======================= -->
-    <header>
+    <header class="transparent">
       <nav class="container">
         <div class="nav-brand">
           <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
@@ -21,12 +22,14 @@
           <li><a href="quienes-somos.html">Quiénes somos</a></li>
           <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
           <li><a href="registro.html" aria-current="page">Registro</a></li>
+          <li><a href="publicaciones-actuales.html" style="color:#C4A484;font-weight:700;"><i class="fas fa-bullhorn"></i> Publicaciones actuales</a></li>
+          <li><a href="login-colaborador.html" style="color:#A0826D;font-weight:600;"><i class="fas fa-user-circle"></i> Colaboradores</a></li>
         </ul>
       </nav>
     </header>
 
     <!-- HERO REGISTRO BÁSICO -->
-    <section class="hero register-hero">
+    <section class="hero register-hero" style="padding-top: 120px;">
       <div class="container" style="text-align:center;">
         <h1>Registro de Usuario Básico</h1>
         <p class="registro-description" style="margin:0 auto;max-width:600px;">Crea tu cuenta gratuita y comienza a buscar tu compañero de piso ideal. Sin costes, sin complicaciones.</p>
@@ -129,6 +132,32 @@
 
           <div class="form-section" data-step="2" style="display:none">
             <h3>Situación Personal</h3>
+            
+            <!-- Nueva sección: ¿Quieres compartir? -->
+            <div class="form-group">
+              <label for="quiere-compartir">¿Quieres compartir? *</label>
+              <select id="quiere-compartir" name="quiere-compartir" required>
+                <option value="">Seleccionar...</option>
+                <option value="si">Sí - Quiero compartir con otras personas</option>
+                <option value="no">No - Busco una opción individual</option>
+              </select>
+              <small class="form-help">Si seleccionas "No", harás match directamente con viviendas/publicaciones de colaboradores</small>
+            </div>
+
+            <!-- Sección que aparece solo si quiere compartir -->
+            <div id="compartir-section" style="display:none;">
+              <div class="form-group">
+                <label for="personas-compartir">¿Con cuántas personas quieres compartir? *</label>
+                <select id="personas-compartir" name="personas-compartir">
+                  <option value="">Seleccionar...</option>
+                  <option value="1">1 persona (total: 2 personas)</option>
+                  <option value="2">2 personas (total: 3 personas)</option>
+                  <option value="3">3 personas (total: 4 personas)</option>
+                </select>
+                <small class="form-help">Máximo 4 personas en total (incluyéndote)</small>
+              </div>
+            </div>
+
             <div class="form-grid">
               <div class="form-group">
                 <label for="estado-civil">Estado civil *</label>
@@ -156,7 +185,9 @@
                 <label for="hijos-edades">Edades de los hijos</label>
                 <input type="text" id="hijos-edades" name="hijos-edades" placeholder="Ej: 5 y 8 años">
               </div>
-              <div class="form-group">
+              
+              <!-- Mascotas solo aparece si quiere compartir -->
+              <div class="form-group" id="mascotas-group">
                 <label for="mascotas">¿Tienes mascotas? *</label>
                 <select id="mascotas" name="mascotas" required>
                   <option value="">Seleccionar...</option>
@@ -181,8 +212,22 @@
           </div>
 
           <div class="form-section" data-step="3" style="display:none">
-            <h3>Preferencias de Vivienda</h3>
+            <h3 id="preferencias-titulo">Preferencias de Vivienda</h3>
             <div class="form-grid">
+              <div class="form-group">
+                <label for="tipo-necesidad">Tipo de necesidad *</label>
+                <select id="tipo-necesidad" name="tipo-necesidad" required>
+                  <option value="">Seleccionar tipo...</option>
+                  <option value="piso">Piso</option>
+                  <option value="casa">Casa</option>
+                  <option value="trastero">Trastero</option>
+                  <option value="garaje">Garaje</option>
+                  <option value="finca">Finca</option>
+                  <option value="local">Local/Negocio</option>
+                  <option value="inversion">Inversión</option>
+                  <option value="traspaso">Traspaso de local/negocio</option>
+                </select>
+              </div>
               <div class="form-group">
                 <label>Tipo de operación *</label>
                 <div class="chip-group" id="operacion-group">
@@ -193,124 +238,64 @@
                 <small class="form-help">Selecciona una o varias opciones</small>
               </div>
               <div class="form-group">
-                <label for="zona">Zona geográfica de interés *</label>
-                <select id="zona" name="zona" required>
-                  <option value="">Seleccionar ciudad...</option>
-                  <option value="Madrid">Madrid</option>
-                  <option value="Barcelona">Barcelona</option>
-                  <option value="Valencia">Valencia</option>
-                  <option value="Sevilla">Sevilla</option>
-                  <option value="Zaragoza">Zaragoza</option>
-                  <option value="Málaga">Málaga</option>
-                  <option value="Murcia">Murcia</option>
-                  <option value="Palma">Palma</option>
-                  <option value="Las Palmas">Las Palmas</option>
-                  <option value="Bilbao">Bilbao</option>
-                  <option value="Alicante">Alicante</option>
-                  <option value="Córdoba">Córdoba</option>
-                  <option value="Valladolid">Valladolid</option>
-                  <option value="Vigo">Vigo</option>
-                  <option value="Gijón">Gijón</option>
-                  <option value="Hospitalet de Llobregat">Hospitalet de Llobregat</option>
-                  <option value="Vitoria">Vitoria</option>
-                  <option value="A Coruña">A Coruña</option>
-                  <option value="Elche">Elche</option>
-                  <option value="Granada">Granada</option>
-                  <option value="Tarragona">Tarragona</option>
-                  <option value="Oviedo">Oviedo</option>
-                  <option value="Badalona">Badalona</option>
-                  <option value="Cartagena">Cartagena</option>
-                  <option value="Terrassa">Terrassa</option>
-                  <option value="Jerez">Jerez</option>
-                  <option value="Sabadell">Sabadell</option>
-                  <option value="Móstoles">Móstoles</option>
-                  <option value="Santa Cruz de Tenerife">Santa Cruz de Tenerife</option>
-                  <option value="Pamplona">Pamplona</option>
-                  <option value="Almería">Almería</option>
-                  <option value="Alcalá de Henares">Alcalá de Henares</option>
-                  <option value="Fuenlabrada">Fuenlabrada</option>
-                  <option value="Leganés">Leganés</option>
-                  <option value="San Sebastián">San Sebastián</option>
-                  <option value="Getafe">Getafe</option>
-                  <option value="Burgos">Burgos</option>
-                  <option value="Santander">Santander</option>
-                  <option value="Albacete">Albacete</option>
-                  <option value="Castellón">Castellón</option>
-                  <option value="Alcorcón">Alcorcón</option>
-                  <option value="San Cristóbal de La Laguna">San Cristóbal de La Laguna</option>
-                  <option value="Logroño">Logroño</option>
-                  <option value="Badajoz">Badajoz</option>
-                  <option value="Salamanca">Salamanca</option>
-                  <option value="Huelva">Huelva</option>
-                  <option value="Marbella">Marbella</option>
-                  <option value="Lleida">Lleida</option>
-                  <option value="Tarrasa">Tarrasa</option>
-                  <option value="León">León</option>
-                  <option value="Cádiz">Cádiz</option>
-                  <option value="Jaén">Jaén</option>
-                  <option value="Ourense">Ourense</option>
-                  <option value="Algeciras">Algeciras</option>
-                  <option value="Reus">Reus</option>
-                  <option value="Telde">Telde</option>
-                  <option value="Barakaldo">Barakaldo</option>
-                  <option value="Santiago de Compostela">Santiago de Compostela</option>
-                  <option value="Lugo">Lugo</option>
-                  <option value="Cáceres">Cáceres</option>
-                  <option value="Ferrol">Ferrol</option>
-                  <option value="San Fernando">San Fernando</option>
-                  <option value="Torrevieja">Torrevieja</option>
-                  <option value="Parla">Parla</option>
-                  <option value="Mataró">Mataró</option>
-                  <option value="Roquetas de Mar">Roquetas de Mar</option>
-                  <option value="El Ejido">El Ejido</option>
-                  <option value="Ciudad Real">Ciudad Real</option>
-                  <option value="Benidorm">Benidorm</option>
-                  <option value="Rubí">Rubí</option>
-                  <option value="Pontevedra">Pontevedra</option>
-                  <option value="Fuengirola">Fuengirola</option>
-                  <option value="Avilés">Avilés</option>
-                  <option value="Coslada">Coslada</option>
-                  <option value="Valdemoro">Valdemoro</option>
-                  <option value="Girona">Girona</option>
-                  <option value="Cerdanyola del Vallès">Cerdanyola del Vallès</option>
-                  <option value="Puerto de Santa María">Puerto de Santa María</option>
-                  <option value="Toledo">Toledo</option>
-                  <option value="Orihuela">Orihuela</option>
-                  <option value="Majadahonda">Majadahonda</option>
-                  <option value="Alcobendas">Alcobendas</option>
-                  <option value="Mérida">Mérida</option>
-                  <option value="Torremolinos">Torremolinos</option>
-                  <option value="Arrecife">Arrecife</option>
-                  <option value="Elda">Elda</option>
-                  <option value="Sanlúcar de Barrameda">Sanlúcar de Barrameda</option>
-                  <option value="Viladecans">Viladecans</option>
-                  <option value="Manresa">Manresa</option>
-                  <option value="Gandía">Gandía</option>
-                  <option value="Molina de Segura">Molina de Segura</option>
-                  <option value="Torrelavega">Torrelavega</option>
-                  <option value="Ceuta">Ceuta</option>
-                  <option value="Melilla">Melilla</option>
+                <label for="comunidad-autonoma">Comunidad Autónoma *</label>
+                <select id="comunidad-autonoma" name="comunidad-autonoma" required>
+                  <option value="">Seleccionar comunidad...</option>
+                  <option value="andalucia">Andalucía</option>
+                  <option value="aragon">Aragón</option>
+                  <option value="asturias">Asturias</option>
+                  <option value="baleares">Islas Baleares</option>
+                  <option value="canarias">Islas Canarias</option>
+                  <option value="cantabria">Cantabria</option>
+                  <option value="castilla-leon">Castilla y León</option>
+                  <option value="castilla-mancha">Castilla-La Mancha</option>
+                  <option value="cataluna">Cataluña</option>
+                  <option value="extremadura">Extremadura</option>
+                  <option value="galicia">Galicia</option>
+                  <option value="madrid">Comunidad de Madrid</option>
+                  <option value="murcia">Región de Murcia</option>
+                  <option value="navarra">Navarra</option>
+                  <option value="pais-vasco">País Vasco</option>
+                  <option value="rioja">La Rioja</option>
+                  <option value="valencia">Comunidad Valenciana</option>
+                  <option value="ceuta">Ceuta</option>
+                  <option value="melilla">Melilla</option>
                 </select>
+              </div>
+              <div class="form-group">
+                <label for="codigo-postal">Código Postal *</label>
+                <input type="text" id="codigo-postal" name="codigo-postal" 
+                       pattern="[0-9]{5}" maxlength="5" required
+                       placeholder="Ej: 28001, 08001, 41001...">
+                <small class="form-help">Introduce el código postal de la zona donde buscas</small>
               </div>
               <div class="form-group">
                 <label for="rango-economico">Rango económico *</label>
                 <select id="rango-economico" name="rango-economico" required>
                   <option value="">Seleccionar...</option>
-                  <option value="menos de 1000€">menos de 1000€</option>
-                  <option value="1000€-2000€">1000€-2000€</option>
-                  <option value="2000€-3000€">2000€-3000€</option>
-                  <option value="3000€ o más">3000€ o más</option>
+                  <!-- Opciones dinámicas según tipo de operación -->
                 </select>
+                <small class="form-help" id="rango-help">Indica el importe que puedes pagar individualmente</small>
               </div>
             </div>
-            <div class="form-group">
+            
+            <!-- Campo que cambia según si quiere compartir o no -->
+            <div class="form-group" id="condiciones-compartir" style="display:none;">
               <label for="condiciones">Condiciones del "match" *</label>
               <textarea id="condiciones" name="condiciones" rows="3" required 
                 placeholder="Describe el perfil de las personas con las que te gustaría compartir"></textarea>
             </div>
+            
+            <div class="form-group" id="condiciones-individual" style="display:none;">
+              <label for="condiciones-ind">Preferencias de vivienda/inversión *</label>
+              <textarea id="condiciones-ind" name="condiciones-ind" rows="3" required 
+                placeholder="Describe el tipo de vivienda, inversión o colaboración que buscas"></textarea>
+            </div>
+            
             <div class="form-group">
               <label for="preferencia-contacto">Frecuencia y preferencia de contacto</label>
-              <textarea id="preferencia-contacto" name="preferencia-contacto" rows="2"></textarea>
+              <textarea id="preferencia-contacto" name="preferencia-contacto" rows="2" 
+                placeholder="¿Cómo prefieres que te contacten? ¿Con qué frecuencia?"></textarea>
             </div>
           </div>
 
@@ -724,6 +709,7 @@
         const tipoMascotaGroup = document.getElementById('tipo-mascota-group');
         const tipoMascotaSelect = document.getElementById('tipo-mascota');
         const mascotaOtroGroup = document.getElementById('mascota-otro-group');
+        
         mascotasSelect.addEventListener('change', function() {
           if (this.value === 'si') {
             tipoMascotaGroup.style.display = 'block';
@@ -735,6 +721,7 @@
             document.getElementById('mascota-otro').required = false;
           }
         });
+        
         tipoMascotaSelect.addEventListener('change', function() {
           if (this.value === 'otro') {
             mascotaOtroGroup.style.display = 'block';
@@ -744,6 +731,132 @@
             document.getElementById('mascota-otro').required = false;
           }
         });
+
+        // NUEVA FUNCIONALIDAD: Manejar si quiere compartir o no
+        const quiereCompartirSelect = document.getElementById('quiere-compartir');
+        const compartirSection = document.getElementById('compartir-section');
+        const personasCompartirSelect = document.getElementById('personas-compartir');
+        const mascotasGroup = document.getElementById('mascotas-group');
+        const preferenciasTitle = document.getElementById('preferencias-titulo');
+        const condicionesCompartir = document.getElementById('condiciones-compartir');
+        const condicionesIndividual = document.getElementById('condiciones-individual');
+        const condicionesTextarea = document.getElementById('condiciones');
+        const condicionesIndTextarea = document.getElementById('condiciones-ind');
+
+        quiereCompartirSelect.addEventListener('change', function() {
+          if (this.value === 'si') {
+            // Quiere compartir
+            compartirSection.style.display = 'block';
+            personasCompartirSelect.required = true;
+            mascotasGroup.style.display = 'block';
+            mascotasSelect.required = true;
+            
+            // Actualizar títulos y campos
+            preferenciasTitle.textContent = 'Preferencias para Compartir';
+            condicionesCompartir.style.display = 'block';
+            condicionesIndividual.style.display = 'none';
+            condicionesTextarea.required = true;
+            condicionesIndTextarea.required = false;
+            
+          } else if (this.value === 'no') {
+            // No quiere compartir
+            compartirSection.style.display = 'none';
+            personasCompartirSelect.required = false;
+            personasCompartirSelect.value = '';
+            
+            // Ocultar mascotas ya que no las compartirá
+            mascotasGroup.style.display = 'none';
+            mascotasSelect.required = false;
+            mascotasSelect.value = '';
+            tipoMascotaGroup.style.display = 'none';
+            tipoMascotaSelect.required = false;
+            mascotaOtroGroup.style.display = 'none';
+            document.getElementById('mascota-otro').required = false;
+            
+            // Actualizar títulos y campos
+            preferenciasTitle.textContent = 'Preferencias de Vivienda/Inversión';
+            condicionesCompartir.style.display = 'none';
+            condicionesIndividual.style.display = 'block';
+            condicionesTextarea.required = false;
+            condicionesIndTextarea.required = true;
+          } else {
+            // No seleccionado
+            compartirSection.style.display = 'none';
+            personasCompartirSelect.required = false;
+            mascotasGroup.style.display = 'block';
+            mascotasSelect.required = true;
+            condicionesCompartir.style.display = 'none';
+            condicionesIndividual.style.display = 'none';
+            condicionesTextarea.required = false;
+            condicionesIndTextarea.required = false;
+          }
+        });
+
+        // NUEVA FUNCIONALIDAD: Manejar rangos económicos dinámicos según tipo de operación
+        const operacionGroup = document.getElementById('operacion-group');
+        const rangoEconomicoSelect = document.getElementById('rango-economico');
+        const rangoHelp = document.getElementById('rango-help');
+        
+        function updateRangoEconomico() {
+          const selectedOperations = [];
+          const checkboxes = operacionGroup.querySelectorAll('input[type="checkbox"]:checked');
+          checkboxes.forEach(checkbox => selectedOperations.push(checkbox.value));
+          
+          // Limpiar opciones actuales
+          rangoEconomicoSelect.innerHTML = '<option value="">Seleccionar...</option>';
+          
+          if (selectedOperations.length === 0) {
+            rangoHelp.textContent = 'Selecciona primero el tipo de operación';
+            return;
+          }
+          
+          const hasAlquiler = selectedOperations.includes('alquiler');
+          const hasCompra = selectedOperations.includes('compra');
+          const hasInversion = selectedOperations.includes('inversion');
+          
+          if (hasAlquiler || hasInversion) {
+            // Rangos para alquiler/inversión
+            rangoEconomicoSelect.innerHTML += `
+              <option value="200-500">200€ - 500€</option>
+              <option value="500-800">500€ - 800€</option>
+              <option value="800-1200">800€ - 1.200€</option>
+              <option value="1200-1500">1.200€ - 1.500€</option>
+              <option value="1500-2000">1.500€ - 2.000€</option>
+              <option value="2000-2500">2.000€ - 2.500€</option>
+              <option value="2500-3000">2.500€ - 3.000€</option>
+              <option value="3000-4000">3.000€ - 4.000€</option>
+              <option value="4000+">Más de 4.000€</option>
+            `;
+            rangoHelp.textContent = 'Indica el importe mensual que puedes pagar individualmente';
+          }
+          
+          if (hasCompra) {
+            // Rangos para compra - valor total de la vivienda
+            rangoEconomicoSelect.innerHTML += `
+              <option value="50000-100000">50.000€ - 100.000€</option>
+              <option value="100000-200000">100.000€ - 200.000€</option>
+              <option value="200000-300000">200.000€ - 300.000€</option>
+              <option value="300000-500000">300.000€ - 500.000€</option>
+              <option value="500000-750000">500.000€ - 750.000€</option>
+              <option value="750000-1000000">750.000€ - 1.000.000€</option>
+              <option value="1000000+">Más de 1.000.000€</option>
+              <option value="personalizado">Cantidad personalizada</option>
+            `;
+            if (hasAlquiler || hasInversion) {
+              rangoHelp.textContent = 'Para compra: valor total de la vivienda (se repartirá entre los compradores)';
+            } else {
+              rangoHelp.textContent = 'Indica el valor total de la vivienda que estás dispuesto a comprar (se repartirá entre los compradores)';
+            }
+          }
+        }
+        
+        // Agregar event listeners a todos los checkboxes de operación
+        operacionGroup.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+          checkbox.addEventListener('change', updateRangoEconomico);
+        });
+        
+        // Inicializar
+        updateRangoEconomico();
 
         // Navbar hamburguesa para móvil
         const nav = document.querySelector('nav');

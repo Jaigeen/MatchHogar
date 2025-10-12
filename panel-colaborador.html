@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MatchHogar | Panel de Colaborador</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sections-bg.css" />
+    <style>
+      .panel-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      
+      .colaborador-header {
+        background: linear-gradient(135deg, var(--navy, #002e5e) 0%, #1a4480 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      
+      .colaborador-id {
+        background: var(--brown, #A0826D);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+      }
+      
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+      
+      .stat-card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        border-top: 4px solid var(--brown, #A0826D);
+      }
+      
+      .stat-number {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: var(--navy, #002e5e);
+        margin-bottom: 5px;
+      }
+      
+      .stat-label {
+        color: #666;
+        font-size: 0.9em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .actions-section {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+      }
+      
+      .btn {
+        background-color: var(--brown, #A0826D);
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 10px;
+        text-decoration: none;
+        display: inline-block;
+      }
+      
+      .btn:hover {
+        background-color: #8b6f5a;
+      }
+      
+      .btn-secondary {
+        background-color: var(--navy, #002e5e);
+      }
+      
+      .btn-secondary:hover {
+        background-color: #1a4480;
+      }
+      
+      .anuncios-list {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+      
+      .anuncio-item {
+        display: grid;
+        grid-template-columns: 120px 1fr auto;
+        gap: 20px;
+        padding: 20px;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        align-items: center;
+      }
+      
+      .anuncio-foto {
+        width: 100px;
+        height: 80px;
+        background: #f0f0f0;
+        border-radius: 8px;
+        background-size: cover;
+        background-position: center;
+      }
+      
+      .anuncio-info h4 {
+        margin: 0 0 5px 0;
+        color: var(--navy, #002e5e);
+      }
+      
+      .anuncio-info p {
+        margin: 0;
+        color: #666;
+        font-size: 0.9em;
+      }
+      
+      .anuncio-precio {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var(--brown, #A0826D);
+      }
+      
+      .status-badge {
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      
+      .status-activo {
+        background: #d4edda;
+        color: #155724;
+      }
+      
+      .status-pendiente {
+        background: #fff3cd;
+        color: #856404;
+      }
+      
+      .form-container {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        margin: 30px 0;
+        display: none;
+      }
+      
+      .form-group {
+        margin-bottom: 25px;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+      }
+      
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+      }
+      
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--brown, #A0826D);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(160, 130, 109, 0.1);
+      }
+      
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      
+      .photo-upload {
+        border: 2px dashed #ddd;
+        padding: 30px;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+      }
+      
+      .photo-upload:hover {
+        border-color: var(--brown, #A0826D);
+      }
+      
+      .photo-preview {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+      
+      .photo-item {
+        position: relative;
+        width: 120px;
+        height: 100px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      
+      .photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .photo-remove {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: rgba(220, 53, 69, 0.9);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      
+      @media (max-width: 768px) {
+        .anuncio-item {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="registro-page">
+    <!-- ======================= HEADER & NAV ======================= -->
+    <header class="transparent">
+      <nav class="container">
+        <div class="nav-brand">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
+          <span>MatchHogar</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+          <li><a href="publicaciones-actuales.html">Publicaciones</a></li>
+          <li><a href="#" onclick="logout()">Cerrar Sesión</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============================ MAIN =========================== -->
+    <main class="container panel-container">
+      <!-- HEADER DEL COLABORADOR -->
+      <div class="colaborador-header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h1>Panel de Colaborador</h1>
+            <h2 id="colaborador-nombre">Inmobiliaria Ejemplo</h2>
+            <div class="colaborador-id" id="colaborador-id">IDE001</div>
+            <p>Último acceso: <span id="ultimo-acceso">Hoy, 14:30</span></p>
+          </div>
+          <button onclick="cerrarSesion()" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px;">
+            🚪 Cerrar Sesión
+          </button>
+        </div>
+      </div>
+
+      <!-- ESTADÍSTICAS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="stat-anuncios">3</div>
+          <div class="stat-label">Anuncios Activos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="stat-visitas">127</div>
+          <div class="stat-label">Visitas Este Mes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="stat-contactos">15</div>
+          <div class="stat-label">Contactos Recibidos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="stat-rating">4.8</div>
+          <div class="stat-label">Valoración Media</div>
+        </div>
+      </div>
+
+      <!-- ACCIONES RÁPIDAS -->
+      <div class="actions-section">
+        <h3 style="color: var(--navy, #002e5e); margin-bottom: 20px;">Acciones Rápidas</h3>
+        <button class="btn" onclick="mostrarFormularioAnuncio()">
+          📝 Crear Nuevo Anuncio
+        </button>
+        <a href="publicaciones-actuales.html" class="btn btn-secondary">
+          👁️ Ver Mis Publicaciones
+        </a>
+        <button class="btn btn-secondary" onclick="mostrarEstadisticas()">
+          📊 Ver Estadísticas Detalladas
+        </button>
+      </div>
+
+      <!-- FORMULARIO CREAR ANUNCIO -->
+      <div id="formulario-anuncio" class="form-container">
+        <h3 style="color: var(--navy, #002e5e); margin-bottom: 30px;">Crear Nuevo Anuncio</h3>
+        
+        <form id="crear-anuncio-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="titulo">Título del anuncio *</label>
+              <input type="text" id="titulo" name="titulo" required placeholder="Ej: Habitación luminosa en centro ciudad">
+            </div>
+            
+            <div class="form-group">
+              <label for="tipo-propiedad">Tipo de propiedad *</label>
+              <select id="tipo-propiedad" name="tipo-propiedad" required>
+                <option value="">Seleccionar...</option>
+                <option value="habitacion">Habitación</option>
+                <option value="estudio">Estudio</option>
+                <option value="apartamento">Apartamento</option>
+                <option value="piso">Piso</option>
+                <option value="casa">Casa</option>
+                <option value="atico">Ático</option>
+                <option value="duplex">Dúplex</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="precio">Precio mensual (€) *</label>
+              <input type="number" id="precio" name="precio" required min="100" max="10000">
+            </div>
+            
+            <div class="form-group">
+              <label for="habitaciones">Número de habitaciones</label>
+              <select id="habitaciones" name="habitaciones">
+                <option value="1">1 habitación</option>
+                <option value="2">2 habitaciones</option>
+                <option value="3">3 habitaciones</option>
+                <option value="4">4 habitaciones</option>
+                <option value="5+">5+ habitaciones</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="superficie">Superficie (m²)</label>
+              <input type="number" id="superficie" name="superficie" min="10" max="500">
+            </div>
+            
+            <div class="form-group">
+              <label for="ubicacion">Ubicación *</label>
+              <input type="text" id="ubicacion" name="ubicacion" required placeholder="Ciudad, barrio, calle">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="descripcion">Descripción detallada *</label>
+            <textarea id="descripcion" name="descripcion" rows="5" required placeholder="Describe la propiedad, servicios incluidos, normas, características especiales..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label>Servicios incluidos</label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px;">
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="wifi"> WiFi incluido
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="limpieza"> Servicio de limpieza
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="gastos"> Gastos incluidos
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="parking"> Plaza de parking
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="terraza"> Terraza/Balcón
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="ascensor"> Ascensor
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Fotos de la propiedad *</label>
+            <div class="photo-upload" onclick="document.getElementById('photo-input').click()">
+              <p>📸 Haz clic para subir fotos</p>
+              <small>Máximo 8 fotos. Formatos: JPG, PNG</small>
+            </div>
+            <input type="file" id="photo-input" multiple accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+            <div id="photo-preview" class="photo-preview"></div>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="disponibilidad">Disponibilidad *</label>
+              <select id="disponibilidad" name="disponibilidad" required>
+                <option value="inmediata">Inmediata</option>
+                <option value="1-semana">En 1 semana</option>
+                <option value="2-semanas">En 2 semanas</option>
+                <option value="1-mes">En 1 mes</option>
+                <option value="2-meses">En 2 meses</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="contacto-preferido">Método de contacto preferido</label>
+              <select id="contacto-preferido" name="contacto-preferido">
+                <option value="telefono">Teléfono</option>
+                <option value="email">Email</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="cualquiera">Cualquiera</option>
+              </select>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 30px;">
+            <button type="button" class="btn btn-secondary" onclick="cancelarFormulario()">Cancelar</button>
+            <button type="submit" class="btn">Publicar Anuncio</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- MIS ANUNCIOS -->
+      <div class="anuncios-list">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+          <h3 style="color: var(--navy, #002e5e); margin: 0;">Mis Anuncios</h3>
+          <button class="btn" onclick="mostrarFormularioNuevoAnuncio()" style="padding: 10px 20px;">
+            ➕ Crear Nuevo Anuncio
+          </button>
+        </div>
+        
+        <div id="mis-anuncios-lista">
+          <!-- Los anuncios se cargarán dinámicamente aquí -->
+        </div>
+      </div>
+    </main>
+
+    <!-- =========================== FOOTER ========================== -->
+    <footer class="footer-bonito">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" style="height:40px;border-radius:8px;margin-right:10px;vertical-align:middle;">
+          <span>MatchHogar</span>
+        </div>
+        <div class="footer-links">
+          <a href="#politica">Política de privacidad</a>
+          <span class="footer-sep">|</span>
+          <a href="#condiciones">Términos y condiciones</a>
+          <span class="footer-sep">|</span>
+          <a href="#cookies">Política de cookies</a>
+        </div>
+        <div class="footer-copy">© 2025 MatchHogar. Todos los derechos reservados.</div>
+      </div>
+    </footer>
+
+    <style>
+      .footer-bonito {
+        background: var(--navy, #002e5e);
+        color: #fff;
+        padding: 32px 0 16px 0;
+        margin-top: 48px;
+        font-size: 1.05em;
+        box-shadow: 0 -2px 16px #0001;
+      }
+      .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-logo {
+        font-weight: bold;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 8px 0;
+      }
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 500;
+      }
+      .footer-links a:hover {
+        color: var(--orange, #e76f26);
+        text-decoration: underline;
+      }
+      .footer-sep {
+        color: #fff7;
+      }
+      .footer-copy {
+        font-size: 0.95em;
+        color: #fff9;
+        margin-top: 4px;
+      }
+      @media (max-width: 600px) {
+        .footer-content { font-size: 0.95em; }
+        .footer-links { gap: 8px; }
+      }
+    </style>
+
+    <script>
+      console.log('Panel de colaborador cargando...');
+      
+      // Simulación de datos del colaborador - ahora desde sesión
+      let colaboradorData = {
+        id: sessionStorage.getItem('colaborador-id') || 'IDE001',
+        nombre: sessionStorage.getItem('colaborador-nombre') || 'Inmobiliaria Idealista',
+        tipo: sessionStorage.getItem('colaborador-tipo') || 'profesional',
+        ultimoAcceso: new Date().toLocaleString('es-ES'),
+        estadisticas: {
+          anunciosActivos: 3,
+          visitasMes: 127,
+          contactosRecibidos: 15,
+          valoracionMedia: 4.8
+        }
+      };
+      
+      let fotosSubidas = [];
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('Panel de colaborador inicializado');
+        
+        // Verificar si hay sesión activa
+        if (!sessionStorage.getItem('colaborador-id')) {
+          alert('Debes iniciar sesión para acceder al panel');
+          window.location.href = 'login-colaborador.html';
+          return;
+        }
+        
+        cargarDatosColaborador();
+        cargarAnunciosUsuario(); // Cargar anuncios del usuario
+        
+        // Manejar envío del formulario
+        const form = document.getElementById('crear-anuncio-form');
+        if (form) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            publicarAnuncio();
+          });
+        }
+      });
+      
+      function cargarDatosColaborador() {
+        document.getElementById('colaborador-id').textContent = colaboradorData.id;
+        document.getElementById('colaborador-nombre').textContent = colaboradorData.nombre;
+        document.getElementById('ultimo-acceso').textContent = colaboradorData.ultimoAcceso;
+        
+        document.getElementById('stat-anuncios').textContent = colaboradorData.estadisticas.anunciosActivos;
+        document.getElementById('stat-visitas').textContent = colaboradorData.estadisticas.visitasMes;
+        document.getElementById('stat-contactos').textContent = colaboradorData.estadisticas.contactosRecibidos;
+        document.getElementById('stat-rating').textContent = colaboradorData.estadisticas.valoracionMedia;
+      }
+      
+      function mostrarFormularioAnuncio() {
+        const formulario = document.getElementById('formulario-anuncio');
+        formulario.style.display = 'block';
+        formulario.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      function cancelarFormulario() {
+        const formulario = document.getElementById('formulario-anuncio');
+        formulario.style.display = 'none';
+        document.getElementById('crear-anuncio-form').reset();
+        fotosSubidas = [];
+        document.getElementById('photo-preview').innerHTML = '';
+      }
+      
+      function handlePhotoUpload(event) {
+        const files = Array.from(event.target.files);
+        const maxFiles = 8;
+        
+        if (fotosSubidas.length + files.length > maxFiles) {
+          alert(`Máximo ${maxFiles} fotos permitidas`);
+          return;
+        }
+        
+        files.forEach(file => {
+          if (file.type.startsWith('image/')) {
+            fotosSubidas.push(file);
+            mostrarPreviewFoto(file);
+          }
+        });
+      }
+      
+      function mostrarPreviewFoto(file) {
+        const preview = document.getElementById('photo-preview');
+        const photoItem = document.createElement('div');
+        photoItem.className = 'photo-item';
+        
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'photo-remove';
+        removeBtn.innerHTML = '×';
+        removeBtn.onclick = () => {
+          const index = fotosSubidas.indexOf(file);
+          if (index > -1) {
+            fotosSubidas.splice(index, 1);
+            photoItem.remove();
+          }
+        };
+        
+        photoItem.appendChild(img);
+        photoItem.appendChild(removeBtn);
+        preview.appendChild(photoItem);
+      }
+      
+      function publicarAnuncio() {
+        // Validar campos requeridos
+        const titulo = document.getElementById('titulo').value.trim();
+        const tipoPropiedad = document.getElementById('tipo-propiedad').value;
+        const precio = document.getElementById('precio').value;
+        const ubicacion = document.getElementById('ubicacion').value.trim();
+        const descripcion = document.getElementById('descripcion').value.trim();
+        const disponibilidad = document.getElementById('disponibilidad').value;
+        
+        if (!titulo || !tipoPropiedad || !precio || !ubicacion || !descripcion || !disponibilidad) {
+          alert('Por favor, completa todos los campos obligatorios');
+          return;
+        }
+        
+        if (fotosSubidas.length === 0) {
+          alert('Por favor, sube al menos una foto');
+          return;
+        }
+        
+        // Simular creación del anuncio
+        const nuevoAnuncio = {
+          id: 'ANU' + Date.now(),
+          colaboradorId: colaboradorData.id,
+          titulo: titulo,
+          tipo: tipoPropiedad,
+          precio: precio,
+          ubicacion: ubicacion,
+          descripcion: descripcion,
+          fotos: fotosSubidas,
+          fechaCreacion: new Date(),
+          estado: 'activo'
+        };
+        
+        console.log('Nuevo anuncio creado:', nuevoAnuncio);
+        
+        // Guardar en localStorage para mostrar en publicaciones-actuales
+        let anuncios = JSON.parse(localStorage.getItem('anuncios') || '[]');
+        anuncios.push(nuevoAnuncio);
+        localStorage.setItem('anuncios', JSON.stringify(anuncios));
+        
+        alert('¡Anuncio publicado correctamente!\\n\\nID del anuncio: ' + nuevoAnuncio.id + '\\nColaborador: ' + colaboradorData.id);
+        
+        // Limpiar formulario
+        cancelarFormulario();
+        
+        // Actualizar estadísticas
+        colaboradorData.estadisticas.anunciosActivos++;
+        document.getElementById('stat-anuncios').textContent = colaboradorData.estadisticas.anunciosActivos;
+      }
+      
+      function mostrarEstadisticas() {
+        alert('Estadísticas detalladas:\\n\\n' +
+              '📊 Anuncios activos: ' + colaboradorData.estadisticas.anunciosActivos + '\\n' +
+              '👀 Visitas este mes: ' + colaboradorData.estadisticas.visitasMes + '\\n' +
+              '📞 Contactos recibidos: ' + colaboradorData.estadisticas.contactosRecibidos + '\\n' +
+              '⭐ Valoración media: ' + colaboradorData.estadisticas.valoracionMedia + '/5');
+      }
+      
+      function logout() {
+        if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+          sessionStorage.clear();
+          alert('Sesión cerrada. Redirigiendo al inicio...');
+          window.location.href = 'index.html';
+        }
+      }
+      
+      // Función para editar anuncio
+      function cerrarSesion() {
+        if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+          sessionStorage.clear();
+          window.location.href = 'login-colaborador.html';
+        }
+      }
+
+      function editarAnuncio(anuncioId) {
+        console.log('Editando anuncio:', anuncioId);
+        window.location.href = `editar-anuncio.html?id=${anuncioId}`;
+      }
+      
+      // Función para eliminar anuncio
+      function eliminarAnuncio(anuncioId) {
+        if (confirm('⚠️ ¿Estás seguro de eliminar este anuncio?\\n\\nEsta acción no se puede deshacer.')) {
+          console.log('Eliminando anuncio:', anuncioId);
+          alert('✅ Anuncio eliminado correctamente');
+          // Aquí recargar la lista de anuncios
+          location.reload();
+        }
+      }
+      
+      // Función para mostrar/ocultar formulario de nuevo anuncio
+      function mostrarFormularioNuevoAnuncio() {
+        const form = document.getElementById('crear-anuncio-form');
+        if (form.style.display === 'none' || form.style.display === '') {
+          form.style.display = 'block';
+          form.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          form.style.display = 'none';
+        }
+      }
+      
+      // Función para cargar anuncios del usuario
+      function cargarAnunciosUsuario() {
+        const colaboradorId = sessionStorage.getItem('colaborador-id');
+        const contenedor = document.getElementById('mis-anuncios-lista');
+        
+        if (!colaboradorId) {
+          contenedor.innerHTML = '<p style="text-align: center; color: #666;">Debes iniciar sesión para ver tus anuncios.</p>';
+          return;
+        }
+        
+        // Base de datos de anuncios por usuario
+        const anunciosPorUsuario = {
+          'IDE001': [
+            {
+              id: 'IDE001-001',
+              titulo: 'Habitación moderna en Malasaña',
+              ubicacion: 'Madrid, Malasaña',
+              tipo: '1 habitación',
+              superficie: '15m²',
+              precio: '420€/mes',
+              estado: 'activo'
+            },
+            {
+              id: 'IDE001-002',
+              titulo: 'Estudio con terraza en Chamberí',
+              ubicacion: 'Madrid, Chamberí',
+              tipo: 'Estudio',
+              superficie: '25m²',
+              precio: '580€/mes',
+              estado: 'activo'
+            },
+            {
+              id: 'IDE001-003',
+              titulo: 'Apartamento 1 dormitorio La Latina',
+              ubicacion: 'Madrid, La Latina',
+              tipo: '1 dormitorio',
+              superficie: '45m²',
+              precio: '750€/mes',
+              estado: 'activo'
+            }
+          ],
+          'TEC002': [
+            {
+              id: 'TEC002-001',
+              titulo: 'Casa rural con jardín en Gràcia',
+              ubicacion: 'Barcelona, Gràcia',
+              tipo: '2 dormitorios',
+              superficie: '65m²',
+              precio: '890€/mes',
+              estado: 'activo'
+            },
+            {
+              id: 'TEC002-002',
+              titulo: 'Loft industrial en Poblenou',
+              ubicacion: 'Barcelona, Poblenou',
+              tipo: '1 dormitorio',
+              superficie: '80m²',
+              precio: '1200€/mes',
+              estado: 'activo'
+            },
+            {
+              id: 'TEC002-003',
+              titulo: 'Ático con terraza en Eixample',
+              ubicacion: 'Barcelona, Eixample',
+              tipo: '1 dormitorio',
+              superficie: '55m²',
+              precio: '950€/mes',
+              estado: 'pausado'
+            }
+          ],
+          'PAR003': [
+            {
+              id: 'PAR003-001',
+              titulo: 'Habitación acogedora en Ruzafa',
+              ubicacion: 'Valencia, Ruzafa',
+              tipo: '1 habitación',
+              superficie: '12m²',
+              precio: '320€/mes',
+              estado: 'activo'
+            },
+            {
+              id: 'PAR003-002',
+              titulo: 'Estudio independiente Benimaclet',
+              ubicacion: 'Valencia, Benimaclet',
+              tipo: 'Estudio',
+              superficie: '22m²',
+              precio: '480€/mes',
+              estado: 'activo'
+            },
+            {
+              id: 'PAR003-003',
+              titulo: 'Piso completo cerca del mar',
+              ubicacion: 'Valencia, Cabanyal',
+              tipo: '2 dormitorios',
+              superficie: '70m²',
+              precio: '650€/mes',
+              estado: 'pendiente'
+            }
+          ]
+        };
+        
+        let anunciosUsuario = anunciosPorUsuario[colaboradorId] || [];
+        
+        // Cargar datos actualizados de localStorage
+        const anunciosActualizados = JSON.parse(localStorage.getItem('anuncios_actualizados')) || {};
+        
+        // Actualizar anuncios con datos guardados
+        anunciosUsuario = anunciosUsuario.map(anuncio => {
+          const datosActualizados = anunciosActualizados[anuncio.id];
+          if (datosActualizados) {
+            return {
+              ...anuncio,
+              titulo: datosActualizados.titulo,
+              ubicacion: datosActualizados.ubicacion,
+              tipo: datosActualizados.tipo,
+              superficie: datosActualizados.superficie + 'm²',
+              precio: datosActualizados.precio + '€/mes',
+              estado: datosActualizados.estado || anuncio.estado
+            };
+          }
+          return anuncio;
+        });
+        
+        if (anunciosUsuario.length === 0) {
+          contenedor.innerHTML = '<p style="text-align: center; color: #666;">Aún no tienes anuncios publicados. ¡Crea tu primer anuncio!</p>';
+          return;
+        }
+        
+        contenedor.innerHTML = '';
+        
+        anunciosUsuario.forEach(anuncio => {
+          const estadoClass = anuncio.estado === 'activo' ? 'status-activo' : 
+                             anuncio.estado === 'pausado' ? 'status-pausado' : 'status-pendiente';
+          
+          const estadoTexto = anuncio.estado === 'activo' ? 'Activo' : 
+                             anuncio.estado === 'pausado' ? 'Pausado' : 'Pendiente';
+          
+          const anuncioHTML = `
+            <div class="anuncio-item">
+              <div class="anuncio-foto" style="background-image: url('public/MatchHogar.jpg')"></div>
+              <div class="anuncio-info">
+                <h4>${anuncio.titulo}</h4>
+                <p>📍 ${anuncio.ubicacion} | 🛏️ ${anuncio.tipo} | 🏠 ${anuncio.superficie}</p>
+                <span class="status-badge ${estadoClass}">${estadoTexto}</span>
+              </div>
+              <div>
+                <div class="anuncio-precio">${anuncio.precio}</div>
+                <button class="btn" style="margin-top: 10px; padding: 8px 15px; font-size: 14px;" onclick="editarAnuncio('${anuncio.id}')">Editar</button>
+              </div>
+            </div>
+          `;
+          
+          contenedor.innerHTML += anuncioHTML;
+        });
+      }
+      
+      // Generar ID único para nuevos colaboradores
+      function generarIdColaborador(tipoEmpresa) {
+        const prefijos = {
+          'inmobiliaria': 'INM',
+          'idealista': 'IDE', 
+          'tecnocasa': 'TEC',
+          'remax': 'RMX',
+          'century21': 'C21',
+          'particular': 'PAR'
+        };
+        
+        const prefijo = prefijos[tipoEmpresa.toLowerCase()] || 'COL';
+        const numero = String(Math.floor(Math.random() * 9999) + 1).padStart(3, '0');
+        
+        return prefijo + numero;
+      }
+    </script>
+  </body>
+</html>

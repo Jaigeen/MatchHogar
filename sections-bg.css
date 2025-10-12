@@ -1,0 +1,521 @@
+/* Estilos específicos para secciones con fondo */
+
+/* ==================== PÁGINA INDEX (ORIGINAL) ==================== */
+.features-section {
+  padding: 80px 0;
+  position: relative;
+  background-color: transparent;
+  margin: 0;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.features-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('public/casamarron2.webp');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  opacity: 0.8;
+  z-index: -2;
+}
+
+.features-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(40,30,25,0.85), rgba(120,100,85,0.85));
+  z-index: -1;
+}
+
+.features-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.features-section h2 {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.features-section .feature-card {
+  background: rgba(255,255,255,0.98);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* Otras secciones con fondo similar */
+.how-it-works,
+.testimonials.section-padding.bg-light,
+.cta-section {
+  position: relative;
+  background-color: transparent;
+}
+
+.how-it-works::before,
+.testimonials.section-padding.bg-light::before,
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('public/casamarron2.webp');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  opacity: 0.8;
+  z-index: -2;
+}
+
+.how-it-works::after,
+.testimonials.section-padding.bg-light::after,
+.cta-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(40,30,25,0.85), rgba(120,100,85,0.85));
+  z-index: -1;
+}
+
+/* ==================== PÁGINA QUIENES SOMOS (CASAMARRON.PNG) ==================== */
+/* Sobrescribir pseudo-elementos ::before */
+html body.quienes-somos .features-section::before,
+html body.quienes-somos .how-it-works::before,
+html body.quienes-somos .testimonials.section-padding.bg-light::before,
+html body.quienes-somos .cta-section::before {
+  background-image: url('public/casamarron.png') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Sobrescribir background directo de las secciones */
+html body.quienes-somos .features-section,
+html body.quienes-somos .how-it-works,
+html body.quienes-somos .testimonials.section-padding.bg-light,
+html body.quienes-somos .cta-section {
+  background-image: linear-gradient(rgba(95,70,51,0.4), rgba(95,70,51,0.4)), url('public/casamarron.png') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Sobrescribir el hero-visual específicamente para quienes-somos */
+html body.quienes-somos .hero-visual {
+  background-image: linear-gradient(to right, rgba(40,30,25,0.4), rgba(120,100,85,0.4)), url('public/casamarron.png') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Eliminar espacios blancos entre secciones en quienes-somos */
+body.quienes-somos {
+  background: transparent !important;
+}
+
+body.quienes-somos section {
+  margin: 0 !important;
+  border: none !important;
+}
+
+body.quienes-somos section + section {
+  margin-top: 0 !important;
+}
+
+/* Asegurar que no hay elementos blancos visibles */
+body.quienes-somos main {
+  background: transparent !important;
+}
+
+body.quienes-somos .container {
+  background: transparent !important;
+}
+
+/* Eliminar cualquier posible borde o sombra entre secciones */
+body.quienes-somos .hero-visual,
+body.quienes-somos .features-section,
+body.quienes-somos .how-it-works,
+body.quienes-somos .testimonials,
+body.quienes-somos .cta-section {
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Asegurar que las secciones se conecten sin espacios */
+body.quienes-somos section:first-child {
+  margin-top: 0 !important;
+}
+
+body.quienes-somos section:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ==================== SISTEMA EXPANDIBLE PARA FUTURAS PÁGINAS ==================== */
+/*
+  Para agregar una nueva página con fondo diferente:
+  
+  1. Agregar clase al body de la nueva página: <body class="nombre-pagina">
+  2. Agregar estilos específicos aquí:
+  
+  // Para pseudo-elementos ::before (con efecto parallax)
+  html body.nombre-pagina .features-section::before,
+  html body.nombre-pagina .how-it-works::before,
+  html body.nombre-pagina .testimonials.section-padding.bg-light::before,
+  html body.nombre-pagina .cta-section::before {
+    background-image: url('public/imagen-nueva.jpg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+  }
+  
+  // Para background directo de las secciones (con efecto parallax)
+  html body.nombre-pagina .features-section,
+  html body.nombre-pagina .how-it-works,
+  html body.nombre-pagina .testimonials.section-padding.bg-light,
+  html body.nombre-pagina .cta-section {
+    background-image: linear-gradient(rgba(95,70,51,0.4), rgba(95,70,51,0.4)), url('public/imagen-nueva.jpg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+  }
+  
+  // Para el hero section (con efecto parallax):
+  html body.nombre-pagina .hero-visual {
+    background-image: linear-gradient(to right, rgba(40,30,25,0.4), rgba(120,100,85,0.4)), url('public/imagen-nueva.jpg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+  }
+  
+  Ejemplos de futuras páginas:
+  - body.que-ofrecemos (✅ IMPLEMENTADO)
+  - body.publicaciones-actuales (✅ IMPLEMENTADO)
+  - body.registro-page (✅ IMPLEMENTADO)
+  
+*/
+
+/* ==================== PÁGINA QUE OFRECEMOS (CASA5.WEBP) ==================== */
+/* Sobrescribir pseudo-elementos ::before */
+html body.que-ofrecemos .features-section::before,
+html body.que-ofrecemos .how-it-works::before,
+html body.que-ofrecemos .testimonials.section-padding.bg-light::before,
+html body.que-ofrecemos .cta-section::before,
+html body.que-ofrecemos .publicaciones-section::before {
+  background-image: url('public/casa5.webp') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Sobrescribir background directo de las secciones */
+html body.que-ofrecemos .features-section,
+html body.que-ofrecemos .how-it-works,
+html body.que-ofrecemos .testimonials.section-padding.bg-light,
+html body.que-ofrecemos .cta-section,
+html body.que-ofrecemos .publicaciones-section {
+  background-image: linear-gradient(rgba(95,70,51,0.4), rgba(95,70,51,0.4)), url('public/casa5.webp') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Sobrescribir el hero-visual específicamente para que-ofrecemos */
+html body.que-ofrecemos .hero-visual {
+  background-image: linear-gradient(to right, rgba(40,30,25,0.4), rgba(120,100,85,0.4)), url('public/casa5.webp') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Eliminar espacios blancos entre secciones en que-ofrecemos */
+body.que-ofrecemos {
+  background: transparent !important;
+}
+
+body.que-ofrecemos section {
+  margin: 0 !important;
+  border: none !important;
+}
+
+body.que-ofrecemos section + section {
+  margin-top: 0 !important;
+}
+
+/* Asegurar que no hay elementos blancos visibles */
+body.que-ofrecemos main,
+body.que-ofrecemos .container {
+  background: transparent !important;
+}
+
+/* Eliminar cualquier posible borde o sombra entre secciones */
+body.que-ofrecemos .hero-visual,
+body.que-ofrecemos .features-section,
+body.que-ofrecemos .how-it-works,
+body.que-ofrecemos .testimonials,
+body.que-ofrecemos .cta-section,
+body.que-ofrecemos .publicaciones-section {
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Asegurar que las secciones se conecten sin espacios */
+body.que-ofrecemos section:first-child {
+  margin-top: 0 !important;
+}
+
+body.que-ofrecemos section:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Configuración específica para la sección de publicaciones */
+body.que-ofrecemos .publicaciones-section {
+  background: url('public/casa5.webp') center center/cover fixed no-repeat !important;
+  position: relative;
+}
+
+body.que-ofrecemos .publicaciones-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(95,70,51,0.3), rgba(95,70,51,0.3));
+  z-index: 1;
+}
+
+body.que-ofrecemos .publicaciones-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==================== PÁGINA PUBLICACIONES ACTUALES (PUBLICACIONESACTUALES.WEBP) ==================== */
+/* Configuración directa del body con máxima especificidad */
+html body.publicaciones-actuales {
+  background: url('public/publicacionesactuales.webp') center center/cover fixed no-repeat !important;
+}
+
+/* Asegurar que main y contenedores sean transparentes */
+html body.publicaciones-actuales main,
+html body.publicaciones-actuales .container {
+  background: transparent !important;
+}
+
+/* Sobrescribir pseudo-elementos ::before */
+html body.publicaciones-actuales .features-section::before,
+html body.publicaciones-actuales .how-it-works::before,
+html body.publicaciones-actuales .testimonials.section-padding.bg-light::before,
+html body.publicaciones-actuales .cta-section::before,
+html body.publicaciones-actuales .publicaciones-hero::before,
+html body.publicaciones-actuales .publicaciones-list-section::before {
+  background-image: url('public/publicacionesactuales.webp') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Sobrescribir background directo de las secciones */
+html body.publicaciones-actuales .features-section,
+html body.publicaciones-actuales .how-it-works,
+html body.publicaciones-actuales .testimonials.section-padding.bg-light,
+html body.publicaciones-actuales .cta-section,
+html body.publicaciones-actuales .publicaciones-hero,
+html body.publicaciones-actuales .publicaciones-list-section {
+  background-image: linear-gradient(rgba(95,70,51,0.4), rgba(95,70,51,0.4)), url('public/publicacionesactuales.webp') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Sobrescribir el hero-visual específicamente para publicaciones-actuales */
+html body.publicaciones-actuales .hero-visual {
+  background-image: linear-gradient(to right, rgba(40,30,25,0.4), rgba(120,100,85,0.4)), url('public/publicacionesactuales.webp') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Eliminar espacios blancos entre secciones en publicaciones-actuales */
+body.publicaciones-actuales {
+  background: transparent !important;
+}
+
+body.publicaciones-actuales section {
+  margin: 0 !important;
+  border: none !important;
+}
+
+body.publicaciones-actuales section + section {
+  margin-top: 0 !important;
+}
+
+/* Estilo específico para la sección de búsqueda */
+body.publicaciones-actuales .search-filters-section {
+  background: linear-gradient(135deg, #FEF9E7 0%, rgba(255,255,255,0.9) 50%, #D7CCC8 100%) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Estilo específico para el wrapper de búsqueda */
+body.publicaciones-actuales .search-filters-wrapper {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 15px !important;
+  backdrop-filter: blur(10px) !important;
+  padding: 1.5rem !important;
+  margin-top: 1rem !important;
+}
+
+/* Asegurar que no hay elementos blancos visibles */
+body.publicaciones-actuales main,
+body.publicaciones-actuales .container {
+  background: transparent !important;
+}
+
+/* Eliminar cualquier posible borde o sombra entre secciones */
+body.publicaciones-actuales .hero-visual,
+body.publicaciones-actuales .features-section,
+body.publicaciones-actuales .how-it-works,
+body.publicaciones-actuales .testimonials,
+body.publicaciones-actuales .cta-section,
+body.publicaciones-actuales .publicaciones-hero,
+body.publicaciones-actuales .publicaciones-list-section {
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Asegurar que las secciones se conecten sin espacios */
+body.publicaciones-actuales section:first-child {
+  margin-top: 0 !important;
+}
+
+body.publicaciones-actuales section:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ==================== PÁGINA REGISTRO (CASA6.JPG) ==================== */
+/* Configuración directa del body con máxima especificidad */
+html body.registro-page {
+  background: url('public/casa6.jpg') center center/cover fixed no-repeat !important;
+}
+
+/* Asegurar que main y contenedores sean transparentes */
+html body.registro-page main,
+html body.registro-page .container {
+  background: transparent !important;
+}
+
+/* Sobrescribir pseudo-elementos ::before */
+html body.registro-page .features-section::before,
+html body.registro-page .how-it-works::before,
+html body.registro-page .testimonials.section-padding.bg-light::before,
+html body.registro-page .cta-section::before,
+html body.registro-page .hero-visual::before,
+html body.registro-page .plans-section::before {
+  background-image: url('public/casa6.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Sobrescribir background directo de las secciones */
+html body.registro-page .features-section,
+html body.registro-page .how-it-works,
+html body.registro-page .testimonials.section-padding.bg-light,
+html body.registro-page .cta-section,
+html body.registro-page .hero-visual,
+html body.registro-page .plans-section {
+  background-image: linear-gradient(rgba(95,70,51,0.4), rgba(95,70,51,0.4)), url('public/casa6.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Sobrescribir el hero-visual específicamente para registro */
+html body.registro-page .hero-visual {
+  background-image: linear-gradient(to right, rgba(40,30,25,0.4), rgba(120,100,85,0.4)), url('public/casa6.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Eliminar espacios blancos entre secciones en registro */
+body.registro-page {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.registro-page section {
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+body.registro-page section + section {
+  margin-top: 0 !important;
+}
+
+body.registro-page main,
+body.registro-page .container {
+  background: transparent !important;
+}
+
+/* Eliminar cualquier posible borde o sombra entre secciones */
+body.registro-page .hero-visual,
+body.registro-page .features-section,
+body.registro-page .how-it-works,
+body.registro-page .testimonials,
+body.registro-page .cta-section,
+body.registro-page .plans-section {
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Configuración específica para el hero de registro - más espacio desde el menú */
+body.registro-page .registro-hero {
+  padding-top: 120px !important; /* Más espacio desde el menú */
+  padding-bottom: 40px !important;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  body.registro-page .registro-hero {
+    padding-top: 100px !important; /* Menos espacio en móviles */
+  }
+}

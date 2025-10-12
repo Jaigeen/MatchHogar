@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MatchHogar | Registro Colaborador Particular</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sections-bg.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .form-container {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        margin: 40px auto;
+        max-width: 800px;
+      }
+      
+      .form-group {
+        margin-bottom: 25px;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+      }
+      
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+      }
+      
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--brown, #A0826D);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(160, 130, 109, 0.1);
+      }
+      
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      
+      .btn {
+        background-color: var(--brown, #A0826D);
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+      }
+      
+      .btn:hover {
+        background-color: #8b6f5a;
+      }
+      
+      .pricing-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        text-align: center;
+        border: 2px solid var(--brown, #A0826D);
+      }
+      
+      .pricing-card h3 {
+        color: var(--navy, #002e5e);
+        margin-bottom: 15px;
+      }
+      
+      .price {
+        font-size: 2em;
+        font-weight: bold;
+        color: var(--brown, #A0826D);
+        margin: 10px 0;
+      }
+      
+      .success-message {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        display: none;
+        text-align: center;
+      }
+      
+      .back-link {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      
+      .back-link a {
+        color: var(--brown, #A0826D);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body class="registro-page">
+    <!-- ======================= HEADER & NAV ======================= -->
+    <header class="transparent">
+      <nav class="container">
+        <div class="nav-brand">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
+          <span>MatchHogar</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+          <li><a href="registro.html" aria-current="page">Registro</a></li>
+          <li><a href="publicaciones-actuales.html" style="color:#C4A484;font-weight:700;"><i class="fas fa-bullhorn"></i> Publicaciones actuales</a></li>
+          <li><a href="login-colaborador.html" style="color:#A0826D;font-weight:600;"><i class="fas fa-user-circle"></i> Colaboradores</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO REGISTRO COLABORADOR PARTICULAR -->
+    <section class="hero register-hero" style="padding-top: 120px;">
+      <div class="container" style="text-align:center;">
+        <h1>🏠 Registro Colaborador Particular</h1>
+        <div class="back-link">
+          <a href="registro-colaborador.html">← Volver a selección de colaborador</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ MAIN =========================== -->
+    <main class="container">
+      <div class="form-container">
+        <div class="pricing-card">
+          <h3>Alta Mensual</h3>
+          <div class="price">19,99€<span style="font-size:0.5em;color:#666;">/mes</span></div>
+          <p><strong>+ Publicación por 14,99€/mes</strong></p>
+          <small>Renovación manual desde tu perfil</small>
+        </div>
+
+        <form id="colaborador-particular-form">
+          <h2 style="color: var(--navy, #002e5e); margin-bottom: 30px;">Datos del Colaborador</h2>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="telefono">Teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 612345678">
+            </div>
+            
+            <div class="form-group">
+              <label for="dni">DNI/NIE *</label>
+              <input type="text" id="dni" name="dni" required placeholder="Ej: 12345678A, X1234567A">
+            </div>
+          </div>
+
+          <h3 style="color: var(--navy, #002e5e); margin: 40px 0 20px 0;">Información de la Propiedad</h3>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="tipo-propiedad">Tipo de propiedad *</label>
+              <select id="tipo-propiedad" name="tipo-propiedad" required>
+                <option value="">Seleccionar...</option>
+                <option value="habitacion">Habitación en casa compartida</option>
+                <option value="estudio">Estudio/Apartamento pequeño</option>
+                <option value="piso">Piso completo</option>
+                <option value="casa">Casa</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="ubicacion">Ubicación *</label>
+              <input type="text" id="ubicacion" name="ubicacion" required placeholder="Ciudad, barrio">
+            </div>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="precio">Precio mensual (€) *</label>
+              <input type="number" id="precio" name="precio" required min="100" max="5000">
+            </div>
+            
+            <div class="form-group">
+              <label for="habitaciones">Número de habitaciones</label>
+              <select id="habitaciones" name="habitaciones">
+                <option value="">Seleccionar...</option>
+                <option value="1">1 habitación</option>
+                <option value="2">2 habitaciones</option>
+                <option value="3">3 habitaciones</option>
+                <option value="4">4 habitaciones</option>
+                <option value="5+">5+ habitaciones</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="descripcion">Descripción de la propiedad</label>
+            <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe tu propiedad, servicios incluidos, normas, etc."></textarea>
+          </div>
+
+          <h3 style="color: var(--navy, #002e5e); margin: 40px 0 20px 0;">Información Adicional</h3>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="disponibilidad">Disponibilidad *</label>
+              <select id="disponibilidad" name="disponibilidad" required>
+                <option value="">Seleccionar...</option>
+                <option value="inmediata">Inmediata</option>
+                <option value="1-mes">En 1 mes</option>
+                <option value="2-meses">En 2 meses</option>
+                <option value="3-meses">En 3+ meses</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="experiencia">Experiencia como propietario</label>
+              <select id="experiencia" name="experiencia">
+                <option value="">Seleccionar...</option>
+                <option value="primera-vez">Primera vez</option>
+                <option value="1-2-anos">1-2 años</option>
+                <option value="3-5-anos">3-5 años</option>
+                <option value="mas-5-anos">Más de 5 años</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="acepto-terminos" name="acepto-terminos" required style="width: auto; margin-right: 10px;">
+              Acepto los términos y condiciones de MatchHogar *
+            </label>
+          </div>
+          
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="acepto-comunicaciones" name="acepto-comunicaciones" style="width: auto; margin-right: 10px;">
+              Acepto recibir comunicaciones comerciales
+            </label>
+          </div>
+
+          <button type="submit" class="btn">Enviar Solicitud de Registro</button>
+          
+          <div class="success-message" id="success-message">
+            <h3>✅ ¡Solicitud enviada correctamente!</h3>
+            <p>Te contactaremos en las próximas 48-72 horas para activar tu cuenta.</p>
+            <p><strong>Próximos pasos:</strong></p>
+            <ul style="text-align: left; display: inline-block;">
+              <li>Revisaremos tu solicitud</li>
+              <li>Te enviaremos un email de confirmación</li>
+              <li>Podrás proceder al pago y publicar tu propiedad</li>
+            </ul>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- =========================== FOOTER ========================== -->
+    <footer class="footer-bonito">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" style="height:40px;border-radius:8px;margin-right:10px;vertical-align:middle;">
+          <span>MatchHogar</span>
+        </div>
+        <div class="footer-links">
+          <a href="#politica">Política de privacidad</a>
+          <span class="footer-sep">|</span>
+          <a href="#condiciones">Términos y condiciones</a>
+          <span class="footer-sep">|</span>
+          <a href="#cookies">Política de cookies</a>
+        </div>
+        <div class="footer-copy">© 2025 MatchHogar. Todos los derechos reservados.</div>
+      </div>
+    </footer>
+
+    <style>
+      .footer-bonito {
+        background: var(--navy, #002e5e);
+        color: #fff;
+        padding: 32px 0 16px 0;
+        margin-top: 48px;
+        font-size: 1.05em;
+        box-shadow: 0 -2px 16px #0001;
+      }
+      .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-logo {
+        font-weight: bold;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 8px 0;
+      }
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 500;
+      }
+      .footer-links a:hover {
+        color: var(--orange, #e76f26);
+        text-decoration: underline;
+      }
+      .footer-sep {
+        color: #fff7;
+      }
+      .footer-copy {
+        font-size: 0.95em;
+        color: #fff9;
+        margin-top: 4px;
+      }
+      @media (max-width: 600px) {
+        .footer-content { font-size: 0.95em; }
+        .footer-links { gap: 8px; }
+        .form-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+
+    <script>
+      console.log('Formulario particular cargando...');
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM listo - Formulario particular');
+        
+        const form = document.getElementById('colaborador-particular-form');
+        const successMessage = document.getElementById('success-message');
+        
+        console.log('Elementos encontrados:', {
+          form: !!form,
+          successMessage: !!successMessage
+        });
+
+        // Validación de DNI/NIE
+        function validarDNI(dni) {
+          dni = dni.toUpperCase().replace(/\s/g, '');
+          
+          // DNI
+          if (/^\d{8}[A-Z]$/.test(dni)) {
+            const letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
+            const numero = parseInt(dni.substring(0, 8));
+            const letra = dni.charAt(8);
+            return letras.charAt(numero % 23) === letra;
+          }
+          
+          // NIE
+          if (/^[XYZ]\d{7}[A-Z]$/.test(dni)) {
+            const letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
+            let numero = dni.substring(1, 8);
+            if (dni.charAt(0) === 'X') numero = '0' + numero;
+            else if (dni.charAt(0) === 'Y') numero = '1' + numero;
+            else if (dni.charAt(0) === 'Z') numero = '2' + numero;
+            
+            const letra = dni.charAt(8);
+            return letras.charAt(parseInt(numero) % 23) === letra;
+          }
+          
+          return false;
+        }
+
+        // Validación de teléfono
+        function validarTelefono(telefono) {
+          telefono = telefono.replace(/\s/g, '');
+          return /^[6-9]\d{8}$/.test(telefono);
+        }
+
+        // Manejar envío del formulario
+        if (form) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Formulario enviado');
+            
+            // Obtener valores
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const dni = document.getElementById('dni').value.trim();
+            const tipoPropiedad = document.getElementById('tipo-propiedad').value;
+            const ubicacion = document.getElementById('ubicacion').value.trim();
+            const precio = document.getElementById('precio').value;
+            const disponibilidad = document.getElementById('disponibilidad').value;
+            const aceptoTerminos = document.getElementById('acepto-terminos').checked;
+            
+            // Validaciones
+            if (!nombre || !email || !telefono || !dni || !tipoPropiedad || !ubicacion || !precio || !disponibilidad) {
+              alert('Por favor, completa todos los campos obligatorios marcados con *');
+              return;
+            }
+            
+            if (!validarDNI(dni)) {
+              alert('Por favor, introduce un DNI o NIE válido');
+              return;
+            }
+            
+            if (!validarTelefono(telefono)) {
+              alert('Por favor, introduce un teléfono válido (9 dígitos, empezando por 6, 7, 8 o 9)');
+              return;
+            }
+            
+            if (!aceptoTerminos) {
+              alert('Debes aceptar los términos y condiciones');
+              return;
+            }
+            
+            // Simular envío exitoso
+            console.log('Datos válidos, enviando...', {
+              nombre: nombre,
+              email: email,
+              telefono: telefono,
+              dni: dni,
+              tipoPropiedad: tipoPropiedad,
+              ubicacion: ubicacion,
+              precio: precio
+            });
+            
+            // Mostrar mensaje de éxito
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+        
+        console.log('Formulario particular completamente inicializado');
+      });
+    </script>
+  </body>
+</html>

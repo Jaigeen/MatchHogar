@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MatchHogar | Registro Colaborador</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sections-bg.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
-  <body>
+  <body class="registro-page">
     <!-- ======================= HEADER & NAV ======================= -->
-    <header>
+    <header class="transparent">
       <nav class="container">
         <div class="nav-brand">
           <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
@@ -19,208 +21,84 @@
           <li><a href="quienes-somos.html">Quiénes somos</a></li>
           <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
           <li><a href="registro.html" aria-current="page">Registro</a></li>
+          <li><a href="publicaciones-actuales.html" style="color:#C4A484;font-weight:700;"><i class="fas fa-bullhorn"></i> Publicaciones actuales</a></li>
+          <li><a href="login-colaborador.html" style="color:#A0826D;font-weight:600;"><i class="fas fa-user-circle"></i> Colaboradores</a></li>
         </ul>
       </nav>
     </header>
 
     <!-- HERO REGISTRO COLABORADOR -->
-    <section class="hero register-hero">
+    <section class="hero register-hero" style="padding-top: 120px;">
       <div class="container" style="text-align:center;">
         <h1>Registro de Colaborador</h1>
+        <p>Elige el tipo de colaboración que mejor se adapte a ti</p>
+      </div>
+    </section>
+
+    <!-- SELECCIÓN TIPO COLABORADOR -->
+    <section class="colaborador-selection">
+      <div class="container">
+        <div class="selection-grid">
+          <!-- COLABORADOR PROFESIONAL -->
+          <div class="colaborador-option">
+            <div class="option-header">
+              <h3>🏢 Colaborador Profesional</h3>
+              <div class="price">49,99€ <span>/año</span></div>
+            </div>
+            <div class="option-content">
+              <p><strong>Para empresas con CIF</strong></p>
+              <ul class="benefits-list">
+                <li>✅ Múltiples propiedades</li>
+                <li>✅ Gestión empresarial completa</li>
+                <li>✅ Contrato profesional</li>
+                <li>✅ Validación empresarial</li>
+                <li>✅ Comisiones preferenciales</li>
+              </ul>
+              <button class="btn btn-primary" onclick="selectColaboradorTipo('profesional')">
+                Registrarme como Empresa
+              </button>
+            </div>
+          </div>
+
+          <!-- COLABORADOR PARTICULAR -->
+          <div class="colaborador-option">
+            <div class="option-header">
+              <h3>🏠 Colaborador Particular</h3>
+              <div class="price">19,99€ <span>/mes</span></div>
+            </div>
+            <div class="option-content">
+              <p><strong>Para propietarios privados</strong></p>
+              <ul class="benefits-list">
+                <li>✅ Una publicación activa</li>
+                <li>✅ Proceso simplificado</li>
+                <li>✅ Gestión personal</li>
+                <li>✅ Renovación manual</li>
+                <li>✅ Publicación por 14,99€/mes</li>
+              </ul>
+              <button class="btn btn-primary" onclick="selectColaboradorTipo('particular')">
+                Registrarme como Particular
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="info-adicional">
+          <h4>Información importante:</h4>
+          <div class="info-grid">
+            <div class="info-item">
+              <strong>Profesional:</strong> Ideal para inmobiliarias, gestores de propiedades y empresas del sector.
+            </div>
+            <div class="info-item">
+              <strong>Particular:</strong> Perfecto para propietarios que quieren alquilar habitaciones en su vivienda.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============================ MAIN =========================== -->
     <main class="container registro-section">
-      <div class="formulario-registro">
-        <!-- Barra de progreso -->
-        <div class="wizard-progress">
-          <div class="progress-bar">
-            <div class="progress-indicator" style="width: 20%"></div>
-          </div>
-          <div class="steps">
-            <div class="step active" data-step="1">
-              <div class="step-icon"><span style="font-size:1.3em;">👤</span></div>
-              <span>Datos Personales</span>
-            </div>
-            <div class="step" data-step="2">
-              <div class="step-icon"><span style="font-size:1.3em;">💼</span></div>
-              <span>Profesional</span>
-            </div>
-            <div class="step" data-step="3">
-              <div class="step-icon"><span style="font-size:1.3em;">🏠</span></div>
-              <span>Propiedades</span>
-            </div>
-            <div class="step" data-step="4">
-              <div class="step-icon"><span style="font-size:1.3em;">📄</span></div>
-              <span>Documentos</span>
-            </div>
-            <div class="step" data-step="5">
-              <div class="step-icon"><span style="font-size:1.3em;">✅</span></div>
-              <span>Finalizar</span>
-            </div>
-          </div>
-        </div>
-        <form id="form-colaborador" class="registro-form">
-          <!-- Paso 1: Datos Personales -->
-          <div class="form-section" data-step="1">
-            <h3>Datos Personales</h3>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="nombre">Nombre completo *</label>
-                <input type="text" id="nombre" name="nombre" required>
-              </div>
-              <div class="form-group">
-                <label for="dni">DNI/NIE *</label>
-                <input type="text" id="dni" name="dni" required pattern="[0-9]{8}[A-Z]|[A-Z][0-9]{7}[A-Z]">
-              </div>
-              <div class="form-group">
-                <label for="email">Email profesional *</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-              <div class="form-group">
-                <label for="telefono">Teléfono de contacto *</label>
-                <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="foto">Foto de perfil *</label>
-              <input type="file" id="foto" name="foto" accept="image/*" required onchange="previewFoto(event)">
-              <img id="foto-preview" src="#" alt="Vista previa" style="display:none;max-width:100px;margin-top:10px;border-radius:50%">
-              <small class="form-help">Tu foto ayudará a generar confianza con los usuarios</small>
-            </div>
-          </div>
-          <!-- Paso 2: Información Profesional -->
-          <div class="form-section" data-step="2" style="display:none">
-            <h3>Información Profesional</h3>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="tipo-colaborador">Tipo de colaborador *</label>
-                <select id="tipo-colaborador" name="tipo-colaborador" required>
-                  <option value="">Seleccionar...</option>
-                  <option value="agente">Agente inmobiliario</option>
-                  <option value="propietario">Propietario</option>
-                  <option value="administrador">Administrador de fincas</option>
-                  <option value="empresa">Empresa inmobiliaria</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="experiencia">Años de experiencia *</label>
-                <input type="number" id="experiencia" name="experiencia" required min="0">
-              </div>
-              <div class="form-group">
-                <label for="empresa">Empresa (si aplica)</label>
-                <input type="text" id="empresa" name="empresa">
-              </div>
-              <div class="form-group">
-                <label for="licencia">Número de licencia profesional</label>
-                <input type="text" id="licencia" name="licencia">
-                <small class="form-help">Si eres agente inmobiliario colegiado</small>
-              </div>
-            </div>
-          </div>
-          <!-- Paso 3: Propiedades y Servicios -->
-          <div class="form-section" data-step="3" style="display:none">
-            <h3>Propiedades y Servicios</h3>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="zonas">Zonas de operación *</label>
-                <input type="text" id="zonas" name="zonas" required placeholder="Ej: Barcelona centro, L'Eixample...">
-              </div>
-              <div class="form-group">
-                <label>Tipos de propiedades *</label>
-                <div class="chip-group" id="tipo-propiedad-group">
-                  <label class="chip"><input type="checkbox" name="tipo-propiedad[]" value="piso" required> Pisos</label>
-                  <label class="chip"><input type="checkbox" name="tipo-propiedad[]" value="casa"> Casas</label>
-                  <label class="chip"><input type="checkbox" name="tipo-propiedad[]" value="local"> Locales comerciales</label>
-                  <label class="chip"><input type="checkbox" name="tipo-propiedad[]" value="oficina"> Oficinas</label>
-                  <label class="chip"><input type="checkbox" name="tipo-propiedad[]" value="terreno"> Terrenos</label>
-                </div>
-                <small class="form-help">Selecciona una o varias opciones</small>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="servicios">Servicios ofrecidos *</label>
-              <div class="checkbox-grid">
-                <div class="checkbox-group">
-                  <input type="checkbox" id="servicio-alquiler" name="servicios[]" value="alquiler">
-                  <label for="servicio-alquiler">Alquiler</label>
-                </div>
-                <div class="checkbox-group">
-                  <input type="checkbox" id="servicio-venta" name="servicios[]" value="venta">
-                  <label for="servicio-venta">Venta</label>
-                </div>
-                <div class="checkbox-group">
-                  <input type="checkbox" id="servicio-tasacion" name="servicios[]" value="tasacion">
-                  <label for="servicio-tasacion">Tasación</label>
-                </div>
-                <div class="checkbox-group">
-                  <input type="checkbox" id="servicio-gestion" name="servicios[]" value="gestion">
-                  <label for="servicio-gestion">Gestión de propiedades</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="descripcion">Descripción profesional *</label>
-              <textarea id="descripcion" name="descripcion" rows="3" required placeholder="Describe tu experiencia y especialización..."></textarea>
-            </div>
-          </div>
-          <!-- Paso 4: Verificación y Documentación -->
-          <div class="form-section" data-step="4" style="display:none">
-            <h3>Verificación y Documentación</h3>
-            <div class="form-group">
-              <label for="doc-identidad">Documento de identidad *</label>
-              <input type="file" id="doc-identidad" name="doc-identidad" required accept=".pdf,.jpg,.png">
-              <small class="form-help">DNI o NIE por ambas caras</small>
-            </div>
-            <div class="form-group">
-              <label for="doc-profesional">Acreditación profesional</label>
-              <input type="file" id="doc-profesional" name="doc-profesional" accept=".pdf,.jpg,.png">
-              <small class="form-help">Licencia, título o certificación relevante</small>
-            </div>
-            <div class="form-group">
-              <label for="doc-fiscal">Documentación fiscal *</label>
-              <input type="file" id="doc-fiscal" name="doc-fiscal" required accept=".pdf">
-              <small class="form-help">CIF o alta como autónomo</small>
-            </div>
-          </div>
-          <!-- Paso 5: Referencias y Legal -->
-          <div class="form-section legal-section" data-step="5" style="display:none">
-            <div class="form-group">
-              <label for="referencias">Referencias verificables</label>
-              <textarea id="referencias" name="referencias" rows="3" placeholder="Nombre de la referencia, empresa, cargo y datos de contacto..."></textarea>
-              <small class="form-help">Opcional, pero recomendado para aumentar la confianza</small>
-            </div>
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required>
-              <label for="acepto-privacidad">
-                Acepto la <a href="#politica">política de privacidad</a> y 
-                <a href="#condiciones">condiciones de uso</a> *
-              </label>
-            </div>
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="acepto-colaboracion" name="acepto-colaboracion" required>
-              <label for="acepto-colaboracion">
-                Acepto las condiciones de colaboración y la comisión establecida *
-              </label>
-            </div>
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="acepto-verificacion" name="acepto-verificacion" required>
-              <label for="acepto-verificacion">
-                Autorizo la verificación de mis datos y documentación *
-              </label>
-            </div>
-            <div class="form-group">
-              <h3>Resumen de tu registro</h3>
-              <div id="resumen-contenido"></div>
-            </div>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
-            <a href="registro.html" class="btn btn-outline">Cancelar</a>
-          </div>
-        </form>
-      </div>
+      <!-- El contenido principal ahora está en la sección de selección arriba -->
     </main>
 
     <!-- =========================== FOOTER ========================== -->
@@ -240,6 +118,7 @@
         <div class="footer-copy">© 2025 MatchHogar. Todos los derechos reservados.</div>
       </div>
     </footer>
+
     <style>
       .footer-bonito {
         background: var(--navy, #002e5e);
@@ -293,263 +172,149 @@
         .footer-content { font-size: 0.95em; }
         .footer-links { gap: 8px; }
       }
-      .chip-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 6px;
+      
+      .colaborador-selection {
+        padding: 60px 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
       }
-      .chip {
-        display: flex;
-        align-items: center;
-        background: #f5f7fa;
-        border: 1.5px solid #cfd8dc;
+      
+      .selection-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 40px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      
+      .colaborador-option {
+        background: white;
         border-radius: 20px;
-        padding: 7px 16px;
-        font-size: 1em;
-        cursor: pointer;
-        transition: background 0.2s, border 0.2s;
-        user-select: none;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 3px solid transparent;
       }
-      .chip input[type="checkbox"] {
-        accent-color: var(--navy, #002e5e);
-        margin-right: 7px;
+      
+      .colaborador-option:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+        border-color: var(--brown, #A0826D);
       }
-      .chip input[type="checkbox"]:checked + span,
-      .chip input[type="checkbox"]:checked ~ span {
+      
+      .option-header {
+        background: linear-gradient(135deg, var(--navy, #002e5e) 0%, #1a4480 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+      
+      .option-header h3 {
+        margin: 0 0 15px 0;
+        font-size: 1.5em;
+      }
+      
+      .price {
+        font-size: 2.2em;
         font-weight: bold;
-        color: var(--orange, #e76f26);
+        color: var(--brown, #A0826D);
+        margin: 0;
       }
-      .chip input[type="checkbox"]:checked ~ label {
-        color: var(--orange, #e76f26);
+      
+      .price span {
+        font-size: 0.5em;
+        color: #ccc;
+        font-weight: normal;
       }
-      .chip input[type="checkbox"]:checked {
-        outline: 2px solid var(--orange, #e76f26);
+      
+      .option-content {
+        padding: 30px;
       }
-      .chip:has(input[type="checkbox"]:checked) {
-        background: #ffe5d0;
-        border-color: var(--orange, #e76f26);
+      
+      .option-content p {
+        text-align: center;
+        font-size: 1.1em;
+        color: #666;
+        margin-bottom: 20px;
       }
-      @media (max-width: 600px) {
-        .chip-group { gap: 6px; }
-        .chip { font-size: 0.98em; padding: 7px 10px; }
+      
+      .benefits-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 30px 0;
+      }
+      
+      .benefits-list li {
+        padding: 8px 0;
+        font-size: 0.95em;
+        color: #555;
+      }
+      
+      .option-content .btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1em;
+        font-weight: 600;
+      }
+      
+      .info-adicional {
+        margin-top: 50px;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+      
+      .info-adicional h4 {
+        text-align: center;
+        color: var(--navy, #002e5e);
+        margin-bottom: 20px;
+        font-size: 1.3em;
+      }
+      
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      
+      .info-item {
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        font-size: 0.95em;
+        line-height: 1.5;
+      }
+      
+      @media (max-width: 768px) {
+        .selection-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        
+        .colaborador-option {
+          margin: 0 20px;
+        }
+        
+        .option-header {
+          padding: 25px 20px;
+        }
+        
+        .price {
+          font-size: 1.8em;
+        }
       }
     </style>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('form-colaborador');
-        const progressBar = document.querySelector('.progress-indicator');
-        const steps = document.querySelectorAll('.step');
-        let currentStep = 1;
-        const totalSteps = steps.length;
-        // Validación y feedback visual
-        function validateField(field) {
-          field.classList.remove('error');
-          if (field.required && !field.value.trim()) {
-            field.classList.add('error');
-            return false;
-          }
-          if (field.type === 'tel' && field.value) {
-            const isValidPhone = /^[0-9]{9}$/.test(field.value);
-            if (!isValidPhone) {
-              field.classList.add('error');
-              return false;
-            }
-          }
-          if (field.type === 'email' && field.value) {
-            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
-            if (!isValidEmail) {
-              field.classList.add('error');
-              return false;
-            }
-          }
-          if (field.id === 'dni' && field.value) {
-            const isValidDNI = /^[0-9]{8}[A-Z]$|^[A-Z][0-9]{7}[A-Z]$/.test(field.value);
-            if (!isValidDNI) {
-              field.classList.add('error');
-              return false;
-            }
-          }
-          return true;
-        }
-        function validateSection(sectionNumber) {
-          const section = form.querySelector(`.form-section[data-step="${sectionNumber}"]`);
-          if (!section) return true;
-          let isValid = true;
-          const fields = section.querySelectorAll('input:not([type="button"]), select, textarea');
-          fields.forEach(field => {
-            if (!validateField(field)) {
-              isValid = false;
-              field.classList.add('error');
-            }
-          });
-          // Validar servicios en paso 3
-          if (sectionNumber === 3) {
-            const servicios = form.querySelectorAll('input[name="servicios[]"]:checked');
-            if (servicios.length === 0) {
-              isValid = false;
-              alert('Debes seleccionar al menos un servicio ofrecido.');
-            }
-            const checkedProps = form.querySelectorAll('input[name="tipo-propiedad[]"]:checked');
-            if (checkedProps.length === 0) {
-              isValid = false;
-              alert('Selecciona al menos un tipo de propiedad.');
-            }
-          }
-          return isValid;
-        }
-        function updateProgress() {
-          const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
-          progressBar.style.width = `${progress}%`;
-          steps.forEach((step, index) => {
-            const stepNumber = index + 1;
-            step.classList.remove('active', 'completed');
-            if (stepNumber === currentStep) {
-              step.classList.add('active');
-            } else if (stepNumber < currentStep) {
-              step.classList.add('completed');
-            }
-          });
-        }
-        function goToStep(step) {
-          const sections = form.querySelectorAll('.form-section');
-          sections.forEach(section => {
-            section.style.display = 'none';
-            section.classList.remove('active');
-          });
-          const targetSection = form.querySelector(`.form-section[data-step="${step}"]`);
-          if (targetSection) {
-            targetSection.style.display = 'block';
-            setTimeout(() => targetSection.classList.add('active'), 10);
-          }
-          currentStep = step;
-          updateProgress();
-          // Mostrar resumen en el último paso
-          if (step === totalSteps) {
-            const resumen = document.getElementById('resumen-contenido');
-            let html = '<ul>';
-            form.querySelectorAll('input, select, textarea').forEach(f => {
-              if (f.type !== 'button' && f.type !== 'file' && f.type !== 'checkbox' && f.value) {
-                html += `<li><b>${f.previousElementSibling ? f.previousElementSibling.innerText : f.name}:</b> ${f.value}</li>`;
-              }
-            });
-            html += '</ul>';
-            resumen.innerHTML = html;
-          }
-        }
-        // Botones de navegación
-        const sections = form.querySelectorAll('.form-section');
-        sections.forEach((section, index) => {
-          const buttonContainer = document.createElement('div');
-          buttonContainer.className = 'form-navigation';
-          if (index > 0) {
-            const prevButton = document.createElement('button');
-            prevButton.type = 'button';
-            prevButton.className = 'btn btn-outline';
-            prevButton.textContent = 'Anterior';
-            prevButton.onclick = () => { goToStep(currentStep - 1); };
-            buttonContainer.appendChild(prevButton);
-          }
-          if (index < sections.length - 1) {
-            const nextButton = document.createElement('button');
-            nextButton.type = 'button';
-            nextButton.className = 'btn btn-primary';
-            nextButton.textContent = 'Siguiente';
-            nextButton.onclick = () => {
-              if (validateSection(currentStep)) {
-                goToStep(currentStep + 1);
-              } else {
-                alert('Por favor, completa todos los campos obligatorios correctamente.');
-              }
-            };
-            buttonContainer.appendChild(nextButton);
-          }
-          section.appendChild(buttonContainer);
-        });
-        // Validación en tiempo real
-        form.querySelectorAll('input:not([type="button"]), select, textarea').forEach(field => {
-          field.addEventListener('input', () => validateField(field));
-          field.addEventListener('blur', () => validateField(field));
-          field.addEventListener('focus', () => field.classList.add('focus'));
-          field.addEventListener('blur', () => field.classList.remove('focus'));
-        });
-        // Vista previa de la foto
-        window.previewFoto = function(event) {
-          const input = event.target;
-          const preview = document.getElementById('foto-preview');
-          if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-              preview.src = e.target.result;
-              preview.style.display = 'block';
-            };
-            reader.readAsDataURL(input.files[0]);
-          } else {
-            preview.src = '#';
-            preview.style.display = 'none';
-          }
-        };
-        // Iconos de validación
-        function setValidationIcon(field, valid) {
-          let icon = field.parentNode.querySelector('.valid-icon');
-          if (!icon) {
-            icon = document.createElement('span');
-            icon.className = 'valid-icon';
-            field.parentNode.appendChild(icon);
-          }
-          icon.innerHTML = valid ? '✔️' : (field.value ? '❌' : '');
-          icon.style.color = valid ? 'green' : 'red';
-        }
-        const oldValidateField = validateField;
-        validateField = function(field) {
-          const valid = oldValidateField(field);
-          setValidationIcon(field, valid);
-          return valid;
-        };
-        // Submit funcional
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          let isValid = true;
-          for (let i = 1; i <= totalSteps; i++) {
-            if (!validateSection(i)) {
-              isValid = false;
-              goToStep(i);
-              break;
-            }
-          }
-          if (!isValid) {
-            alert('Por favor, revisa los campos marcados en rojo.');
-            return;
-          }
-          // Mensaje de éxito
-          const main = document.querySelector('main');
-          main.innerHTML = `<div class='registro-exito' style='text-align:center;padding:60px 20px;'><h2 style='color:var(--navy,#002e5e);margin-bottom:16px;'>¡Solicitud de colaboración enviada con éxito!</h2><p>Revisaremos tu documentación y te contactaremos pronto.</p><a href='index.html' class='btn btn-primary' style='margin-top:24px;'>Ir al inicio</a></div>`;
-        });
-        // Inicializar
-        goToStep(1);
-      });
 
-      // Navbar hamburguesa para móvil
-      document.addEventListener('DOMContentLoaded', function() {
-        const nav = document.querySelector('nav');
-        if (!nav) return;
-        if (!document.querySelector('.nav-toggle')) {
-          const btn = document.createElement('button');
-          btn.className = 'nav-toggle';
-          btn.setAttribute('aria-label', 'Abrir menú');
-          btn.innerHTML = '<i class="fas fa-bars"></i>';
-          nav.insertBefore(btn, nav.querySelector('.nav-links'));
-          btn.addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('mobile-active');
-          });
+    <script>
+      function selectColaboradorTipo(tipo) {
+        if (tipo === 'profesional') {
+          // Redirigir al formulario de colaborador profesional
+          window.location.href = 'registro-colaborador-profesional-nuevo.html';
+        } else if (tipo === 'particular') {
+          // Redirigir al formulario de colaborador particular
+          window.location.href = 'registro-colaborador-particular-nuevo.html';
         }
-        document.querySelectorAll('.nav-links a').forEach(link => {
-          link.addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.remove('mobile-active');
-          });
-        });
-      });
+      }
     </script>
   </body>
 </html>
-``` 

@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MatchHogar | Registro Colaborador Particular</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sections-bg.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body class="registro-page">
+    <!-- ======================= HEADER & NAV ======================= -->
+    <header class="transparent">
+      <nav class="container">
+        <div class="nav-brand">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
+          <span>MatchHogar</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+          <li><a href="registro.html" aria-current="page">Registro</a></li>
+          <li><a href="publicaciones-actuales.html" style="color:#C4A484;font-weight:700;"><i class="fas fa-bullhorn"></i> Publicaciones actuales</a></li>
+          <li><a href="login-colaborador.html" style="color:#A0826D;font-weight:600;"><i class="fas fa-user-circle"></i> Colaboradores</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO REGISTRO COLABORADOR PARTICULAR -->
+    <section class="hero register-hero" style="padding-top: 120px;">
+      <div class="container" style="text-align:center;">
+        <h1>🏠 Registro Colaborador Particular</h1>
+        <div class="pricing-info">
+          <div class="price-card">
+            <h3>Alta Mensual</h3>
+            <div class="price">19,99€ <span>/mes</span></div>
+            <p>+ Publicación por 14,99€/mes</p>
+            <small>Renovación manual desde tu perfil</small>
+          </div>
+        </div>
+        <p class="back-link">
+          <a href="registro-colaborador.html">← Volver a selección de colaborador</a>
+        </p>
+      </div>
+    </section>
+
+    <style>
+      .pricing-info {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+      }
+      .price-card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 25px 35px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        text-align: center;
+        max-width: 350px;
+      }
+      .price-card h3 {
+        color: var(--navy, #002e5e);
+        margin-bottom: 15px;
+        font-size: 1.4em;
+      }
+      .price {
+        font-size: 2.2em;
+        font-weight: bold;
+        color: var(--brown, #A0826D);
+        margin-bottom: 8px;
+      }
+      .price span {
+        font-size: 0.6em;
+        color: #666;
+        font-weight: normal;
+      }
+      .price-card p {
+        color: #666;
+        font-size: 0.95em;
+        margin: 8px 0;
+        font-weight: 600;
+      }
+      .price-card small {
+        color: #888;
+        font-size: 0.85em;
+        font-style: italic;
+      }
+      .back-link {
+        margin-top: 20px;
+      }
+      .back-link a {
+        color: var(--brown, #A0826D);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+      @media (max-width: 768px) {
+        .price-card {
+          margin: 0 20px;
+          padding: 20px;
+        }
+        .price {
+          font-size: 1.8em;
+        }
+      }
+      
+      /* Estilos para validación de formularios */
+      .form-group input.error,
+      .form-group select.error,
+      .form-group textarea.error {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        background-color: #fdf2f2;
+      }
+      
+      .error-message {
+        display: block;
+        margin-top: 5px;
+        color: #dc3545 !important;
+        font-size: 0.85em !important;
+        font-weight: 500;
+      }
+      
+      .form-help {
+        color: #6c757d;
+        font-size: 0.875em;
+        margin-top: 5px;
+        display: block;
+      }
+      
+      .form-group {
+        position: relative;
+      }
+      
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--brown, #A0826D);
+        box-shadow: 0 0 0 0.2rem rgba(160, 130, 109, 0.25);
+        outline: none;
+      }
+      
+      /* Animación suave para transiciones */
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      }
+      
+      /* Estilos para foto gallery */
+      .photos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+      
+      .photo-item {
+        position: relative;
+        border: 2px dashed #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+      }
+      
+      .photo-item:hover {
+        border-color: var(--brown, #A0826D);
+      }
+      
+      .photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .photo-item .remove-photo {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: rgba(220, 53, 69, 0.9);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .photo-add {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 0.9em;
+      }
+      
+      .photo-add i {
+        font-size: 2em;
+        margin-bottom: 8px;
+        color: var(--brown, #A0826D);
+      }
+    </style>
+
+    <!-- ============================ MAIN =========================== -->
+    <main class="container registro-section">
+      <div class="formulario-registro" style="display: block; visibility: visible;">
+        <!-- Barra de progreso -->
+        <div class="wizard-progress">
+          <div class="progress-bar">
+            <div class="progress-indicator" style="width: 20%"></div>
+          </div>
+          <div class="steps">
+            <div class="step active" data-step="1">
+              <div class="step-icon"><span style="font-size:1.3em;">👤</span></div>
+              <span>Datos Personales</span>
+            </div>
+            <div class="step" data-step="2">
+              <div class="step-icon"><span style="font-size:1.3em;">🏠</span></div>
+              <span>Vivienda</span>
+            </div>
+            <div class="step" data-step="3">
+              <div class="step-icon"><span style="font-size:1.3em;">📸</span></div>
+              <span>Fotos</span>
+            </div>
+            <div class="step" data-step="4">
+              <div class="step-icon"><span style="font-size:1.3em;">💳</span></div>
+              <span>Pago</span>
+            </div>
+            <div class="step" data-step="5">
+              <div class="step-icon"><span style="font-size:1.3em;">✅</span></div>
+              <span>Finalizar</span>
+            </div>
+          </div>
+        </div>
+        
+        <form id="form-colaborador-particular" class="registro-form" style="display: block; visibility: visible;">
+          <!-- Paso 1: Datos Personales -->
+          <div class="form-section" data-step="1" style="display: block; visibility: visible;">
+            <h3>Datos Personales</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" required 
+                       placeholder="Tu nombre y apellidos">
+              </div>
+              <div class="form-group">
+                <label for="dni">DNI/NIE *</label>
+                <input type="text" id="dni" name="dni" required 
+                       placeholder="Ej: 12345678A, X1234567A">
+                <small class="form-help">Se puede escribir en mayúsculas o minúsculas</small>
+              </div>
+              <div class="form-group">
+                <label for="email">Email de contacto *</label>
+                <input type="email" id="email" name="email" required 
+                       placeholder="tu.email@ejemplo.com">
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono *</label>
+                <input type="tel" id="telefono" name="telefono" required 
+                       placeholder="Ej: 612345678">
+                <small class="form-help">9 dígitos sin espacios</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 2: Información de la Vivienda -->
+          <div class="form-section" data-step="2" style="display:none">
+            <h3>Información de la Vivienda</h3>
+            
+            <div class="form-group">
+              <label for="direccion">Dirección de la vivienda *</label>
+              <input type="text" id="direccion" name="direccion" required 
+                     placeholder="Calle, número, ciudad">
+            </div>
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="municipio">Municipio *</label>
+                <input type="text" id="municipio" name="municipio" required 
+                       placeholder="Ej: Madrid, Barcelona">
+              </div>
+              <div class="form-group">
+                <label for="zona">Zona/Barrio *</label>
+                <input type="text" id="zona" name="zona" required 
+                       placeholder="Ej: Centro, Salamanca">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="tipo-publicacion">Tipo de publicación *</label>
+              <select id="tipo-publicacion" name="tipo-publicacion" required>
+                <option value="">Seleccionar...</option>
+                <option value="vivo-habitaciones">Vivo en la vivienda y tengo habitaciones libres</option>
+                <option value="no-vivo-habitaciones">No vivo en la vivienda y alquilo por habitaciones</option>
+              </select>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="num-habitaciones">Nº de habitaciones disponibles *</label>
+                <select id="num-habitaciones" name="num-habitaciones" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="1">1 habitación</option>
+                  <option value="2">2 habitaciones</option>
+                  <option value="3">3 habitaciones</option>
+                  <option value="4">4 habitaciones</option>
+                  <option value="5+">5 o más habitaciones</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rango-precio">Rango de precio por habitación *</label>
+                <select id="rango-precio" name="rango-precio" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="200-300">200€ - 300€</option>
+                  <option value="300-400">300€ - 400€</option>
+                  <option value="400-500">400€ - 500€</option>
+                  <option value="500-600">500€ - 600€</option>
+                  <option value="600-700">600€ - 700€</option>
+                  <option value="700-800">700€ - 800€</option>
+                  <option value="800+">Más de 800€</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="descripcion">Descripción breve de la vivienda *</label>
+              <textarea id="descripcion" name="descripcion" rows="4" required 
+                        placeholder="Describe tu vivienda: características, servicios incluidos, normas, etc. (máximo 500 caracteres)"
+                        maxlength="500"></textarea>
+              <small class="form-help">Caracteres restantes: <span id="char-count">500</span></small>
+            </div>
+          </div>
+
+          <!-- Paso 3: Fotos -->
+          <div class="form-section" data-step="3" style="display:none">
+            <h3>Fotos de la Vivienda</h3>
+            <p>Sube entre 3 y 7 fotos de tu vivienda. Las fotos de buena calidad atraen más inquilinos.</p>
+            
+            <div class="form-group">
+              <label>Fotos de la vivienda * (mínimo 3, máximo 7)</label>
+              <div class="photos-grid" id="photos-grid">
+                <!-- Los elementos de foto se generarán dinámicamente -->
+              </div>
+              <input type="file" id="photo-input" multiple accept="image/*" style="display: none;">
+              <div class="photo-counter">
+                <small>Fotos subidas: <span id="photo-count">0</span>/7</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 4: Condiciones y Pago -->
+          <div class="form-section" data-step="4" style="display:none">
+            <h3>Condiciones y Pago</h3>
+            
+            <div class="condiciones-box">
+              <h4>Condiciones de Uso para Colaboradores Particulares</h4>
+              <div class="condiciones-content">
+                <p><strong>1. Condiciones generales:</strong></p>
+                <ul>
+                  <li>• El alta mensual tiene un coste de 19,99€/mes</li>
+                  <li>• Cada publicación activa cuesta 14,99€/mes adicionales</li>
+                  <li>• Solo puedes tener una publicación activa como colaborador particular</li>
+                  <li>• La renovación NO es automática: debes renovar manualmente desde tu perfil</li>
+                  <li>• Si no renuevas, tu anuncio se despublicará automáticamente al vencer el plazo</li>
+                </ul>
+
+                <p><strong>2. Responsabilidades:</strong></p>
+                <ul>
+                  <li>• Toda la información proporcionada debe ser veraz y actualizada</li>
+                  <li>• Las fotos deben corresponder a la vivienda real</li>
+                  <li>• Debes cumplir con la normativa local de alquiler de habitaciones</li>
+                  <li>• MatchHogar actúa como intermediario, no como responsable del alquiler</li>
+                </ul>
+
+                <p><strong>3. Política de cancelación:</strong></p>
+                <ul>
+                  <li>• Puedes cancelar tu suscripción en cualquier momento desde tu perfil</li>
+                  <li>• No hay reembolsos por meses parciales</li>
+                  <li>• Al cancelar, tu publicación permanecerá activa hasta el final del período pagado</li>
+                </ul>
+
+                <p><strong>4. Soporte y contacto:</strong></p>
+                <ul>
+                  <li>• Disponemos de soporte básico para colaboradores particulares</li>
+                  <li>• Tiempo de respuesta: 48-72 horas laborables</li>
+                  <li>• Contacto: soporte@matchhogar.com</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-condiciones" name="acepto-condiciones" required>
+              <label for="acepto-condiciones">
+                He leído y acepto las condiciones de uso para colaboradores particulares *
+              </label>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required>
+              <label for="acepto-privacidad">
+                Acepto la <a href="#politica">política de privacidad</a> y 
+                <a href="#terminos">términos de servicio</a> *
+              </label>
+            </div>
+
+            <div class="payment-summary">
+              <h4>Resumen del pago:</h4>
+              <div class="payment-item">
+                <span>Alta mensual colaborador particular:</span>
+                <span>19,99€</span>
+              </div>
+              <div class="payment-item">
+                <span>Publicación activa (1 mes):</span>
+                <span>14,99€</span>
+              </div>
+              <div class="payment-total">
+                <span>Total primer mes:</span>
+                <span><strong>34,98€</strong></span>
+              </div>
+              <small>Los siguientes meses serán 14,99€ (solo publicación) si renuevas manualmente</small>
+            </div>
+          </div>
+
+          <!-- Paso 5: Finalizar -->
+          <div class="form-section" data-step="5" style="display:none">
+            <h3>Registro Completado</h3>
+            <div class="success-message">
+              <div class="success-icon">✅</div>
+              <h4>¡Bienvenido a MatchHogar!</h4>
+              <p>Tu registro como colaborador particular ha sido completado exitosamente.</p>
+              
+              <div class="next-steps">
+                <h5>Próximos pasos:</h5>
+                <ol>
+                  <li>Recibirás un email de confirmación en breve</li>
+                  <li>Tu publicación estará activa en las próximas 24 horas</li>
+                  <li>Podrás gestionar tu perfil y publicación desde tu área personal</li>
+                  <li>Recuerda renovar manualmente cada mes para mantener tu anuncio activo</li>
+                </ol>
+              </div>
+              
+              <div class="resumen-final">
+                <h5>Resumen de tu registro:</h5>
+                <div id="resumen-contenido"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submit-btn">Continuar al Pago</button>
+            <a href="registro-colaborador.html" class="btn btn-outline">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- =========================== FOOTER ========================== -->
+    <footer class="footer-bonito">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" style="height:40px;border-radius:8px;margin-right:10px;vertical-align:middle;">
+          <span>MatchHogar</span>
+        </div>
+        <div class="footer-links">
+          <a href="#politica">Política de privacidad</a>
+          <span class="footer-sep">|</span>
+          <a href="#condiciones">Términos y condiciones</a>
+          <span class="footer-sep">|</span>
+          <a href="#cookies">Política de cookies</a>
+        </div>
+        <div class="footer-copy">© 2025 MatchHogar. Todos los derechos reservados.</div>
+      </div>
+    </footer>
+
+    <style>
+      .footer-bonito {
+        background: var(--navy, #002e5e);
+        color: #fff;
+        padding: 32px 0 16px 0;
+        margin-top: 48px;
+        font-size: 1.05em;
+        box-shadow: 0 -2px 16px #0001;
+      }
+      .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-logo {
+        font-weight: bold;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 8px 0;
+      }
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 500;
+      }
+      .footer-links a:hover {
+        color: var(--orange, #e76f26);
+        text-decoration: underline;
+      }
+      .footer-sep {
+        color: #fff7;
+      }
+      .footer-copy {
+        font-size: 0.95em;
+        color: #fff9;
+        margin-top: 4px;
+      }
+      
+      /* Estilos específicos para condiciones y pago */
+      .condiciones-box {
+        background: #f8f9fa;
+        border: 2px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 25px;
+      }
+      
+      .condiciones-box h4 {
+        color: var(--navy, #002e5e);
+        margin-bottom: 15px;
+        font-size: 1.2em;
+      }
+      
+      .condiciones-content {
+        max-height: 300px;
+        overflow-y: auto;
+        font-size: 0.9em;
+        line-height: 1.5;
+      }
+      
+      .condiciones-content p {
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+      
+      .condiciones-content ul {
+        margin-bottom: 15px;
+        padding-left: 20px;
+      }
+      
+      .condiciones-content li {
+        margin-bottom: 5px;
+      }
+      
+      .payment-summary {
+        background: #e7f3ff;
+        border: 2px solid #b3d7ff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+      
+      .payment-summary h4 {
+        color: var(--navy, #002e5e);
+        margin-bottom: 15px;
+      }
+      
+      .payment-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .payment-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-top: 2px solid var(--brown, #A0826D);
+        margin-top: 10px;
+        font-size: 1.1em;
+      }
+      
+      .payment-summary small {
+        display: block;
+        margin-top: 10px;
+        color: #666;
+        font-style: italic;
+      }
+      
+      .success-message {
+        text-align: center;
+        padding: 30px;
+      }
+      
+      .success-icon {
+        font-size: 4em;
+        margin-bottom: 20px;
+      }
+      
+      .success-message h4 {
+        color: var(--navy, #002e5e);
+        margin-bottom: 15px;
+      }
+      
+      .next-steps {
+        text-align: left;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+      
+      .next-steps h5 {
+        color: var(--brown, #A0826D);
+        margin-bottom: 10px;
+      }
+      
+      .next-steps ol {
+        padding-left: 20px;
+      }
+      
+      .next-steps li {
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
+      
+      .resumen-final {
+        text-align: left;
+        background: #e7f3ff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+      
+      .resumen-final h5 {
+        color: var(--navy, #002e5e);
+        margin-bottom: 15px;
+      }
+      
+      @media (max-width: 600px) {
+        .footer-content { font-size: 0.95em; }
+        .footer-links { gap: 8px; }
+        .payment-item {
+          flex-direction: column;
+          gap: 5px;
+        }
+        .payment-total {
+          flex-direction: column;
+          gap: 5px;
+        }
+      }
+      
+      /* Asegurar que el formulario sea visible */
+      .formulario-registro {
+        display: block !important;
+        visibility: visible !important;
+      }
+      
+      .registro-form {
+        display: block !important;
+        visibility: visible !important;
+      }
+      
+      .form-section[data-step="1"] {
+        display: block !important;
+        visibility: visible !important;
+      }
+      
+      /* Ocultar todas las otras secciones por defecto */
+      .form-section[data-step="2"],
+      .form-section[data-step="3"],
+      .form-section[data-step="4"],
+      .form-section[data-step="5"] {
+        display: none !important;
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('Formulario particular cargado');
+        const form = document.getElementById('form-colaborador-particular');
+        const progressBar = document.querySelector('.progress-indicator');
+        const steps = document.querySelectorAll('.step');
+        const totalSteps = 5;
+        let currentStep = 1;
+        let uploadedPhotos = [];
+        
+        console.log('Elementos encontrados:', {
+          form: !!form,
+          progressBar: !!progressBar,
+          steps: steps.length
+        });
+
+        // Validación de campos
+        function validateField(field) {
+          field.classList.remove('error');
+          const errorMsg = field.parentNode.querySelector('.error-message');
+          if (errorMsg) errorMsg.remove();
+
+          if (field.hasAttribute('required') && !field.value.trim()) {
+            field.classList.add('error');
+            return false;
+          }
+
+          if (field.type === 'email' && field.value) {
+            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+            if (!isValidEmail) {
+              field.classList.add('error');
+              showFieldError(field, 'Email no válido');
+              return false;
+            }
+          }
+
+          if (field.id === 'dni' && field.value) {
+            const normalizedValue = field.value.toUpperCase().replace(/\s/g, '');
+            field.value = normalizedValue;
+            
+            const isDNI = /^[0-9]{8}[A-Z]$/.test(normalizedValue);
+            const isNIE = /^[XYZ][0-9]{7}[A-Z]$/.test(normalizedValue);
+            
+            if (!isDNI && !isNIE) {
+              field.classList.add('error');
+              showFieldError(field, 'Formato inválido. Debe ser DNI (12345678A) o NIE (X1234567A)');
+              return false;
+            }
+          }
+          
+          if (field.id === 'telefono' && field.value) {
+            const cleanPhone = field.value.replace(/[\s\-\(\)]/g, '');
+            field.value = cleanPhone;
+            
+            if (!/^[0-9]{9}$/.test(cleanPhone)) {
+              field.classList.add('error');
+              showFieldError(field, 'El teléfono debe tener exactamente 9 dígitos');
+              return false;
+            }
+          }
+
+          return true;
+        }
+
+        function showFieldError(field, message) {
+          let errorMsg = field.parentNode.querySelector('.error-message');
+          if (!errorMsg) {
+            errorMsg = document.createElement('small');
+            errorMsg.className = 'error-message';
+            field.parentNode.appendChild(errorMsg);
+          }
+          errorMsg.textContent = message;
+        }
+
+        function validateSection(sectionNumber) {
+          const section = form.querySelector(`.form-section[data-step="${sectionNumber}"]`);
+          if (!section) return true;
+          
+          let isValid = true;
+          const fields = section.querySelectorAll('input:not([type="button"]):not([type="file"]), select, textarea');
+          
+          fields.forEach(field => {
+            if (!validateField(field)) {
+              isValid = false;
+            }
+          });
+
+          // Validación específica de fotos en paso 3
+          if (sectionNumber === 3) {
+            if (uploadedPhotos.length < 3) {
+              isValid = false;
+              alert('Debes subir al menos 3 fotos de tu vivienda.');
+            }
+          }
+
+          return isValid;
+        }
+
+        function updateProgress() {
+          const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+          progressBar.style.width = `${progress}%`;
+          
+          steps.forEach((step, index) => {
+            const stepNumber = index + 1;
+            step.classList.remove('active', 'completed');
+            if (stepNumber === currentStep) {
+              step.classList.add('active');
+            } else if (stepNumber < currentStep) {
+              step.classList.add('completed');
+            }
+          });
+        }
+
+        function goToStep(stepNumber) {
+          console.log('goToStep llamada con:', stepNumber);
+          if (stepNumber < 1 || stepNumber > totalSteps) return;
+          
+          form.querySelectorAll('.form-section').forEach(section => {
+            section.style.display = 'none';
+          });
+          
+          const targetSection = form.querySelector(`.form-section[data-step="${stepNumber}"]`);
+          console.log('Sección objetivo encontrada:', !!targetSection);
+          if (targetSection) {
+            targetSection.style.display = 'block';
+          }
+          
+          currentStep = stepNumber;
+          updateProgress();
+          
+          // Actualizar texto del botón
+          const submitBtn = document.getElementById('submit-btn');
+          if (currentStep === 4) {
+            submitBtn.textContent = 'Proceder al Pago';
+          } else if (currentStep === 5) {
+            submitBtn.textContent = 'Ir a Mi Perfil';
+            submitBtn.onclick = () => window.location.href = 'index.html';
+          }
+        }
+
+        // Gestión de fotos
+        function initPhotoUpload() {
+          const photosGrid = document.getElementById('photos-grid');
+          const photoInput = document.getElementById('photo-input');
+          const photoCount = document.getElementById('photo-count');
+
+          function updatePhotosGrid() {
+            photosGrid.innerHTML = '';
+            
+            // Mostrar fotos subidas
+            uploadedPhotos.forEach((photo, index) => {
+              const photoItem = document.createElement('div');
+              photoItem.className = 'photo-item';
+              photoItem.innerHTML = `
+                <img src="${photo.src}" alt="Foto ${index + 1}">
+                <button type="button" class="remove-photo" onclick="removePhoto(${index})">×</button>
+              `;
+              photosGrid.appendChild(photoItem);
+            });
+
+            // Mostrar botón para añadir más fotos (si no se ha llegado al límite)
+            if (uploadedPhotos.length < 7) {
+              const addPhotoItem = document.createElement('div');
+              addPhotoItem.className = 'photo-item';
+              addPhotoItem.onclick = () => photoInput.click();
+              addPhotoItem.innerHTML = `
+                <div class="photo-add">
+                  <i>+</i>
+                  <span>Añadir foto</span>
+                </div>
+              `;
+              photosGrid.appendChild(addPhotoItem);
+            }
+
+            photoCount.textContent = uploadedPhotos.length;
+          }
+
+          window.removePhoto = function(index) {
+            uploadedPhotos.splice(index, 1);
+            updatePhotosGrid();
+          };
+
+          photoInput.addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            const remainingSlots = 7 - uploadedPhotos.length;
+            const filesToProcess = files.slice(0, remainingSlots);
+
+            filesToProcess.forEach(file => {
+              if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                  uploadedPhotos.push({
+                    file: file,
+                    src: e.target.result
+                  });
+                  updatePhotosGrid();
+                };
+                reader.readAsDataURL(file);
+              }
+            });
+
+            e.target.value = '';
+          });
+
+          updatePhotosGrid();
+        }
+
+        // Contador de caracteres para descripción
+        const descripcionField = document.getElementById('descripcion');
+        const charCount = document.getElementById('char-count');
+        
+        if (descripcionField && charCount) {
+          descripcionField.addEventListener('input', function() {
+            const remaining = 500 - this.value.length;
+            charCount.textContent = remaining;
+            charCount.style.color = remaining < 50 ? '#dc3545' : '#6c757d';
+          });
+        }
+
+        // Event listeners para limpiar errores
+        const allFormFields = form.querySelectorAll('input, select, textarea');
+        allFormFields.forEach(field => {
+          field.addEventListener('input', function() {
+            this.classList.remove('error');
+            const errorMsg = this.parentNode.querySelector('.error-message');
+            if (errorMsg) errorMsg.remove();
+          });
+          
+          if (field.id === 'dni' || field.id === 'telefono') {
+            field.addEventListener('blur', function() {
+              validateField(this);
+            });
+          }
+        });
+
+        // Botones de navegación
+        const sections = form.querySelectorAll('.form-section');
+        sections.forEach((section, index) => {
+          if (index < sections.length - 1) { // No añadir navegación a la última sección
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'form-navigation';
+            
+            if (index > 0) {
+              const prevButton = document.createElement('button');
+              prevButton.type = 'button';
+              prevButton.className = 'btn btn-outline';
+              prevButton.textContent = 'Anterior';
+              prevButton.onclick = () => goToStep(currentStep - 1);
+              buttonContainer.appendChild(prevButton);
+            }
+            
+            const nextButton = document.createElement('button');
+            nextButton.type = 'button';
+            nextButton.className = 'btn btn-primary';
+            nextButton.textContent = 'Siguiente';
+            nextButton.onclick = () => {
+              if (validateSection(currentStep)) {
+                goToStep(currentStep + 1);
+              }
+            };
+            buttonContainer.appendChild(nextButton);
+            
+            section.appendChild(buttonContainer);
+          }
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          if (currentStep === 4) {
+            // Validar todos los pasos antes del pago
+            let isValid = true;
+            for (let i = 1; i <= 4; i++) {
+              if (!validateSection(i)) {
+                isValid = false;
+                goToStep(i);
+                break;
+              }
+            }
+            
+            if (isValid) {
+              // Simular procesamiento de pago
+              processPayment();
+            }
+          }
+        });
+
+        function processPayment() {
+          // Aquí iría la integración con el procesador de pagos
+          // Por ahora simulamos un pago exitoso
+          
+          // Generar resumen
+          const resumen = document.getElementById('resumen-contenido');
+          resumen.innerHTML = `
+            <p><strong>Nombre:</strong> ${form.nombre.value}</p>
+            <p><strong>Email:</strong> ${form.email.value}</p>
+            <p><strong>Ubicación:</strong> ${form.municipio.value}, ${form.zona.value}</p>
+            <p><strong>Tipo:</strong> ${form['tipo-publicacion'].options[form['tipo-publicacion'].selectedIndex].text}</p>
+            <p><strong>Habitaciones:</strong> ${form['num-habitaciones'].value}</p>
+            <p><strong>Precio:</strong> ${form['rango-precio'].value}€</p>
+            <p><strong>Fotos subidas:</strong> ${uploadedPhotos.length}</p>
+            <p><strong>Pago procesado:</strong> 34,98€ (primer mes)</p>
+          `;
+          
+          goToStep(5);
+        }
+
+        // Inicializar
+        console.log('Inicializando formulario...');
+        initPhotoUpload();
+        updateProgress();
+        goToStep(1); // Asegurar que empiece en el paso 1
+        console.log('Formulario inicializado');
+      });
+    </script>
+  </body>
+</html>

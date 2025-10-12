@@ -5,279 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MatchHogar | Qué ofrecemos</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sections-bg.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-      .services-hero {
-        background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80');
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        color: #fff;
-        padding: 64px 0 40px 0;
-        text-align: center;
-        overflow: hidden;
-      }
-      .services-hero::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(120deg, #002e5ecc 60%, #e76f26cc 100%);
-        z-index: 1;
-      }
-      .services-hero .container {
-        position: relative;
-        z-index: 2;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .services-hero h1 {
-        font-size: 2.5em;
-        font-weight: 800;
-        margin-bottom: 18px;
-        line-height: 1.1;
-        text-shadow: 0 2px 16px #0007;
-      }
-      .services-hero .tagline {
-        font-size: 1.2em;
-        margin-bottom: 0;
-        color: #fffde7;
-        text-shadow: 0 2px 12px #0006;
-      }
-      .services-section {
-        background: #f7f9fb;
-        padding: 56px 0 32px 0;
-      }
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 32px;
-        margin-top: 32px;
-      }
-      .service-card {
-        background: #fff;
-        border-radius: 18px;
-        box-shadow: 0 2px 16px #002e5e11;
-        padding: 32px 20px 24px 20px;
-        text-align: center;
-        transition: box-shadow 0.2s, transform 0.2s;
-        position: relative;
-      }
-      .service-card img {
-        width: 64px; height: 64px; object-fit: contain; margin-bottom: 16px;
-      }
-      .service-card h3 { font-size: 1.2em; margin-bottom: 10px; }
-      .service-card p { color: #444; font-size: 1em; }
-      .service-card ul { list-style: none; padding: 0; margin: 16px 0 0 0; }
-      .service-card li { color: #e76f26; font-weight: 500; margin-bottom: 6px; }
-      .service-card:hover { box-shadow: 0 6px 32px #002e5e22; transform: translateY(-4px) scale(1.03); }
-      .features-section {
-        background: #fff;
-        padding: 56px 0 32px 0;
-      }
-      .features-grid {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        gap: 32px;
-        flex-wrap: wrap;
-        margin-top: 32px;
-      }
-      .feature-card.visual {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .feature-card.visual img.feature-icon {
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-      }
-      @media (max-width: 900px) {
-        .features-grid { flex-direction: column; align-items: center; }
-      }
-      .feature-item {
-        background: #f7f9fb;
-        border-radius: 16px;
-        box-shadow: 0 2px 12px #002e5e10;
-        padding: 28px 20px 20px 20px;
-        text-align: center;
-        position: relative;
-      }
-      .feature-item img, .feature-item .feature-icon {
-        width: 48px; height: 48px; object-fit: contain; margin-bottom: 12px; font-size: 2.2em;
-      }
-      .feature-item h3 { font-size: 1.1em; margin-bottom: 8px; }
-      .feature-item p { color: #444; font-size: 0.98em; }
-      .benefits-section {
-        background: #f7f9fb;
-        padding: 56px 0 32px 0;
-      }
-      .benefits-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 32px;
-        margin-top: 32px;
-      }
-      .benefit-card {
-        background: #fff;
-        border-radius: 18px;
-        box-shadow: 0 2px 16px #002e5e11;
-        padding: 32px 20px 24px 20px;
-        text-align: center;
-        transition: box-shadow 0.2s, transform 0.2s;
-        position: relative;
-      }
-      .benefit-card img {
-        width: 64px; height: 64px; object-fit: contain; margin-bottom: 16px;
-      }
-      .benefit-card h3 { font-size: 1.2em; margin-bottom: 10px; }
-      .benefit-card p { color: #444; font-size: 1em; }
-      .benefit-card:hover { box-shadow: 0 6px 32px #002e5e22; transform: translateY(-4px) scale(1.03); }
-      .services-cta-section {
-        background: linear-gradient(90deg, #e76f26 0%, #002e5e 100%);
-        color: #fff;
-        padding: 56px 0 48px 0;
-        text-align: center;
-      }
-      .services-cta-section h2 { font-size: 2em; font-weight: 700; margin-bottom: 12px; }
-      .services-cta-section p { font-size: 1.15em; margin-bottom: 24px; }
-      .services-cta-section .cta-buttons { display: flex; gap: 18px; justify-content: center; }
-      .services-cta-section .btn { font-size: 1.1em; }
-      @media (max-width: 700px) {
-        .services-hero h1 { font-size: 1.5em; }
-        .services-grid, .features-grid, .benefits-grid { grid-template-columns: 1fr !important; gap: 18px; }
-      }
-      .ofrecemos-flow { display: flex; align-items: center; gap: 40px; margin: 0 0 0 0; padding: 0 0 0 0; }
-      .ofrecemos-flow:nth-child(even) { flex-direction: row-reverse; }
-      .ofrecemos-flow-img img { width: 320px; max-width: 40vw; border-radius: 18px; box-shadow: 0 4px 24px #002e5e22; }
-      .ofrecemos-flow-content { flex: 1; min-width: 220px; }
-      .ofrecemos-flow-content h2 { font-size: 1.5em; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-      .ofrecemos-flow-content p { font-size: 1.08em; color: #222; }
-      .ofrecemos-beneficios-flow { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin-top: 12px; }
-      .beneficio-item { background: rgba(255,255,255,0.12); border-radius: 16px; padding: 18px 32px; font-size: 1.15em; font-weight: 600; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 12px #002e5e22; }
-      .beneficio-item i { font-size: 1.5em; color: #fff; }
-      @media (max-width: 900px) {
-        .ofrecemos-flow { flex-direction: column !important; gap: 18px; }
-        .ofrecemos-flow-img img { max-width: 90vw; width: 100%; }
-      }
-      .ofrecemos-beneficios-section {
-        background:linear-gradient(90deg,#e76f26 0%,#002e5e 100%);
-        color:#fff;
-        padding:40px 0 8px 0; /* Reducido el padding-bottom de 32px a 8px */
-      }
-    </style>
   </head>
-  <body>
+  <body class="que-ofrecemos">
     <!-- NAV -->
-    <header>
+    <header class="transparent">
       <nav class="container">
         <div class="nav-brand">
-          <a href="index.html">
-            <img src="public/MatchHogar.jpg" alt="Logo MatchHogar" class="nav-logo">
-          </a>
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
+          <span>MatchHogar</span>
         </div>
         <ul class="nav-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="quienes-somos.html">Quiénes somos</a></li>
           <li><a aria-current="page" href="que-ofrecemos.html">Qué ofrecemos</a></li>
           <li><a href="registro.html">Registro</a></li>
-          <li><a href="publicaciones-actuales.html" style="color:#e76f26;font-weight:700;"><i class="fas fa-bullhorn"></i> Publicaciones actuales</a></li>
+          <li><a href="publicaciones-actuales.html" style="color:#C4A484;font-weight:700;"><i class="fas fa-bullhorn"></i> Publicaciones actuales</a></li>
         </ul>
       </nav>
     </header>    <!-- ============================ MAIN =========================== -->
     <main>
-      <!-- Hero visual profesional y atractivo -->
-      <section class="services-hero" style="background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; position: relative; color: #fff; padding: 72px 0 48px 0; text-align: center; overflow: hidden;">
-        <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(120deg, #002e5ecc 60%, #e76f26cc 100%); z-index:1;"></div>
-        <div class="container" style="position:relative;z-index:2;max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-          <h1 style="font-size:2.7em;font-weight:900;line-height:1.1;text-shadow:0 2px 16px #0007;margin-bottom:18px;">Todo lo que necesitas para compartir hogar, invertir y conectar</h1>
-          <p style="font-size:1.25em;color:#fffde7;text-shadow:0 2px 12px #0006;margin-bottom:24px;max-width:600px;">MatchHogar es la plataforma líder para encontrar compañeros de piso, invertir en inmuebles, compartir locales y descubrir oportunidades únicas. Seguridad, comunidad y flexibilidad en un solo lugar.</p>
-          <div style="display:flex;gap:18px;justify-content:center;margin-bottom:0;flex-wrap:wrap;">
-            <a href="registro.html" class="btn btn-primary btn-lg" style="font-size:1.1em;">¡Quiero registrarme!</a>
-            <a href="publicaciones-actuales.html" class="btn btn-outline btn-lg" style="font-size:1.1em;">Ver publicaciones actuales</a>
+      <!-- Hero Section -->
+      <section class="hero hero-visual services-hero" id="que-ofrecemos">
+        <div class="container hero-content">
+          <div class="hero-left">
+            <h1 class="hero-title">Todo lo que necesitas para <br><span class="pastel-yellow">compartir hogar</span>, invertir y conectar</h1>
+            <h3 class="hero-sub">Seguridad, comunidad y flexibilidad en un solo lugar</h3>
+            <p class="tagline">MatchHogar es la plataforma líder para encontrar compañeros de piso, invertir en inmuebles, compartir locales y descubrir oportunidades únicas.</p>
+            <div class="cta-buttons">
+              <a href="registro.html" class="btn btn-primary btn-lg">¡Quiero registrarme!</a>
+              <a href="publicaciones-actuales.html" class="btn btn-outline btn-lg" style="background: #F5E98B; color: #333; border-color: #F5E98B;">Ver publicaciones</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Sección dinámica y visual de servicios principales -->
-      <section class="ofrecemos-destacados" style="background:#f7f9fb;padding:0 0 56px 0;">
+      <!-- Sección de servicios principales -->
+      <section class="features-section services-section">
         <div class="container">
-          <h2 style="text-align:center;font-size:2.2em;font-weight:900;color:#002e5e;margin-bottom:10px;letter-spacing:-1px;">¿Qué puedes hacer en MatchHogar?</h2>
-          <p style="text-align:center;font-size:1.15em;color:#444;max-width:600px;margin:0 auto 38px auto;">Soluciones flexibles, seguras y humanas para compartir, invertir y encontrar tu espacio ideal. ¡Descubre cómo podemos ayudarte!</p>
-          <div class="servicios-animados-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px;align-items:stretch;">
+          <h2 class="section-title">¿Qué puedes hacer en MatchHogar?</h2>
+          <p style="text-align:center;font-size:1.15em;color:white;max-width:600px;margin:0 auto 38px auto;">Soluciones flexibles, seguras y humanas para compartir, invertir y encontrar tu espacio ideal.</p>
+          <div class="features-grid">
             <div class="servicio-animado-card" style="background:#fff;border-radius:18px;box-shadow:0 4px 24px #002e5e11;padding:32px 22px 28px 22px;text-align:center;position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;cursor:pointer;">
-              <div style="width:70px;height:70px;background:linear-gradient(135deg,#e76f26 60%,#002e5e 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #e76f2622;">
+              <div style="width:70px;height:70px;background:linear-gradient(135deg,#A0826D 60%,#6D5A47 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #A0826D22;">
                 <i class="fas fa-home" style="font-size:2em;color:#fff;"></i>
               </div>
               <h3 style="font-size:1.18em;font-weight:700;color:#002e5e;margin-bottom:8px;">Compartir vivienda</h3>
               <p style="color:#444;font-size:1em;">Encuentra compañeros afines, comparte gastos y vive nuevas experiencias en un entorno seguro y verificado.</p>
-              <div class="servicio-animado-cta" style="margin-top:16px;"><a href="#publicaciones" class="btn btn-outline">Ver viviendas</a></div>
             </div>
             <div class="servicio-animado-card" style="background:#fff;border-radius:18px;box-shadow:0 4px 24px #002e5e11;padding:32px 22px 28px 22px;text-align:center;position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;cursor:pointer;">
-              <div style="width:70px;height:70px;background:linear-gradient(135deg,#002e5e 60%,#e76f26 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #002e5e22;">
-                <i class="fas fa-hand-holding-usd" style="font-size:2em;color:#fff;"></i>
+              <div style="width:70px;height:70px;background:linear-gradient(135deg,#6D5A47 60%,#A0826D 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #6D5A4722;">
+                <i class="fas fa-chart-line" style="font-size:2em;color:#fff;"></i>
               </div>
               <h3 style="font-size:1.18em;font-weight:700;color:#002e5e;margin-bottom:8px;">Invertir juntos</h3>
               <p style="color:#444;font-size:1em;">Participa en proyectos inmobiliarios colaborativos, accede a oportunidades reales y diversifica tu inversión.</p>
-              <div class="servicio-animado-cta" style="margin-top:16px;"><a href="#publicaciones" class="btn btn-outline">Ver oportunidades</a></div>
             </div>
             <div class="servicio-animado-card" style="background:#fff;border-radius:18px;box-shadow:0 4px 24px #002e5e11;padding:32px 22px 28px 22px;text-align:center;position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;cursor:pointer;">
-              <div style="width:70px;height:70px;background:linear-gradient(135deg,#e76f26 60%,#002e5e 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #e76f2622;">
+              <div style="width:70px;height:70px;background:linear-gradient(135deg,#A0826D 60%,#6D5A47 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #A0826D22;">
                 <i class="fas fa-users" style="font-size:2em;color:#fff;"></i>
               </div>
               <h3 style="font-size:1.18em;font-weight:700;color:#002e5e;margin-bottom:8px;">Comunidad y confianza</h3>
               <p style="color:#444;font-size:1em;">Conecta con personas reales, accede a valoraciones, soporte humano y un entorno seguro para todos.</p>
-              <div class="servicio-animado-cta" style="margin-top:16px;"><a href="#publicaciones" class="btn btn-outline">Ver comunidad</a></div>
             </div>
             <div class="servicio-animado-card" style="background:#fff;border-radius:18px;box-shadow:0 4px 24px #002e5e11;padding:32px 22px 28px 22px;text-align:center;position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;cursor:pointer;">
-              <div style="width:70px;height:70px;background:linear-gradient(135deg,#002e5e 60%,#e76f26 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #002e5e22;">
+              <div style="width:70px;height:70px;background:linear-gradient(135deg,#6D5A47 60%,#A0826D 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #6D5A4722;">
                 <i class="fas fa-store" style="font-size:2em;color:#fff;"></i>
               </div>
               <h3 style="font-size:1.18em;font-weight:700;color:#002e5e;margin-bottom:8px;">Locales y oficinas</h3>
               <p style="color:#444;font-size:1em;">Encuentra espacios de trabajo, locales comerciales y oficinas para tu negocio o proyecto.</p>
-              <div class="servicio-animado-cta" style="margin-top:16px;"><a href="#publicaciones" class="btn btn-outline">Ver locales</a></div>
             </div>
             <div class="servicio-animado-card" style="background:#fff;border-radius:18px;box-shadow:0 4px 24px #002e5e11;padding:32px 22px 28px 22px;text-align:center;position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;cursor:pointer;">
-              <div style="width:70px;height:70px;background:linear-gradient(135deg,#e76f26 60%,#002e5e 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #e76f2622;">
+              <div style="width:70px;height:70px;background:linear-gradient(135deg,#A0826D 60%,#6D5A47 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #A0826D22;">
                 <i class="fas fa-warehouse" style="font-size:2em;color:#fff;"></i>
               </div>
               <h3 style="font-size:1.18em;font-weight:700;color:#002e5e;margin-bottom:8px;">Trasteros y garajes</h3>
               <p style="color:#444;font-size:1em;">Alquila o comparte trasteros y plazas de garaje de forma flexible y segura.</p>
-              <div class="servicio-animado-cta" style="margin-top:16px;"><a href="#publicaciones" class="btn btn-outline">Ver trasteros</a></div>
             </div>
             <div class="servicio-animado-card" style="background:#fff;border-radius:18px;box-shadow:0 4px 24px #002e5e11;padding:32px 22px 28px 22px;text-align:center;position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;cursor:pointer;">
-              <div style="width:70px;height:70px;background:linear-gradient(135deg,#002e5e 60%,#e76f26 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #002e5e22;">
+              <div style="width:70px;height:70px;background:linear-gradient(135deg,#6D5A47 60%,#A0826D 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #6D5A4722;">
                 <i class="fas fa-tools" style="font-size:2em;color:#fff;"></i>
               </div>
               <h3 style="font-size:1.18em;font-weight:700;color:#002e5e;margin-bottom:8px;">Servicios para el hogar</h3>
               <p style="color:#444;font-size:1em;">Encuentra profesionales para reformas, mudanzas, limpieza, decoración y más. Todo lo que tu hogar necesita en un solo lugar.</p>
-              <div class="servicio-animado-cta" style="margin-top:16px;"><a href="#publicaciones" class="btn btn-outline">Ver servicios</a></div>
+            </div>
+            <div class="servicio-animado-card" style="background:#fff;border-radius:18px;box-shadow:0 4px 24px #002e5e11;padding:32px 22px 28px 22px;text-align:center;position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;cursor:pointer;">
+              <div style="width:70px;height:70px;background:linear-gradient(135deg,#A0826D 60%,#6D5A47 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px auto;box-shadow:0 2px 12px #A0826D22;">
+                <i class="fas fa-seedling" style="font-size:2em;color:#fff;"></i>
+              </div>
+              <h3 style="font-size:1.18em;font-weight:700;color:#002e5e;margin-bottom:8px;">Compartir finca</h3>
+              <p style="color:#444;font-size:1em;">Comparte espacios rurales para casas modulares, huertos familiares, proyectos agrícolas y experiencias en la naturaleza.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Apartado Publicaciones -->
-      <section class="publicaciones-section" style="background:#fff; padding:56px 0 32px 0;">
+      <section class="publicaciones-section" style="background: rgba(255, 255, 255, 0.8); padding:56px 0 32px 0;">
         <div class="container">
           <div class="publicaciones-header" style="text-align:center; margin-bottom:32px;">
-            <h2 style="font-size:2em; font-weight:800; color:#002e5e; margin-bottom:10px;">Publicaciones y Anuncios</h2>
-            <p style="font-size:1.15em; color:#333; max-width:600px; margin:0 auto;">En MatchHogar puedes publicar anuncios de viviendas, fincas, locales, trasteros o servicios relacionados con el hogar. Elige el pack que mejor se adapte a tus necesidades y llega a miles de personas interesadas en compartir, invertir o encontrar su espacio ideal.</p>
+            <h2 style="font-size:2em; font-weight:800; color:#ffffff; margin-bottom:10px;">Publicaciones y Anuncios</h2>
+            <p style="font-size:1.15em; color:#ffffff; max-width:600px; margin:0 auto;">En MatchHogar puedes publicar anuncios de viviendas, fincas, locales, trasteros o servicios relacionados con el hogar. Elige el pack que mejor se adapte a tus necesidades y llega a miles de personas interesadas en compartir, invertir o encontrar su espacio ideal.</p>
           </div>
           <div class="publicaciones-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:900px;margin:0 auto 32px auto;">
-            <div class="publicacion-card" style="background:#f7f9fb;border-radius:16px;box-shadow:0 2px 16px #002e5e11;padding:32px 20px;text-align:center;">
-              <i class="fas fa-home" style="font-size:2.2em;color:#e76f26;margin-bottom:12px;"></i>
+            <div class="publicacion-card" style="background:rgba(247, 249, 251, 0.9);border-radius:16px;box-shadow:0 2px 16px #002e5e11;padding:32px 20px;text-align:center;">
+              <i class="fas fa-home" style="font-size:2.2em;color:#A0826D;margin-bottom:12px;"></i>
               <h3 style="font-size:1.15em;margin-bottom:10px;">Publica tu inmueble o servicio</h3>
               <p style="color:#444;">Sube anuncios de viviendas, fincas, locales, trasteros o servicios (asesoría, reformas, etc.) y gestiona su visibilidad fácilmente.</p>
               <ul style="list-style:none;padding:0;margin:18px 0 0 0;text-align:left;">
-                <li><i class="fas fa-check-circle" style="color:#e76f26;margin-right:8px;"></i> Pago único por publicación</li>
-                <li><i class="fas fa-calendar-alt" style="color:#e76f26;margin-right:8px;"></i> 30 días de visibilidad</li>
-                <li><i class="fas fa-sync-alt" style="color:#e76f26;margin-right:8px;"></i> Renovación sencilla</li>
+                <li><i class="fas fa-check-circle" style="color:#A0826D;margin-right:8px;"></i> Pago único por publicación</li>
+                <li><i class="fas fa-calendar-alt" style="color:#A0826D;margin-right:8px;"></i> 30 días de visibilidad</li>
+                <li><i class="fas fa-sync-alt" style="color:#A0826D;margin-right:8px;"></i> Renovación sencilla</li>
               </ul>
             </div>
-            <div class="publicacion-card" style="background:#f7f9fb;border-radius:16px;box-shadow:0 2px 16px #002e5e11;padding:32px 20px;text-align:center;">
-              <i class="fas fa-tags" style="font-size:2.2em;color:#e76f26;margin-bottom:12px;"></i>
+            <div class="publicacion-card" style="background:rgba(247, 249, 251, 0.9);border-radius:16px;box-shadow:0 2px 16px #002e5e11;padding:32px 20px;text-align:center;">
+              <i class="fas fa-tags" style="font-size:2.2em;color:#A0826D;margin-bottom:12px;"></i>
               <h3 style="font-size:1.15em;margin-bottom:10px;">Tarifas por publicación</h3>
               <ul style="list-style:none;padding:0;margin:0 0 18px 0;text-align:left;">
                 <li><b>1 publicación:</b> 14,90 €</li>
@@ -287,8 +129,8 @@
               </ul>
               <p style="color:#444;">Elige el pack que prefieras. Todos los anuncios permanecen activos durante 30 días y puedes renovarlos fácilmente.</p>
             </div>
-            <div class="publicacion-card" style="background:#f7f9fb;border-radius:16px;box-shadow:0 2px 16px #002e5e11;padding:32px 20px;text-align:center;">
-              <i class="fas fa-bullhorn" style="font-size:2.2em;color:#e76f26;margin-bottom:12px;"></i>
+            <div class="publicacion-card" style="background:rgba(247, 249, 251, 0.9);border-radius:16px;box-shadow:0 2px 16px #002e5e11;padding:32px 20px;text-align:center;">
+              <i class="fas fa-bullhorn" style="font-size:2.2em;color:#A0826D;margin-bottom:12px;"></i>
               <h3 style="font-size:1.15em;margin-bottom:10px;">Publicidad para empresas</h3>
               <ul style="list-style:none;padding:0;margin:0 0 18px 0;text-align:left;">
                 <li><b>Banner lateral fijo:</b> desde 49,90 €/mes</li>
@@ -298,32 +140,8 @@
               <p style="color:#444;">Empresas externas pueden contratar espacios publicitarios en distintas ubicaciones de la web para llegar a un público segmentado.</p>
             </div>
           </div>
-          <div class="publicaciones-info" style="max-width:700px;margin:0 auto;text-align:center;color:#555;font-size:1em;">
-            <i class="fas fa-cogs" style="color:#e76f26;margin-right:8px;"></i> Todas las tarifas son orientativas y pueden ser modificadas desde el sistema de administración. El pago se realiza de forma segura mediante Stripe o PayPal. Los anuncios se eliminan automáticamente al vencer, pero puedes renovarlos fácilmente.
-          </div>
-        </div>
-      </section>
-
-      <!-- Beneficios visuales conectados -->
-      <section class="ofrecemos-beneficios-section" style="background:linear-gradient(90deg,#e76f26 0%,#002e5e 100%);color:#fff;padding:40px 0 8px 0;">
-        <div class="container">
-          <div class="ofrecemos-beneficios-flow">
-            <div class="beneficio-item"><i class="fas fa-bolt"></i> Rápido y fácil</div>
-            <div class="beneficio-item"><i class="fas fa-shield-alt"></i> Seguro</div>
-            <div class="beneficio-item"><i class="fas fa-comments"></i> Contacto directo</div>
-            <div class="beneficio-item"><i class="fas fa-star"></i> Valoraciones reales</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA final visual -->
-      <section class="services-cta-section">
-        <div class="container">
-          <h2>¿Listo para empezar?</h2>
-          <p>Regístrate gratis y encuentra tu match ideal.</p>
-          <div class="cta-buttons">
-            <a href="registro.html" class="btn btn-primary btn-lg">¡Quiero registrarme!</a>
-            <a href="index.html" class="btn btn-outline btn-lg">Volver al inicio</a>
+          <div class="publicaciones-info" style="max-width:700px;margin:0 auto;text-align:center;color:#ffffff;font-size:1em;">
+            <i class="fas fa-cogs" style="color:#A0826D;margin-right:8px;"></i> Todas las tarifas son orientativas y pueden ser modificadas desde el sistema de administración. El pago se realiza de forma segura mediante Stripe o PayPal. Los anuncios se eliminan automáticamente al vencer, pero puedes renovarlos fácilmente.
           </div>
         </div>
       </section>

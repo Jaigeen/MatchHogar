@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Background</title>
+    <style>
+        .test-bg {
+            width: 100%;
+            height: 500px;
+            background: url('./public/casa6.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid red;
+        }
+        .test-bg2 {
+            width: 100%;
+            height: 500px;
+            background: url('public/casa6.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid blue;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test de Background</h1>
+    <p>Test 1 (con ./): </p>
+    <div class="test-bg"></div>
+    
+    <p>Test 2 (sin ./): </p>
+    <div class="test-bg2"></div>
+    
+    <p>Imagen directa:</p>
+    <img src="public/casa6.jpg" alt="Casa6" style="max-width: 500px;">
+</body>
+</html>

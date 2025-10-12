@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MatchHogar | Acceso Colaboradores</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sections-bg.css" />
+    <style>
+      .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url('public/casa6.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 20px;
+      }
+      
+      .login-card {
+        background: white;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        max-width: 450px;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .login-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: block;
+      }
+      
+      .login-title {
+        color: var(--navy, #002e5e);
+        margin-bottom: 10px;
+        font-size: 2em;
+      }
+      
+      .login-subtitle {
+        color: #666;
+        margin-bottom: 40px;
+        font-size: 1.1em;
+      }
+      
+      .form-group {
+        margin-bottom: 25px;
+        text-align: left;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+      }
+      
+      .form-group input {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+      }
+      
+      .form-group input:focus {
+        border-color: var(--brown, #A0826D);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(160, 130, 109, 0.1);
+      }
+      
+      .btn-login {
+        background-color: var(--brown, #A0826D);
+        color: white;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      
+      .btn-login:hover {
+        background-color: #8b6f5a;
+      }
+      
+      .login-links {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+      
+      .login-links a {
+        color: var(--brown, #A0826D);
+        text-decoration: none;
+        font-weight: 500;
+        margin: 0 10px;
+      }
+      
+      .login-links a:hover {
+        text-decoration: underline;
+      }
+      
+      .demo-info {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+        text-align: left;
+      }
+      
+      .demo-info h4 {
+        color: var(--navy, #002e5e);
+        margin-bottom: 15px;
+      }
+      
+      .demo-accounts {
+        display: grid;
+        gap: 10px;
+      }
+      
+      .demo-account {
+        background: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      
+      .demo-account:hover {
+        background-color: #e9ecef;
+      }
+      
+      .demo-account strong {
+        color: var(--brown, #A0826D);
+      }
+      
+      @media (max-width: 768px) {
+        .login-card {
+          padding: 30px 20px;
+          margin: 10px;
+        }
+        
+        .login-title {
+          font-size: 1.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ======================= HEADER & NAV ======================= -->
+    <header class="transparent" style="position: absolute; width: 100%; z-index: 1000;">
+      <nav class="container">
+        <div class="nav-brand">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
+          <span>MatchHogar</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+          <li><a href="publicaciones-actuales.html">Publicaciones</a></li>
+          <li><a href="registro.html">Registro</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============================ MAIN =========================== -->
+    <main class="login-container">
+      <div class="login-card">
+        <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="login-logo">
+        <h1 class="login-title">Acceso Colaboradores</h1>
+        <p class="login-subtitle">Inicia sesión para gestionar tus anuncios</p>
+        
+        <form id="login-form">
+          <div class="form-group">
+            <label for="colaborador-id">ID de Colaborador</label>
+            <input type="text" id="colaborador-id" name="colaborador-id" required placeholder="Ej: IDE001, TEC002, PAR003">
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" required placeholder="Introduce tu contraseña">
+          </div>
+          
+          <button type="submit" class="btn-login">Iniciar Sesión</button>
+        </form>
+        
+        <div class="demo-info">
+          <h4>🔍 Cuentas de prueba:</h4>
+          <div class="demo-accounts">
+            <div class="demo-account" onclick="fillLogin('IDE001', 'demo123')">
+              <strong>IDE001</strong> - Inmobiliaria Idealista
+            </div>
+            <div class="demo-account" onclick="fillLogin('TEC002', 'demo123')">
+              <strong>TEC002</strong> - Tecnocasa Rural
+            </div>
+            <div class="demo-account" onclick="fillLogin('PAR003', 'demo123')">
+              <strong>PAR003</strong> - María García (Particular)
+            </div>
+          </div>
+          <small style="color: #666; display: block; margin-top: 10px;">
+            Haz clic en cualquiera para iniciar sesión automáticamente
+          </small>
+        </div>
+        
+        <div class="login-links">
+          <a href="registro-colaborador.html">¿No tienes cuenta? Regístrate</a>
+          <span style="color: #ccc;">|</span>
+          <a href="#" onclick="alert('Funcionalidad de recuperación en desarrollo')">¿Olvidaste tu contraseña?</a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      console.log('Página de login cargada');
+      
+      // Datos de colaboradores demo
+      const colaboradores = {
+        'IDE001': {
+          nombre: 'Inmobiliaria Idealista',
+          tipo: 'profesional',
+          email: 'admin@idealista-demo.com',
+          password: 'demo123'
+        },
+        'TEC002': {
+          nombre: 'Tecnocasa Rural',
+          tipo: 'profesional', 
+          email: 'info@tecnocasa-demo.com',
+          password: 'demo123'
+        },
+        'PAR003': {
+          nombre: 'María García',
+          tipo: 'particular',
+          email: 'maria.garcia@email.com',
+          password: 'demo123'
+        }
+      };
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('login-form');
+        
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const colaboradorId = document.getElementById('colaborador-id').value.trim().toUpperCase();
+          const password = document.getElementById('password').value;
+          
+          if (!colaboradorId || !password) {
+            alert('Por favor, completa todos los campos');
+            return;
+          }
+          
+          // Verificar credenciales
+          if (colaboradores[colaboradorId] && colaboradores[colaboradorId].password === password) {
+            // Guardar sesión
+            sessionStorage.setItem('colaborador-id', colaboradorId);
+            sessionStorage.setItem('colaborador-nombre', colaboradores[colaboradorId].nombre);
+            sessionStorage.setItem('colaborador-tipo', colaboradores[colaboradorId].tipo);
+            
+            alert('¡Inicio de sesión exitoso!\\n\\nRedirigiendo al panel de colaborador...');
+            
+            // Redirigir al panel
+            window.location.href = 'panel-colaborador.html';
+          } else {
+            alert('ID de colaborador o contraseña incorrectos');
+          }
+        });
+      });
+      
+      function fillLogin(id, password) {
+        document.getElementById('colaborador-id').value = id;
+        document.getElementById('password').value = password;
+        
+        // Auto-enviar después de un pequeño delay para que el usuario vea lo que pasó
+        setTimeout(() => {
+          document.getElementById('login-form').requestSubmit();
+        }, 500);
+      }
+      
+      // Generar ID único para nuevos colaboradores
+      function generarIdColaborador(tipoEmpresa) {
+        const prefijos = {
+          'inmobiliaria': 'INM',
+          'idealista': 'IDE', 
+          'tecnocasa': 'TEC',
+          'remax': 'RMX',
+          'century21': 'C21',
+          'particular': 'PAR',
+          'pisos': 'PIS',
+          'fotocasa': 'FOT',
+          'habitaclia': 'HAB'
+        };
+        
+        const prefijo = prefijos[tipoEmpresa.toLowerCase()] || 'COL';
+        const numero = String(Math.floor(Math.random() * 999) + 1).padStart(3, '0');
+        
+        return prefijo + numero;
+      }
+    </script>
+  </body>
+</html>

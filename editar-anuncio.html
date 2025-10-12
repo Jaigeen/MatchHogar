@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MatchHogar | Editar Anuncio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sections-bg.css" />
+    <style>
+      .editar-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        min-height: 100vh;
+      }
+      
+      .editar-header {
+        background: linear-gradient(135deg, var(--navy, #002e5e) 0%, #1a4480 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      
+      .anuncio-id {
+        background: var(--brown, #A0826D);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 0.9em;
+      }
+      
+      .form-container {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        margin-bottom: 30px;
+      }
+      
+      .form-group {
+        margin-bottom: 25px;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+      }
+      
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+      }
+      
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--brown, #A0826D);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(160, 130, 109, 0.1);
+      }
+      
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      
+      .btn {
+        background-color: var(--brown, #A0826D);
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 10px;
+        text-decoration: none;
+        display: inline-block;
+      }
+      
+      .btn:hover {
+        background-color: #8b6f5a;
+      }
+      
+      .btn-secondary {
+        background-color: var(--navy, #002e5e);
+      }
+      
+      .btn-secondary:hover {
+        background-color: #1a4480;
+      }
+      
+      .btn-danger {
+        background-color: #dc3545;
+      }
+      
+      .btn-danger:hover {
+        background-color: #c82333;
+      }
+      
+      .photo-upload {
+        border: 2px dashed #ddd;
+        padding: 30px;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+      }
+      
+      .photo-upload:hover {
+        border-color: var(--brown, #A0826D);
+      }
+      
+      .photo-preview {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+      
+      .photo-item {
+        position: relative;
+        width: 120px;
+        height: 100px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      
+      .photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .photo-remove {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: rgba(220, 53, 69, 0.9);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      
+      .estado-section {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+      }
+      
+      .estado-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+      
+      .estado-card {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+      
+      .estado-numero {
+        font-size: 2em;
+        font-weight: bold;
+        color: var(--navy, #002e5e);
+        margin-bottom: 5px;
+      }
+      
+      .estado-label {
+        color: #666;
+        font-size: 0.9em;
+      }
+      
+      .actions-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 40px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      
+      .actions-left {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      
+      .actions-right {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .actions-container {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        
+        .actions-left,
+        .actions-right {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body class="registro-page">
+    <!-- ======================= HEADER & NAV ======================= -->
+    <header class="transparent">
+      <nav class="container">
+        <div class="nav-brand">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
+          <span>MatchHogar</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+          <li><a href="publicaciones-actuales.html">Publicaciones</a></li>
+          <li><a href="panel-colaborador.html">Panel</a></li>
+          <li><a href="#" onclick="logout()">Cerrar Sesión</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============================ MAIN =========================== -->
+    <main class="container editar-container">
+      <!-- HEADER EDITAR ANUNCIO -->
+      <div class="editar-header">
+        <h1>✏️ Editar Anuncio</h1>
+        <h2 id="anuncio-titulo">Cargando anuncio...</h2>
+        <div class="anuncio-id" id="anuncio-id">---</div>
+        <p>Modifica los datos de tu anuncio y guarda los cambios</p>
+      </div>
+
+      <!-- ESTADÍSTICAS DEL ANUNCIO -->
+      <div class="estado-section">
+        <h3 style="color: var(--navy, #002e5e); margin-bottom: 20px;">📊 Estadísticas del Anuncio</h3>
+        <div class="estado-grid">
+          <div class="estado-card">
+            <div class="estado-numero" id="stat-visitas">45</div>
+            <div class="estado-label">Visitas</div>
+          </div>
+          <div class="estado-card">
+            <div class="estado-numero" id="stat-contactos">8</div>
+            <div class="estado-label">Contactos</div>
+          </div>
+          <div class="estado-card">
+            <div class="estado-numero" id="stat-favoritos">12</div>
+            <div class="estado-label">Favoritos</div>
+          </div>
+          <div class="estado-card">
+            <div class="estado-numero" id="stat-dias">5</div>
+            <div class="estado-label">Días activo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAVEGACIÓN POR PESTAÑAS -->
+      <div class="tabs-container" style="margin-bottom: 30px;">
+        <div class="tabs-nav" style="display: flex; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <button class="tab-btn active" onclick="cambiarTab('datos')" style="flex: 1; padding: 15px 20px; border: none; background: var(--brown, #A0826D); color: white; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+            📝 Datos del Anuncio
+          </button>
+          <button class="tab-btn" onclick="cambiarTab('fotos')" style="flex: 1; padding: 15px 20px; border: none; background: #f8f9fa; color: #666; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+            📸 Fotos
+          </button>
+          <button class="tab-btn" onclick="cambiarTab('estado')" style="flex: 1; padding: 15px 20px; border: none; background: #f8f9fa; color: #666; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+            📊 Estado y Estadísticas
+          </button>
+        </div>
+      </div>
+
+      <!-- FORMULARIO EDITAR ANUNCIO -->
+      <div class="form-container">
+        <!-- TAB DATOS -->
+        <div id="tab-datos" class="tab-content">
+          <h3 style="color: var(--navy, #002e5e); margin-bottom: 30px;">📝 Datos del Anuncio</h3>
+        
+        <form id="editar-anuncio-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="titulo">Título del anuncio *</label>
+              <input type="text" id="titulo" name="titulo" required placeholder="Ej: Habitación luminosa en centro ciudad">
+            </div>
+            
+            <div class="form-group">
+              <label for="tipo-propiedad">Tipo de propiedad *</label>
+              <select id="tipo-propiedad" name="tipo-propiedad" required>
+                <option value="">Seleccionar...</option>
+                <option value="habitacion">Habitación</option>
+                <option value="estudio">Estudio</option>
+                <option value="apartamento">Apartamento</option>
+                <option value="piso">Piso</option>
+                <option value="casa">Casa</option>
+                <option value="atico">Ático</option>
+                <option value="duplex">Dúplex</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="precio">Precio mensual (€) *</label>
+              <input type="number" id="precio" name="precio" required min="100" max="10000">
+            </div>
+            
+            <div class="form-group">
+              <label for="habitaciones">Número de habitaciones</label>
+              <select id="habitaciones" name="habitaciones">
+                <option value="1">1 habitación</option>
+                <option value="2">2 habitaciones</option>
+                <option value="3">3 habitaciones</option>
+                <option value="4">4 habitaciones</option>
+                <option value="5+">5+ habitaciones</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="superficie">Superficie (m²)</label>
+              <input type="number" id="superficie" name="superficie" min="10" max="500">
+            </div>
+            
+            <div class="form-group">
+              <label for="ubicacion">Ubicación *</label>
+              <input type="text" id="ubicacion" name="ubicacion" required placeholder="Ciudad, barrio, calle">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="descripcion">Descripción detallada *</label>
+            <textarea id="descripcion" name="descripcion" rows="5" required placeholder="Describe la propiedad, servicios incluidos, normas, características especiales..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label>Servicios incluidos</label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px;">
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="wifi"> WiFi incluido
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="limpieza"> Servicio de limpieza
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="gastos"> Gastos incluidos
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="parking"> Plaza de parking
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="terraza"> Terraza/Balcón
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" name="servicios[]" value="ascensor"> Ascensor
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Fotos de la propiedad</label>
+            <div class="photo-upload" onclick="document.getElementById('photo-input').click()">
+              <p>📸 Haz clic para subir más fotos</p>
+              <small>Máximo 8 fotos. Formatos: JPG, PNG</small>
+            </div>
+            <input type="file" id="photo-input" multiple accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+            <div id="photo-preview" class="photo-preview"></div>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="disponibilidad">Disponibilidad *</label>
+              <select id="disponibilidad" name="disponibilidad" required>
+                <option value="inmediata">Inmediata</option>
+                <option value="1-semana">En 1 semana</option>
+                <option value="2-semanas">En 2 semanas</option>
+                <option value="1-mes">En 1 mes</option>
+                <option value="2-meses">En 2 meses</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="contacto-preferido">Método de contacto preferido</label>
+              <select id="contacto-preferido" name="contacto-preferido">
+                <option value="telefono">Teléfono</option>
+                <option value="email">Email</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="cualquiera">Cualquiera</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="estado-anuncio">Estado del anuncio</label>
+            <select id="estado-anuncio" name="estado-anuncio">
+              <option value="activo">🟢 Activo</option>
+              <option value="pausado">🟡 Pausado</option>
+              <option value="alquilado">🔵 Alquilado</option>
+              <option value="baja">🔴 Dar de baja</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- TAB FOTOS -->
+        <div id="tab-fotos" class="tab-content" style="display: none;">
+          <h3 style="color: var(--navy, #002e5e); margin-bottom: 30px;">📸 Gestión de Fotos</h3>
+          
+          <div class="form-group">
+            <label>Fotos actuales del anuncio</label>
+            <div id="fotos-actuales" class="photo-preview"></div>
+          </div>
+          
+          <div class="form-group">
+            <label>Agregar nuevas fotos</label>
+            <div class="photo-upload" onclick="document.getElementById('photo-input').click()">
+              <p>📸 Haz clic para subir más fotos</p>
+              <small>Máximo 8 fotos. Formatos: JPG, PNG</small>
+            </div>
+            <input type="file" id="photo-input" multiple accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+            <div id="fotos-nuevas" class="photo-preview"></div>
+          </div>
+        </div>
+
+        <!-- TAB ESTADO Y ESTADÍSTICAS -->
+        <div id="tab-estado" class="tab-content" style="display: none;">
+          <h3 style="color: var(--navy, #002e5e); margin-bottom: 30px;">📊 Rendimiento del Anuncio</h3>
+          
+          <div class="estado-grid">
+            <div class="estado-card">
+              <div class="estado-numero" id="stat-visitas-tab">45</div>
+              <div class="estado-label">Visitas totales</div>
+              <small style="color: #888; margin-top: 5px; display: block;">+3 esta semana</small>
+            </div>
+            <div class="estado-card">
+              <div class="estado-numero" id="stat-contactos-tab">8</div>
+              <div class="estado-label">Contactos recibidos</div>
+              <small style="color: #888; margin-top: 5px; display: block;">+1 esta semana</small>
+            </div>
+            <div class="estado-card">
+              <div class="estado-numero" id="stat-favoritos-tab">12</div>
+              <div class="estado-label">Agregado a favoritos</div>
+              <small style="color: #888; margin-top: 5px; display: block;">+2 esta semana</small>
+            </div>
+            <div class="estado-card">
+              <div class="estado-numero" id="stat-dias-tab">5</div>
+              <div class="estado-label">Días activo</div>
+              <small style="color: #888; margin-top: 5px; display: block;">Publicado el 7 Oct</small>
+            </div>
+          </div>
+          
+          <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <h4 style="color: var(--navy, #002e5e); margin-bottom: 15px;">💡 Consejos para mejorar</h4>
+            <ul style="margin: 0; padding-left: 20px; color: #666;">
+              <li>Añade más fotos de calidad para aumentar las visitas</li>
+              <li>Actualiza la descripción con más detalles</li>
+              <li>Revisa el precio comparándolo con anuncios similares</li>
+              <li>Responde rápidamente a los contactos</li>
+            </ul>
+          </div>
+        </div>
+        
+        </form>
+      </div>
+
+      <!-- ACCIONES -->
+      <div class="actions-container">
+        <div class="actions-left">
+          <a href="panel-colaborador.html" class="btn btn-secondary">← Volver al Panel</a>
+          <button class="btn btn-secondary" onclick="previsualizarAnuncio()">👁️ Previsualizar</button>
+        </div>
+        <div class="actions-right">
+          <button class="btn btn-danger" onclick="eliminarAnuncio()">🗑️ Eliminar Anuncio</button>
+          <button class="btn" onclick="guardarCambios()">💾 Guardar Cambios</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- =========================== FOOTER ========================== -->
+    <footer class="footer-bonito">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" style="height:40px;border-radius:8px;margin-right:10px;vertical-align:middle;">
+          <span>MatchHogar</span>
+        </div>
+        <div class="footer-links">
+          <a href="#politica">Política de privacidad</a>
+          <span class="footer-sep">|</span>
+          <a href="#condiciones">Términos y condiciones</a>
+          <span class="footer-sep">|</span>
+          <a href="#cookies">Política de cookies</a>
+        </div>
+        <div class="footer-copy">© 2025 MatchHogar. Todos los derechos reservados.</div>
+      </div>
+    </footer>
+
+    <style>
+      .footer-bonito {
+        background: var(--navy, #002e5e);
+        color: #fff;
+        padding: 32px 0 16px 0;
+        margin-top: 48px;
+        font-size: 1.05em;
+        box-shadow: 0 -2px 16px #0001;
+      }
+      .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-logo {
+        font-weight: bold;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 8px 0;
+      }
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 500;
+      }
+      .footer-links a:hover {
+        color: var(--orange, #e76f26);
+        text-decoration: underline;
+      }
+      .footer-sep {
+        color: #fff7;
+      }
+      .footer-copy {
+        font-size: 0.95em;
+        color: #fff9;
+        margin-top: 4px;
+      }
+      @media (max-width: 600px) {
+        .footer-content { font-size: 0.95em; }
+        .footer-links { gap: 8px; }
+      }
+    </style>
+
+    <script>
+      console.log('Página de edición cargando...');
+      
+      let anuncioActual = null;
+      let fotosActuales = [];
+      let fotosNuevas = [];
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('Página de edición inicializada');
+        if (!verificarSesion()) return;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const anuncioId = urlParams.get('id');
+        console.log('ID del anuncio a cargar:', anuncioId);
+        
+        if (!anuncioId) {
+          alert('No se especificó qué anuncio editar');
+          window.location.href = 'panel-colaborador.html';
+          return;
+        }
+        
+        cargarAnuncio(anuncioId);
+      });
+      
+      function verificarSesion() {
+        const colaboradorId = sessionStorage.getItem('colaborador-id');
+        console.log('Verificando sesión, colaborador ID:', colaboradorId);
+        
+        if (!colaboradorId) {
+          alert('Debes iniciar sesión para editar anuncios');
+          window.location.href = 'login-colaborador.html';
+          return false;
+        }
+        return true;
+      }
+      
+      function cargarAnuncio(anuncioId) {
+        console.log('Cargando anuncio con ID:', anuncioId);
+        
+        if (!anuncioId) {
+          console.error('No se proporcionó ID del anuncio');
+          alert('Error: No se especificó qué anuncio editar');
+          window.location.href = 'panel-colaborador.html';
+          return;
+        }
+        
+        // Base de datos de anuncios
+        const anuncios = {
+          'IDE001-001': {
+            id: 'IDE001-001',
+            titulo: 'Habitación moderna en Malasaña',
+            tipo: 'habitacion',
+            precio: 420,
+            habitaciones: '1',
+            superficie: 15,
+            ubicacion: 'Madrid, Malasaña',
+            descripcion: 'Habitación luminosa en piso moderno, gastos incluidos, WiFi, limpieza semanal. Zona céntrica con excelente transporte.',
+            servicios: ['wifi', 'gastos', 'limpieza'],
+            disponibilidad: 'inmediata',
+            contacto: 'whatsapp',
+            estado: 'activo',
+            fotos: ['foto1.jpg', 'foto2.jpg'],
+            estadisticas: { visitas: 45, contactos: 8, favoritos: 12, diasActivo: 5 }
+          },
+          'IDE001-002': {
+            id: 'IDE001-002',
+            titulo: 'Estudio con terraza en Chamberí',
+            tipo: 'estudio',
+            precio: 580,
+            habitaciones: '1',
+            superficie: 25,
+            ubicacion: 'Madrid, Chamberí',
+            descripcion: 'Estudio completamente reformado con terraza privada, cocina equipada, baño moderno. Ideal para profesionales.',
+            servicios: ['wifi', 'terraza', 'parking'],
+            disponibilidad: 'inmediata',
+            contacto: 'telefono',
+            estado: 'activo',
+            fotos: ['foto1.jpg', 'foto2.jpg', 'foto3.jpg'],
+            estadisticas: { visitas: 62, contactos: 15, favoritos: 18, diasActivo: 8 }
+          },
+          'IDE001-003': {
+            id: 'IDE001-003',
+            titulo: 'Apartamento 1 dormitorio La Latina',
+            tipo: 'apartamento',
+            precio: 750,
+            habitaciones: '1',
+            superficie: 45,
+            ubicacion: 'Madrid, La Latina',
+            descripcion: 'Apartamento completo en edificio histórico rehabilitado, aire acondicionado, calefacción central. Zona muy animada.',
+            servicios: ['wifi', 'gastos', 'ascensor'],
+            disponibilidad: '1-semana',
+            contacto: 'email',
+            estado: 'activo',
+            fotos: ['foto1.jpg'],
+            estadisticas: { visitas: 78, contactos: 22, favoritos: 24, diasActivo: 12 }
+          },
+          'TEC002-001': {
+            id: 'TEC002-001',
+            titulo: 'Casa rural con jardín en Gràcia',
+            tipo: 'casa',
+            precio: 890,
+            habitaciones: '2',
+            superficie: 65,
+            ubicacion: 'Barcelona, Gràcia',
+            descripcion: 'Casa con encanto en barrio bohemio, jardín privado, dos plantas, perfecta para parejas o compañeros.',
+            servicios: ['wifi', 'terraza', 'parking'],
+            disponibilidad: 'inmediata',
+            contacto: 'whatsapp',
+            estado: 'activo',
+            fotos: ['foto1.jpg', 'foto2.jpg'],
+            estadisticas: { visitas: 35, contactos: 6, favoritos: 9, diasActivo: 3 }
+          },
+          'TEC002-002': {
+            id: 'TEC002-002',
+            titulo: 'Loft industrial en Poblenou',
+            tipo: 'apartamento',
+            precio: 1200,
+            habitaciones: '1',
+            superficie: 80,
+            ubicacion: 'Barcelona, Poblenou',
+            descripcion: 'Loft de diseño en antigua fábrica reconvertida, techos altos, grandes ventanales, zona tecnológica de Barcelona.',
+            servicios: ['wifi', 'ascensor'],
+            disponibilidad: '2-semanas',
+            contacto: 'telefono',
+            estado: 'activo',
+            fotos: ['foto1.jpg', 'foto2.jpg', 'foto3.jpg', 'foto4.jpg'],
+            estadisticas: { visitas: 89, contactos: 28, favoritos: 31, diasActivo: 7 }
+          },
+          'TEC002-003': {
+            id: 'TEC002-003',
+            titulo: 'Ático con terraza en Eixample',
+            tipo: 'atico',
+            precio: 950,
+            habitaciones: '1',
+            superficie: 55,
+            ubicacion: 'Barcelona, Eixample',
+            descripcion: 'Ático luminoso con gran terraza, vistas panorámicas, completamente amueblado, ascensor, parking opcional.',
+            servicios: ['wifi', 'terraza', 'parking', 'ascensor'],
+            disponibilidad: '1-mes',
+            contacto: 'cualquiera',
+            estado: 'pausado',
+            fotos: ['foto1.jpg', 'foto2.jpg'],
+            estadisticas: { visitas: 56, contactos: 12, favoritos: 15, diasActivo: 4 }
+          },
+          'PAR003-001': {
+            id: 'PAR003-001',
+            titulo: 'Habitación acogedora en Ruzafa',
+            tipo: 'habitacion',
+            precio: 320,
+            habitaciones: '1',
+            superficie: 12,
+            ubicacion: 'Valencia, Ruzafa',
+            descripcion: 'Habitación luminosa en piso compartido con 2 estudiantes, ambiente familiar, cerca Universidad Politécnica.',
+            servicios: ['wifi', 'gastos', 'limpieza'],
+            disponibilidad: 'inmediata',
+            contacto: 'whatsapp',
+            estado: 'activo',
+            fotos: ['foto1.jpg'],
+            estadisticas: { visitas: 28, contactos: 4, favoritos: 6, diasActivo: 2 }
+          },
+          'PAR003-002': {
+            id: 'PAR003-002',
+            titulo: 'Estudio independiente Benimaclet',
+            tipo: 'estudio',
+            precio: 480,
+            habitaciones: '1',
+            superficie: 22,
+            ubicacion: 'Valencia, Benimaclet',
+            descripcion: 'Estudio completamente independiente, cocina americana, baño privado, ideal para estudiantes o profesionales jóvenes.',
+            servicios: ['wifi', 'gastos'],
+            disponibilidad: '1-semana',
+            contacto: 'telefono',
+            estado: 'activo',
+            fotos: ['foto1.jpg', 'foto2.jpg'],
+            estadisticas: { visitas: 41, contactos: 9, favoritos: 11, diasActivo: 6 }
+          },
+          'PAR003-003': {
+            id: 'PAR003-003',
+            titulo: 'Piso completo cerca del mar',
+            tipo: 'piso',
+            precio: 650,
+            habitaciones: '2',
+            superficie: 70,
+            ubicacion: 'Valencia, Cabanyal',
+            descripcion: 'Piso completo recién reformado, dos dormitorios, salón amplio, cerca de la playa, transporte público excelente.',
+            servicios: ['wifi', 'gastos', 'terraza'],
+            disponibilidad: '2-semanas',
+            contacto: 'email',
+            estado: 'pendiente',
+            fotos: ['foto1.jpg', 'foto2.jpg', 'foto3.jpg'],
+            estadisticas: { visitas: 67, contactos: 18, favoritos: 21, diasActivo: 9 }
+          }
+        };
+        
+        anuncioActual = anuncios[anuncioId];
+        
+        if (!anuncioActual) {
+          alert('Anuncio no encontrado');
+          window.location.href = 'panel-colaborador.html';
+          return;
+        }
+        
+        llenarFormulario();
+        actualizarEstadisticas();
+      }
+      
+      function llenarFormulario() {
+        document.getElementById('anuncio-titulo').textContent = anuncioActual.titulo;
+        document.getElementById('anuncio-id').textContent = anuncioActual.id;
+        
+        document.getElementById('titulo').value = anuncioActual.titulo;
+        document.getElementById('tipo-propiedad').value = anuncioActual.tipo;
+        document.getElementById('precio').value = anuncioActual.precio;
+        document.getElementById('habitaciones').value = anuncioActual.habitaciones;
+        document.getElementById('superficie').value = anuncioActual.superficie;
+        document.getElementById('ubicacion').value = anuncioActual.ubicacion;
+        document.getElementById('descripcion').value = anuncioActual.descripcion;
+        document.getElementById('disponibilidad').value = anuncioActual.disponibilidad;
+        document.getElementById('contacto-preferido').value = anuncioActual.contacto;
+        document.getElementById('estado-anuncio').value = anuncioActual.estado;
+        
+        // Marcar servicios seleccionados
+        anuncioActual.servicios.forEach(servicio => {
+          const checkbox = document.querySelector(`input[value="${servicio}"]`);
+          if (checkbox) checkbox.checked = true;
+        });
+        
+        // Mostrar fotos existentes
+        mostrarFotosExistentes();
+      }
+      
+      function mostrarFotosExistentes() {
+        const preview = document.getElementById('fotos-actuales');
+        preview.innerHTML = '';
+        
+        anuncioActual.fotos.forEach((foto, index) => {
+          const photoItem = document.createElement('div');
+          photoItem.className = 'photo-item';
+          
+          const img = document.createElement('img');
+          img.src = 'public/MatchHogar.jpg'; // Placeholder
+          img.alt = `Foto ${index + 1}`;
+          
+          const removeBtn = document.createElement('button');
+          removeBtn.className = 'photo-remove';
+          removeBtn.innerHTML = '×';
+          removeBtn.onclick = () => eliminarFotoExistente(index);
+          
+          photoItem.appendChild(img);
+          photoItem.appendChild(removeBtn);
+          preview.appendChild(photoItem);
+        });
+      }
+      
+      function cambiarTab(tabName) {
+        // Ocultar todas las pestañas
+        document.querySelectorAll('.tab-content').forEach(tab => {
+          tab.style.display = 'none';
+        });
+        
+        // Quitar clase active de todos los botones
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.style.background = '#f8f9fa';
+          btn.style.color = '#666';
+          btn.classList.remove('active');
+        });
+        
+        // Mostrar pestaña seleccionada
+        document.getElementById(`tab-${tabName}`).style.display = 'block';
+        
+        // Activar botón seleccionado
+        event.target.style.background = 'var(--brown, #A0826D)';
+        event.target.style.color = 'white';
+        event.target.classList.add('active');
+      }
+      
+      function eliminarFotoExistente(index) {
+        if (confirm('¿Estás seguro de eliminar esta foto?')) {
+          anuncioActual.fotos.splice(index, 1);
+          mostrarFotosExistentes();
+        }
+      }
+      
+      function actualizarEstadisticas() {
+        document.getElementById('stat-visitas').textContent = anuncioActual.estadisticas.visitas;
+        document.getElementById('stat-contactos').textContent = anuncioActual.estadisticas.contactos;
+        document.getElementById('stat-favoritos').textContent = anuncioActual.estadisticas.favoritos;
+        document.getElementById('stat-dias').textContent = anuncioActual.estadisticas.diasActivo;
+      }
+      
+      function handlePhotoUpload(event) {
+        const files = Array.from(event.target.files);
+        const totalFotos = anuncioActual.fotos.length + fotosNuevas.length;
+        const maxFiles = 8;
+        
+        if (totalFotos + files.length > maxFiles) {
+          alert(`Máximo ${maxFiles} fotos permitidas`);
+          return;
+        }
+        
+        files.forEach(file => {
+          if (file.type.startsWith('image/')) {
+            fotosNuevas.push(file);
+            mostrarPreviewFotoNueva(file);
+          }
+        });
+      }
+      
+      function mostrarPreviewFotoNueva(file) {
+        const preview = document.getElementById('fotos-nuevas');
+        const photoItem = document.createElement('div');
+        photoItem.className = 'photo-item';
+        
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'photo-remove';
+        removeBtn.innerHTML = '×';
+        removeBtn.onclick = () => {
+          const index = fotosNuevas.indexOf(file);
+          if (index > -1) {
+            fotosNuevas.splice(index, 1);
+            photoItem.remove();
+          }
+        };
+        
+        photoItem.appendChild(img);
+        photoItem.appendChild(removeBtn);
+        preview.appendChild(photoItem);
+      }
+      
+      function actualizarEstadisticas() {
+        document.getElementById('stat-visitas').textContent = anuncioActual.estadisticas.visitas;
+        document.getElementById('stat-contactos').textContent = anuncioActual.estadisticas.contactos;
+        document.getElementById('stat-favoritos').textContent = anuncioActual.estadisticas.favoritos;
+        document.getElementById('stat-dias').textContent = anuncioActual.estadisticas.diasActivo;
+        
+        // También actualizar en la pestaña de estado
+        document.getElementById('stat-visitas-tab').textContent = anuncioActual.estadisticas.visitas;
+        document.getElementById('stat-contactos-tab').textContent = anuncioActual.estadisticas.contactos;
+        document.getElementById('stat-favoritos-tab').textContent = anuncioActual.estadisticas.favoritos;
+        document.getElementById('stat-dias-tab').textContent = anuncioActual.estadisticas.diasActivo;
+      }
+      
+      function guardarCambios() {
+        // Validar campos requeridos
+        const titulo = document.getElementById('titulo').value.trim();
+        const tipo = document.getElementById('tipo-propiedad').value;
+        const precio = document.getElementById('precio').value;
+        const ubicacion = document.getElementById('ubicacion').value.trim();
+        const descripcion = document.getElementById('descripcion').value.trim();
+        const disponibilidad = document.getElementById('disponibilidad').value;
+        
+        if (!titulo || !tipo || !precio || !ubicacion || !descripcion || !disponibilidad) {
+          alert('Por favor, completa todos los campos obligatorios');
+          return;
+        }
+        
+        // Recopilar servicios seleccionados
+        const serviciosSeleccionados = Array.from(document.querySelectorAll('input[name="servicios[]"]:checked'))
+          .map(checkbox => checkbox.value);
+        
+        // Actualizar datos del anuncio
+        anuncioActual.titulo = titulo;
+        anuncioActual.tipo = tipo;
+        anuncioActual.precio = parseInt(precio);
+        anuncioActual.habitaciones = document.getElementById('habitaciones').value;
+        anuncioActual.superficie = parseInt(document.getElementById('superficie').value) || 0;
+        anuncioActual.ubicacion = ubicacion;
+        anuncioActual.descripcion = descripcion;
+        anuncioActual.servicios = serviciosSeleccionados;
+        anuncioActual.disponibilidad = disponibilidad;
+        anuncioActual.contacto = document.getElementById('contacto-preferido').value;
+        anuncioActual.estado = document.getElementById('estado-anuncio').value;
+        
+        console.log('Anuncio actualizado:', anuncioActual);
+        
+        // Guardar cambios en localStorage para persistencia
+        guardarEnBaseDatos(anuncioActual);
+        
+        alert('✅ ¡Cambios guardados correctamente!\\n\\nTu anuncio ha sido actualizado y ya está visible en Publicaciones Actuales.');
+        
+        // Simular guardado y redirigir
+        setTimeout(() => {
+          window.location.href = 'panel-colaborador.html';
+        }, 1000);
+      }
+      
+      function guardarEnBaseDatos(anuncio) {
+        // Obtener anuncios existentes de localStorage
+        let anunciosGuardados = JSON.parse(localStorage.getItem('anuncios_actualizados')) || {};
+        
+        // Actualizar o agregar el anuncio
+        anunciosGuardados[anuncio.id] = {
+          id: anuncio.id,
+          titulo: anuncio.titulo,
+          tipo: anuncio.tipo,
+          precio: anuncio.precio,
+          ubicacion: anuncio.ubicacion,
+          descripcion: anuncio.descripcion,
+          habitaciones: anuncio.habitaciones,
+          superficie: anuncio.superficie,
+          servicios: anuncio.servicios || [],
+          disponibilidad: anuncio.disponibilidad,
+          contacto: anuncio.contacto,
+          estado: anuncio.estado,
+          fechaActualizacion: new Date().toISOString(),
+          colaboradorId: anuncio.colaboradorId
+        };
+        
+        // Guardar en localStorage
+        localStorage.setItem('anuncios_actualizados', JSON.stringify(anunciosGuardados));
+        
+        console.log('Anuncio guardado en base de datos local:', anuncio.id);
+      }
+      
+      function previsualizarAnuncio() {
+        alert('🔍 Función de previsualización\\n\\nEsta función te permitirá ver cómo se verá tu anuncio antes de publicar los cambios.\\n\\n(En desarrollo)');
+      }
+      
+      function eliminarAnuncio() {
+        if (confirm('⚠️ ¿Estás seguro de eliminar este anuncio?\\n\\nEsta acción no se puede deshacer.')) {
+          if (confirm('🗑️ Confirma la eliminación\\n\\nSe eliminará permanentemente el anuncio: "' + anuncioActual.titulo + '"')) {
+            console.log('Eliminando anuncio:', anuncioActual.id);
+            alert('✅ Anuncio eliminado correctamente');
+            window.location.href = 'panel-colaborador.html';
+          }
+        }
+      }
+      
+      function logout() {
+        if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+          sessionStorage.clear();
+          alert('Sesión cerrada. Redirigiendo al inicio...');
+          window.location.href = 'index.html';
+        }
+      }
+    </script>
+  </body>
+</html>

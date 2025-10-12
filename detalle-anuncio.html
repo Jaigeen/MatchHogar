@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Anuncio - MatchHogar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="sections-bg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #002e5e;
+            --secondary-color: #e76f26;
+            --accent-color: #f1c40f;
+            --text-color: #333;
+            --border-color: #ddd;
+            --bg-color: #f7f9fb;
+        }
+
+        .detalle-container {
+            background: url('public/casa6.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 120px 0 40px 0;
+        }
+
+        .detalle-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .anuncio-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .anuncio-header {
+            background: linear-gradient(135deg, #D2B48C 0%, #F5DEB3 50%, #FFF8DC 100%);
+            color: #8B4513;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .anuncio-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .anuncio-header .precio {
+            font-size: 2em;
+            font-weight: 800;
+            color: #CD853F;
+            margin-bottom: 5px;
+        }
+
+        .anuncio-header .ubicacion {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .anuncio-body {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .imagenes-section {
+            grid-column: 1 / -1;
+            margin-bottom: 20px;
+        }
+
+        .imagenes-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 300px 200px;
+            gap: 10px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .imagen-principal {
+            grid-row: 1 / -1;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .imagen-principal:hover {
+            transform: scale(1.02);
+        }
+
+        .imagen-secundaria {
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .imagen-secundaria:hover {
+            transform: scale(1.05);
+        }
+
+        .mas-imagenes {
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .descripcion-section {
+            grid-column: 1;
+        }
+
+        .descripcion-section h3 {
+            color: #CD853F;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #F5DEB3;
+            padding-bottom: 5px;
+        }
+
+        .descripcion-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .caracteristicas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .caracteristica {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #D2B48C;
+        }
+
+        .caracteristica i {
+            font-size: 1.5em;
+            color: #CD853F;
+            margin-bottom: 8px;
+        }
+
+        .caracteristica .valor {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1em;
+        }
+
+        .caracteristica .label {
+            font-size: 0.9em;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .contacto-section {
+            grid-column: 2;
+            background: var(--bg-color);
+            padding: 25px;
+            border-radius: 15px;
+            height: fit-content;
+        }
+
+        .contacto-section h3 {
+            color: #CD853F;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .colaborador-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .colaborador-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #D2B48C 0%, #F5DEB3 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: #8B4513;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .colaborador-name {
+            font-weight: 600;
+            color: #CD853F;
+            margin-bottom: 5px;
+        }
+
+        .colaborador-tipo {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        .btn-contacto {
+            width: 100%;
+            background: linear-gradient(135deg, #D2B48C 0%, #CD853F 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-contacto:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-volver {
+            position: fixed;
+            top: 90px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #CD853F;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .btn-volver:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #F5DEB3;
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #CD853F;
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .anuncio-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .contacto-section {
+                grid-column: 1;
+            }
+            
+            .imagenes-gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 250px 150px 150px;
+            }
+            
+            .imagen-principal {
+                grid-column: 1 / -1;
+                grid-row: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header transparente -->
+    <header class="transparent">
+        <nav class="container">
+            <div class="nav-brand">
+                <img src="public/MatchHogar.jpg" alt="MatchHogar Logo" class="nav-logo">
+                <span>MatchHogar</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                <li><a href="que-ofrecemos.html">Qué ofrecemos</a></li>
+                <li><a href="publicaciones-actuales.html">Publicaciones</a></li>
+                <li><a href="registro.html">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <button class="btn-volver" onclick="window.history.back()">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+
+    <main class="detalle-container">
+        <div class="detalle-content">
+            <div class="anuncio-card">
+                <div class="anuncio-header">
+                    <h1 id="anuncio-titulo">Cargando...</h1>
+                    <div class="precio" id="anuncio-precio">€/mes</div>
+                    <div class="ubicacion" id="anuncio-ubicacion">📍 Ubicación</div>
+                </div>
+
+                <div class="anuncio-body">
+                    <div class="imagenes-section">
+                        <div class="imagenes-gallery" id="imagenes-gallery">
+                            <!-- Las imágenes se cargarán dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="descripcion-section">
+                        <h3><i class="fas fa-info-circle"></i> Descripción</h3>
+                        <div class="descripcion-text" id="anuncio-descripcion">
+                            Cargando descripción...
+                        </div>
+
+                        <div class="caracteristicas" id="caracteristicas">
+                            <!-- Las características se cargarán dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="contacto-section">
+                        <h3><i class="fas fa-handshake"></i> Contactar</h3>
+                        <div class="colaborador-info">
+                            <div class="colaborador-avatar" id="colaborador-avatar">?</div>
+                            <div class="colaborador-name" id="colaborador-name">Colaborador</div>
+                            <div class="colaborador-tipo" id="colaborador-tipo">Inmobiliaria</div>
+                        </div>
+
+                        <button class="btn-contacto" onclick="contactarColaborador()">
+                            <i class="fas fa-phone"></i> Llamar
+                        </button>
+                        <button class="btn-contacto" onclick="enviarEmail()">
+                            <i class="fas fa-envelope"></i> Email
+                        </button>
+                        <button class="btn-contacto" onclick="abrirWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </button>
+
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number" id="stat-visitas">45</div>
+                                <div class="stat-label">Visitas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="stat-favoritos">12</div>
+                                <div class="stat-label">Favoritos</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-item">
+                                <div class="stat-number" id="stat-contactos">3</div>
+                                <div class="stat-label">Contactos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Cargar datos del anuncio al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const anuncioId = urlParams.get('id');
+            
+            if (anuncioId) {
+                cargarAnuncioDinamico(anuncioId);
+            } else {
+                // Si no se encuentra el anuncio, mostrar error y volver
+                alert('❌ No se especificó el anuncio a mostrar');
+                window.history.back();
+            }
+        });
+
+        function cargarAnuncioDinamico(anuncioId) {
+            // En una aplicación real, esto vendría de una API/base de datos
+            // Por ahora, usamos la misma estructura que el sistema de edición
+            
+            // Obtener datos del anuncio desde sessionStorage o base de datos simulada
+            const anuncio = obtenerDatosAnuncio(anuncioId);
+            
+            if (anuncio) {
+                cargarAnuncio(anuncio);
+            } else {
+                alert('❌ Anuncio no encontrado');
+                window.history.back();
+            }
+        }
+
+        function obtenerDatosAnuncio(anuncioId) {
+            // Primero verificar si hay datos actualizados en localStorage
+            const anunciosActualizados = JSON.parse(localStorage.getItem('anuncios_actualizados')) || {};
+            
+            if (anunciosActualizados[anuncioId]) {
+                console.log('Cargando datos actualizados para:', anuncioId);
+                const datosActualizados = anunciosActualizados[anuncioId];
+                
+                return {
+                    titulo: datosActualizados.titulo,
+                    precio: datosActualizados.precio.toString(),
+                    ubicacion: datosActualizados.ubicacion,
+                    tipo: datosActualizados.tipo,
+                    descripcion: datosActualizados.descripcion,
+                    imagenes: generarImagenesGenericas(datosActualizados.tipo),
+                    caracteristicas: {
+                        superficie: datosActualizados.superficie + ' m²',
+                        habitaciones: datosActualizados.habitaciones,
+                        banos: datosActualizados.banos || '1',
+                        tipo: datosActualizados.tipo,
+                        disponibilidad: datosActualizados.disponibilidad || 'Inmediata',
+                        gastos: 'Incluidos'
+                    },
+                    colaborador: obtenerDatosColaborador(datosActualizados.colaboradorId),
+                    stats: generarEstadisticasAleatorias()
+                };
+            }
+            
+            // Si no hay datos actualizados, usar la base de datos original
+            // Esta función simula obtener datos de una base de datos real
+            // En producción, esto sería una llamada a una API
+            
+            // Base de datos simulada que se expandirá automáticamente
+            const baseAnuncios = {
+                'IDE001-001': {
+                    titulo: 'Habitación moderna en Malasaña',
+                    precio: '420',
+                    ubicacion: 'Madrid, Malasaña',
+                    tipo: 'Habitación',
+                    superficie: '15',
+                    habitaciones: '1',
+                    banos: '2',
+                    descripcion: 'Habitación luminosa y completamente amueblada en piso compartido ubicado en el vibrante barrio de Malasaña.',
+                    colaboradorId: 'IDE001'
+                },
+                'IDE001-002': {
+                    titulo: 'Piso completo en Chamberí',
+                    precio: '1200',
+                    ubicacion: 'Madrid, Chamberí',
+                    tipo: 'Piso completo',
+                    superficie: '75',
+                    habitaciones: '2',
+                    banos: '1',
+                    descripcion: 'Magnífico piso de 2 habitaciones recién renovado en el elegante barrio de Chamberí.',
+                    colaboradorId: 'IDE001'
+                },
+                'IDE001-003': {
+                    titulo: 'Estudio en La Latina',
+                    precio: '650',
+                    ubicacion: 'Madrid, La Latina',
+                    tipo: 'Estudio',
+                    superficie: '40',
+                    habitaciones: '1',
+                    banos: '1',
+                    descripcion: 'Estudio moderno ideal para estudiantes o jóvenes profesionales en La Latina.',
+                    colaboradorId: 'IDE001'
+                },
+                'TEC002-001': {
+                    titulo: 'Habitación en Gràcia',
+                    precio: '380',
+                    ubicacion: 'Barcelona, Gràcia',
+                    tipo: 'Habitación',
+                    superficie: '12',
+                    habitaciones: '1',
+                    banos: '2',
+                    descripcion: 'Acogedora habitación en el corazón del barrio de Gràcia, uno de los más auténticos de Barcelona.',
+                    colaboradorId: 'TEC002'
+                },
+                'TEC002-002': {
+                    titulo: 'Loft en El Born',
+                    precio: '950',
+                    ubicacion: 'Barcelona, El Born',
+                    tipo: 'Loft',
+                    superficie: '55',
+                    habitaciones: '1',
+                    banos: '1',
+                    descripcion: 'Loft de diseño en el centro histórico de Barcelona, completamente renovado.',
+                    colaboradorId: 'TEC002'
+                },
+                'TEC002-003': {
+                    titulo: 'Piso en Eixample',
+                    precio: '1100',
+                    ubicacion: 'Barcelona, Eixample',
+                    tipo: 'Piso completo',
+                    superficie: '80',
+                    habitaciones: '3',
+                    banos: '2',
+                    descripcion: 'Piso modernista en el corazón del Eixample barcelonés con todos los servicios.',
+                    colaboradorId: 'TEC002'
+                },
+                'PAR003-001': {
+                    titulo: 'Habitación en Ruzafa',
+                    precio: '350',
+                    ubicacion: 'Valencia, Ruzafa',
+                    tipo: 'Habitación',
+                    superficie: '14',
+                    habitaciones: '1',
+                    banos: '2',
+                    descripcion: 'Habitación luminosa en el trendy barrio de Ruzafa, perfecto para jóvenes.',
+                    colaboradorId: 'PAR003'
+                },
+                'PAR003-002': {
+                    titulo: 'Apartamento en Ciudad de las Artes',
+                    precio: '800',
+                    ubicacion: 'Valencia, Ciudad de las Artes',
+                    tipo: 'Apartamento',
+                    superficie: '60',
+                    habitaciones: '2',
+                    banos: '1',
+                    descripcion: 'Apartamento moderno cerca de la Ciudad de las Artes y las Ciencias.',
+                    colaboradorId: 'PAR003'
+                },
+                'PAR003-003': {
+                    titulo: 'Casa con jardín en Benimaclet',
+                    precio: '1500',
+                    ubicacion: 'Valencia, Benimaclet',
+                    tipo: 'Casa',
+                    superficie: '120',
+                    habitaciones: '4',
+                    banos: '2',
+                    descripcion: 'Casa familiar con jardín en zona universitaria, ideal para familias.',
+                    colaboradorId: 'PAR003'
+                }
+            };
+
+            // Retornar datos del anuncio si existe
+            const datosBase = baseAnuncios[anuncioId];
+            if (datosBase) {
+                return {
+                    titulo: datosBase.titulo,
+                    precio: datosBase.precio,
+                    ubicacion: datosBase.ubicacion,
+                    tipo: datosBase.tipo,
+                    descripcion: datosBase.descripcion,
+                    imagenes: generarImagenesGenericas(datosBase.tipo),
+                    caracteristicas: {
+                        superficie: datosBase.superficie + ' m²',
+                        habitaciones: datosBase.habitaciones,
+                        banos: datosBase.banos + (datosBase.banos == '1' ? ' baño' : ' baños'),
+                        tipo: datosBase.tipo,
+                        disponibilidad: 'Inmediata',
+                        gastos: 'Incluidos'
+                    },
+                    colaborador: obtenerDatosColaborador(datosBase.colaboradorId),
+                    stats: generarEstadisticasAleatorias()
+                };
+            }
+            
+            return null;
+        }
+
+        function generarImagenesGenericas(tipo) {
+            // Genera imágenes genéricas basadas en el tipo de propiedad
+            const imagenesBase = {
+                'Habitación': [
+                    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800',
+                    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400',
+                    'https://images.unsplash.com/photo-1616137466211-f939a420be84?w=400'
+                ],
+                'Piso completo': [
+                    'https://images.unsplash.com/photo-1560184897-ae75f418493e?w=800',
+                    'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400',
+                    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400'
+                ],
+                'Estudio': [
+                    'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800',
+                    'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400'
+                ],
+                'Loft': [
+                    'https://images.unsplash.com/photo-1574844884080-498592f1d63f?w=800',
+                    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400'
+                ],
+                'Casa': [
+                    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800',
+                    'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=400'
+                ],
+                'Apartamento': [
+                    'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800',
+                    'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400'
+                ]
+            };
+            
+            return imagenesBase[tipo] || imagenesBase['Habitación'];
+        }
+
+        function obtenerDatosColaborador(colaboradorId) {
+            const colaboradores = {
+                'IDE001': {
+                    id: 'IDE001',
+                    nombre: 'Inmobiliaria del Este',
+                    tipo: 'Inmobiliaria Profesional',
+                    telefono: '+34 91 123 4567',
+                    email: 'contacto@inmobiliariaeste.com'
+                },
+                'TEC002': {
+                    id: 'TEC002',
+                    nombre: 'Tecnovivienda',
+                    tipo: 'Plataforma Digital',
+                    telefono: '+34 93 456 7890',
+                    email: 'hola@tecnovivienda.com'
+                },
+                'PAR003': {
+                    id: 'PAR003',
+                    nombre: 'Partnerships Home',
+                    tipo: 'Red de Colaboradores',
+                    telefono: '+34 96 789 0123',
+                    email: 'info@partnershipshome.com'
+                }
+            };
+            
+            return colaboradores[colaboradorId] || {
+                id: colaboradorId,
+                nombre: 'Colaborador',
+                tipo: 'Propietario',
+                telefono: '+34 000 000 000',
+                email: 'contacto@matchhogar.com'
+            };
+        }
+
+        function generarEstadisticasAleatorias() {
+            return {
+                visitas: Math.floor(Math.random() * 200) + 20,
+                favoritos: Math.floor(Math.random() * 50) + 5,
+                contactos: Math.floor(Math.random() * 15) + 1
+            };
+        }
+
+        function cargarAnuncio(anuncio) {
+            // Cargar información básica
+            document.getElementById('anuncio-titulo').textContent = anuncio.titulo;
+            document.getElementById('anuncio-precio').textContent = anuncio.precio + '€/mes';
+            document.getElementById('anuncio-ubicacion').textContent = '📍 ' + anuncio.ubicacion;
+            document.getElementById('anuncio-descripcion').textContent = anuncio.descripcion;
+
+            // Cargar imágenes
+            cargarImagenes(anuncio.imagenes);
+
+            // Cargar características
+            cargarCaracteristicas(anuncio.caracteristicas);
+
+            // Cargar información del colaborador
+            cargarColaborador(anuncio.colaborador);
+
+            // Cargar estadísticas
+            cargarEstadisticas(anuncio.stats);
+        }
+
+        function cargarImagenes(imagenes) {
+            const gallery = document.getElementById('imagenes-gallery');
+            gallery.innerHTML = '';
+
+            if (imagenes && imagenes.length > 0) {
+                // Imagen principal (primera)
+                const imagenPrincipal = document.createElement('div');
+                imagenPrincipal.className = 'imagen-principal';
+                imagenPrincipal.style.backgroundImage = `url(${imagenes[0]})`;
+                imagenPrincipal.onclick = () => abrirModalImagenes(imagenes, 0);
+                gallery.appendChild(imagenPrincipal);
+
+                // Imágenes secundarias
+                for (let i = 1; i < Math.min(imagenes.length, 4); i++) {
+                    const imagen = document.createElement('div');
+                    imagen.className = 'imagen-secundaria';
+                    imagen.style.backgroundImage = `url(${imagenes[i]})`;
+                    imagen.onclick = () => abrirModalImagenes(imagenes, i);
+                    gallery.appendChild(imagen);
+                }
+
+                // Si hay más de 4 imágenes, mostrar contador
+                if (imagenes.length > 4) {
+                    const masImagenes = document.createElement('div');
+                    masImagenes.className = 'imagen-secundaria mas-imagenes';
+                    masImagenes.innerHTML = `+${imagenes.length - 4} más`;
+                    masImagenes.onclick = () => abrirModalImagenes(imagenes, 4);
+                    gallery.appendChild(masImagenes);
+                }
+            }
+        }
+
+        function cargarCaracteristicas(caracteristicas) {
+            const container = document.getElementById('caracteristicas');
+            container.innerHTML = '';
+
+            const iconos = {
+                habitaciones: 'fas fa-bed',
+                superficie: 'fas fa-ruler-combined',
+                banos: 'fas fa-bath',
+                piso: 'fas fa-building',
+                ascensor: 'fas fa-elevator',
+                internet: 'fas fa-wifi',
+                calefaccion: 'fas fa-thermometer-half',
+                terraza: 'fas fa-tree'
+            };
+
+            Object.entries(caracteristicas).forEach(([key, value]) => {
+                const div = document.createElement('div');
+                div.className = 'caracteristica';
+                div.innerHTML = `
+                    <i class="${iconos[key] || 'fas fa-info'}"></i>
+                    <div class="valor">${value}</div>
+                    <div class="label">${key.charAt(0).toUpperCase() + key.slice(1)}</div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function cargarColaborador(colaborador) {
+            document.getElementById('colaborador-avatar').textContent = colaborador.nombre.charAt(0);
+            document.getElementById('colaborador-name').textContent = colaborador.nombre;
+            document.getElementById('colaborador-tipo').textContent = colaborador.tipo;
+        }
+
+        function cargarEstadisticas(stats) {
+            document.getElementById('stat-visitas').textContent = stats.visitas;
+            document.getElementById('stat-favoritos').textContent = stats.favoritos;
+            document.getElementById('stat-contactos').textContent = stats.contactos;
+        }
+
+        function abrirModalImagenes(imagenes, indiceInicial) {
+            // Aquí puedes implementar un modal/lightbox para ver las imágenes
+            alert(`Ver imagen ${indiceInicial + 1} de ${imagenes.length}`);
+        }
+
+        function contactarColaborador() {
+            alert('📞 Función de llamada telefónica');
+        }
+
+        function enviarEmail() {
+            alert('✉️ Función de envío de email');
+        }
+
+        function abrirWhatsApp() {
+            alert('💬 Función de WhatsApp');
+        }
+    </script>
+</body>
+</html>

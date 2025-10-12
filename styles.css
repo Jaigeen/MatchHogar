@@ -23,6 +23,14 @@ body {
   background: var(--cream);
   color: var(--text);
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+section {
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -252,7 +260,7 @@ nav {
 }
 
 .nav-links a[aria-current="page"] {
-  color: var(--orange);
+  color: #C4A484;
 }
 
 /* ------------------ BRAND TITLE ------------------ */
@@ -451,15 +459,28 @@ h1 span {
 
 .features-section {
   padding: 80px 0;
-  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  position: relative;
+  background-image: linear-gradient(rgba(0, 46, 94, 0.9), rgba(0, 46, 94, 0.9)), url('public/casamarron2.webp');
+  background-size: cover;
+  background-position: center center;
+  margin: 0;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.features-section .container {
+  position: relative;
+  z-index: 2;
 }
 
 .features-section h2 {
   text-align: center;
-  color: var(--navy);
+  color: #ffffff;
   font-size: 2.5rem;
   margin-bottom: 3rem;
   position: relative;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .features-section h2::after {
@@ -482,14 +503,17 @@ h1 span {
 }
 
 .feature-item {
-  background: white;
+  background: rgba(255,255,255,0.95);
   padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .feature-item::before {
@@ -571,7 +595,7 @@ h1 span {
 
 /* ------------------ CTA SECTION ------------------ */
 .cta-section {
-  background: linear-gradient(rgba(0, 46, 94, 0.95), rgba(0, 46, 94, 0.95)), url('public/MatchHogar.jpg');
+  background-image: linear-gradient(rgba(95,70,51,0.4), rgba(95,70,51,0.4)), url('public/casamarron2.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -623,8 +647,8 @@ h1 span {
 
 /* ------------------ FOOTER ------------------ */
 .footer {
-  background: var(--navy-dark);
-  color: white;
+  background: #6D5A47; /* Marrón grisáceo apagado */
+  color: #E8E8E8; /* Gris claro para el texto */
   padding: 80px 0 40px;
 }
 
@@ -647,7 +671,7 @@ h1 span {
 .footer-links h4,
 .footer-social h4 {
   margin-bottom: 24px;
-  color: var(--orange);
+  color: #C7B299; /* Beige apagado para títulos */
 }
 
 .footer-links ul {
@@ -658,8 +682,14 @@ h1 span {
   margin-bottom: 12px;
 }
 
+.footer-links a {
+  color: #B8B8B8; /* Gris claro apagado */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
 .footer-links a:hover {
-  color: var(--orange);
+  color: #D4D4D4; /* Gris más claro en hover */
 }
 
 .social-links {
@@ -671,20 +701,22 @@ h1 span {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.1);
+  background: rgba(184, 184, 184, 0.15); /* Gris muy sutil */
+  color: #B8B8B8; /* Gris claro apagado */
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-  background: var(--orange);
+  background: rgba(184, 184, 184, 0.25); /* Gris un poco más visible */
+  color: #D4D4D4; /* Gris más claro */
 }
 
 .footer-bottom {
   padding-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(184, 184, 184, 0.2); /* Línea gris muy sutil */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -695,8 +727,14 @@ h1 span {
   gap: 24px;
 }
 
+.footer-legal a {
+  color: #B8B8B8; /* Gris claro apagado */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
 .footer-legal a:hover {
-  color: var(--orange);
+  color: #D4D4D4; /* Gris más claro en hover */
 }
 
 /* ------------------ RESPONSIVE ------------------ */
@@ -860,12 +898,12 @@ h1 span {
 }
 
 .btn-primary {
-  background: var(--orange);
+  background: #5f4633;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #d65e15;
+  background: #735544;
 }
 
 .btn-outline {
@@ -889,6 +927,7 @@ h1 span {
   align-items: center;
   position: relative;
   overflow: hidden;
+  padding-top: 120px; /* Más espacio desde el menú */
 }
 
 .about-hero::after {
@@ -906,6 +945,7 @@ h1 span {
   position: relative;
   z-index: 2;
   text-align: center;
+  margin-top: -60px; /* Compensar el padding superior */
 }
 
 .about-hero h1 {
@@ -1655,35 +1695,33 @@ h1 span {
 }
 
 /* ------------------ TESTIMONIALS SECTION ------------------ */
-.testimonials-section {
+.testimonials.section-padding.bg-light {
   padding: 80px 0;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
   position: relative;
-  overflow: hidden;
+  background-image: linear-gradient(rgba(95,70,51,0.4), rgba(95,70,51,0.4)), url('public/casamarron2.webp');
+  background-size: cover;
+  background-position: center;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  color: white;
 }
 
-.testimonials-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('public/MatchHogar.jpg') center/cover;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
+.testimonials.section-padding.bg-light .container {
+  position: relative;
+  z-index: 2;
 }
 
-.testimonials-section h2 {
+.testimonials.section-padding.bg-light h2 {
   text-align: center;
   color: white;
   font-size: 2.5rem;
   margin-bottom: 3rem;
   position: relative;
-  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.testimonials-section h2::after {
+.testimonials.section-padding.bg-light h2::after {
   content: '';
   position: absolute;
   bottom: -12px;
@@ -1701,16 +1739,20 @@ h1 span {
   gap: 2rem;
   padding: 1rem;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .testimonial-card {
   background: rgba(255, 255, 255, 0.95);
   padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 3;
 }
 
 .testimonial-card::before {
@@ -1778,15 +1820,16 @@ h1 span {
 /* ------------------ PLANS SECTION ------------------ */
 .plans-section {
   padding: 80px 0;
-  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  background: transparent; /* Eliminar el gradiente que causa la semi-transparencia */
 }
 
 .plans-section .section-title {
   text-align: center;
-  color: var(--navy);
+  color: #FFFFFF; /* Blanco como solicitaste */
   font-size: 2.5rem;
   margin-bottom: 3rem;
   position: relative;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Sombra para mejor legibilidad */
 }
 
 .plans-section .section-title::after {
@@ -1797,7 +1840,7 @@ h1 span {
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: var(--orange);
+  background: #D7CCC8; /* Café con leche */
   border-radius: 2px;
 }
 
@@ -1828,7 +1871,7 @@ h1 span {
 }
 
 .plan-card.featured {
-  border: 2px solid var(--orange);
+  border: 2px solid #D7CCC8; /* Café con leche */
   transform: translateY(-10px);
 }
 
@@ -1836,8 +1879,8 @@ h1 span {
   position: absolute;
   top: 1rem;
   right: -2rem;
-  background: var(--orange);
-  color: white;
+  background: #D7CCC8; /* Café con leche */
+  color: #5D4037; /* Texto marrón oscuro para contraste */
   padding: 0.5rem 2rem;
   font-size: 0.9rem;
   transform: rotate(45deg);
@@ -1887,7 +1930,7 @@ h1 span {
 }
 
 .plan-card:hover .plan-icon svg {
-  stroke: var(--orange);
+  stroke: #D7CCC8; /* Café con leche */
 }
 
 .plan-header h3 {
@@ -1960,25 +2003,25 @@ h1 span {
 }
 
 .plan-card .btn-primary {
-  background: var(--orange);
+  background: #D7CCC8; /* Café con leche */
   border: none;
-  color: white;
+  color: #5D4037; /* Texto marrón oscuro para contraste */
 }
 
 .plan-card .btn-primary:hover {
-  background: #d65a1c;
+  background: #BCAAA4; /* Café con leche más oscuro */
   transform: translateY(-2px);
 }
 
 .plan-card .btn-outline {
-  border: 2px solid var(--navy);
-  color: var(--navy);
+  border: 2px solid #D7CCC8; /* Café con leche */
+  color: #D7CCC8; /* Café con leche */
   background: transparent;
 }
 
 .plan-card .btn-outline:hover {
-  background: var(--navy);
-  color: white;
+  background: #D7CCC8; /* Café con leche */
+  color: #5D4037; /* Texto marrón oscuro */
   transform: translateY(-2px);
 }
 
@@ -2563,7 +2606,7 @@ label[for*="*"]::after {
   color: white;
   position: relative;
   padding: 48px 0;
-  background-image: linear-gradient(120deg, rgba(0,46,94,0.6) 30%, rgba(231,111,38,0.4) 100%), url('public/casamarron.png');
+  background-image: linear-gradient(to right, rgba(40,30,25,0.4), rgba(120,100,85,0.4)), url('public/casamarron2.webp');
   background-size: cover;
   background-position: center center;
 }
@@ -2572,7 +2615,7 @@ label[for*="*"]::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55));
+  background: rgba(0,0,0,0.3);
   z-index: 0;
 }
 
@@ -2611,6 +2654,10 @@ label[for*="*"]::after {
   color: #d4af37; /* dorado */
 }
 
+.pastel-yellow {
+  color: #F5E98B; /* amarillo pastel suave */
+}
+
 .hero-left .tagline { color: rgba(255,255,255,0.9); font-size: 1.05rem; max-width: 520px; }
 
 .hero-form-box {
@@ -2643,21 +2690,51 @@ header.transparent nav { padding-top: 18px; padding-bottom: 18px; }
 }
 
 /* ------------------ FEATURES: ambient brown theme ------------------ */
-.features.section-padding.bg-light {
+.features-section,
+.how-it-works {
   position: relative;
-  padding: 100px 0;
-  background-image: linear-gradient(rgba(45,34,26,0.55), rgba(45,34,26,0.55)), url('public/casamarron2.jpg');
+  background-image: linear-gradient(to right, rgba(40,30,25,0.4), rgba(120,100,85,0.4)), url('public/casamarron2.webp');
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
   color: #2f261f;
+  padding: 80px 0;
+  margin: 0;
+  border: none;
+  border-top: none;
+  border-bottom: none;
 }
-.how-it-works.section-padding.bg-light {
+
+.features-section .section-title,
+.how-it-works .section-title {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 3rem;
   position: relative;
-  padding: 100px 0;
-  background-image: linear-gradient(rgba(45,34,26,0.55), rgba(45,34,26,0.55)), url('public/casamarron2.jpg');
-  background-size: cover;
-  background-position: center center;
-  color: #2f261f;
+}
+
+.features-section .feature-card,
+.how-it-works .feature-card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.features-section .feature-card h3 {
+  color: var(--navy);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.features-section .feature-card p {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.how-it-works.section-padding {
+  position: relative;
+  padding: 50px 0 100px 0;
 }
 .how-it-works.section-padding.bg-light::before {
   content: '';
@@ -2723,5 +2800,17 @@ header.transparent nav { padding-top: 18px; padding-bottom: 18px; }
   .features.section-padding.bg-light { padding: 56px 0; }
   .features .feature-card { text-align: center; }
   .features .feature-card .feature-icon { margin-left: auto; margin-right: auto; }
+}
+
+/* Ajustes responsive para about-hero */
+@media (max-width: 768px) {
+  .about-hero {
+    padding-top: 100px; /* Menos padding en móviles */
+    min-height: 50vh;
+  }
+  
+  .about-hero .container {
+    margin-top: -40px; /* Menos margen negativo en móviles */
+  }
 }
 
