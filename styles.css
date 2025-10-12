@@ -317,7 +317,7 @@ h1 span {
 
 /* ------------------ HERO SECTIONS ------------------ */
 .hero {
-  background: linear-gradient(rgba(0, 46, 94, 0.9), rgba(0, 46, 94, 0.9)), url('public/MatchHogar.jpg');
+  background: url('public/MatchHogar.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -359,7 +359,7 @@ h1 span {
 .about-hero,
 .register-hero {
   color: white;
-  background: linear-gradient(rgba(0, 46, 94, 0.9), rgba(0, 46, 94, 0.9)), url('public/MatchHogar.jpg');
+  background: url('public/MatchHogar.jpg');
 }
 
 .services-hero h1,
@@ -376,7 +376,7 @@ h1 span {
 
 /* ------------------ CTA Sections con fondo */
 .cta-section {
-  background: linear-gradient(rgba(0, 46, 94, 0.95), rgba(0, 46, 94, 0.95)), url('public/MatchHogar.jpg');
+  background: url('public/MatchHogar.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -405,20 +405,20 @@ h1 span {
 }
 
 .about-hero {
-  background: linear-gradient(rgba(0, 46, 94, 0.9), rgba(0, 46, 94, 0.9)), url('public/MatchHogar.jpg');
+  background: url('public/MatchHogar.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .services-hero {
-  background: linear-gradient(rgba(0, 46, 94, 0.9), rgba(0, 46, 94, 0.9)), url('public/MatchHogar.jpg');
+  background: url('public/MatchHogar.jpg');
   background-size: cover;
   background-position: center;
 }
 
 /* Stats section con fondo */
 .stats-section {
-  background: linear-gradient(rgba(0, 46, 94, 0.95), rgba(0, 46, 94, 0.95)), url('public/MatchHogar.jpg');
+  background: url('public/MatchHogar.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -460,7 +460,7 @@ h1 span {
 .features-section {
   padding: 80px 0;
   position: relative;
-  background-image: linear-gradient(rgba(0, 46, 94, 0.9), rgba(0, 46, 94, 0.9)), url('public/casamarron2.webp');
+  background-image: url('public/casamarron2.webp');
   background-size: cover;
   background-position: center center;
   margin: 0;
@@ -595,7 +595,7 @@ h1 span {
 
 /* ------------------ CTA SECTION ------------------ */
 .cta-section {
-  background-image: linear-gradient(rgba(95,70,51,0.4), rgba(95,70,51,0.4)), url('public/casamarron2.webp');
+  background-image: url('public/casamarron2.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -919,7 +919,7 @@ h1 span {
 
 /* ------------------ ABOUT PAGE STYLES ------------------ */
 .about-hero {
-  background: linear-gradient(rgba(0, 46, 94, 0.9), rgba(0, 46, 94, 0.9)), url('public/MatchHogar.jpg');
+  background: url('public/MatchHogar.jpg');
   background-size: cover;
   background-position: center;
   min-height: 60vh;
